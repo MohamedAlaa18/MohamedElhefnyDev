@@ -35,6 +35,9 @@ section.contact-us .sub-title {
 section.contact-us form div:nth-of-type(2) {
   margin-top: 24px;
 }
+section.contact-us div.flex:nth-of-type(1) {
+  justify-content: space-between;
+}
 section.contact-us label {
   color: var(--subtitle);
 }
@@ -87,6 +90,13 @@ section.contact-us .submit {
 section.contact-us .submit:hover {
   scale: 0.97;
 }
+section.contact-us .massage-sent {
+  font-size: 18px;
+  margin-top: 1.7rem;
+}
+.light section.contact-us .massage-sent {
+  color: var(--title);
+}
 /*
 =============================
 3-Right-section ==> Animation
@@ -98,10 +108,12 @@ section.contact-us .submit:hover {
 4-Responsive Design (media query)
 =================================
 */
-@media (max-width: 600px) {
-  .animation {
+@media (max-width: 1250px) {
+  section.contact-us .animation {
     display: none;
   }
+}
+@media (max-width: 600px) {
   section.contact-us form {
     display: flex;
     flex-direction: column;

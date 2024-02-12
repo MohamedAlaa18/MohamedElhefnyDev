@@ -21,16 +21,16 @@ function Header() {
     }
 
     return (
-        <header className='flex'>
+        <header id='header'  className='flex'>
             <button className='icon-menu menu flex' onClick={() => setShowModal(true)} />
             <div />
             <nav>
                 <ul className='flex'>
-                    <li><a href="">About</a></li>
-                    <li><a href="">Article</a></li>
-                    <li><a href="">Projects</a></li>
-                    <li><a href="">Speaking</a></li>
-                    <li><a href="">Contact</a></li>
+                    <li><a href="#header">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="">Experience</a></li>
+                    <li><a href="">Certificates</a></li>
+                    <li><a href="#contact-us">Contact us</a></li>
                 </ul>
             </nav>
             <button className='mode flex' onClick={() => handelClick()}>
@@ -40,11 +40,11 @@ function Header() {
                 <div className='fixed'>
                     <ul className='modal'>
                         <li> <button className='icon-close' onClick={() => setShowModal(false)} /></li>
-                        <li><a href="">About</a></li>
-                        <li><a href="">Article</a></li>
-                        <li><a href="">Projects</a></li>
-                        <li><a href="">Speaking</a></li>
-                        <li><a href="">Contact</a></li>
+                        <li><a href="#header">About</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="">Experience</a></li>
+                        <li><a href="">Certificates</a></li>
+                        <li><a href="#contact-us">Contact us</a></li>
                     </ul>
                 </div>
             }

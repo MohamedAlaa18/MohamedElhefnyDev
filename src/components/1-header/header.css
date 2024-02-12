@@ -73,7 +73,7 @@ header .mode:hover {
 header .icon-sun {
   color: rgb(255, 165, 0);
 }
-header .icon-moon-o{
+header .icon-moon-o {
   color: var(--blue);
 }
 header .icon-close {
@@ -96,6 +96,7 @@ header .fixed {
   inset: 0;
   background-color: rgba(40, 40, 48, 0.91);
   backdrop-filter: blur(4px);
+  z-index: 1;
 }
 @keyframes animation {
   0% {
@@ -111,8 +112,7 @@ header .fixed {
 header .fixed ul.modal {
   animation: animation 0.7s 1;
   width: 75%;
-  margin-left: auto;
-  margin-right: auto;
+  margin-inline: auto;
   margin-top: 2rem;
   border-radius: 1rem;
   padding: 1rem 2rem;

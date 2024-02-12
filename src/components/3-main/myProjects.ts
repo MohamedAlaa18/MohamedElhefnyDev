@@ -20,4 +20,25 @@ export const myProjects = [
       "The Restaurant Website contains a Home Page and A Form That Handles Table Bookings for The Restaurant.",
     category: ["typeScript"],
   },
+  {
+    projectTitle: "Little Lemon",
+    imagPath: "./images/4.jpg",
+    projectDescription:
+      "The Restaurant Website contains a Home Page and A Form That Handles Table Bookings for The Restaurant.",
+    category: ["typeScript"],
+  },
+  {
+    projectTitle: "Little Lemon",
+    imagPath: "./images/5.jpg",
+    projectDescription:
+      "The Restaurant Website contains a Home Page and A Form That Handles Table Bookings for The Restaurant.",
+    category: ["typeScript"],
+  },
+  {
+    projectTitle: "Little Lemon",
+    imagPath: "./images/6.jpg",
+    projectDescription:
+      "The Restaurant Website contains a Home Page and A Form That Handles Table Bookings for The Restaurant.",
+    category: ["typeScript"],
+  },
 ];
