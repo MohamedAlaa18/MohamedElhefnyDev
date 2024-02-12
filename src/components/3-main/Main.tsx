@@ -13,11 +13,12 @@ function Main() {
       </section>
       <section className='flex right-section'>
 
-        {[1, 2, 3, 4].map((project) => (
+        {[1, 2, 3].map((project) => (
 
           <article key={project} className='card'>
 
-            <img width={266} src="./lemon-restaurant-screenshots/Screenshot_8.png" alt="little-lemon" />
+            {/* <img width={266} src="./lemon-restaurant-screenshots/Screenshot_8.png" alt="little-lemon" /> */}
+            <img width={266} src="./react-portfolio-website/1.jpg" alt="little-lemon" />
 
             <div style={{ width: "266px" }} className='box'>
               <h1 className='title'>Little Lemon</h1>

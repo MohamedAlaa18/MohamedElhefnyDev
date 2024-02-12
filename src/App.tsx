@@ -6,7 +6,7 @@ import Footer from './components/5-footer/Footer'
 
 function App() {
   return (
-    <div className='container'>
+    <div id="top" className='container'>
       <Header />
       <Hero />
       <div className='divider' />
@@ -15,6 +15,10 @@ function App() {
       <Contact />
       <div className='divider' />
       <Footer />
+
+      <a href="#top">
+        <button className='icon-keyboard_arrow_up scroll-to-up' />
+      </a>
     </div>
   )
 }
