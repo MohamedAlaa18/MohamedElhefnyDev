@@ -61,12 +61,20 @@ header .mode {
   color: var(--subtitle);
   border: 1px solid rgba(244, 165, 96, 0.249);
   transition: 0.2s;
+  box-shadow: 1px 1px 40px rgba(35, 35, 36, 0.165);
 }
+
 header .icon-menu:hover,
 header .mode:hover {
   color: var(--title);
   border: 1px solid rgb(244, 165, 96);
   transition: 0.2s;
+}
+header .icon-sun {
+  color: rgb(255, 165, 0);
+}
+header .icon-moon-o{
+  color: var(--blue);
 }
 header .icon-close {
   font-size: 1.5rem;

@@ -19,15 +19,31 @@ html {
   --primary: #000;
   --secondary: rgb(24, 24, , 27);
   --border: rgba(63, 63, 70, 0.4);
+
   --title: rgb(244, 244, 255);
   --subtitle: rgb(161, 161, 170);
+
   --bgHeader: rgb(39, 39, 42);
   --blue: rgb(93, 188, 252);
+
   --icon-hover: #d4d4d8;
+
   --container-padding: 4.8rem;
 }
 .light {
-  --primary: #fff;
+  --primary: rbg(250, 250, 250);
+  --secondary: rgb(255, 255, , 255);
+  --border: rgba(202, 202, 202, 0.518);
+
+  --title: rgb(39, 39, 42);
+  --subtitle: rgb(82, 82, 91);
+
+  --bgHeader: rgb(253, 253, 253);
+  --blue: rgb(0, 149, 246);
+
+  --icon-hover: #333;
+
+  --container-padding: 4.8rem;
 }
 body {
   background-color: var(--primary);
@@ -111,6 +127,7 @@ Scroll To Up Button
   right: 3%;
   text-align: center;
   border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 1.25rem;
 }
 .scroll-to-up:hover {
   background-color: rgb(25, 118, 210);
@@ -134,5 +151,6 @@ Responsive Design (media query)
     opacity: 0.6;
     width: 2.2rem;
     height: 2.2rem;
+    font-size: 1rem;
   }
 }

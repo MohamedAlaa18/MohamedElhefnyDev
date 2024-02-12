@@ -1,28 +1,51 @@
+import { useState } from 'react'
 import './main.css'
+import {myProjects} from './myProjects'
 
 function Main() {
+  const [active, setActive] = useState('all');
+  const [projectsFiltered, setProjectsFiltered] = useState(myProjects);
+
+  const handelClick = (category: string) => {
+    setActive(category);
+    category == 'all' ?
+      setProjectsFiltered(myProjects)
+      :
+      // setProjectsFiltered(
+      //   myProjects.filter(
+      //     (project) => ((project.category).filter((pCategory) => pCategory == category))
+      //   )
+      // );
+      setProjectsFiltered(
+        myProjects.filter(
+          (project) => {
+            const specificCategory = (project.category).find((pCategory) => pCategory == category);
+            return specificCategory == category;
+          }
+        )
+      );
+  }
   return (
     <main className='flex'>
       <section className='flex left-section'>
 
-        <button className='active'>All Projects</button>
-        <button>JavaScript</button>
-        <button>TypeScript</button>
-        <button>React </button>
+        <button className={active == 'all' ? 'active' : ''} onClick={() => { handelClick('all') }}>All Projects</button>
+        <button className={active == 'javaScript' ? 'active' : ''} onClick={() => { handelClick('javaScript') }}>JavaScript</button>
+        <button className={active == 'typeScript' ? 'active' : ''} onClick={() => { handelClick('typeScript') }}>TypeScript</button>
+        <button className={active == 'react' ? 'active' : ''} onClick={() => { handelClick('react') }}>React </button>
 
       </section>
       <section className='flex right-section'>
 
-        {[1, 2, 3].map((project) => (
+        {projectsFiltered.map((project) => (
 
-          <article key={project} className='card'>
+          <article key={project.imagPath} className='card'>
 
-            {/* <img width={266} src="./lemon-restaurant-screenshots/Screenshot_8.png" alt="little-lemon" /> */}
-            <img width={266} src="./react-portfolio-website/1.jpg" alt="little-lemon" />
+            <img width={266} src={project.imagPath} alt="little-lemon" />
 
             <div style={{ width: "266px" }} className='box'>
-              <h1 className='title'>Little Lemon</h1>
-              <p className='sub-title'>The Restaurant Website contains a Home Page and A Form That Handles Table Bookings for The Restaurant.</p>
+              <h1 className='title'>{project.projectTitle}</h1>
+              <p className='sub-title'>{project.projectDescription}</p>
 
               <div className="flex icons">
 
@@ -43,7 +66,7 @@ function Main() {
         ))}
 
       </section>
-    </main>
+    </main >
   )
 }
 
