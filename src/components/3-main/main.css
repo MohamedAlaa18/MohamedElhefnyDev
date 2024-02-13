@@ -55,27 +55,44 @@ main section.right-section.flex {
   row-gap: 2rem;
 }
 .card {
-  box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.16), 1px 1px 1px rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+  /* box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.16), 1px 1px 1px rgba(0, 0, 0, 0.15); */
   border: 1px solid rgba(93, 188, 252, 0.3);
   border-radius: 5px;
-  transition: 0.3s;
+  transition: 0.6s;
   background-image: linear-gradient(
     rgba(255, 255, 255, 0.05),
     rgba(255, 255, 255, 0.05)
   );
 }
 .card:hover {
-  border: 1px solid var(--blue);
   rotate: 1deg;
   scale: 1.01;
   cursor: pointer;
 }
-.light .card,
+.dark .card:hover {
+  animation: borderAnimation 0.5s;
+  animation-fill-mode: forwards;
+}
+.light .card {
+  border: 1px solid rgba(244, 165, 96, 0.3);
+}
 .light .card:hover {
-  border: none;
+  border: 1px solid var(--orange);
 }
 .light .card:hover {
   background-color: rgb(246, 246, 246);
+}
+@keyframes borderAnimation {
+  0% {
+    border: 1px solid rgba(93, 188, 252, 0.3);
+  }
+  60% {
+    border: 1px solid rgba(93, 188, 252, 0.7);
+  }
+  100% {
+    border: 1px solid var(--blue);
+  }
 }
 .card img {
   border-radius: 5px;
@@ -114,6 +131,10 @@ main section.right-section.flex {
   font-size: 0.9rem;
   color: var(--blue);
   margin-right: 12px;
+}
+
+.light .card a.link {
+  color: var(--orange);
 }
 /*
 =================================

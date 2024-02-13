@@ -23,7 +23,8 @@ header.flex nav {
   padding: 0.77rem 1.6rem;
   border-radius: 55px;
   box-shadow: 1px 1px 40px #2323242a;
-  border: 1px solid rgba(244, 165, 96, 0.249);
+  /* border: 1px solid rgba(244, 165, 96, 0.249); */
+  border: 1px solid var(--border);
 }
 header ul.flex {
   gap: 16px;
@@ -39,6 +40,9 @@ header ul li a:hover {
   color: var(--blue);
   opacity: 1;
   font-size: 0.9rem;
+}
+.light header ul li a:hover {
+  color: var(--orange);
 }
 header button {
   font-size: 1.2rem;
@@ -60,7 +64,7 @@ header .mode {
   justify-content: center;
   text-align: center;
   color: var(--subtitle);
-  border: 1px solid rgba(244, 165, 96, 0.249);
+  border: 1px solid var(--border);
   transition: 0.2s;
   box-shadow: 1px 1px 40px rgba(35, 35, 36, 0.165);
 }
@@ -68,11 +72,18 @@ header .mode {
 header .icon-menu:hover,
 header .mode:hover {
   color: var(--title);
-  border: 1px solid rgb(244, 165, 96);
   transition: 0.2s;
 }
+.light header .icon-menu:hover,
+.light header .mode:hover {
+  border: 1px solid var(--orange);
+}
+.dark header .icon-menu:hover,
+.dark header .mode:hover {
+  border: 1px solid var(--blue);
+}
 header .icon-sun {
-  color: rgb(255, 165, 0);
+  color: var(--orange);
 }
 header .icon-moon-o {
   color: var(--blue);
@@ -118,7 +129,6 @@ header .fixed ul.modal {
   border-radius: 1rem;
   padding: 1rem 2rem;
   background: var(--secondary);
-  -webkit-animation: animation 0.7s 1;
 }
 header .fixed ul.modal li {
   border-bottom: 1px solid var(--border);

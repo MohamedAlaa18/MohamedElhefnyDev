@@ -47,7 +47,7 @@ function Contact() {
             </p>}
         </form>
         <div className="animation">
-          <Lottie animationData={contactAnimation} style={{ height: 355 }} />
+        <Lottie animationData={contactAnimation} style={{ height: 355}} />
         </div>
       </div>
     </section>

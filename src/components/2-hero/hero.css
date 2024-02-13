@@ -15,7 +15,7 @@ section.hero {
 */
 section.hero .parent-avatar.flex {
   align-items: end;
-  gap: 0.6rem;
+  /* gap: 0.6rem; */
   min-height: 88px;
 }
 section.hero .left-section {
@@ -24,6 +24,7 @@ section.hero .left-section {
 section.hero .icon-verified {
   color: var(--blue);
   margin-bottom: 0.3rem;
+  margin-left: -0.3rem;
 }
 section.hero .avatar {
   width: 88px;
@@ -56,7 +57,7 @@ section.hero .all-icons .icon:hover {
   color: var(--icon-hover);
 }
 section.hero a.download-cv {
-  background-color: rgba(36, 37, 46, 1);
+  background-color: rgb(36, 37, 46);
   border: 1px solid rgb(63, 63, 70);
   padding: 0.75rem 1.25rem;
   width: 7.7em;

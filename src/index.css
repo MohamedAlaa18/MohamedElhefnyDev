@@ -25,6 +25,7 @@ html {
 
   --bgHeader: rgb(39, 39, 42);
   --blue: rgb(93, 188, 252);
+  --orange: rgb(244, 165, 96);
 
   --icon-hover: #d4d4d8;
 
@@ -119,6 +120,35 @@ button:disabled {
 Scroll To Up Button
 ===================
 */
+/* .scroll-to-up {
+  background-color: var(--bgHeader);
+  height: 2.4rem;
+  width: 2.4rem;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 2rem;
+  right: 3%;
+  text-align: center;
+  border: 1px solid var(--border);
+  color: var(--subtitle);
+  transition: 0.2s;
+  box-shadow: 1px 1px 40px #2323242a;
+  color: var(--blue);
+  font-size: 1.35rem;
+}
+.scroll-to-up:hover {
+  color: var(--title);
+  transition: 0.2s;
+}
+.scroll-to-up:hover {
+  border: 1px solid var(--blue);
+}
+.light .scroll-to-up:hover {
+  border: 1px solid var(--orange);
+}
+.light .scroll-to-up {
+  color: var(--orange);
+} */
 .scroll-to-up {
   background-color: rgba(25, 118, 210, 0.85);
   width: 2.6rem;
@@ -129,10 +159,17 @@ Scroll To Up Button
   right: 3%;
   text-align: center;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  font-size: 1.25rem;
+  font-size: 1.35rem;
 }
+
 .scroll-to-up:hover {
   background-color: rgb(25, 118, 210);
+}
+.light .scroll-to-up {
+  background-color: rgba(244, 165, 96, 0.85);
+}
+.light .scroll-to-up:hover {
+  background-color: rgb(244, 165, 96);
 }
 /*
 ===============================

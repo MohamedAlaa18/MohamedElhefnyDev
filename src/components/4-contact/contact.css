@@ -3,8 +3,7 @@
 table of contents
 =================
 1-Header-section
-1-Left-section ==> Mail
-2-Right-section ==> Animation
+2-Left-section ==> Mail
 3-Responsive Design (media query)
 */
 /*
@@ -71,7 +70,8 @@ section.contact-us #message:hover {
 .light section.contact-us #message:focus,
 .light section.contact-us #email:hover,
 .light section.contact-us #message:hover {
-  border: 1px solid rgb(78, 80, 80);
+  /* border: 1px solid rgb(78, 80, 80); */
+  border: 1px solid var(--orange);
 }
 section.contact-us #message {
   min-height: 9rem;
@@ -99,14 +99,8 @@ section.contact-us .massage-sent {
   color: var(--title);
 }
 /*
-=============================
-3-Right-section ==> Animation
-=============================
-*/
-
-/*
 =================================
-4-Responsive Design (media query)
+3-Responsive Design (media query)
 =================================
 */
 @media (max-width: 1250px) {

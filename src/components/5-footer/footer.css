@@ -15,6 +15,9 @@ footer.flex ul a:hover {
   font-size: 1rem;
   font-weight: 500;
 }
+.light footer.flex ul a:hover {
+  color: var(--orange);
+}
 footer.flex p {
   color: rgb(113, 113, 112);
 }

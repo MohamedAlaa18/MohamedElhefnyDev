@@ -25,7 +25,7 @@ function Hero() {
           className='title'>Frontend Developer
         </motion.h1>
         <p className='sub-title'>Hello, I'm Mohamed Alaa, a Front-End Developer trained in JavaScript, Typescript,
-          React.js, Redux, Next.js, CSS, Sass, Tailwind, Bootstrap, Chakra Ui, HTML, SQL Server,Node.js, and AWS and
+          React.js, Redux, Next.js, CSS, Sass, Tailwind, Bootstrap, Chakra Ui, HTML, SQL Server,Node.js and AWS and
           I have a year of expertise as a JavaScript Developer.
         </p>
         <div className='all-icons flex'>
@@ -35,7 +35,7 @@ function Hero() {
           <div className="icon icon-github"></div>
           <div className="icon icon-linkedin"></div>
         </div>
-        <a href="../../../public/CV.pdf" className="download-cv flex" download="CV">
+        <a href="https://mohamedalaadev-5c497.web.app/CV.pdf" className="download-cv flex" download="CV.pdf">
           Download CV <div className="icon-file_download"></div>
         </a>
       </div>
