@@ -27,14 +27,19 @@ function Main() {
       );
   }
   return (
-    <main id='projects' className='flex'>
+    <main className='flex'>
       <section className='flex left-section'>
 
         <button className={active == 'all' ? 'active' : ''} onClick={() => { handelClick('all') }}>All Projects</button>
-        <button className={active == 'javaScript' ? 'active' : ''} onClick={() => { handelClick('javaScript') }}>JavaScript</button>
-        <button className={active == 'typeScript' ? 'active' : ''} onClick={() => { handelClick('typeScript') }}>TypeScript</button>
+        {/* <button className={active == 'javaScript' ? 'active' : ''} onClick={() => { handelClick('javaScript') }}>JavaScript</button> */}
+        {/* <button className={active == 'typeScript' ? 'active' : ''} onClick={() => { handelClick('typeScript') }}>TypeScript</button> */}
         <button className={active == 'react' ? 'active' : ''} onClick={() => { handelClick('react') }}>React </button>
-
+        <button className={active == 'redux' ? 'active' : ''} onClick={() => { handelClick('redux') }}>Redux </button>
+        <button className={active == 'nextJs' ? 'active' : ''} onClick={() => { handelClick('nextJs') }}>NextJs </button>
+        {/* <button className={active == 'sass' ? 'active' : ''} onClick={() => { handelClick('sass') }}>Sass </button> */}
+        {/* <button className={active == 'tailwind' ? 'active' : ''} onClick={() => { handelClick('tailwind') }}>Tailwind </button> */}
+        {/* <button className={active == 'chakraUi' ? 'active' : ''} onClick={() => { handelClick('chakraUi') }}>ChakraUi </button> */}
+        <button className={active == 'firebase' ? 'active' : ''} onClick={() => { handelClick('firebase') }}>Firebase </button>
       </section>
       <section className='flex right-section'>
         <AnimatePresence>
@@ -57,11 +62,11 @@ function Main() {
                 <div className="flex icons">
 
                   <div className='flex '>
-                    <div className="icon-link"></div>
-                    <div className="icon-github"></div>
+                    <a className="icon-link" target="_blank" href={project.demo}></a>
+                    <a className="icon-github" target="_blank" href={project.source}></a>
                   </div>
 
-                  <a className='link flex' href="">
+                  <a className='link flex'>
                     more
                     <div className='icon-arrow-right'></div>
                   </a>

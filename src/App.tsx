@@ -17,9 +17,9 @@ function App() {
     <div id="top" className='container'>
       <Header />
       <Hero />
-      <div className='divider' />
+      <div id='projects' className='divider' />
       <Main />
-      <div className='divider' />
+      <div id='contact-us' className='divider' />
       <Contact />
       <div className='divider' />
       <Footer />

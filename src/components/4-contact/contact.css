@@ -64,7 +64,8 @@ section.contact-us #email:focus,
 section.contact-us #message:focus,
 section.contact-us #email:hover,
 section.contact-us #message:hover {
-  border: 1px solid rgb(45, 212, 191);
+  /* border: 1px solid rgb(45, 212, 191); */
+  border: 1px solid var(--blue);
 }
 .light section.contact-us #email:focus,
 .light section.contact-us #message:focus,

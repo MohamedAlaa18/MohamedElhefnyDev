@@ -23,6 +23,7 @@ header.flex nav {
   padding: 0.77rem 1.6rem;
   border-radius: 55px;
   box-shadow: 1px 1px 40px #2323242a;
+  border: 1px solid rgba(244, 165, 96, 0.249);
 }
 header ul.flex {
   gap: 16px;

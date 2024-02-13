@@ -3,8 +3,9 @@ import Lottie, { LottieRefCurrentProps } from 'lottie-react';
 import devAnimation from '../../animation/dev.json'
 import { useRef } from 'react';
 import { motion } from "framer-motion"
+// import devAnimation2 from '../../../public/CV.pdf'
 function Hero() {
-  const lottieRef = useRef<LottieRefCurrentProps>(null)
+  const lottieRef = useRef<LottieRefCurrentProps>(null);
 
   return (
     <section className='hero flex'>
@@ -24,15 +25,19 @@ function Hero() {
           className='title'>Frontend Developer
         </motion.h1>
         <p className='sub-title'>Hello, I'm Mohamed Alaa, a Front-End Developer trained in JavaScript, Typescript,
-          React.js, Redux, NextJs, CSS, Sass, Tailwind, Bootstrap, Chakra UI, HTML, SQL,Node.js, and AWS and
+          React.js, Redux, Next.js, CSS, Sass, Tailwind, Bootstrap, Chakra Ui, HTML, SQL Server,Node.js, and AWS and
           I have a year of expertise as a JavaScript Developer.
         </p>
         <div className='all-icons flex'>
           <div className="icon icon-twitter"></div>
-          <div className="icon icon-instagram"></div>
+          <div className="icon icon-envelope"></div>
+          {/* <div className="icon icon-instagram"></div> */}
           <div className="icon icon-github"></div>
           <div className="icon icon-linkedin"></div>
         </div>
+        <a href="../../../public/CV.pdf" className="download-cv flex" download="CV">
+          Download CV <div className="icon-file_download"></div>
+        </a>
       </div>
       <div className='right-section animation'>
         <Lottie animationData={devAnimation}

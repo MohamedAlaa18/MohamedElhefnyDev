@@ -4,10 +4,10 @@ const Footer = () => {
   return (
     <footer className='flex'>
       <ul className='flex'>
-        <li><a href="">About</a></li>
-        <li><a href="">Projects</a></li>
-        <li><a href="">Speaking</a></li>
-        <li><a href="">Uses</a></li>
+        <li><a href="#top">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a >Certificates</a></li>
+        <li><a href="#contact-us">Contact</a></li>
       </ul>
       <p>© 2024 Mohamed Alaa. All rights reserved. </p>
     </footer>

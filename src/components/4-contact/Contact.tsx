@@ -8,7 +8,7 @@ function Contact() {
   const [state, handleSubmit] = useForm("xoqgdvqy");
 
   return (
-    <section id='contact-us' className='contact-us'>
+    <section className='contact-us'>
       <h1 className='title'>
         <span className='icon-envelope'></span>
         Contact us

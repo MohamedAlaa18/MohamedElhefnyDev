@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './header.css'
 
 function Header() {
-    const [showModal, setShowModal] = useState<boolean>();
+    const [showModal, setShowModal] = useState<boolean>(false);
+    const menuRef = useRef<HTMLUListElement>(null)
     const [theme, setTheme] = useState(localStorage.getItem("currentTheme") ?? "dark");
 
     useEffect(() => {
@@ -20,17 +21,33 @@ function Header() {
         setTheme(localStorage.getItem("currentTheme") ?? "dark")
     }
 
+    useEffect(() => {
+        const handler = (e: MouseEvent) => {
+            const target = e.target as Node;
+
+            if (!menuRef.current?.contains(target)) {
+                setShowModal(false);
+            }
+        }
+
+        document.addEventListener('mousedown', handler);
+        return () => document.removeEventListener('mousedown', handler);
+    }, []);
+
+    const handleCloseMenu = () => {
+        setShowModal(false);
+    };
+
     return (
-        <header id='header'  className='flex'>
+        <header className='flex'>
             <button className='icon-menu menu flex' onClick={() => setShowModal(true)} />
             <div />
             <nav>
                 <ul className='flex'>
-                    <li><a href="#header">About</a></li>
+                    <li><a href="#top">About</a></li>
                     <li><a href="#projects">Projects</a></li>
-                    <li><a href="">Experience</a></li>
-                    <li><a href="">Certificates</a></li>
-                    <li><a href="#contact-us">Contact us</a></li>
+                    <li><a >Certificates</a></li>
+                    <li><a href="#contact-us">Contact</a></li>
                 </ul>
             </nav>
             <button className='mode flex' onClick={() => handelClick()}>
@@ -38,13 +55,12 @@ function Header() {
             </button>
             {showModal &&
                 <div className='fixed'>
-                    <ul className='modal'>
+                    <ul className='modal' ref={menuRef}>
                         <li> <button className='icon-close' onClick={() => setShowModal(false)} /></li>
-                        <li><a href="#header">About</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="">Experience</a></li>
-                        <li><a href="">Certificates</a></li>
-                        <li><a href="#contact-us">Contact us</a></li>
+                        <li><a href="#top" onClick={handleCloseMenu}>About</a></li>
+                        <li><a href="#projects" onClick={handleCloseMenu}>Projects</a></li>
+                        <li><a onClick={handleCloseMenu}>Certificates</a></li>
+                        <li><a href="#contact-us" onClick={handleCloseMenu}>Contact</a></li>
                     </ul>
                 </div>
             }
