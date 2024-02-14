@@ -44,9 +44,10 @@ function Header() {
             <div />
             <nav>
                 <ul className='flex'>
+                    <li><a href="#top">About</a></li>
                     <li><a href="#projects">Projects</a></li>
-                    <li><a >Certificates</a></li>
-                    <li><a href="#contact-us">Contact</a></li>
+                    <li><a href="#certificates" >Certificates</a></li>
+                    <li><a href="#contact-us">Contact us</a></li>
                 </ul>
             </nav>
             <button className='mode flex' onClick={() => handelClick()}>
@@ -56,9 +57,10 @@ function Header() {
                 <div className='fixed'>
                     <ul className='modal' ref={menuRef}>
                         <li> <button className='icon-close' onClick={() => setShowModal(false)} /></li>
+                        <li><a href="#top" onClick={handleCloseMenu}>About</a></li>
                         <li><a href="#projects" onClick={handleCloseMenu}>Projects</a></li>
-                        <li><a onClick={handleCloseMenu}>Certificates</a></li>
-                        <li><a href="#contact-us" onClick={handleCloseMenu}>Contact</a></li>
+                        <li><a href="#certificates" onClick={handleCloseMenu}>Certificates</a></li>
+                        <li><a href="#contact-us" onClick={handleCloseMenu}>Contact us</a></li>
                     </ul>
                 </div>
             }

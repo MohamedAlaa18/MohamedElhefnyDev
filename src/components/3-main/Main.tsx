@@ -12,11 +12,6 @@ function Main() {
     category == 'all' ?
       setProjectsFiltered(myProjects)
       :
-      // setProjectsFiltered(
-      //   myProjects.filter(
-      //     (project) => ((project.category).filter((pCategory) => pCategory == category))
-      //   )
-      // );
       setProjectsFiltered(
         myProjects.filter(
           (project) => {
@@ -29,18 +24,12 @@ function Main() {
   return (
     <main className='flex'>
       <section className='flex left-section'>
-
         <button className={active == 'all' ? 'active' : ''} onClick={() => { handelClick('all') }}>All Projects</button>
-        {/* <button className={active == 'javaScript' ? 'active' : ''} onClick={() => { handelClick('javaScript') }}>JavaScript</button> */}
-        {/* <button className={active == 'typeScript' ? 'active' : ''} onClick={() => { handelClick('typeScript') }}>TypeScript</button> */}
         <button className={active == 'reactHooks' ? 'active' : ''} onClick={() => { handelClick('reactHooks') }}>React Hooks</button>
         <button className={active == 'redux' ? 'active' : ''} onClick={() => { handelClick('redux') }}>Redux </button>
-        {/* <button className={active == 'nextJs' ? 'active' : ''} onClick={() => { handelClick('nextJs') }}>NextJs </button> */}
-        {/* <button className={active == 'sass' ? 'active' : ''} onClick={() => { handelClick('sass') }}>Sass </button> */}
-        {/* <button className={active == 'tailwind' ? 'active' : ''} onClick={() => { handelClick('tailwind') }}>Tailwind </button> */}
-        {/* <button className={active == 'chakraUi' ? 'active' : ''} onClick={() => { handelClick('chakraUi') }}>ChakraUi </button> */}
         <button className={active == 'firebase' ? 'active' : ''} onClick={() => { handelClick('firebase') }}>Firebase </button>
       </section>
+
       <section className='flex right-section'>
         <AnimatePresence>
           {projectsFiltered.map((project) => (

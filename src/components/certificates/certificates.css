@@ -1,0 +1,124 @@
+/*
+=================
+table of contents
+=================
+1-Left-section ==> Buttons
+2-Right-section ==> certificates
+3-Responsive Design (media query)
+*/
+/*
+==========================
+1-left-section ==> Buttons
+==========================
+*/
+div.left-section {
+  flex-direction: column;
+  gap: 10px;
+  align-self: flex-start;
+}
+div.left-section button {
+  background-color: rgba(36, 37, 46, 1);
+  width: 11rem;
+  padding: 0.75rem 0;
+  text-align: center;
+  font-size: 1.05rem;
+  opacity: 0.5;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+div.left-section button:hover {
+  opacity: 1;
+}
+div.left-section button.active {
+  font-weight: bold;
+  letter-spacing: 0.6px;
+  padding: 0.8rem 0;
+  opacity: 1;
+  border: 1px solid var(--blue);
+}
+.light div.left-section button.active {
+  border: 1px solid #000;
+}
+/*
+================================
+2-Right-section ==> certificates
+================================
+*/
+div.right-section {
+  border-radius: 5px;
+  column-gap: 16px;
+  row-gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-grow: 1;
+}
+div.right-section article.certificate {
+  gap: 0.45rem;
+  transition: 0.3s;
+  padding: 4px;
+  border: 1px solid rgba(93, 188, 252, 0.3);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.5s;
+  max-width: 300px;
+  align-items: center;
+}
+div.right-section article.certificate:hover {
+  scale: 1.01;
+  rotate: 0.5deg;
+  border: 1px solid var(--blue);
+}
+.light div.right-section article.certificate {
+  border: 1px solid rgba(244, 165, 96, 0.3);
+}
+.light div.right-section article.certificate:hover {
+  border: 1px solid var(--orange);
+}
+.light div.right-section article.certificate:hover {
+  background-color: rgb(246, 246, 246);
+}
+div.right-section .certificate .image-parent {
+  gap: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+}
+div.right-section .certificate img {
+  max-height: 44px;
+  max-width: 44px;
+  border-radius: 50%;
+  padding: 1px;
+  box-shadow: 2px 2px 40px rgba(203, 200, 200, 0.586) inset;
+}
+div.right-section .certificate h1 {
+  color: var(--title);
+  font-size: 1rem;
+}
+div.right-section .certificate .name {
+  color: var(--subtitle);
+  font-size: 0.8rem;
+  justify-content: space-between;
+}
+/*
+=================================
+3-Responsive Design (media query)
+=================================
+*/
+@media (max-width: 600px) {
+  section.flex {
+    flex-direction: column;
+    gap: 2.64rem;
+    align-items: center;
+  }
+  section div.left-section {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-self: center;
+  }
+  section div.left-section button {
+    width: 7rem;
+    padding: 0.8rem 0;
+    font-size: 0.9rem;
+  }
+}

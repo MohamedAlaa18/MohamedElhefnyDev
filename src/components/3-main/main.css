@@ -14,7 +14,6 @@ main.flex {
 1-left-section ==> Buttons
 ==========================
 */
-
 main section.left-section {
   flex-direction: column;
   gap: 10px;
@@ -56,23 +55,16 @@ main section.right-section.flex {
 }
 .card {
   box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
-  /* box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.16), 1px 1px 1px rgba(0, 0, 0, 0.15); */
-  border: 1px solid rgba(93, 188, 252, 0.3);
+  /*box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.16), 1px 1px 1px rgba(0, 0, 0, 0.15);
+  */border: 1px solid rgba(93, 188, 252, 0.3);
   border-radius: 5px;
-  transition: 0.6s;
-  background-image: linear-gradient(
-    rgba(255, 255, 255, 0.05),
-    rgba(255, 255, 255, 0.05)
-  );
+  transition: 0.5s;
 }
 .card:hover {
   rotate: 1deg;
   scale: 1.01;
   cursor: pointer;
-}
-.dark .card:hover {
-  animation: borderAnimation 0.5s;
-  animation-fill-mode: forwards;
+  border: 1px solid var(--blue);
 }
 .light .card {
   border: 1px solid rgba(244, 165, 96, 0.3);
@@ -82,17 +74,6 @@ main section.right-section.flex {
 }
 .light .card:hover {
   background-color: rgb(246, 246, 246);
-}
-@keyframes borderAnimation {
-  0% {
-    border: 1px solid rgba(93, 188, 252, 0.3);
-  }
-  60% {
-    border: 1px solid rgba(93, 188, 252, 0.7);
-  }
-  100% {
-    border: 1px solid var(--blue);
-  }
 }
 .card img {
   border-radius: 5px;

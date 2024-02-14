@@ -1,0 +1,51 @@
+export const myCertificates = [
+  {
+    myCertificateTitle: "Front-End Developer Capstone",
+    company: "Meta",
+    data: "July 2023",
+    imagPath: "/images/facebook_logo.jpeg",
+    url: "https://www.coursera.org/account/accomplishments/verify/9GPY4EZSE8P3",
+  },
+  {
+    myCertificateTitle: "Advanced React",
+    company: "Meta",
+    data: "December 2022",
+    imagPath: "/images/facebook_logo.jpeg",
+    url: "https://www.coursera.org/account/accomplishments/verify/9BHPTRLT4MVW",
+  },
+  {
+    myCertificateTitle: "Version Control",
+    company: "Meta",
+    data: "August 2023",
+    imagPath: "/images/facebook_logo.jpeg",
+    url: "https://www.coursera.org/account/accomplishments/verify/WVPV49XNSMY4",
+  },
+  {
+    myCertificateTitle: "HTML and CSS in depth",
+    company: "Meta",
+    data: "August 2023",
+    imagPath: "/images/facebook_logo.jpeg",
+    url: "https://www.coursera.org/account/accomplishments/verify/3KLMRG6M7QKZ",
+  },
+  {
+    myCertificateTitle: "React Cross-Skilling",
+    company: "Udacity",
+    data: "March 2022",
+    imagPath: "/images/udacity_logo.png",
+    url: "https://www.udacity.com/certificate/GK6TQLZQ",
+  },
+  {
+    myCertificateTitle: "Advanced Full-Stack",
+    company: "Udacity",
+    data: "February 2022",
+    imagPath: "/images/udacity_logo.png",
+    url: "https://www.udacity.com/certificate/AW99AZ43",
+  },
+  {
+    myCertificateTitle: "Front-End Web Professional",
+    company: "Udacity",
+    data: "September 2021",
+    imagPath: "/images/udacity_logo.png",
+    url: "https://www.udacity.com/certificate/QN24GZ9W",
+  },
+];

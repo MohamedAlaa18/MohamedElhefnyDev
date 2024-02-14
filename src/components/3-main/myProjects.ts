@@ -1,6 +1,6 @@
 export const myProjects = [
   {
-    projectTitle: "Little Lemon",
+    projectTitle: "Little Lemon Little Lemon",
     imagPath: "./images/1.png",
     projectDescription:
       "The Restaurant Website contains a Home Page and A Form That Handles Table Bookings for The Restaurant.",

@@ -29,11 +29,10 @@ function Hero() {
           I have a year of expertise as a JavaScript Developer.
         </p>
         <div className='all-icons flex'>
-          <div className="icon icon-twitter"></div>
-          <div className="icon icon-envelope"></div>
-          {/* <div className="icon icon-instagram"></div> */}
-          <div className="icon icon-github"></div>
-          <div className="icon icon-linkedin"></div>
+          <a href='mailto: mohamed.alaa.elhefny@gmail.com' target="_blank" className="icon icon-envelope"></a>
+          <a href='https://stackoverflow.com/users/20994901/mohamed-alaa' target="_blank" className="icon icon-stack-overflow"></a>
+          <a href='https://github.com/MohamedAlaa28' target="_blank" className="icon icon-github"></a>
+          <a href='https://www.linkedin.com/in/mohamed-alaa-b180625' target="_blank" className="icon icon-linkedin"></a>
         </div>
         <a href="https://mohamedalaadev-5c497.web.app/CV.pdf" className="download-cv flex" download="CV.pdf">
           Download CV <div className="icon-file_download"></div>
