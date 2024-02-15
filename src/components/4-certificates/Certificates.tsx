@@ -39,7 +39,7 @@ const Certificates = () => {
                     <img src={certificate.imagPath} alt="facebook_logo" />
                   </div>
 
-                  <div style={{ width: "265px" }} >
+                  <div style={{ width: "266px" }} >
                     <h1>{certificate.myCertificateTitle}</h1>
                     <div className='name flex'>
                       <p>{certificate.company}</p>

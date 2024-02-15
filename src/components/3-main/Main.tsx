@@ -25,8 +25,8 @@ function Main() {
     <main className='flex'>
       <section className='flex left-section'>
         <button className={active == 'all' ? 'active' : ''} onClick={() => { handelClick('all') }}>All Projects</button>
-        <button className={active == 'reactHooks' ? 'active' : ''} onClick={() => { handelClick('reactHooks') }}>React Hooks</button>
-        <button className={active == 'redux' ? 'active' : ''} onClick={() => { handelClick('redux') }}>Redux </button>
+        <button className={active == 'redux' ? 'active' : ''} onClick={() => { handelClick('redux') }}>Redux</button>
+        <button className={active == 'nextJs' ? 'active' : ''} onClick={() => { handelClick('nextJs') }}>Next.js</button>
         <button className={active == 'firebase' ? 'active' : ''} onClick={() => { handelClick('firebase') }}>Firebase </button>
       </section>
 

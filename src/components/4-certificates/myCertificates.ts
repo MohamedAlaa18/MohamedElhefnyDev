@@ -42,7 +42,7 @@ export const myCertificates = [
     url: "https://www.udacity.com/certificate/AW99AZ43",
   },
   {
-    myCertificateTitle: "Front-End Web Professional",
+    myCertificateTitle: "Front-End Web Development Professional",
     company: "Udacity",
     data: "September 2021",
     imagPath: "/images/udacity_logo.png",
