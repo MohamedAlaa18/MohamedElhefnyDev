@@ -25,10 +25,16 @@ function Main() {
     <main className='flex'>
       <section className='flex left-section'>
         <button className={active == 'all' ? 'active' : ''} onClick={() => { handelClick('all') }}>All Projects</button>
+<<<<<<< HEAD
         <button className={active == 'react' ? 'active' : ''} onClick={() => { handelClick('react') }}>React</button>
         <button className={active == 'redux' ? 'active' : ''} onClick={() => { handelClick('redux') }}>Redux </button>
         <button className={active == 'tailwind' ? 'active' : ''} onClick={() => { handelClick('tailwind') }}>Tailwind CSS </button>
         <button className={active == 'sass' ? 'active' : ''} onClick={() => { handelClick('sass') }}>Sass </button>
+=======
+        <button className={active == 'redux' ? 'active' : ''} onClick={() => { handelClick('redux') }}>Redux</button>
+        <button className={active == 'nextJs' ? 'active' : ''} onClick={() => { handelClick('nextJs') }}>Next.js</button>
+        <button className={active == 'firebase' ? 'active' : ''} onClick={() => { handelClick('firebase') }}>Firebase </button>
+>>>>>>> ae9113cd6cd314d6bc7507e11af79f14ef8bf088
       </section>
 
       <section className='flex right-section'>
