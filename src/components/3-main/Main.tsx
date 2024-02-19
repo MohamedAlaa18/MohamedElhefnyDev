@@ -25,9 +25,10 @@ function Main() {
     <main className='flex'>
       <section className='flex left-section'>
         <button className={active == 'all' ? 'active' : ''} onClick={() => { handelClick('all') }}>All Projects</button>
-        <button className={active == 'reactHooks' ? 'active' : ''} onClick={() => { handelClick('reactHooks') }}>React Hooks</button>
+        <button className={active == 'react' ? 'active' : ''} onClick={() => { handelClick('react') }}>React</button>
         <button className={active == 'redux' ? 'active' : ''} onClick={() => { handelClick('redux') }}>Redux </button>
-        <button className={active == 'firebase' ? 'active' : ''} onClick={() => { handelClick('firebase') }}>Firebase </button>
+        <button className={active == 'tailwind' ? 'active' : ''} onClick={() => { handelClick('tailwind') }}>Tailwind CSS </button>
+        <button className={active == 'sass' ? 'active' : ''} onClick={() => { handelClick('sass') }}>Sass </button>
       </section>
 
       <section className='flex right-section'>
@@ -55,7 +56,7 @@ function Main() {
                     <a className="icon-github" target="_blank" href={project.source}></a>
                   </div>
 
-                  <a className='link flex'>
+                  <a className='link flex' target='_blank' href={project.demo}>
                     more
                     <div className='icon-arrow-right'></div>
                   </a>
