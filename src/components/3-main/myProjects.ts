@@ -9,20 +9,6 @@ export const myProjects = [
     demo: "https://mohamedalaa28.github.io/restaurant-web-app",
   },
   {
-    projectTitle: "City Eats",
-    imagPath: "./images/2.png",
-    projectDescription:
-<<<<<<< HEAD
-      "Food delivery app with React, Tailwind CSS, and Firebase for streamlined online food ordering and delivery.",
-=======
-      "Food delivery app built with React, Tailwind CSS, and Firebase for streamlined online food ordering and delivery.",
->>>>>>> ae9113cd6cd314d6bc7507e11af79f14ef8bf088
-    category: ["react", "javaScript", "tailwind", "firebase"],
-    source: "https://github.com/MohamedAlaa28/food-delivery-app",
-    demo: "https://mohamedalaa28.github.io/food-delivery-app",
-  },
-<<<<<<< HEAD
-  {
     projectTitle: "Vendor Dashboard",
     imagPath: "./images/3.png",
     projectDescription:
@@ -31,15 +17,13 @@ export const myProjects = [
     source: "https://github.com/MohamedAlaa28/Vendor-Dashboard",
     demo: "https://mohamedalaa28.github.io/vendor-dashboard/",
   },
-=======
-  // {
-  //   projectTitle: "Vendor Dashboard",
-  //   imagPath: "./images/3.png",
-  //   projectDescription:
-  //     "A streamlined vendor dashboard, user-friendly and efficient, powered by React, Tailwind CSS, and Next.js.",
-  //   category: ["javaScript", "nextJs", "tailwind"],
-  //   source: "https://github.com/MohamedAlaa28/Vendor-Dashboard",
-  //   demo: "",
-  // },
->>>>>>> ae9113cd6cd314d6bc7507e11af79f14ef8bf088
+  {
+    projectTitle: "City Eats",
+    imagPath: "./images/2.png",
+    projectDescription:
+      "Food delivery app with React, Tailwind CSS, and Firebase for streamlined online food ordering and delivery.",
+    category: ["react", "javaScript", "tailwind", "firebase"],
+    source: "https://github.com/MohamedAlaa28/food-delivery-app",
+    demo: "https://mohamedalaa28.github.io/food-delivery-app",
+  },
 ];
