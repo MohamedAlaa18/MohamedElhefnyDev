@@ -124,7 +124,7 @@ main div.flex .toggle-input:checked ~ .text-certificates {
 }
 .icon-code,
 .icon-atom {
-  transition: color 0.4s ease;
+  transition: color 0.4s;
 }
 
 /* Default state */

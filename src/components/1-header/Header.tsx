@@ -35,8 +35,10 @@ function Header() {
         return () => document.removeEventListener('mousedown', handler);
     }, []);
 
-    const handleCloseMenu = () => {
+    const handleCloseMenu = (view: string) => {
         setShowModal(false);
+        if (view == 'projects' || view == 'certificates')
+            handleViewChange(view)
     };
 
     const { handleViewChange } = useView();
@@ -60,10 +62,10 @@ function Header() {
                 <div className='fixed'>
                     <ul className='modal' ref={menuRef}>
                         <li> <button className='icon-close' onClick={() => setShowModal(false)} /></li>
-                        <li><a href="#top" onClick={handleCloseMenu}>About</a></li>
-                        <li><a href="#main" onClick={handleCloseMenu}>Projects</a></li>
-                        <li><a href="#main" onClick={handleCloseMenu}>Certificates</a></li>
-                        <li><a href="#contact-us" onClick={handleCloseMenu}>Contact us</a></li>
+                        <li><a href="#top" onClick={() => handleCloseMenu('about')}>About</a></li>
+                        <li><a href="#main" onClick={() => handleCloseMenu('projects')}>Projects</a></li>
+                        <li><a href="#main" onClick={() => handleCloseMenu('certificates')}>Certificates</a></li>
+                        <li><a href="#contact-us" onClick={() => handleCloseMenu('contact-us')}>Contact us</a></li>
                     </ul>
                 </div>
             }
