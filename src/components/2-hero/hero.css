@@ -51,7 +51,7 @@ section.hero .all-icons {
   color: var(--subtitle);
 }
 section.hero .all-icons .icon:hover {
-  font-size: 1.4rem;
+  /* font-size: 1.4rem; */
   transition: 0.3s;
   cursor: pointer;
   color: var(--icon-hover);
@@ -72,8 +72,12 @@ section.hero a.download-cv:hover {
   scale: 0.97;
 }
 section.hero a.download-cv .icon-file_download {
+  /* color: var(--blue); */
   color: var(--subtitle);
 }
+/* .light section.hero a.download-cv .icon-file_download {
+  color: var(--orange);
+} */
 /*
 =============================
 2-Right-section ==> Animation

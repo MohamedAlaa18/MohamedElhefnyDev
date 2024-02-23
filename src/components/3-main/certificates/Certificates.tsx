@@ -7,19 +7,19 @@ const Certificates = () => {
   const [active, setActive] = useState('all');
   const [certificatesFiltered, setCertificatesFiltered] = useState(myCertificates);
 
-  const handelClick = (company: string) => {
-    setActive(company);
-    company == 'all' ?
+  const handelClick = (genre: string) => {
+    setActive(genre);
+    genre == 'all' ?
       setCertificatesFiltered(myCertificates)
       :
-      setCertificatesFiltered(myCertificates.filter((certificate) => certificate.company == company));
+      setCertificatesFiltered(myCertificates.filter((certificate) => certificate.genre == genre));
   }
   return (
-    <section className='flex'>
+    <section id='certificates' className='flex'>
       <div className='flex left-section'>
         <button className={active == 'all' ? 'active' : ''} onClick={() => { handelClick('all') }}>All Certificates</button>
-        <button className={active == 'Meta' ? 'active' : ''} onClick={() => { handelClick('Meta') }}>Meta </button>
-        <button className={active == 'Udacity' ? 'active' : ''} onClick={() => { handelClick('Udacity') }}>Udacity</button>
+        <button className={active == 'Course' ? 'active' : ''} onClick={() => { handelClick('Course') }}>Courses</button>
+        <button className={active == 'Internship' ? 'active' : ''} onClick={() => { handelClick('Internship') }}>Internships</button>
       </div>
       <div className='right-section flex'>
         <AnimatePresence>

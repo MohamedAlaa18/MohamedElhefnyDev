@@ -2,6 +2,7 @@ export const myCertificates = [
   {
     myCertificateTitle: "Front-End Developer Capstone",
     company: "Meta",
+    genre: "Course",
     data: "July 2023",
     imagPath: "/images/facebook_logo.jpeg",
     url: "https://www.coursera.org/account/accomplishments/verify/9GPY4EZSE8P3",
@@ -9,6 +10,7 @@ export const myCertificates = [
   {
     myCertificateTitle: "Advanced React",
     company: "Meta",
+    genre: "Course",
     data: "December 2022",
     imagPath: "/images/facebook_logo.jpeg",
     url: "https://www.coursera.org/account/accomplishments/verify/9BHPTRLT4MVW",
@@ -16,6 +18,7 @@ export const myCertificates = [
   {
     myCertificateTitle: "Version Control",
     company: "Meta",
+    genre: "Course",
     data: "August 2023",
     imagPath: "/images/facebook_logo.jpeg",
     url: "https://www.coursera.org/account/accomplishments/verify/WVPV49XNSMY4",
@@ -23,6 +26,7 @@ export const myCertificates = [
   {
     myCertificateTitle: "HTML and CSS in depth",
     company: "Meta",
+    genre: "Course",
     data: "August 2023",
     imagPath: "/images/facebook_logo.jpeg",
     url: "https://www.coursera.org/account/accomplishments/verify/3KLMRG6M7QKZ",
@@ -30,13 +34,15 @@ export const myCertificates = [
   {
     myCertificateTitle: "React Cross-Skilling",
     company: "Udacity",
+    genre: "Internship",
     data: "March 2022",
     imagPath: "/images/udacity_logo.png",
     url: "https://www.udacity.com/certificate/GK6TQLZQ",
   },
   {
-    myCertificateTitle: "Advanced Full-Stack",
+    myCertificateTitle: "Advanced Full-Stack  Development",
     company: "Udacity",
+    genre: "Internship",
     data: "February 2022",
     imagPath: "/images/udacity_logo.png",
     url: "https://www.udacity.com/certificate/AW99AZ43",
@@ -44,8 +50,17 @@ export const myCertificates = [
   {
     myCertificateTitle: "Front-End Web Development Professional",
     company: "Udacity",
+    genre: "Internship",
     data: "September 2021",
     imagPath: "/images/udacity_logo.png",
     url: "https://www.udacity.com/certificate/QN24GZ9W",
+  },
+  {
+    myCertificateTitle: "Web Development Challenger Track",
+    company: "Udacity",
+    genre: "Course",
+    data: "April 2022",
+    imagPath: "/images/udacity_logo.png",
+    url: "https://s3-us-west-2.amazonaws.com/udacity-printer/production/certificates/c65283d8-8f0b-4441-a798-d960cf76418f.pdf",
   },
 ];

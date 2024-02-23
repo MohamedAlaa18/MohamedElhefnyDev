@@ -1,0 +1,54 @@
+section#certificates div.right-section{
+  row-gap: 16px;
+}
+/*
+================================
+1-Right-section ==> certificates
+================================
+*/
+div.right-section article.certificate {
+  gap: 0.45rem;
+  transition: 0.3s;
+  padding: 4px;
+  border: 1px solid rgba(93, 188, 252, 0.3);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.5s;
+  max-width: 300px;
+  align-items: center;
+}
+div.right-section article.certificate:hover {
+  scale: 1.01;
+  rotate: 0.5deg;
+  border: 1px solid var(--blue);
+}
+.light div.right-section article.certificate {
+  border: 1px solid rgba(244, 165, 96, 0.3);
+}
+.light div.right-section article.certificate:hover {
+  border: 1px solid var(--orange);
+}
+.light div.right-section article.certificate:hover {
+  background-color: rgb(246, 246, 246);
+}
+div.right-section .certificate .image-parent {
+  gap: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+}
+div.right-section .certificate img {
+  max-height: 44px;
+  max-width: 44px;
+  border-radius: 50%;
+  padding: 1px;
+  box-shadow: 2px 2px 40px rgba(203, 200, 200, 0.586) inset;
+}
+div.right-section .certificate h1 {
+  color: var(--title);
+  font-size: 1rem;
+}
+div.right-section .certificate .name {
+  color: var(--subtitle);
+  font-size: 0.8rem;
+  justify-content: space-between;
+}

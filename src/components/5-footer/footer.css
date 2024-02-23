@@ -12,8 +12,8 @@ footer.flex ul a {
 }
 footer.flex ul a:hover {
   color: var(--blue);
-  font-size: 1rem;
-  font-weight: 500;
+  /* font-size: 1rem; */
+  /* font-weight: 500; */
 }
 .light footer.flex ul a:hover {
   color: var(--orange);
@@ -23,7 +23,7 @@ footer.flex p {
 }
 /*
 =================================
-4-Responsive Design (media query)
+2-Responsive Design (media query)
 =================================
 */
 @media (max-width: 600px) {

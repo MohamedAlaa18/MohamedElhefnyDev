@@ -39,7 +39,7 @@ header ul li a {
 header ul li a:hover {
   color: var(--blue);
   opacity: 1;
-  font-size: 0.9rem;
+  /* font-size: 0.9rem; */
 }
 .light header ul li a:hover {
   color: var(--orange);

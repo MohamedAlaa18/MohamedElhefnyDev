@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import './header.css'
+import { useView } from '../viewContext/useView';
 
 function Header() {
     const [showModal, setShowModal] = useState<boolean>(false);
@@ -38,6 +39,8 @@ function Header() {
         setShowModal(false);
     };
 
+    const { handleViewChange } = useView();
+
     return (
         <header className='flex'>
             <button className='icon-menu menu flex' onClick={() => setShowModal(true)} />
@@ -45,8 +48,8 @@ function Header() {
             <nav>
                 <ul className='flex'>
                     <li><a href="#top">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#certificates" >Certificates</a></li>
+                    <li><a href="#main" onClick={() => handleViewChange('projects')}>Projects</a></li>
+                    <li><a href="#main" onClick={() => handleViewChange('certificates')}>Certificates</a></li>
                     <li><a href="#contact-us">Contact us</a></li>
                 </ul>
             </nav>
@@ -58,8 +61,8 @@ function Header() {
                     <ul className='modal' ref={menuRef}>
                         <li> <button className='icon-close' onClick={() => setShowModal(false)} /></li>
                         <li><a href="#top" onClick={handleCloseMenu}>About</a></li>
-                        <li><a href="#projects" onClick={handleCloseMenu}>Projects</a></li>
-                        <li><a href="#certificates" onClick={handleCloseMenu}>Certificates</a></li>
+                        <li><a href="#main" onClick={handleCloseMenu}>Projects</a></li>
+                        <li><a href="#main" onClick={handleCloseMenu}>Certificates</a></li>
                         <li><a href="#contact-us" onClick={handleCloseMenu}>Contact us</a></li>
                     </ul>
                 </div>

@@ -3,22 +3,33 @@
 table of contents
 =================
 1-Left-section ==> Buttons
-2-Right-section ==> Cards
-*/
+2-Responsive Design (media query)
+ */
 main.flex {
+  flex-direction: column;
+  gap: 3rem;
+}
+section.flex {
   gap: 2.64rem;
   align-items: start;
+  width: 100%;
+}
+div.right-section {
+  flex-grow: 1;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 16px;
 }
 /*
 ==========================
 1-left-section ==> Buttons
 ==========================
 */
-main section.left-section {
+div.left-section {
   flex-direction: column;
   gap: 10px;
 }
-main section.left-section button {
+div.left-section button {
   background-color: rgba(36, 37, 46, 1);
   width: 11rem;
   padding: 0.75rem 0;
@@ -27,114 +38,136 @@ main section.left-section button {
   opacity: 0.5;
   border-radius: 5px;
   transition: 0.3s;
+  border: 1px solid var(--border);
 }
-main section.left-section button:hover {
+div.left-section button:hover {
   opacity: 1;
 }
-main section.left-section button.active {
-  font-weight: bold;
-  letter-spacing: 0.6px;
-  padding: 0.8rem 0;
+div.left-section button.active {
+  /* font-weight: bold; */
+  /* letter-spacing: 0.25px; */
+  /* padding: 0.8rem 0; */
   opacity: 1;
   border: 1px solid var(--blue);
 }
-.light main section.left-section button.active {
+.light div.left-section button.active {
   border: 1px solid #000;
 }
 /*
-=========================
-2-Right-section ==> Cards
-=========================
+===============
+2-switch button
+===============
 */
-main section.right-section.flex {
-  flex-grow: 1;
+main div.flex .toggle-input {
+  display: none;
+}
+main div.flex .toggle-container {
+  display: flex;
+  align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  column-gap: 16px;
-  row-gap: 2rem;
-}
-.card {
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
-  /*box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.16), 1px 1px 1px rgba(0, 0, 0, 0.15);*/
-  border: 1px solid rgba(93, 188, 252, 0.3);
+  position: relative;
+  width: 300px;
+  height: 50px;
+  background: var(--primary);
   border-radius: 5px;
-  transition: 0.5s;
-}
-.card:hover {
-  rotate: 1deg;
-  scale: 1.01;
-  /* cursor: pointer; */
-  border: 1px solid var(--blue);
-}
-.light .card {
-  border: 1px solid rgba(244, 165, 96, 0.3);
-}
-.light .card:hover {
-  border: 1px solid var(--orange);
-}
-.light .card:hover {
-  background-color: rgb(246, 246, 246);
-}
-.card img {
-  border-radius: 5px;
-}
-.card .box {
-  padding: 1rem 0.4rem;
-}
-.card .box .title {
-  color: var(--title);
-  text-transform: capitalize;
-}
-.card .box .sub-title {
-  color: var(--subtitle);
-  font-size: 0.8rem;
-  margin-top: 0.7rem;
-  margin-bottom: 1.1rem;
-}
-.card .box .icons {
-  justify-content: space-between;
-}
-.card .box .icons div {
-  gap: 11px;
-}
-.card .icon-link,
-.card .icon-github {
-  color: var(--subtitle);
-  font-size: 1.2rem;
-}
-.card .icon-link:hover,
-.card .icon-github:hover {
-  color: var(--icon-hover);
-  font-size: 1.25rem;
   cursor: pointer;
+  box-shadow: 1px 1px 40px #2323242a inset;
+  scale: 1;
+  transition: 0.3s;
 }
-.card a.link {
-  font-size: 0.9rem;
-  color: var(--blue);
-  margin-right: 12px;
+main div.flex .toggle-container:hover {
+  scale: 0.97;
+}
+main div.flex .toggle-input:checked + .toggle-slider {
+  transform: translateX(-150px);
+}
+main div.flex .toggle-slider {
+  position: absolute;
+  width: 150px;
+  height: 50px;
+  right: 0;
+  border-radius: 5px;
+  background-color: rgb(36, 37, 46);
+  border: 1px solid rgb(63, 63, 70);
+  transition: 0.4s;
+}
+main div.flex .text-projects,
+main div.flex .text-certificates {
+  font-size: 1rem;
+  color: #fff;
+  position: absolute;
+  transition: 0.4s;
+  display: flex;
+  gap: 0.5rem;
+}
+main div.flex .text-projects {
+  right: 20px;
+  opacity: 1;
+}
+main div.flex .text-certificates {
+  left: 20px;
+  opacity: 0.5;
+}
+.light main div.flex .toggle-input ~ .text-certificates,
+.light main div.flex .toggle-input:checked ~ .text-projects {
+  color: #000;
+}
+.light main div.flex .toggle-input:checked ~ .text-certificates,
+.light main div.flex .toggle-input ~ .text-projects {
+  color: #fff;
+}
+main div.flex .toggle-input:checked ~ .text-projects {
+  opacity: 0.5;
+}
+main div.flex .toggle-input:checked ~ .text-certificates {
+  opacity: 1;
+}
+.icon-code,
+.icon-atom {
+  transition: color 0.4s ease;
 }
 
-.light .card a.link {
+/* Default state */
+.toggle-input:not(:checked) ~ .text-projects .icon-code {
+  color: var(--blue);
+}
+.light .toggle-input:not(:checked) ~ .text-projects .icon-code {
+  color: var(--orange);
+}
+.toggle-input:not(:checked) ~ .text-certificates .icon-atom {
+  color: var(--title);
+}
+
+/* Checked state */
+.toggle-input:checked ~ .text-projects .icon-code {
+  color: var(--title);
+}
+
+.toggle-input:checked ~ .text-certificates .icon-atom {
+  color: var(--blue);
+}
+
+.light .toggle-input:checked ~ .text-certificates .icon-atom {
   color: var(--orange);
 }
 /*
 =================================
-4-Responsive Design (media query)
+2-Responsive Design (media query)
 =================================
 */
 @media (max-width: 600px) {
-  main.flex {
+  section.flex {
     flex-direction: column;
     gap: 2.64rem;
     align-items: center;
   }
-  main section.left-section {
+  div.left-section {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
   }
-  main section.left-section button {
+  div.left-section button {
     width: 7rem;
     padding: 0.8rem 0;
     font-size: 0.9rem;

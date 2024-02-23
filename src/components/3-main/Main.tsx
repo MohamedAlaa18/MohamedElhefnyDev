@@ -1,73 +1,24 @@
-import { useState } from 'react'
+import Certificates from './certificates/Certificates';
+import Projects from './projects/Projects';
 import './main.css'
-import { myProjects } from './myProjects'
-import { AnimatePresence, motion } from "framer-motion"
+import { useView } from '../viewContext/useView';
 
 function Main() {
-  const [active, setActive] = useState('all');
-  const [projectsFiltered, setProjectsFiltered] = useState(myProjects);
 
-  const handelClick = (category: string) => {
-    setActive(category);
-    category == 'all' ?
-      setProjectsFiltered(myProjects)
-      :
-      setProjectsFiltered(
-        myProjects.filter(
-          (project) => {
-            const specificCategory = (project.category).find((pCategory) => pCategory == category);
-            return specificCategory == category;
-          }
-        )
-      );
-  }
+  const { view, handleViewChange, toggleCheckBox } = useView();
+
   return (
-    <main className='flex'>
-      <section className='flex left-section'>
-        <button className={active == 'all' ? 'active' : ''} onClick={() => { handelClick('all') }}>All Projects</button>
-        <button className={active == 'react' ? 'active' : ''} onClick={() => { handelClick('react') }}>React</button>
-        <button className={active == 'redux' ? 'active' : ''} onClick={() => { handelClick('redux') }}>Redux </button>
-        <button className={active == 'tailwind' ? 'active' : ''} onClick={() => { handelClick('tailwind') }}>Tailwind CSS </button>
-        <button className={active == 'sass' ? 'active' : ''} onClick={() => { handelClick('sass') }}>Sass </button>
-      </section>
+    <main className="flex">
+      <div className="flex toggle-container-header">
+        <label className="toggle-container">
+          <input ref={toggleCheckBox} type="checkbox" className="toggle-input" onChange={() => handleViewChange(view == 'projects' ? 'certificates' : 'projects')} />
+          <span className="toggle-slider"></span>
+          <div className="text-projects"><span>Projects</span><span className="icon-code" />&nbsp;</div>
+          <div className="text-certificates"><span className="icon-atom" /><span>Certificates</span></div>
+        </label>
+      </div>
 
-      <section className='flex right-section'>
-        <AnimatePresence>
-          {projectsFiltered.map((project) => (
-
-            <motion.article
-              layout
-              initial={{ transform: "scale(0)" }}
-              animate={{ transform: "scale(1)" }}
-              exit={{ transform: "scale(1)" }}
-              transition={{ damping: 8, type: "spring", stiffness: 50 }}
-              key={project.imagPath} className='card'>
-
-              <img width={266} src={project.imagPath} alt="little-lemon" />
-
-              <div style={{ width: "266px" }} className='box'>
-                <h1 className='title'>{project.projectTitle}</h1>
-                <p className='sub-title'>{project.projectDescription}</p>
-
-                <div className="flex icons">
-
-                  <div className='flex '>
-                    <a className="icon-link" target="_blank" href={project.demo}></a>
-                    <a className="icon-github" target="_blank" href={project.source}></a>
-                  </div>
-
-                  <a className='link flex' target='_blank' href={project.demo}>
-                    more
-                    <div className='icon-arrow-right'></div>
-                  </a>
-                </div>
-              </div>
-
-            </motion.article>
-
-          ))}
-        </AnimatePresence>
-      </section>
+      {view === 'projects' ? <Projects /> : <Certificates />}
     </main >
   )
 }
