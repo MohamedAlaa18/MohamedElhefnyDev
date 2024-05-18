@@ -34,7 +34,7 @@ function Hero() {
           <a href='https://github.com/MohamedAlaa28' target="_blank" className="icon icon-github"></a>
           <a href='https://www.linkedin.com/in/mohamed-alaa-b180625' target="_blank" className="icon icon-linkedin"></a>
         </div>
-        <a href="https://mohamedalaadev-5c497.web.app/Mohamed Alaa El-hefny.pdf" className="download-cv flex" download="Mohamed Alaa El-hefny.pdf">
+        <a href="https://mohamed-alaa-dev.vercel.app/Mohamed Alaa El-hefny.pdf" className="download-cv flex" download="Mohamed Alaa El-hefny.pdf">
           Download CV <div className="icon-file_download"></div>
         </a>
       </div>
