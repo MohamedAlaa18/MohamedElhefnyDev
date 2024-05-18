@@ -84,6 +84,7 @@ section.hero a.download-cv .icon-file_download {
 =============================
 */
 section.hero .animation {
+  min-width: 27vw;
   width: 100%;
   translate: 100px 55px;
 }

@@ -22,11 +22,11 @@ function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 2 }}
-          className='title'>Frontend Developer
+          className='title'>
+          Front End Developer | Full Stack Developer (React.js | Angular | .Net Core)
         </motion.h1>
-        <p className='sub-title'>Hello, I'm Mohamed Alaa, a Front-End Developer trained in JavaScript, Typescript,
-          React.js, Redux, Next.js, CSS, Sass, Tailwind, Bootstrap, Chakra Ui, HTML, SQL Server,Node.js and AWS and
-          I have a year of expertise as a JavaScript Developer.
+        <p className='sub-title'>
+          Hello, I'm Mohamed Alaa, a skilled Full Stack Developer proficient in a wide range of technologies including JavaScript, Typescript, React.js, Redux, Next.js, Angular, MVC, SQL Server, .Net, C#, Node.js, AWS, CSS3, Sass, Tailwind, Bootstrap, Material UI, Angular Material, Chakra UI, and HTML5. With one year of experience as a JavaScript Developer
         </p>
         <div className='all-icons flex'>
           <a href='mailto: mohamed.alaa.elhefny@gmail.com' target="_blank" className="icon icon-envelope"></a>
@@ -34,7 +34,7 @@ function Hero() {
           <a href='https://github.com/MohamedAlaa28' target="_blank" className="icon icon-github"></a>
           <a href='https://www.linkedin.com/in/mohamed-alaa-b180625' target="_blank" className="icon icon-linkedin"></a>
         </div>
-        <a href="https://mohamedalaadev-5c497.web.app/CV.pdf" className="download-cv flex" download="CV.pdf">
+        <a href="https://mohamedalaadev-5c497.web.app/Mohamed Alaa El-hefny.pdf" className="download-cv flex" download="Mohamed Alaa El-hefny.pdf">
           Download CV <div className="icon-file_download"></div>
         </a>
       </div>

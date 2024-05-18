@@ -27,7 +27,8 @@ function Projects() {
         <button className={active == 'all' ? 'active' : ''} onClick={() => { handelClick('all') }}>All Projects</button>
         <button className={active == 'next' ? 'active' : ''} onClick={() => { handelClick('next') }}>Next </button>
         <button className={active == 'react' ? 'active' : ''} onClick={() => { handelClick('react') }}>React</button>
-        <button className={active == 'redux' ? 'active' : ''} onClick={() => { handelClick('redux') }}>Redux </button>
+        <button className={active == 'angular' ? 'active' : ''} onClick={() => { handelClick('angular') }}>Angular </button>
+        <button className={active == 'javaScript' ? 'active' : ''} onClick={() => { handelClick('javaScript') }}>JavaScript</button>
         {/* <button className={active == 'tailwind' ? 'active' : ''} onClick={() => { handelClick('tailwind') }}>Tailwind CSS </button>
         <button className={active == 'mui' ? 'active' : ''} onClick={() => { handelClick('mui') }}>Material UI </button>
         <button className={active == 'sass' ? 'active' : ''} onClick={() => { handelClick('sass') }}>Sass </button> */}

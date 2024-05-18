@@ -1,5 +1,13 @@
 export const myCertificates = [
   {
+    myCertificateTitle: "Learn React 18",
+    company: "udemy",
+    genre: "Course",
+    data: "March 2024",
+    imagPath: "/images/udemy_logo.png",
+    url: "https://www.udemy.com/certificate/UC-7825d9b2-1877-4552-95c0-b6f296226ef5/",
+  },
+  {
     myCertificateTitle: "Front-End Developer Capstone",
     company: "Meta",
     genre: "Course",

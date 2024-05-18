@@ -33,7 +33,8 @@ const Certificates = () => {
                   animate={{ transform: "scale(1)" }}
                   exit={{ transform: "scale(1)" }}
                   transition={{ damping: 8, type: "spring", stiffness: 50 }}
-                  key={certificate.myCertificateTitle} className='flex certificate'>
+                  key={certificate.myCertificateTitle}
+                  className='flex certificate'>
 
                   <div className='image-parent flex'>
                     <img src={certificate.imagPath} alt="facebook_logo" />
