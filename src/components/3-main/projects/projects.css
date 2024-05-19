@@ -60,7 +60,19 @@ section#projects div.right-section {
   padding: 10px;
   margin: 20px auto 20px 10px;
   transition: 0.3s;
+  border: 1px solid rgba(93, 188, 252, 0.3);
+}
+
+.card-description:hover{
   border: 1px solid var(--blue);
+}
+
+.light .card-description {
+  border: 1px solid rgba(244, 165, 96, 0.3);
+}
+
+.light .card-description:hover {
+  border: 1px solid var(--orange);
 }
 
 .left .card-description {
@@ -100,11 +112,6 @@ section#projects div.right-section {
 
 .light .left .card-description::after {
   border-left: 10px solid var(--orange);
-}
-
-
-.light .card-description {
-  border: 1px solid var(--orange);
 }
 
 .book-mark {
