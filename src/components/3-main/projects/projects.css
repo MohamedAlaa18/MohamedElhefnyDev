@@ -1,64 +1,212 @@
 section#projects div.right-section {
   row-gap: 2rem;
 }
+
 /*
 =========================
 1-Right-section ==> Cards
 =========================
 */
+.card-container {
+  position: relative;
+}
+
+.card-description-container {
+  position: absolute;
+  z-index: 2;
+  display: none;
+}
+
+.card-description-container.right {
+  top: 29px;
+  right: calc(-100% - 9px);
+}
+
+.card-description-container.left {
+  top: 29px;
+  left: calc(-100% - 9px);
+}
+
+.card-description-container.visible {
+  display: block;
+  animation: ringEffect 0.5s ease forwards;
+  -webkit-animation: ringEffect 0.5s ease forwards;
+}
+
+@keyframes ringEffect {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.card-description {
+  width: 266px;
+  min-height: 80px;
+  background: var(--primary);
+  color: var(--subtitle);
+  position: relative;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 20px auto 20px 10px;
+  transition: 0.3s;
+  border: 1px solid var(--blue);
+}
+
+.left .card-description {
+  margin: 20px 10px 20px auto;
+}
+
+.card-description:before,
+.card-description:after {
+  content: "";
+  position: absolute;
+  top: calc(50% - 10px);
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  transition: 0.3s;
+}
+
+.card-description:before {
+  border-right: 10px solid var(--blue);
+  right: 100%;
+}
+
+.card-description:after {
+  border-left: 10px solid var(--blue);
+  left: 100%;
+}
+
+.left .card-description:before,
+.right .card-description:after {
+  display: none;
+}
+
+.light .card-description:before {
+  border-right: 10px solid var(--orange);
+}
+
+.light .left .card-description::after {
+  border-left: 10px solid var(--orange);
+}
+
+
+.light .card-description {
+  border: 1px solid var(--orange);
+}
+
+.book-mark {
+  position: absolute;
+  top: 1.1rem;
+  left: 0.5rem;
+}
+
+#triangle-topleft {
+  width: 0;
+  height: 0;
+  border-top: 17.5px solid var(--blue);
+  border-right: 10px solid transparent;
+  rotate: 270deg;
+  margin-bottom: -1.125rem;
+  margin-left: -0.3rem;
+}
+
+#triangle-topright {
+  width: 0;
+  height: 0;
+  border-top: 17.5px solid var(--blue);
+  border-left: 10px solid transparent;
+  rotate: 270deg;
+  margin-bottom: -0.15rem;
+  margin-left: -0.3rem;
+}
+
+.light #triangle-topright,
+.light #triangle-topleft {
+  border-top: 17.5px solid var(--orange);
+}
+
+.card:hover+.card-description-container {
+  display: block;
+}
+
 .card {
   box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
   border: 1px solid rgba(93, 188, 252, 0.3);
   border-radius: 5px;
   transition: 0.5s;
 }
+
 .card:hover {
-  rotate: 1deg;
-  scale: 1.01;
+  transform: rotate(1deg) scale(1.01);
   border: 1px solid var(--blue);
 }
+
 .light .card {
   border: 1px solid rgba(244, 165, 96, 0.3);
 }
+
 .light .card:hover {
   border: 1px solid var(--orange);
-}
-.light .card:hover {
   background-color: rgb(246, 246, 246);
 }
+
 .card img {
   border-radius: 5px;
 }
+
 .card .box {
   padding: 1rem 0.4rem;
 }
+
 .card .box .title {
   color: var(--title);
   text-transform: capitalize;
 }
+
 .card .box .sub-title {
   color: var(--subtitle);
   font-size: 0.8rem;
   margin-top: 0.7rem;
   margin-bottom: 1.1rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }
+
 .card .box .icons {
   justify-content: space-between;
 }
+
 .card .box .icons div {
   gap: 11px;
 }
+
 .card .icon-link,
 .card .icon-github {
   color: var(--subtitle);
   font-size: 1.2rem;
 }
+
 .card .icon-link:hover,
 .card .icon-github:hover {
   color: var(--icon-hover);
-  /* font-size: 1.25rem; */
   cursor: pointer;
 }
+
 .card a.link {
   font-size: 0.9rem;
   color: var(--blue);
@@ -67,4 +215,41 @@ section#projects div.right-section {
 
 .light .card a.link {
   color: var(--orange);
+}
+
+.flex.right-section {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.motion-article-blur {
+  filter: blur(5px);
+  transition: filter 0.5s ease-in-out;
+  -webkit-filter: blur(5px);
+}
+
+.card-description .title {
+  color: var(--title);
+  margin-bottom: 0.5rem;
+  margin-left: 10px;
+  font-size: 1.25rem;
+}
+
+.card-description .sub-title {
+  font-size: 0.8rem;
+  margin-left: 10px;
+}
+
+/*
+=================================
+2-Responsive Design (media query)
+=================================
+*/
+@media (max-width: 600px) {
+
+  .card-description-container,
+  .card-description {
+    display: none;
+    /* opacity: 0; */
+  }
 }
