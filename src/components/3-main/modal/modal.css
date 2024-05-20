@@ -65,7 +65,6 @@
     opacity: 0.75;
     transition: 0.3s;
     background: rgba(93, 188, 252, 0.8);
-    ;
     padding: 10px;
     border-radius: 100%;
     display: flex;
@@ -78,7 +77,6 @@
 
 .light .modal-prev,
 .light .modal-next {
-    color: rgba(255, 255, 255, 0.7);
     background: rgba(244, 165, 96, 0.8);
 }
 
