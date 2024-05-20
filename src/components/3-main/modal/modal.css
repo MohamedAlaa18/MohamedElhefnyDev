@@ -16,6 +16,8 @@
     position: relative;
     max-width: 90%;
     max-height: 90%;
+    min-width: 60%;
+    min-height: 60%;
 }
 
 .modal-content img {
