@@ -60,10 +60,15 @@
 .modal-prev,
 .modal-next {
     position: absolute;
-    color: var(--blue);
+    color: rgba(0, 0, 0, 0.7);
     top: 50%;
     opacity: 0.75;
     transition: 0.3s;
+    background: rgba(93, 188, 252, 0.8);
+    ;
+    padding: 10px;
+    border-radius: 100%;
+    display: flex;
 }
 
 .modal-prev:hover,
@@ -73,15 +78,16 @@
 
 .light .modal-prev,
 .light .modal-next {
-    color: var(--orange);
+    color: rgba(255, 255, 255, 0.7);
+    background: rgba(244, 165, 96, 0.8);
 }
 
 .modal-next {
-    right: -25px;
+    right: -1.05%;
 }
 
 .modal-prev {
-    left: -25px;
+    left: -1.05%;
 }
 
 .modal-next svg {
@@ -94,13 +100,13 @@
 
 .pagination {
     position: absolute;
-    bottom: 6px;
+    bottom: 5%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     column-gap: 0.25rem;
     /* row-gap: 0.1rem; */
-    padding-inline: 1rem;
+    padding-inline: 1%;
     width: 100%;
 }
 
@@ -120,4 +126,10 @@
 
 .light .icon-circle.active {
     color: var(--orange);
+}
+
+@media (max-width: 1080px) {
+    .pagination {
+        display: none;
+    }
 }
