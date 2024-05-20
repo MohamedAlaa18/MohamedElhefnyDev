@@ -15,6 +15,7 @@ section#projects div.right-section {
   position: absolute;
   z-index: 2;
   display: none;
+  /* border:  1px solid red; */
 }
 
 .card-description-container.right {
@@ -58,13 +59,14 @@ section#projects div.right-section {
   position: relative;
   border-radius: 5px;
   padding: 10px;
-  margin: 20px auto 20px 10px;
+  /* margin: 20px auto 20px 10px; */
+  margin-left: 10px;
   transition: 0.3s;
   border: 1px solid rgba(93, 188, 252, 0.3);
 }
 
-.card-description:hover{
-  border: 1px solid var(--blue);
+.card-description:hover {
+  border: 1px solid rgba(93, 188, 252, 0.6);
 }
 
 .light .card-description {
@@ -72,11 +74,13 @@ section#projects div.right-section {
 }
 
 .light .card-description:hover {
-  border: 1px solid var(--orange);
+  border: 1px solid rgba(244, 165, 96, 0.8);
 }
 
 .left .card-description {
-  margin: 20px 10px 20px auto;
+  /* margin: 20px 10px 20px auto; */
+  margin-right: 10px;
+  margin-left: auto;
 }
 
 .card-description:before,
@@ -158,7 +162,7 @@ section#projects div.right-section {
 
 .card:hover {
   transform: rotate(1deg) scale(1.01);
-  border: 1px solid var(--blue);
+  border: 1px solid rgba(93, 188, 252, 0.6);
 }
 
 .light .card {
@@ -166,12 +170,42 @@ section#projects div.right-section {
 }
 
 .light .card:hover {
-  border: 1px solid var(--orange);
+  border: 1px solid rgba(244, 165, 96, 0.8);
   background-color: rgb(246, 246, 246);
 }
 
 .card img {
   border-radius: 5px;
+  height: auto;
+}
+
+.image-container {
+  position: relative;
+}
+
+.icon-picture {
+  font-size: 3rem;
+  transition: 0.3s;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 149px;
+  border-radius: 5px;
+  background-color: var(--image-hover);
+  opacity: 0;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.overlay:hover {
+  opacity: 1;
 }
 
 .card .box {
@@ -203,24 +237,31 @@ section#projects div.right-section {
 }
 
 .card .icon-link,
-.card .icon-github {
+.card .icon-github,
+.card .icon-airplay {
   color: var(--subtitle);
   font-size: 1.2rem;
 }
 
 .card .icon-link:hover,
-.card .icon-github:hover {
+.card .icon-github:hover,
+.card .icon-airplay:hover {
   color: var(--icon-hover);
   cursor: pointer;
 }
 
-.card a.link {
-  font-size: 0.9rem;
-  color: var(--blue);
-  margin-right: 12px;
+.card button.link {
+  margin-right: 10px;
+  transition: 0.3s;
 }
 
-.light .card a.link {
+.card button.link:hover,
+.icon-picture {
+  color: var(--blue);
+}
+
+.light .card button.link:hover,
+.light .icon-picture {
   color: var(--orange);
 }
 
@@ -245,6 +286,16 @@ section#projects div.right-section {
 .card-description .sub-title {
   font-size: 0.8rem;
   margin-left: 10px;
+}
+
+.not-found-dark,
+.light .not-found-light {
+  display: block;
+}
+
+.light .not-found-dark,
+.not-found-light {
+  display: none;
 }
 
 /*

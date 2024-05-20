@@ -1,0 +1,93 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.modal-content img {
+    max-height: 90dvh !important;
+    box-shadow: var(--dark-box-shadow);
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.modal-content img:hover {
+    box-shadow: var(--dark-hover-box-shadow);
+}
+
+.light .modal-content img {
+    box-shadow: var(--light-box-shadow);
+}
+
+.light .modal-content img:hover {
+    box-shadow: var(--light-hover-box-shadow);
+}
+
+.modal-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: transparent;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--subtitle);
+    transition-duration: 0.3s;
+    background-color: rgba(161, 161, 170, 0.1);
+    padding: 8px 11px;
+    border-radius: 100%;
+}
+
+.modal-close:hover {
+    color: crimson;
+    rotate: 180deg;
+    background-color: rgba(220, 20, 60, 0.1);
+}
+
+.modal-prev,
+.modal-next {
+    position: absolute;
+    color: var(--blue);
+    top: 50%;
+    opacity: 0.75;
+    transition: 0.3s;
+}
+
+.modal-prev:hover,
+.modal-next:hover {
+    opacity: 1;
+}
+
+.light .modal-prev,
+.light .modal-next {
+    color: var(--orange);
+}
+
+.modal-next {
+    right: -25px;
+}
+
+.modal-prev {
+    left: -25px;
+}
+
+.modal-next svg {
+    rotate: 90deg;
+}
+
+.modal-prev svg {
+    rotate: 270deg;
+}

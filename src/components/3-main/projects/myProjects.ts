@@ -1,5 +1,6 @@
 export const myProjects = [
   {
+    id: 1,
     projectTitle: "EduNex 📚",
     imagPath: "./images/8.png",
     projectDescription:
@@ -7,8 +8,13 @@ export const myProjects = [
     category: ["angular", "angularMaterial", "jwt", "typeScript", ".net"],
     source: "https://github.com/MohamedAlaa18/EduNexFront",
     demo: "https://edu-nex-front.vercel.app/",
+    screenShots: {
+      path: "/screenshots/EduNex",
+      length: 57,
+    },
   },
   {
+    id: 2,
     projectTitle: "Little Lemon 🍋",
     imagPath: "./images/1.png",
     projectDescription:
@@ -16,8 +22,13 @@ export const myProjects = [
     category: ["react", "redux", "sass"],
     source: "https://github.com/MohamedAlaa28/lemon-restaurant-app",
     demo: "https://mohamedalaa28.github.io/restaurant-web-app",
+    screenShots: {
+      path: "/screenshots/Little Lemon",
+      length: 8
+    },
   },
   {
+    id: 3,
     projectTitle: "Mercado 🛒",
     imagPath: "./images/4_2.png",
     projectDescription:
@@ -25,8 +36,13 @@ export const myProjects = [
     category: ["next", "typeScript", "redux", "mui"],
     source: "https://github.com/MohamedAlaa28/e-commece-web-app",
     demo: "https://e-commece-web-app.vercel.app/",
+    screenShots: {
+      path: "/screenshots/Mercado",
+      length: 11
+    }
   },
   {
+    id: 4,
     projectTitle: "Dashboard 📊",
     imagPath: "./images/5.png",
     projectDescription:
@@ -34,8 +50,13 @@ export const myProjects = [
     category: ["next", "typeScript", "mui"],
     source: "https://github.com/MohamedAlaa28/admin-dashboard",
     demo: "https://admin-dashboard-omega-indol.vercel.app/",
+    screenShots: {
+      path: "/screenshots/Dashboard",
+      length: 13
+    }
   },
   {
+    id: 5,
     projectTitle: "Vendo 💼",
     imagPath: "./images/3.png",
     projectDescription:
@@ -43,8 +64,13 @@ export const myProjects = [
     category: ["react", "tailwind"],
     source: "https://github.com/MohamedAlaa28/Vendor-Dashboard",
     demo: "https://mohamedalaa28.github.io/vendor-dashboard/",
+    screenShots: {
+      path: "/screenshots/Vendo",
+      length: 8
+    }
   },
   {
+    id: 6,
     projectTitle: "MyReads 📚",
     imagPath: "./images/6.png",
     projectDescription:
@@ -52,8 +78,13 @@ export const myProjects = [
     category: ["react", "css"],
     source: "https://github.com/MohamedAlaa28/book-tracking-app",
     demo: "https://mohamedalaa28.github.io/book-tracking-app/",
+    screenShots: {
+      path: "/screenshots/MyReads",
+      length: 6
+    }
   },
   {
+    id: 7,
     projectTitle: "BookStacker 📚",
     imagPath: "./images/7.png",
     projectDescription:
@@ -61,14 +92,23 @@ export const myProjects = [
     category: ["html", "javaScript", "css", "bootstrap"],
     source: "https://github.com/MohamedAlaa28/simple-library-system",
     demo: "https://mohamedalaa28.github.io/simple-library-system/",
+    screenShots: {
+      path: "/screenshots/BookStacker",
+      length: 11
+    }
   }
 ];
 
 export interface ProjectType {
+  id: number;
   imagPath: string;
   projectTitle: string;
   projectDescription: string;
   category: string[];
   demo: string;
   source: string;
+  screenShots: {
+    path: string,
+    length: number
+  };
 }

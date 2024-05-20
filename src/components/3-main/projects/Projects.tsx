@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, MouseEvent } from 'react';
 import './projects.css';
 import { myProjects, ProjectType } from './myProjects';
 import { AnimatePresence, motion } from "framer-motion";
+import Modal from '../modal/Modal';
 
 type DescriptionPosition = 'right' | 'left' | 'bottom';
 
@@ -12,6 +13,9 @@ function Projects() {
   const [hoveredIndex, setHoveredIndex] = useState<number>(-1);
   const [descriptionPosition, setDescriptionPosition] = useState<DescriptionPosition>('right');
   const containerRef = useRef<HTMLDivElement>(null);
+  const [currentScreenshotIndex, setCurrentScreenshotIndex] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [screenshots, setScreenshots] = useState<string[]>([]);
 
   const handleClick = (category: string) => {
     setActive(category);
@@ -60,6 +64,25 @@ function Projects() {
     setShowDescription(false);
   };
 
+  const handleNext = () => {
+    setCurrentScreenshotIndex((prevIndex) => (prevIndex + 1) % screenshots.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentScreenshotIndex((prevIndex) => (prevIndex - 1 + screenshots.length) % screenshots.length);
+  };
+
+  const handleImageClick = (project: ProjectType) => {
+    const projectScreenshots = Array.from({ length: project.screenShots['length'] }, (_, i) => `${project.screenShots['path']}/Screenshot (${i + 1}).png`);
+    setScreenshots(projectScreenshots);
+    setCurrentScreenshotIndex(0);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   useEffect(() => {
     const cards = document.querySelectorAll('.card-container');
 
@@ -68,14 +91,29 @@ function Projects() {
       card.addEventListener('mouseleave', handleMouseLeave);
     });
 
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (isModalOpen) {
+        if (event.key === 'ArrowRight') {
+          handleNext();
+        } else if (event.key === 'ArrowLeft') {
+          handlePrev();
+        } else if (event.key === 'Escape') {
+          handleCloseModal();
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
     // Cleanup function to remove event listeners
     return () => {
       cards.forEach((card) => {
         card.removeEventListener('mouseenter', handleMouseEnter as unknown as EventListener);
         card.removeEventListener('mouseleave', handleMouseLeave as EventListener);
       });
+      window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [projectsFiltered]);
+  }, [projectsFiltered, isModalOpen]);
 
   return (
     <section id='projects' className='flex' ref={containerRef}>
@@ -101,7 +139,12 @@ function Projects() {
                 transition={{ damping: 8, type: "spring", stiffness: 40 }}
                 className='card'
               >
-                <img width={266} src={project.imagPath} alt="little-lemon" />
+                <div className="image-container">
+                  <img className="image" width={266} src={project.imagPath} alt={project.projectTitle} />
+                  <div className="overlay" onClick={() => handleImageClick(project)}>
+                    <div className="icon-picture"></div>
+                  </div>
+                </div>
                 <div style={{ width: "266px" }} className='box'>
                   <h1 className='title'>{project.projectTitle}</h1>
                   <p className='sub-title'>{project.projectDescription}</p>
@@ -110,10 +153,10 @@ function Projects() {
                       <a className="icon-link" target="_blank" href={project.demo} rel="noopener noreferrer"></a>
                       <a className="icon-github" target="_blank" href={project.source} rel="noopener noreferrer"></a>
                     </div>
-                    <a className='link flex' target='_blank' href={project.demo} rel="noopener noreferrer">
-                      more
-                      <div className='icon-arrow-right'></div>
-                    </a>
+                    <button className='icon-airplay link flex'
+                      rel="noopener"
+                    >
+                    </button>
                   </div>
                 </div>
               </motion.article>
@@ -142,8 +185,27 @@ function Projects() {
           ))}
         </AnimatePresence>
       </div>
+
+      {isModalOpen && (
+        <Modal isOpen={isModalOpen} onClose={handleCloseModal} onNext={handleNext} onPrev={handlePrev}>
+          {
+            screenshots.length > 0 ?
+              <img
+                src={screenshots[currentScreenshotIndex]}
+                alt={`Screenshot ${currentScreenshotIndex + 1}`}
+                style={{ maxWidth: '100%', maxHeight: '100%' }}
+              />
+              :
+              <>
+                <img src="/images/See_you_soon_dark.gif" alt="" className='not-found-dark' />
+                <img src="/images/See_you_soon_light.gif" alt="" className='not-found-light' />
+              </>
+          }
+        </Modal>
+      )}
     </section>
   );
 }
 
 export default Projects;
+

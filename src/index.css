@@ -6,15 +6,18 @@ html {
   scroll-behavior: smooth;
   box-sizing: border-box;
 }
+
 *,
 *:after,
 *:before {
   box-sizing: inherit;
 }
+
 * {
   border: 0;
   margin: 0;
 }
+
 :root {
   --primary: #000;
   --secondary: rgb(24, 24, , 27);
@@ -28,9 +31,16 @@ html {
   --orange: rgb(244, 165, 96);
 
   --icon-hover: #d4d4d8;
+  --image-hover: rgba(63, 63, 70, 0.2);
 
   --container-padding: 4.8rem;
+
+  --dark-box-shadow: rgba(93, 188, 252, 0.4) 0px 0px 0px 3px;
+  --dark-hover-box-shadow: rgba(93, 188, 252, 0.6) 0px 0px 0px 3px;
+  --light-box-shadow: rgba(244, 165, 96, 0.2) 0px 0px 0px 3px;
+  --light-hover-box-shadow: rgba(244, 165, 96, 0.4) 0px 0px 0px 3px;
 }
+
 .light {
   --primary: rgb(250, 250, 250);
   --secondary: rgb(255, 255, , 255);
@@ -43,7 +53,10 @@ html {
   --blue: rgb(0, 149, 246);
 
   --icon-hover: #333;
+
+  --image-hover: rgba(202, 202, 202, 0.3);
 }
+
 body {
   background-color: var(--primary);
   color: #fff;
@@ -63,36 +76,46 @@ body {
   width: calc(100% + var(--container-padding) + var(--container-padding));
   margin-left: calc(var(--container-padding) * -1);
 }
+
 li {
   list-style: none;
 }
+
 a {
   all: unset;
   transition: 0.2s;
 }
+
 a:hover {
   cursor: pointer;
 }
+
 .flex {
   display: flex;
   align-items: center;
 }
+
 .border {
   border: 2px solid var(--border);
 }
+
 button {
   all: unset;
 }
+
 button:hover {
   cursor: pointer;
 }
+
 button:active {
   scale: 0.95;
 }
+
 button:disabled {
   opacity: 0.4rem;
   cursor: not-allowed;
 }
+
 ::-webkit-scrollbar {
   width: 0.8rem;
 }
@@ -113,6 +136,7 @@ button:disabled {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
 /*
 ===================
 Scroll To Up Button
@@ -163,12 +187,15 @@ Scroll To Up Button
 .scroll-to-up:hover {
   background-color: rgb(25, 118, 210);
 }
+
 .light .scroll-to-up {
   background-color: rgba(244, 165, 96, 0.85);
 }
+
 .light .scroll-to-up:hover {
   background-color: rgb(244, 165, 96);
 }
+
 /*
 ===============================
 Responsive Design (media query)
@@ -180,10 +207,12 @@ Responsive Design (media query)
     width: 90%;
   }
 }
+
 @media (max-width: 600px) {
   .container {
     width: 98%;
   }
+
   .scroll-to-up {
     opacity: 0.6;
     width: 2.2rem;
