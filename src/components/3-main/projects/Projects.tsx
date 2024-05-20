@@ -13,7 +13,7 @@ function Projects() {
   const [hoveredIndex, setHoveredIndex] = useState<number>(-1);
   const [descriptionPosition, setDescriptionPosition] = useState<DescriptionPosition>('right');
   const containerRef = useRef<HTMLDivElement>(null);
-  const [currentScreenshotIndex, setCurrentScreenshotIndex] = useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [screenshots, setScreenshots] = useState<string[]>([]);
 
@@ -65,17 +65,17 @@ function Projects() {
   };
 
   const handleNext = () => {
-    setCurrentScreenshotIndex((prevIndex) => (prevIndex + 1) % screenshots.length);
+    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % screenshots.length);
   };
 
   const handlePrev = () => {
-    setCurrentScreenshotIndex((prevIndex) => (prevIndex - 1 + screenshots.length) % screenshots.length);
+    setCurrentImageIndex((prevIndex) => (prevIndex - 1 + screenshots.length) % screenshots.length);
   };
 
   const handleImageClick = (project: ProjectType) => {
     const projectScreenshots = Array.from({ length: project.screenShots['length'] }, (_, i) => `${project.screenShots['path']}/Screenshot (${i + 1}).png`);
     setScreenshots(projectScreenshots);
-    setCurrentScreenshotIndex(0);
+    setCurrentImageIndex(0);
     setIsModalOpen(true);
   };
 
@@ -113,6 +113,7 @@ function Projects() {
       });
       window.removeEventListener('keydown', handleKeyDown);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [projectsFiltered, isModalOpen]);
 
   return (
@@ -187,12 +188,20 @@ function Projects() {
       </div>
 
       {isModalOpen && (
-        <Modal isOpen={isModalOpen} onClose={handleCloseModal} onNext={handleNext} onPrev={handlePrev}>
+        <Modal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          onNext={handleNext}
+          onPrev={handlePrev}
+          totalImages={screenshots.length}
+          currentImageIndex={currentImageIndex}
+          setCurrentImageIndex={setCurrentImageIndex}
+        >
           {
             screenshots.length > 0 ?
               <img
-                src={screenshots[currentScreenshotIndex]}
-                alt={`Screenshot ${currentScreenshotIndex + 1}`}
+                src={screenshots[currentImageIndex]}
+                alt={`Screenshot ${currentImageIndex + 1}`}
                 style={{ maxWidth: '100%', maxHeight: '100%' }}
               />
               :
@@ -204,6 +213,7 @@ function Projects() {
         </Modal>
       )}
     </section>
+
   );
 }
 

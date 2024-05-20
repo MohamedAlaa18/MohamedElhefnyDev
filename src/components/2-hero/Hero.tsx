@@ -30,7 +30,7 @@ function Hero() {
         </p>
         <div className='all-icons flex'>
           <a href='mailto: mohamed.alaa.elhefny@gmail.com' target="_blank" className="icon icon-envelope"></a>
-          <a href='https://stackoverflow.com/users/20994901/mohamed-alaa' target="_blank" className="icon icon-stack-overflow"></a>
+          <a href='https://www.linkedin.com/in/mohamed-alaa-elhefny' target="_blank" className="icon icon-stack-overflow"></a>
           <a href='https://github.com/MohamedAlaa28' target="_blank" className="icon icon-github"></a>
           <a href='https://www.linkedin.com/in/mohamed-alaa-b180625' target="_blank" className="icon icon-linkedin"></a>
         </div>
