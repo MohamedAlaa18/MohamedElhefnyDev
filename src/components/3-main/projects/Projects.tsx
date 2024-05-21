@@ -3,7 +3,6 @@ import './projects.css';
 import { myProjects, ProjectType } from './myProjects';
 import { AnimatePresence, motion } from "framer-motion";
 import Modal from '../modal/Modal';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 type DescriptionPosition = 'right' | 'left' | 'bottom';
 
@@ -200,12 +199,11 @@ function Projects() {
         >
           {
             screenshots.length > 0 ?
-              <LazyLoadImage
+              <img
                 src={screenshots[currentImageIndex]}
                 alt={`Screenshot ${currentImageIndex + 1}`}
                 style={{ maxWidth: '100%', maxHeight: '100%' }}
-                // loading='lazy'
-                // effect='blur'
+                loading='lazy'
               />
               :
               <>

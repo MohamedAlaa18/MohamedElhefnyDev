@@ -16,7 +16,7 @@
     position: relative;
     max-width: 90%;
     max-height: 90%;
-    min-width: 70%;
+    min-width: 75%;
     min-height: 60%;
 }
 
@@ -105,15 +105,19 @@
     flex-wrap: wrap;
     justify-content: center;
     column-gap: 0.25rem;
-    /* row-gap: 0.1rem; */
     padding-inline: 1%;
     width: 100%;
 }
 
 .icon-circle {
-    color: var(--subtitle);
+    color: rgb(161, 161, 170);
     cursor: pointer;
     transition: 0.3s;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .icon-circle:hover {

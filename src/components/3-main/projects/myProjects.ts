@@ -1,7 +1,7 @@
 export const myProjects = [
   {
     id: 1,
-    projectTitle: "EduNex 📚",
+    projectTitle: "EduNex 🎓",
     imagPath: "./images/8.png",
     projectDescription:
       "An interactive learning platform developed with Angular and Angular Material. Seamlessly explore diverse courses, engage with interactive resources, and track your progress with real-time analytics. Angular ensures a smooth and responsive user interface, while Angular Material provides a visually appealing design for an optimal learning experience.",
@@ -29,7 +29,7 @@ export const myProjects = [
   },
   {
     id: 3,
-    projectTitle: "Mercado 🛒",
+    projectTitle: "Mercado 🛍️",
     imagPath: "./images/4_2.png",
     projectDescription:
       "Discover Mercado, the ultimate e-commerce app, meticulously crafted with Next.js and Material UI. Emphasizing user satisfaction, it ensures smooth navigation and hassle-free purchases. Next.js drives efficiency, while Material UI provides aesthetic design elements. Prepare for a delightful shopping spree at Mercado!",
@@ -42,8 +42,22 @@ export const myProjects = [
     }
   },
   {
+    id: 1,
+    projectTitle: "EduNex Dashboard 🖥️",
+    imagPath: "./images/9.png",
+    projectDescription:
+      'A robust dashboard built with Angular and Angular Material for managing teachers, students, and transactions. It offers a seamless, intuitive user experience with real-time data management and comprehensive administrative controls, ensuring efficient oversight, enhanced functionality, and smooth operation for educational administrators.',
+    category: ["angular", "angularMaterial", "jwt", "typeScript", ".net"],
+    source: "https://github.com/MohamedAlaa18/EduNexDashboard",
+    demo: "https://edu-nex-dashboard.vercel.app/",
+    screenShots: {
+      path: "/screenshots/EduNex Dashboard",
+      length: 11,
+    },
+  },
+  {
     id: 4,
-    projectTitle: "Dashboard 📊",
+    projectTitle: "Admin Dashboard 📈",
     imagPath: "./images/5.png",
     projectDescription:
       "Admin Dashboard is a comprehensive web application designed to provide administrators with intuitive tools and insights for managing and analyzing data efficiently. Built with modern technologies such as React.js, Next.js, and Material-UI, this dashboard offers a seamless user experience with features including dynamic data visualization.",
@@ -71,7 +85,7 @@ export const myProjects = [
   },
   {
     id: 6,
-    projectTitle: "MyReads 📚",
+    projectTitle: "MyReads 📖",
     imagPath: "./images/6.png",
     projectDescription:
       "Introducing MyReads, a user-friendly web app developed with React.js that lets you effortlessly organize your reading list. Easily categorize books you've read, are currently reading, or plan to read in the future. With intuitive features and a clean interface, managing your reading habits has never been easier. Dive into the world of books with MyReads!",
