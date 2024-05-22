@@ -12,6 +12,8 @@ interface ModalProps {
   currentImageIndex: number;
   // eslint-disable-next-line no-unused-vars
   setCurrentImageIndex: (index: number) => void;
+  // eslint-disable-next-line no-unused-vars
+  setImageLoading: (loading: boolean) => void;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -22,7 +24,8 @@ const Modal: React.FC<ModalProps> = ({
   onPrev,
   totalImages,
   currentImageIndex,
-  setCurrentImageIndex
+  setCurrentImageIndex,
+  setImageLoading // Accepting new prop
 }) => {
 
   const handleOverlayClick = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -33,7 +36,8 @@ const Modal: React.FC<ModalProps> = ({
 
   useEffect(() => {
     setCurrentImageIndex(currentImageIndex);
-  }, [currentImageIndex, setCurrentImageIndex]);
+    setImageLoading(true); // Set loading state to true when image index changes
+  }, [currentImageIndex, setCurrentImageIndex, setImageLoading]);
 
   return (
     <AnimatePresence>
@@ -53,20 +57,21 @@ const Modal: React.FC<ModalProps> = ({
             exit={{ scale: 0.7 }}
             transition={{ duration: 0.3 }}
           >
-            <button className="modal-close" onClick={onClose}>
-              <div className='icon-close'></div>
-            </button>
-            <button className="modal-prev" onClick={onPrev}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M3 19h18a1.002 1.002 0 0 0 .823-1.569l-9-13c-.373-.539-1.271-.539-1.645 0l-9 13A.999.999 0 0 0 3 19" />
-              </svg>
-            </button>
-            <button className="modal-next" onClick={onNext}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M3 19h18a1.002 1.002 0 0 0 .823-1.569l-9-13c-.373-.539-1.271-.539-1.645 0l-9 13A.999.999 0 0 0 3 19" />
-              </svg>
-            </button>
-            <div className='img-container'>
+            <div className='image-wrapper'>
+              <button className="modal-close" onClick={onClose}>
+                <div className='icon-close'></div>
+              </button>
+              <button className="modal-prev" onClick={onPrev}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M3 19h18a1.002 1.002 0 0 0 .823-1.569l-9-13c-.373-.539-1.271-.539-1.645 0l-9 13A.999.999 0 0 0 3 19" />
+                </svg>
+              </button>
+              <button className="modal-next" onClick={onNext}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M3 19h18a1.002 1.002 0 0 0 .823-1.569l-9-13c-.373-.539-1.271-.539-1.645 0l-9 13A.999.999 0 0 0 3 19" />
+                </svg>
+              </button>
+
               {children}
             </div>
             <div className="pagination">
@@ -74,7 +79,10 @@ const Modal: React.FC<ModalProps> = ({
                 <div
                   key={i}
                   className={`icon-circle ${i === currentImageIndex ? 'active' : ''}`}
-                  onClick={() => setCurrentImageIndex(i)}
+                  onClick={() => {
+                    setCurrentImageIndex(i);
+                    setImageLoading(true);
+                  }}
                 ></div>
               ))}
             </div>

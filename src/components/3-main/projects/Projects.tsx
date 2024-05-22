@@ -16,6 +16,7 @@ function Projects() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [screenshots, setScreenshots] = useState<string[]>([]);
+  const [imageLoading, setImageLoading] = useState(true);
 
   const handleClick = (category: string) => {
     setActive(category);
@@ -34,7 +35,6 @@ function Projects() {
     const rect = target.getBoundingClientRect();
     const viewportWidth = window.innerWidth;
 
-    // Check if description will overflow viewport
     if (rect.right + 266 > viewportWidth) {
       setDescriptionPosition('left');
     } else {
@@ -48,7 +48,6 @@ function Projects() {
       }
     });
 
-    // Find the index of the hovered card within the projectsFiltered array
     const filteredIndex = Array.from(containerRef.current!.children[1].children).indexOf(target);
 
     setHoveredIndex(filteredIndex);
@@ -66,16 +65,19 @@ function Projects() {
 
   const handleNext = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % screenshots.length);
+    setImageLoading(true);
   };
 
   const handlePrev = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex - 1 + screenshots.length) % screenshots.length);
+    setImageLoading(true);
   };
 
   const handleImageClick = (project: ProjectType) => {
     const projectScreenshots = Array.from({ length: project.screenShots['length'] }, (_, i) => `${project.screenShots['path']}/Screenshot (${i + 1}).png`);
     setScreenshots(projectScreenshots);
     setCurrentImageIndex(0);
+    setImageLoading(true); // Set loading state to true when opening the modal
     setIsModalOpen(true);
   };
 
@@ -105,7 +107,6 @@ function Projects() {
 
     window.addEventListener('keydown', handleKeyDown);
 
-    // Cleanup function to remove event listeners
     return () => {
       cards.forEach((card) => {
         card.removeEventListener('mouseenter', handleMouseEnter as unknown as EventListener);
@@ -196,25 +197,25 @@ function Projects() {
           totalImages={screenshots.length}
           currentImageIndex={currentImageIndex}
           setCurrentImageIndex={setCurrentImageIndex}
+          setImageLoading={setImageLoading}
         >
-          {
-            screenshots.length > 0 ?
-              <img
-                src={screenshots[currentImageIndex]}
-                alt={`Screenshot ${currentImageIndex + 1}`}
-                style={{ maxWidth: '100%', maxHeight: '100%' }}
-                loading='lazy'
-              />
-              :
-              <>
-                <img src="/images/See_you_soon_dark.gif" alt="" className='not-found-dark' />
-                <img src="/images/See_you_soon_light.gif" alt="" className='not-found-light' />
-              </>
-          }
+          <div className={`${imageLoading ? 'loading' : ''}`}>
+            <img
+              src={screenshots[currentImageIndex]}
+              alt={`Screenshot ${currentImageIndex + 1}`}
+              style={{ maxWidth: '100%', maxHeight: '100%' }}
+              loading='lazy'
+              onLoad={() => setImageLoading(false)}
+            />
+            {imageLoading && (
+              <div className="blur-overlay">
+                <div className="spinner"></div>
+              </div>
+            )}
+          </div>
         </Modal>
       )}
     </section>
-
   );
 }
 
