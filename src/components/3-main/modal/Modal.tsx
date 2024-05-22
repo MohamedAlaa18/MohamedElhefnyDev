@@ -25,7 +25,7 @@ const Modal: React.FC<ModalProps> = ({
   totalImages,
   currentImageIndex,
   setCurrentImageIndex,
-  setImageLoading // Accepting new prop
+  setImageLoading
 }) => {
 
   const handleOverlayClick = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -36,7 +36,7 @@ const Modal: React.FC<ModalProps> = ({
 
   useEffect(() => {
     setCurrentImageIndex(currentImageIndex);
-    setImageLoading(true); // Set loading state to true when image index changes
+    setImageLoading(true);
   }, [currentImageIndex, setCurrentImageIndex, setImageLoading]);
 
   return (

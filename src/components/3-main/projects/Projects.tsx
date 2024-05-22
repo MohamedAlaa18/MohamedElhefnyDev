@@ -77,7 +77,7 @@ function Projects() {
     const projectScreenshots = Array.from({ length: project.screenShots['length'] }, (_, i) => `${project.screenShots['path']}/Screenshot (${i + 1}).png`);
     setScreenshots(projectScreenshots);
     setCurrentImageIndex(0);
-    setImageLoading(true); // Set loading state to true when opening the modal
+    setImageLoading(true);
     setIsModalOpen(true);
   };
 
