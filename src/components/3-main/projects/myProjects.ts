@@ -85,6 +85,20 @@ export const myProjects = [
   },
   {
     id: 6,
+    projectTitle: "Echo House 🏫",
+    imagPath: "./images/10.png",
+    projectDescription:
+      "An e-commerce platform for courses, built using Next.js and Tailwind CSS. It includes a products section where users can browse available courses, a detailed product page for each course, and a shopping cart functionality for managing course purchases seamlessly, efficiently, and with ease, security, and convenience.",
+    category: ["react", "css"],
+    source: "https://github.com/MohamedAlaa18/ecommerce-courses-front-end",
+    demo: "https://ecommerce-courses-liart.vercel.app/",
+    screenShots: {
+      path: "/screenshots/Echo House",
+      length: 8
+    }
+  },
+  {
+    id: 7,
     projectTitle: "MyReads 📖",
     imagPath: "./images/6.png",
     projectDescription:
@@ -98,7 +112,7 @@ export const myProjects = [
     }
   },
   {
-    id: 7,
+    id: 8,
     projectTitle: "BookStacker 📚",
     imagPath: "./images/7.png",
     projectDescription:
