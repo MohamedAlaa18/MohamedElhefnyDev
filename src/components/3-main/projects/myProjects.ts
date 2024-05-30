@@ -23,7 +23,7 @@ export const myProjects = [
     source: "https://github.com/MohamedAlaa18/cobra-cover",
     demo: "https://cobracover.vercel.app/",
     screenShots: {
-      path: "/screenshots/Cobra Cover", 
+      path: "/screenshots/Cobra Cover",
       length: 15
     },
   },
@@ -56,20 +56,6 @@ export const myProjects = [
     }
   },
   {
-    id: 5,
-    projectTitle: "EduNex Dashboard 🖥️",
-    imagPath: "/screenshots/EduNex Dashboard/Screenshot (1).png",
-    projectDescription:
-      'A robust dashboard built with Angular and Angular Material for managing teachers, students, and transactions. It offers a seamless, intuitive user experience with real-time data management and comprehensive administrative controls, ensuring efficient oversight, enhanced functionality, and smooth operation for educational administrators.',
-    category: ["angular", "angularMaterial", "jwt", "typeScript", ".net"],
-    source: "https://github.com/MohamedAlaa18/EduNexDashboard",
-    demo: "https://edu-nex-dashboard.vercel.app/",
-    screenShots: {
-      path: "/screenshots/EduNex Dashboard",
-      length: 11,
-    },
-  },
-  {
     id: 6,
     projectTitle: "Admin Dashboard 📈",
     imagPath: "/screenshots/Dashboard/Screenshot (1).png",
@@ -96,6 +82,20 @@ export const myProjects = [
       path: "/screenshots/Vendo",
       length: 8
     }
+  },
+  {
+    id: 5,
+    projectTitle: "EduNex Dashboard 🖥️",
+    imagPath: "/screenshots/EduNex Dashboard/Screenshot (1).png",
+    projectDescription:
+      'A robust dashboard built with Angular and Angular Material for managing teachers, students, and transactions. It offers a seamless, intuitive user experience with real-time data management and comprehensive administrative controls, ensuring efficient oversight, enhanced functionality, and smooth operation for educational administrators.',
+    category: ["angular", "angularMaterial", "jwt", "typeScript", ".net"],
+    source: "https://github.com/MohamedAlaa18/EduNexDashboard",
+    demo: "https://edu-nex-dashboard.vercel.app/",
+    screenShots: {
+      path: "/screenshots/EduNex Dashboard",
+      length: 11,
+    },
   },
   {
     id: 8,
