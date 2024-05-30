@@ -88,9 +88,9 @@ export const myProjects = [
     projectTitle: "Vendo 💼",
     imagPath: "/screenshots/Vendo/Screenshot (1).png",
     projectDescription:
-      "Vendo is a dynamic and user-friendly web application built using cutting-edge technologies such as React, Tailwind CSS. This dashboard serves as a centralized hub for vendors, providing them with the tools and features needed to manage their products, orders, and overall e-commerce operations efficiently.",
+      "Vendo is a dynamic Vendor Dashboard and user-friendly web application built using cutting-edge technologies such as React, and Tailwind CSS. This dashboard serves as a centralized hub for vendors, providing them with the tools and features needed to manage their products, orders, and overall e-commerce operations efficiently.",
     category: ["react", "tailwind"],
-    source: "https://github.com/MohamedAlaa18/vendor-dashboard",
+    source: "https://github.com/MohamedAlaa18/vendo",
     demo: "https://mohamedalaa28.github.io/vendor-dashboard/",
     screenShots: {
       path: "/screenshots/Vendo",
@@ -116,9 +116,9 @@ export const myProjects = [
     projectTitle: "MyReads 📖",
     imagPath: "/screenshots/MyReads/Screenshot (1).png",
     projectDescription:
-      "MyReads is a web app developed with React.js that lets you effortlessly organize your reading list. Easily categorize books you've read, are currently reading, or plan to read in the future. With intuitive features and a clean interface, managing your reading habits has never been easier. Dive into the world of books with MyReads!",
+      "MyReads is a book-tracking app developed with React.js that lets you effortlessly organize your reading list. Easily categorize books you've read, are currently reading, or plan to read in the future. With intuitive features and a clean interface, managing your reading habits has never been easier. Dive into the world of books with MyReads!",
     category: ["react", "css"],
-    source: "https://github.com/MohamedAlaa18/book-tracking-app",
+    source: "https://github.com/MohamedAlaa18/my-reads",
     demo: "https://mohamedalaa28.github.io/book-tracking-app/",
     screenShots: {
       path: "/screenshots/MyReads",
@@ -130,9 +130,9 @@ export const myProjects = [
     projectTitle: "BookStacker 📚",
     imagPath: "/screenshots/BookStacker/Screenshot (1).png",
     projectDescription:
-      "BookStacker is your ultimate companion for managing your personal library collections. This web-based application offers an intuitive interface equipped with tools for organizing, searching, editing, and deleting book entries effortlessly. Streamline your book management experience with BookStacker and keep your library in perfect order.",
+      "BookStacker is your library system for managing your personal library collections. This web-based application offers an intuitive interface equipped with tools for organizing, searching, editing, and deleting book entries effortlessly. Streamline your book management experience with BookStacker and keep your library in perfect order.",
     category: ["html", "javaScript", "css", "bootstrap"],
-    source: "https://github.com/MohamedAlaa18/simple-library-system",
+    source: "https://github.com/MohamedAlaa18/book-stacker",
     demo: "https://mohamedalaa28.github.io/simple-library-system/",
     screenShots: {
       path: "/screenshots/BookStacker",
