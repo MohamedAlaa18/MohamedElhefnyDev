@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './certificates.css'
 import { myCertificates } from './myCertificates'
 import { AnimatePresence, motion } from "framer-motion"
+import { smoothScaleAnimation } from '../framer-animation';
 
 const Certificates = () => {
   const [active, setActive] = useState('all');
@@ -29,10 +30,10 @@ const Certificates = () => {
 
                 <motion.article
                   layout
-                  initial={{ transform: "scale(0)" }}
-                  animate={{ transform: "scale(1)" }}
-                  exit={{ transform: "scale(1)" }}
-                  transition={{ damping: 8, type: "spring", stiffness: 50 }}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  variants={smoothScaleAnimation}
                   key={certificate.myCertificateTitle}
                   className='flex certificate'>
 

@@ -1,13 +1,15 @@
-import { useState, useEffect, useRef, MouseEvent } from 'react';
+import { useState, useEffect, useRef, MouseEvent as ReactMouseEvent } from 'react';
 import './projects.css';
 import { myProjects, ProjectType } from './myProjects';
 import { AnimatePresence, motion } from "framer-motion";
 import Modal from '../modal/Modal';
+import { ringEffect, smoothScaleAnimation } from '../framer-animation';
 
 type DescriptionPosition = 'right' | 'left' | 'bottom';
 
 function Projects() {
-  const [active, setActive] = useState<string>('all');
+  const [active, setActive] = useState<string>('All');
+  const [isFeaturedFilter, setIsFeaturedFilter] = useState<boolean>(true);
   const [projectsFiltered, setProjectsFiltered] = useState<ProjectType[]>(myProjects);
   const [, setShowDescription] = useState<boolean>(false);
   const [hoveredIndex, setHoveredIndex] = useState<number>(-1);
@@ -17,20 +19,22 @@ function Projects() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [screenshots, setScreenshots] = useState<string[]>([]);
   const [imageLoading, setImageLoading] = useState(true);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const handleClick = (category: string) => {
     setActive(category);
 
-    if (category === 'all') {
-      setProjectsFiltered(myProjects);
-    } else {
-      setProjectsFiltered(
-        myProjects.filter((project) => project.category.includes(category))
-      );
+    let filteredProjects = myProjects;
+
+    if (category !== 'All') {
+      filteredProjects = filteredProjects.filter((project) => project.category.includes(category));
     }
+
+    setProjectsFiltered(filteredProjects);
   };
 
-  const handleMouseEnter = (event: MouseEvent<HTMLDivElement>) => {
+  const handleMouseEnter = (event: ReactMouseEvent<HTMLDivElement>) => {
     const target = event.currentTarget as HTMLElement;
     const rect = target.getBoundingClientRect();
     const viewportWidth = window.innerWidth;
@@ -89,7 +93,7 @@ function Projects() {
     const cards = document.querySelectorAll('.card-container');
 
     cards.forEach((card) => {
-      card.addEventListener('mouseenter', (event) => handleMouseEnter(event as unknown as MouseEvent<HTMLDivElement>));
+      card.addEventListener('mouseenter', (event) => handleMouseEnter(event as unknown as ReactMouseEvent<HTMLDivElement>));
       card.addEventListener('mouseleave', handleMouseLeave);
     });
 
@@ -117,28 +121,64 @@ function Projects() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [projectsFiltered, isModalOpen]);
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [dropdownRef]);
+
   return (
     <section id='projects' className='flex' ref={containerRef}>
-      <div className='flex left-section'>
-        <button className={active === 'all' ? 'active' : ''} onClick={() => { handleClick('all'); }}>All Projects</button>
-        <button className={active === 'next' ? 'active' : ''} onClick={() => { handleClick('next'); }}>Next</button>
-        <button className={active === 'react' ? 'active' : ''} onClick={() => { handleClick('react'); }}>React</button>
-        <button className={active === 'angular' ? 'active' : ''} onClick={() => { handleClick('angular'); }}>Angular</button>
-        <button className={active === 'javaScript' ? 'active' : ''} onClick={() => { handleClick('javaScript'); }}>JavaScript</button>
+      <div className='flex left-section '>
+        <div className="dropdown" ref={dropdownRef}>
+          <button className="drop-btn" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+            <span>{isFeaturedFilter ? 'Featured' : 'Standard'}</span> &nbsp; <div className='icon-select-arrows' />
+          </button>
+          <AnimatePresence>
+            {isDropdownOpen && (
+              <motion.div
+                className='dropdown-content-container'
+                initial={{ scale: 0, height: 0 }}
+                animate={{ scale: 1, height: 'auto' }}
+                exit={{ scale: 0, height: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <div className="dropdown-content">
+                  <button className={isFeaturedFilter ? 'active' : ''} onClick={() => { setIsFeaturedFilter(true); setIsDropdownOpen(false); handleClick(active); handleClick('All'); setHoveredIndex(-1); }}>Featured</button>
+                  <button className={isFeaturedFilter ? '' : 'active'} onClick={() => { setIsFeaturedFilter(false); setIsDropdownOpen(false); handleClick(active); handleClick('All'); setHoveredIndex(-1); }}>Standard</button>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+
+        <div className='flex category-buttons'>
+          <button className={active === 'All' && !isDropdownOpen ? 'active' : ''} onClick={() => handleClick('All')}>All Projects</button>
+          {[...new Set(myProjects.filter((project) => project.isFeatured === isFeaturedFilter).flatMap(project => project.category[0]))].map(category => (
+            <button key={category} className={active === category && !isDropdownOpen ? 'active' : ''} onClick={() => handleClick(category)}>{category}</button>
+          ))}
+        </div>
       </div>
 
       <div className='flex right-section'>
         <AnimatePresence>
-          {projectsFiltered.map((project, index) => (
+          {projectsFiltered.filter((project) => project.isFeatured === isFeaturedFilter).map((project, index) => (
             <div className='card-container' key={project.imagPath}
-              onMouseEnter={(event) => handleMouseEnter(event as unknown as MouseEvent<HTMLDivElement>)}
+              onMouseEnter={(event) => handleMouseEnter(event as unknown as ReactMouseEvent<HTMLDivElement>)}
               onMouseLeave={handleMouseLeave}>
               <motion.article
                 layout
-                initial={{ transform: "scale(0)" }}
-                animate={{ transform: "scale(1)" }}
-                exit={{ transform: "scale(1)" }}
-                transition={{ damping: 8, type: "spring", stiffness: 40 }}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                variants={smoothScaleAnimation}
                 className='card'
               >
                 <div className="image-container">
@@ -162,14 +202,14 @@ function Projects() {
                   </div>
                 </div>
               </motion.article>
+
               <AnimatePresence>
                 {hoveredIndex === index && (
                   <motion.div
                     layout
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
+                    initial="hidden"
+                    animate="visible"
+                    variants={ringEffect}
                     className={`card-description-container visible ${descriptionPosition === 'right' ? 'right' : 'left'}`}
                   >
                     <div className='card-description'>
@@ -220,3 +260,5 @@ function Projects() {
 }
 
 export default Projects;
+
+

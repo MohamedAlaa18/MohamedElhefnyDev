@@ -28,29 +28,6 @@ section#projects div.right-section {
   left: calc(-100% - 9px);
 }
 
-.card-description-container.visible {
-  display: block;
-  animation: ringEffect 0.5s ease forwards;
-  -webkit-animation: ringEffect 0.5s ease forwards;
-}
-
-@keyframes ringEffect {
-  0% {
-    transform: scale(0);
-    opacity: 0;
-  }
-
-  50% {
-    transform: scale(1.1);
-    opacity: 1;
-  }
-
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
 .card-description {
   width: 266px;
   min-height: 80px;
@@ -59,7 +36,6 @@ section#projects div.right-section {
   position: relative;
   border-radius: 5px;
   padding: 10px;
-  /* margin: 20px auto 20px 10px; */
   margin-left: 10px;
   transition: 0.3s;
   border: 1px solid rgba(93, 188, 252, 0.3);
@@ -153,6 +129,10 @@ section#projects div.right-section {
   display: block;
 }
 
+.card-description-container.visible {
+  display: block;
+}
+
 .card {
   box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
   border: 1px solid rgba(93, 188, 252, 0.3);
@@ -184,7 +164,7 @@ section#projects div.right-section {
 }
 
 .icon-picture {
-  font-size: 3rem;
+  font-size: 2rem;
   transition: 0.3s;
 }
 
@@ -296,6 +276,66 @@ section#projects div.right-section {
 .light .not-found-dark,
 .not-found-light {
   display: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.left-section .dropdown .drop-btn {
+  border: none;
+  display: flex;
+  justify-content: center;
+  opacity: 1;
+  /* gap: 0.5rem; */
+  transition: 0.3s;
+}
+
+.left-section .dropdown .drop-btn:hover {
+  color: var(--blue);
+}
+
+.light .left-section .dropdown .drop-btn:hover {
+  color: var(--orange);
+}
+
+.dropdown-content {
+  background-color: rgba(36, 37, 46, 1);
+  border-radius: 5px;
+  position: absolute;
+  min-width: 160px;
+  margin-top: 0.15rem;
+  z-index: 1;
+}
+
+.dropdown .dropdown-content-container .dropdown-content button {
+  opacity: 1;
+  border: none;
+  background-color: transparent;
+}
+
+.dropdown .dropdown-content-container .dropdown-content button:hover,
+.dropdown .dropdown-content-container .dropdown-content button.active {
+  color: var(--blue);
+  border: none;
+}
+
+.light .dropdown .dropdown-content-container .dropdown-content button:hover,
+.light .dropdown .dropdown-content-container .dropdown-content button.active {
+  color: var(--orange);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.icon-select-arrows {
+  color: var(--blue);
+}
+
+.light .icon-select-arrows {
+  color: var(--orange);
 }
 
 /*

@@ -18,38 +18,45 @@ header.flex {
   padding: 0 2.4rem;
   margin-top: 1.2rem;
 }
+
 header.flex nav {
   background-color: var(--bgHeader);
   padding: 0.77rem 1.6rem;
   border-radius: 55px;
   box-shadow: 1px 1px 40px #2323242a;
-  /* border: 1px solid rgba(244, 165, 96, 0.249); */
   border: 1px solid var(--border);
 }
+
 header ul.flex {
   gap: 16px;
   padding: 0;
 }
+
 header ul li a {
   color: var(--title);
   opacity: 0.9;
   font-size: 0.88rem;
   font-weight: 500;
 }
+
 header ul li a:hover {
   color: var(--blue);
   opacity: 1;
   /* font-size: 0.9rem; */
 }
+
 .light header ul li a:hover {
   color: var(--orange);
 }
+
 header button {
   font-size: 1.2rem;
 }
+
 header button.menu {
   display: none;
 }
+
 /*
 =================
 2-Buttons & icons
@@ -74,30 +81,37 @@ header .mode:hover {
   color: var(--title);
   transition: 0.2s;
 }
+
 .light header .icon-menu:hover,
 .light header .mode:hover {
   border: 1px solid var(--orange);
 }
+
 .dark header .icon-menu:hover,
 .dark header .mode:hover {
   border: 1px solid var(--blue);
 }
+
 header .icon-sun {
   color: var(--orange);
 }
+
 header .icon-moon-o {
   color: var(--blue);
 }
+
 header .icon-close {
   font-size: 1.5rem;
   color: var(--subtitle);
   transition-duration: 0.3s;
 }
+
 header .icon-close:hover {
   font-size: 1.7rem;
   color: crimson;
   transform: rotate(180deg);
 }
+
 /*
 ==================
 3-Modal ==> pop up
@@ -110,17 +124,21 @@ header .fixed {
   backdrop-filter: blur(4px);
   z-index: 1;
 }
+
 @keyframes animation {
   0% {
     scale: 0;
   }
+
   60% {
     scale: 1.2;
   }
+
   100% {
     scale: 1;
   }
 }
+
 header .fixed ul.modal {
   animation: animation 0.7s 1;
   width: 75%;
@@ -130,11 +148,13 @@ header .fixed ul.modal {
   padding: 1rem 2rem;
   background: var(--secondary);
 }
+
 header .fixed ul.modal li {
   border-bottom: 1px solid var(--border);
   padding-bottom: 0.77rem;
   padding-top: 0.5rem;
 }
+
 header .fixed ul.modal li:first-child {
   text-align: right;
   border: none;
@@ -142,12 +162,25 @@ header .fixed ul.modal li:first-child {
   padding-top: 0.2rem;
   margin-bottom: -1rem;
 }
+
 header .fixed ul.modal li:last-child {
   border: none;
 }
+
 header .fixed ul.modal li a {
   font-size: 1rem;
+  color: white;
+  transition: 0.3s;
 }
+
+header .fixed ul.modal li a:hover {
+  color: var(--blue);
+}
+
+.light header .fixed ul.modal li a:hover {
+  color: var(--orange);
+}
+
 /*
 =================================
 4-Responsive Design (media query)
@@ -157,6 +190,7 @@ header .fixed ul.modal li a {
   header.flex nav {
     display: none;
   }
+
   header button.menu {
     display: block;
   }

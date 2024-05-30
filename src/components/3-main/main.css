@@ -9,26 +9,31 @@ main.flex {
   flex-direction: column;
   gap: 3rem;
 }
+
 section.flex {
   gap: 2.64rem;
   align-items: start;
   width: 100%;
 }
+
 div.right-section {
   flex-grow: 1;
   justify-content: center;
   flex-wrap: wrap;
   column-gap: 16px;
 }
+
 /*
 ==========================
 1-left-section ==> Buttons
 ==========================
 */
-div.left-section {
+div.left-section,
+.category-buttons {
   flex-direction: column;
   gap: 10px;
 }
+
 div.left-section button {
   background-color: rgba(36, 37, 46, 1);
   width: 11rem;
@@ -40,19 +45,20 @@ div.left-section button {
   transition: 0.3s;
   border: 1px solid var(--border);
 }
+
 div.left-section button:hover {
   opacity: 1;
 }
+
 div.left-section button.active {
-  /* font-weight: bold; */
-  /* letter-spacing: 0.25px; */
-  /* padding: 0.8rem 0; */
   opacity: 1;
   border: 1px solid var(--blue);
 }
+
 .light div.left-section button.active {
   border: 1px solid #000;
 }
+
 /*
 ===============
 2-switch button
@@ -61,6 +67,7 @@ div.left-section button.active {
 main div.flex .toggle-input {
   display: none;
 }
+
 main div.flex .toggle-container {
   display: flex;
   align-items: center;
@@ -75,12 +82,15 @@ main div.flex .toggle-container {
   scale: 1;
   transition: 0.3s;
 }
+
 main div.flex .toggle-container:hover {
   scale: 0.97;
 }
-main div.flex .toggle-input:checked + .toggle-slider {
+
+main div.flex .toggle-input:checked+.toggle-slider {
   transform: translateX(-150px);
 }
+
 main div.flex .toggle-slider {
   position: absolute;
   width: 150px;
@@ -91,6 +101,7 @@ main div.flex .toggle-slider {
   border: 1px solid rgb(63, 63, 70);
   transition: 0.4s;
 }
+
 main div.flex .text-projects,
 main div.flex .text-certificates {
   font-size: 1rem;
@@ -100,56 +111,66 @@ main div.flex .text-certificates {
   display: flex;
   gap: 0.5rem;
 }
+
 main div.flex .text-projects {
   right: 20px;
   opacity: 1;
 }
+
 main div.flex .text-certificates {
   left: 20px;
   opacity: 0.5;
 }
-.light main div.flex .toggle-input ~ .text-certificates,
-.light main div.flex .toggle-input:checked ~ .text-projects {
+
+.light main div.flex .toggle-input~.text-certificates,
+.light main div.flex .toggle-input:checked~.text-projects {
   color: #000;
 }
-.light main div.flex .toggle-input:checked ~ .text-certificates,
-.light main div.flex .toggle-input ~ .text-projects {
+
+.light main div.flex .toggle-input:checked~.text-certificates,
+.light main div.flex .toggle-input~.text-projects {
   color: #fff;
 }
-main div.flex .toggle-input:checked ~ .text-projects {
+
+main div.flex .toggle-input:checked~.text-projects {
   opacity: 0.5;
 }
-main div.flex .toggle-input:checked ~ .text-certificates {
+
+main div.flex .toggle-input:checked~.text-certificates {
   opacity: 1;
 }
+
 .icon-code,
 .icon-atom {
   transition: color 0.4s;
 }
 
 /* Default state */
-.toggle-input:not(:checked) ~ .text-projects .icon-code {
+.toggle-input:not(:checked)~.text-projects .icon-code {
   color: var(--blue);
 }
-.light .toggle-input:not(:checked) ~ .text-projects .icon-code {
+
+.light .toggle-input:not(:checked)~.text-projects .icon-code {
   color: var(--orange);
 }
-.toggle-input:not(:checked) ~ .text-certificates .icon-atom {
+
+.toggle-input:not(:checked)~.text-certificates .icon-atom {
   color: var(--title);
 }
 
 /* Checked state */
-.toggle-input:checked ~ .text-projects .icon-code {
+.toggle-input:checked~.text-projects .icon-code {
   color: var(--title);
 }
 
-.toggle-input:checked ~ .text-certificates .icon-atom {
+.toggle-input:checked~.text-certificates .icon-atom {
   color: var(--blue);
 }
 
-.light .toggle-input:checked ~ .text-certificates .icon-atom {
+.light .toggle-input:checked~.text-certificates .icon-atom {
   color: var(--orange);
 }
+
 /*
 =================================
 2-Responsive Design (media query)
@@ -161,12 +182,15 @@ main div.flex .toggle-input:checked ~ .text-certificates {
     gap: 2.64rem;
     align-items: center;
   }
-  div.left-section {
+
+  div.left-section,
+  .category-buttons {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
   }
+
   div.left-section button {
     width: 7rem;
     padding: 0.8rem 0;
