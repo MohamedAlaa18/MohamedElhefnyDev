@@ -31,7 +31,7 @@ function Hero() {
         <div className='all-icons flex'>
           <a href='mailto: mohamed.alaa.elhefny@gmail.com' target="_blank" className="icon icon-envelope"></a>
           <a href='https://www.linkedin.com/in/mohamed-alaa-elhefny' target="_blank" className="icon icon-stack-overflow"></a>
-          <a href='https://github.com/MohamedAlaa28' target="_blank" className="icon icon-github"></a>
+          <a href='https://github.com/MohamedAlaa18' target="_blank" className="icon icon-github"></a>
           <a href='https://www.linkedin.com/in/mohamed-alaa-b180625' target="_blank" className="icon icon-linkedin"></a>
         </div>
         <a href="https://mohamed-alaa-dev.vercel.app/Mohamed Alaa El-hefny.pdf" className="download-cv flex" download="Mohamed Alaa El-hefny.pdf">
