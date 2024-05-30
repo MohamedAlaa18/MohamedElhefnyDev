@@ -230,6 +230,31 @@ section#projects div.right-section {
   cursor: pointer;
 }
 
+.card .icon-airplay:disabled {
+  position: relative;
+  text-decoration: none;
+  cursor: context-menu;
+}
+
+.card .icon-airplay:disabled:hover {
+  color: var(--subtitle);
+}
+
+/* .card .icon-airplay:disabled::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: crimson;
+  transform-origin: center center;
+} */
+
+.card .icon-airplay:disabled::after {
+  width: 150%;
+  height: 2px;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
 .card button.link {
   margin-right: 10px;
   transition: 0.3s;

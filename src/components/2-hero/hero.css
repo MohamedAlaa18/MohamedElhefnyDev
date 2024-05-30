@@ -8,6 +8,7 @@ table of contents
 section.hero {
   margin-top: 3rem;
 }
+
 /*
 =============
 1-Left-section
@@ -18,14 +19,17 @@ section.hero .parent-avatar.flex {
   /* gap: 0.6rem; */
   min-height: 88px;
 }
+
 section.hero .left-section {
   flex-grow: 1;
 }
+
 section.hero .icon-verified {
   color: var(--blue);
   margin-bottom: 0.3rem;
   margin-left: -0.3rem;
 }
+
 section.hero .avatar {
   width: 88px;
   border-radius: 50%;
@@ -33,29 +37,34 @@ section.hero .avatar {
   padding: 1px;
   box-shadow: 2px 2px 40px rgba(203, 200, 200, 0.586) inset;
 }
+
 section.hero h1.title {
   font-size: 2.85rem;
   line-height: 3.3rem;
   margin: 24px 0;
   color: var(--title);
 }
+
 section.hero p.sub-title {
   font-size: 0.9rem;
   line-height: 1.65rem;
   margin-bottom: 32px;
   color: var(--subtitle);
 }
+
 section.hero .all-icons {
   font-size: 1.3rem;
   gap: 1.5rem;
   color: var(--subtitle);
 }
+
 section.hero .all-icons .icon:hover {
   /* font-size: 1.4rem; */
   transition: 0.3s;
   cursor: pointer;
   color: var(--icon-hover);
 }
+
 section.hero a.download-cv {
   background-color: rgb(36, 37, 46);
   border: 1px solid rgb(63, 63, 70);
@@ -68,13 +77,16 @@ section.hero a.download-cv {
   scale: 1;
   gap: 0.3rem;
 }
+
 section.hero a.download-cv:hover {
   scale: 0.97;
 }
+
 section.hero a.download-cv .icon-file_download {
   /* color: var(--blue); */
   color: var(--subtitle);
 }
+
 /* .light section.hero a.download-cv .icon-file_download {
   color: var(--orange);
 } */
@@ -88,6 +100,7 @@ section.hero .animation {
   width: 100%;
   translate: 100px 55px;
 }
+
 /*
 =================================
 4-Responsive Design (media query)
@@ -96,5 +109,46 @@ section.hero .animation {
 @media (max-width: 1250px) {
   section.hero .animation {
     display: none;
+  }
+}
+
+
+
+
+
+
+
+.avatar {
+  display: grid;
+  place-items: center;
+  animation: anim 10s infinite;
+  border-radius: 30% 70% 53% 47% / 26% 46% 54% 74%;
+  box-shadow: 0 -0.5rem 1rem rgba(244, 165, 96, 0.449) inset, 0 -1rem 1rem rgba(244, 165, 96, 0.449) inset, 0 -0.5rem 1.5rem rgba(244, 165, 96, 0.449) inset;
+  filter: drop-shadow(0 0 1rem rgba(244, 165, 96, 0.449)) drop-shadow(0 1.5rem 1rem rgba(244, 165, 96, 0.449));
+  background-size: cover;
+  background-position: center;
+  -webkit-filter: drop-shadow(0 0 1rem rgba(244, 165, 96, 0.449)) drop-shadow(0 1.5rem 1rem rgba(244, 165, 96, 0.449));
+}
+
+@keyframes anim {
+
+  0%,
+  100% {
+    border-radius: 30% 70% 70% 30% / 30% 52% 48% 70%;
+    box-shadow: 0 -0.5rem 1rem rgba(244, 165, 96, 0.449) inset, 0 -1rem 1rem rgba(244, 165, 96, 0.449) inset, 0 -0.5rem 1.5rem rgba(244, 165, 96, 0.449) inset;
+  }
+
+  25% {
+    border-radius: 50% 50% 20% 80% / 25% 80% 20% 75%;
+  }
+
+  50% {
+    border-radius: 100%;
+    box-shadow: 0 1rem 2rem rgba(244, 165, 96, 0.449) inset, 0 0.5rem 1rem rgba(244, 165, 96, 0.449) inset, 0 1rem 1rem rgba(244, 165, 96, 0.449) inset, 0 1.5rem 2rem rgba(244, 165, 96, 0.449) inset;
+  }
+
+  75% {
+    border-radius: 50% 50% 53% 47% / 26% 22% 78% 74%;
+    box-shadow: 0.25rem 0.25rem 1rem rgba(244, 165, 96, 0.449) inset, 0.5rem -0.25rem 0.5rem rgba(244, 165, 96, 0.449) inset, -0.25rem -0.25rem 2rem rgba(244, 165, 96, 0.449) inset;
   }
 }

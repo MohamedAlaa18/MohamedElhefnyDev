@@ -18,9 +18,12 @@ function Projects() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [screenshots, setScreenshots] = useState<string[]>([]);
-  const [imageLoading, setImageLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [videoUrl, setVideoUrl] = useState('');
+
 
   const handleClick = (category: string) => {
     setActive(category);
@@ -69,20 +72,12 @@ function Projects() {
 
   const handleNext = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % screenshots.length);
-    setImageLoading(true);
+    setLoading(true);
   };
 
   const handlePrev = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex - 1 + screenshots.length) % screenshots.length);
-    setImageLoading(true);
-  };
-
-  const handleImageClick = (project: ProjectType) => {
-    const projectScreenshots = Array.from({ length: project.screenShots['length'] }, (_, i) => `${project.screenShots['path']}/Screenshot (${i + 1}).png`);
-    setScreenshots(projectScreenshots);
-    setCurrentImageIndex(0);
-    setImageLoading(true);
-    setIsModalOpen(true);
+    setLoading(true);
   };
 
   const handleCloseModal = () => {
@@ -133,6 +128,26 @@ function Projects() {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [dropdownRef]);
+
+
+  const handleImageClick = (project: ProjectType) => {
+    const projectScreenshots = Array.from({ length: project.screenShots['length'] }, (_, i) => `${project.screenShots['path']}/Screenshot (${i + 1}).png`);
+    setScreenshots(projectScreenshots);
+    setCurrentImageIndex(0);
+    setLoading(true);
+    setIsModalOpen(true);
+    project.video &&
+      setVideoUrl(project.video);
+  };
+
+  const handleVideoModalOpen = (videoUrl: string) => {
+    setIsVideoModalOpen(true);
+    setVideoUrl(videoUrl);
+  };
+
+  const handleVideoModalClose = () => {
+    setIsVideoModalOpen(false);
+  };
 
   return (
     <section id='projects' className='flex' ref={containerRef}>
@@ -195,10 +210,13 @@ function Projects() {
                       <a className="icon-link" target="_blank" href={project.demo} rel="noopener noreferrer"></a>
                       <a className="icon-github" target="_blank" href={project.source} rel="noopener noreferrer"></a>
                     </div>
-                    <button className='icon-airplay link flex'
+                    <button
+                      className='icon-airplay link flex'
                       rel="noopener"
-                    >
-                    </button>
+                      onClick={() => handleVideoModalOpen(project.video!)}
+                      disabled={!project.video}
+                    ></button>
+
                   </div>
                 </div>
               </motion.article>
@@ -232,22 +250,22 @@ function Projects() {
         <Modal
           isOpen={isModalOpen}
           onClose={handleCloseModal}
+          setLoading={setLoading}
           onNext={handleNext}
           onPrev={handlePrev}
           totalImages={screenshots.length}
           currentImageIndex={currentImageIndex}
           setCurrentImageIndex={setCurrentImageIndex}
-          setImageLoading={setImageLoading}
         >
-          <div className={`${imageLoading ? 'loading' : ''}`}>
+          <div className={`${loading ? 'loading' : ''}`}>
             <img
               src={screenshots[currentImageIndex]}
               alt={`Screenshot ${currentImageIndex + 1}`}
               style={{ maxWidth: '100%', maxHeight: '100%' }}
               loading='lazy'
-              onLoad={() => setImageLoading(false)}
+              onLoad={() => setLoading(false)}
             />
-            {imageLoading && (
+            {loading && (
               <div className="blur-overlay">
                 <div className="spinner"></div>
               </div>
@@ -255,10 +273,33 @@ function Projects() {
           </div>
         </Modal>
       )}
+
+      {isVideoModalOpen && (
+        <Modal
+          isOpen={isVideoModalOpen}
+          onClose={handleVideoModalClose}
+          setLoading={setLoading}>
+          <div className={`${loading ? 'loading' : ''}`}>
+            <iframe
+              src={videoUrl}
+              title="YouTube Video"
+              frameBorder="0"
+              className='video'
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              onLoad={() => setLoading(false)}
+            ></iframe>
+            {loading && (
+              <div className="blur-overlay">
+                <div className="spinner"></div>
+              </div>
+            )}
+          </div>
+
+        </Modal>
+      )}
     </section>
   );
 }
 
 export default Projects;
-
-

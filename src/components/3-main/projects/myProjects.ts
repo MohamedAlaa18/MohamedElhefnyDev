@@ -13,13 +13,14 @@ export const myProjects = [
       length: 58,
     },
     isFeatured: true,
+    video: "https://www.youtube.com/embed/A7sPKUL7dGE?autoplay=1&mute=1"
   },
   {
     id: 2,
     projectTitle: "Cobra Cover 🐍",
     imagPath: "/screenshots/Cobra Cover/Screenshot (1).png",
     projectDescription:
-      "Cobra Cover is an e-commerce platform built with Next.js and styled using Tailwind CSS, designed for customers to create personalized phone covers. Users can customize covers with pictures, colors, and materials, finishes, using Stripe as the payment gateway for secure and smooth transactions.",
+      "Cobra Cover is an e-commerce platform built with Next.js and styled using Tailwind CSS, designed for customers to create personalized phone covers. Users can customize covers with pictures, colors, and materials, finishes, using Stripe as the payment gateway for secure and smooth transactions. and Admin can access the secret dashboard",
     category: ["Next", "typeScript", "tailwind", "mui", "kinde", "prisma", "uploadthing", "stripe", "react.email"],
     source: "https://github.com/MohamedAlaa18/cobra-cover",
     demo: "https://cobracover.vercel.app/",
@@ -164,4 +165,5 @@ export interface ProjectType {
     length: number
   };
   isFeatured: boolean;
+  video?: string;
 }

@@ -6,14 +6,12 @@ interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   children: ReactNode;
-  onNext: () => void;
-  onPrev: () => void;
-  totalImages: number;
-  currentImageIndex: number;
-  // eslint-disable-next-line no-unused-vars
-  setCurrentImageIndex: (index: number) => void;
-  // eslint-disable-next-line no-unused-vars
-  setImageLoading: (loading: boolean) => void;
+  setLoading: (loading: boolean) => void;
+  onNext?: () => void;
+  onPrev?: () => void;
+  totalImages?: number;
+  currentImageIndex?: number;
+  setCurrentImageIndex?: (index: number) => void;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -25,9 +23,8 @@ const Modal: React.FC<ModalProps> = ({
   totalImages,
   currentImageIndex,
   setCurrentImageIndex,
-  setImageLoading
+  setLoading,
 }) => {
-
   const handleOverlayClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target === event.currentTarget) {
       onClose();
@@ -35,9 +32,17 @@ const Modal: React.FC<ModalProps> = ({
   };
 
   useEffect(() => {
-    setCurrentImageIndex(currentImageIndex);
-    setImageLoading(true);
-  }, [currentImageIndex, setCurrentImageIndex, setImageLoading]);
+    if (isOpen) {
+      setLoading(true);
+    }
+  }, [isOpen, setLoading]);
+
+  const handleCircleClick = (index: number) => {
+    if (setCurrentImageIndex) {
+      setCurrentImageIndex(index);
+      setLoading(true);
+    }
+  };
 
   return (
     <AnimatePresence>
@@ -57,40 +62,43 @@ const Modal: React.FC<ModalProps> = ({
             exit={{ scale: 0.7 }}
             transition={{ duration: 0.3 }}
           >
-            <div className='image-wrapper'>
+            <div className="image-wrapper">
               <button className="modal-close" onClick={onClose}>
-                <div className='icon-close'></div>
+                <div className="icon-close"></div>
               </button>
-              <button className="modal-prev" onClick={onPrev}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" viewBox="0 0 24 24">
-                  <path fill="currentColor" d="M3 19h18a1.002 1.002 0 0 0 .823-1.569l-9-13c-.373-.539-1.271-.539-1.645 0l-9 13A.999.999 0 0 0 3 19" />
-                </svg>
-              </button>
-              <button className="modal-next" onClick={onNext}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" viewBox="0 0 24 24">
-                  <path fill="currentColor" d="M3 19h18a1.002 1.002 0 0 0 .823-1.569l-9-13c-.373-.539-1.271-.539-1.645 0l-9 13A.999.999 0 0 0 3 19" />
-                </svg>
-              </button>
+              {onPrev && (
+                <button className="modal-prev" onClick={onPrev}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M3 19h18a1.002 1.002 0 0 0 .823-1.569l-9-13c-.373-.539-1.271-.539-1.645 0l-9 13A.999.999 0 0 0 3 19" />
+                  </svg>
+                </button>
+              )}
+              {onNext && (
+                <button className="modal-next" onClick={onNext}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M3 19h18a1.002 1.002 0 0 0 .823-1.569l-9-13c-.373-.539-1.271-.539-1.645 0l-9 13A.999.999 0 0 0 3 19" />
+                  </svg>
+                </button>
+              )}
 
               {children}
             </div>
-            <div className="pagination">
-              {Array.from({ length: totalImages }, (_, i) => (
-                <div
-                  key={i}
-                  className={`icon-circle ${i === currentImageIndex ? 'active' : ''}`}
-                  onClick={() => {
-                    setCurrentImageIndex(i);
-                    setImageLoading(true);
-                  }}
-                ></div>
-              ))}
-            </div>
+            {totalImages && currentImageIndex !== undefined && setCurrentImageIndex && (
+              <div className="pagination">
+                {Array.from({ length: totalImages }, (_, i) => (
+                  <div
+                    key={i}
+                    className={`icon-circle ${i === currentImageIndex ? 'active' : ''}`}
+                    onClick={() => handleCircleClick(i)}
+                  ></div>
+                ))}
+              </div>
+            )}
           </motion.div>
         </motion.div>
       )}
     </AnimatePresence>
   );
-}
+};
 
 export default Modal;

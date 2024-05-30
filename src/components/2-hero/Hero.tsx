@@ -15,7 +15,7 @@ function Hero() {
             initial={{ transform: "scale(0)" }}
             animate={{ transform: "scale(1)" }}
             transition={{ damping: 5, duration: 2, type: "spring", stiffness: 100 }}
-            src="./me.png" className='avatar' alt="" />
+            src="./me.jpg" className='avatar' alt="" />
           <div className='icon-verified'></div>
         </div>
         <motion.h1
@@ -40,11 +40,13 @@ function Hero() {
       </div>
       <div className='right-section animation'>
         <Lottie animationData={devAnimation}
-          //https://lottiereact.com/
           lottieRef={lottieRef}
           onLoadedImages={() => {
             lottieRef.current?.setSpeed(0.5)
           }} />
+        {/* <div className="shape-container">
+          <div className="shape"></div>
+        </div> */}
       </div>
     </section>
   )

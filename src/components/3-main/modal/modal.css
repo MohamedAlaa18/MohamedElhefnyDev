@@ -128,7 +128,8 @@
     transition: 0.3s;
 }
 
-.image-wrapper img {
+.image-wrapper img,
+.image-wrapper .video {
     display: block;
     max-width: 100%;
     max-height: 90dvh !important;
@@ -182,6 +183,11 @@
 
 .light .spinner {
     border-top: 4px solid var(--orange);
+}
+
+.video {
+    min-height: 42.1875dvw;
+    min-width: 75dvw;
 }
 
 @keyframes spin {
