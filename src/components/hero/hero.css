@@ -31,11 +31,14 @@ section.hero .icon-verified {
 }
 
 section.hero .avatar {
-  width: 88px;
+  width: 95px;
   border-radius: 50%;
-  border: 1px solid rgba(244, 165, 96, 0.449);
-  padding: 1px;
   box-shadow: 2px 2px 40px rgba(203, 200, 200, 0.586) inset;
+  border: 1px solid rgba(244, 165, 96, 0.449);
+  border-radius: 30% 70% 53% 47% / 26% 46% 54% 74%;
+  box-shadow: 0 -0.5rem 1rem rgba(244, 165, 96, 0.449) inset, 0 -1rem 1rem rgba(244, 165, 96, 0.449) inset, 0 -0.5rem 1.5rem rgba(244, 165, 96, 0.449) inset;
+  filter: drop-shadow(0 0 1rem rgba(244, 165, 96, 0.449)) drop-shadow(0 1.5rem 1rem rgba(244, 165, 96, 0.449));
+  animation: anim 10s infinite;
 }
 
 section.hero h1.title {
@@ -114,21 +117,6 @@ section.hero .animation {
 
 
 
-
-
-
-
-.avatar {
-  display: grid;
-  place-items: center;
-  animation: anim 10s infinite;
-  border-radius: 30% 70% 53% 47% / 26% 46% 54% 74%;
-  box-shadow: 0 -0.5rem 1rem rgba(244, 165, 96, 0.449) inset, 0 -1rem 1rem rgba(244, 165, 96, 0.449) inset, 0 -0.5rem 1.5rem rgba(244, 165, 96, 0.449) inset;
-  filter: drop-shadow(0 0 1rem rgba(244, 165, 96, 0.449)) drop-shadow(0 1.5rem 1rem rgba(244, 165, 96, 0.449));
-  background-size: cover;
-  background-position: center;
-  -webkit-filter: drop-shadow(0 0 1rem rgba(244, 165, 96, 0.449)) drop-shadow(0 1.5rem 1rem rgba(244, 165, 96, 0.449));
-}
 
 @keyframes anim {
 

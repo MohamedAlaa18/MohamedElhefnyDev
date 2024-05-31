@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import Header from './components/1-header/Header'
-import Hero from './components/2-hero/Hero'
-import Main from './components/3-main/Main'
-import Contact from './components/4-contact/Contact'
-import Footer from './components/5-footer/Footer'
+import Header from './components/header/Header'
+import Hero from './components/hero/Hero'
+import Main from './components/main/Main'
+import Contact from './components/contact/Contact'
+import Footer from './components/footer/Footer'
 import { ViewProvider } from './components/viewContext/ViewContext'
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
 
   return (
     <ViewProvider>
-      <div id="top" className='container'>
+      <div id="about" className='container'>
         <Header />
         <Hero />
         <div id='main' className='divider' />
