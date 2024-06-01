@@ -45,7 +45,7 @@
 .modal-prev,
 .modal-next {
     position: absolute;
-    color: rgba(0, 0, 0, 0.7);
+    font-size: 1.25rem;
     top: calc(50% - 19.6px);
     opacity: 0.75;
     transition: 0.3s;
@@ -74,13 +74,13 @@
     left: -1.05%;
 }
 
-.modal-next svg {
+/* .modal-next svg {
     rotate: 90deg;
 }
 
 .modal-prev svg {
     rotate: 270deg;
-}
+} */
 
 .pagination {
     position: absolute;

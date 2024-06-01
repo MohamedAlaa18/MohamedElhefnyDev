@@ -32,6 +32,21 @@ export const myProjects = [
   },
   {
     id: 3,
+    projectTitle: "Mercado 🛍️",
+    imagPath: "/screenshots/Mercado/Screenshot (1).png",
+    projectDescription:
+      "Mercado is an e-commerce app, meticulously crafted with Next.js and Material UI. Emphasizing user satisfaction ensures smooth navigation and an innovative cart system. Next.js drives efficiency, while Material UI provides aesthetic design elements. Prepare for a delightful and seamless shopping spree at Mercado!",
+    category: ["Next", "typeScript", "redux", "mui"],
+    source: "https://github.com/MohamedAlaa18/Mercado",
+    demo: "https://e-commece-web-app.vercel.app/",
+    screenShots: {
+      path: "/screenshots/Mercado",
+      length: 11
+    },
+    isFeatured: true,
+  },
+  {
+    id: 4,
     projectTitle: "Little Lemon 🍋",
     imagPath: "/screenshots/Little Lemon/Screenshot (1).png",
     projectDescription:
@@ -46,37 +61,7 @@ export const myProjects = [
     isFeatured: true,
   },
   {
-    id: 4,
-    projectTitle: "Mercado 🛍️",
-    imagPath: "/screenshots/Mercado/Screenshot (1).png",
-    projectDescription:
-      "Mercado is an e-commerce app, meticulously crafted with Next.js and Material UI. Emphasizing user satisfaction ensures smooth navigation and hassle-free purchases. Next.js drives efficiency, while Material UI provides aesthetic design elements. Prepare for a delightful and seamless shopping spree at Mercado!",
-    category: ["Next", "typeScript", "redux", "mui"],
-    source: "https://github.com/MohamedAlaa18/Mercado",
-    demo: "https://e-commece-web-app.vercel.app/",
-    screenShots: {
-      path: "/screenshots/Mercado",
-      length: 11
-    },
-    isFeatured: true,
-  },
-  {
     id: 5,
-    projectTitle: "Admin Dashboard 📈",
-    imagPath: "/screenshots/Dashboard/Screenshot (1).png",
-    projectDescription:
-      "Admin Dashboard is a comprehensive web application designed to provide administrators with intuitive tools and insights for managing and analyzing data efficiently. Built with modern technologies such as React.js, Next.js, and Material-UI, this dashboard offers a seamless user experience with features including dynamic data visualization.",
-    category: ["Next", "typeScript", "mui"],
-    source: "https://github.com/MohamedAlaa18/admin-dashboard",
-    demo: "https://admin-dashboard-omega-indol.vercel.app/",
-    screenShots: {
-      path: "/screenshots/Dashboard",
-      length: 13
-    },
-    isFeatured: true,
-  },
-  {
-    id: 6,
     projectTitle: "Vendo 💼",
     imagPath: "/screenshots/Vendo/Screenshot (1).png",
     projectDescription:
@@ -87,6 +72,21 @@ export const myProjects = [
     screenShots: {
       path: "/screenshots/Vendo",
       length: 8
+    },
+    isFeatured: true,
+  },
+  {
+    id: 6,
+    projectTitle: "Admin Dashboard 📈",
+    imagPath: "/screenshots/Dashboard/Screenshot (1).png",
+    projectDescription:
+      "Admin Dashboard is a comprehensive web application designed to provide administrators with intuitive tools and insights for managing and analyzing data efficiently. Built with modern technologies such as React.js, Next.js, and Material-UI, this dashboard offers a seamless user experience with features including dynamic data visualization.",
+    category: ["Next", "typeScript", "mui"],
+    source: "https://github.com/MohamedAlaa18/admin-dashboard",
+    demo: "https://admin-dashboard-omega-indol.vercel.app/",
+    screenShots: {
+      path: "/screenshots/Dashboard",
+      length: 13
     },
     isFeatured: true,
   },

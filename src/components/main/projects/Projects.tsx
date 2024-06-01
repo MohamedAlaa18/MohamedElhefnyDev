@@ -167,6 +167,7 @@ function Projects() {
               >
                 <div className="dropdown-content">
                   <button className={isFeaturedFilter ? 'active' : ''} onClick={() => { setIsFeaturedFilter(true); setIsDropdownOpen(false); handleClick(active); handleClick('All'); setHoveredIndex(-1); }}>Featured</button>
+                  {/* <div className='btn-divider' /> */}
                   <button className={isFeaturedFilter ? '' : 'active'} onClick={() => { setIsFeaturedFilter(false); setIsDropdownOpen(false); handleClick(active); handleClick('All'); setHoveredIndex(-1); }}>Standard</button>
                 </div>
               </motion.div>

@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './modal.css';
 
@@ -25,6 +25,9 @@ const Modal: React.FC<ModalProps> = ({
   setCurrentImageIndex,
   setLoading,
 }) => {
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchEndX, setTouchEndX] = useState<number | null>(null);
+
   const handleOverlayClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target === event.currentTarget) {
       onClose();
@@ -44,12 +47,38 @@ const Modal: React.FC<ModalProps> = ({
     }
   };
 
+  const handleTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+    setTouchStartX(event.touches[0].clientX);
+  };
+
+  const handleTouchMove = (event: React.TouchEvent<HTMLDivElement>) => {
+    setTouchEndX(event.touches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX && touchEndX) {
+      const difference = touchStartX - touchEndX;
+      if (Math.abs(difference) > 50) { // Adjust sensitivity as needed
+        if (difference > 0 && onNext) {
+          onNext(); // Move to next image
+        } else if (onPrev) {
+          onPrev(); // Move to previous image
+        }
+      }
+    }
+    setTouchStartX(null);
+    setTouchEndX(null);
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div
           className="modal-overlay"
           onClick={handleOverlayClick}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -68,16 +97,12 @@ const Modal: React.FC<ModalProps> = ({
               </button>
               {onPrev && (
                 <button className="modal-prev" onClick={onPrev}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" viewBox="0 0 24 24">
-                    <path fill="currentColor" d="M3 19h18a1.002 1.002 0 0 0 .823-1.569l-9-13c-.373-.539-1.271-.539-1.645 0l-9 13A.999.999 0 0 0 3 19" />
-                  </svg>
+                  <div className='icon-arrow-back' />
                 </button>
               )}
               {onNext && (
                 <button className="modal-next" onClick={onNext}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" viewBox="0 0 24 24">
-                    <path fill="currentColor" d="M3 19h18a1.002 1.002 0 0 0 .823-1.569l-9-13c-.373-.539-1.271-.539-1.645 0l-9 13A.999.999 0 0 0 3 19" />
-                  </svg>
+                  <div className='icon-arrow-forward' />
                 </button>
               )}
 
