@@ -123,11 +123,11 @@
 }
 
 .section-dropdown a:hover {
-    background-color: var(--blue);
+    background-color: rgba(0, 149, 246, 0.6);
 }
 
 .light .section-dropdown a:hover {
-    background-color: var(--orange)
+    background-color: rgba(244, 165, 96, 0.6);
 }
 
 .icon-select-arrows {
