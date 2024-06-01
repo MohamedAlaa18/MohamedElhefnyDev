@@ -123,7 +123,7 @@
 }
 
 .section-dropdown a:hover {
-    background-color: rgba(0, 149, 246, 0.6);
+    background-color: var(--blue);
 }
 
 .light .section-dropdown a:hover {

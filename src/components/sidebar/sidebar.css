@@ -40,7 +40,7 @@
     background-color: rgba(25, 118, 210, 0.85);
 }
 
-.sidebar-circle:hover {
+.sidebar-circle:hover:not(.active) {
     color: var(--blue);
 }
 
@@ -48,7 +48,7 @@
     background-color: rgba(244, 165, 96, 0.85);
 }
 
-.light .sidebar-circle:hover {
+.light .sidebar-circle:hover:not(.active) {
     color: var(--orange);
 }
 
