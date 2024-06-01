@@ -16,8 +16,10 @@ section.hero {
 */
 section.hero .parent-avatar.flex {
   align-items: end;
-  /* gap: 0.6rem; */
-  min-height: 88px;
+  min-height: 100px;
+  /* position: fixed;
+  top: 2%;
+  left: 1.5%; */
 }
 
 section.hero .left-section {
@@ -31,7 +33,7 @@ section.hero .icon-verified {
 }
 
 section.hero .avatar {
-  width: 95px;
+  width: 100px;
   border-radius: 50%;
   border: 2px solid rgba(244, 165, 96, 0.449);
   border-radius: 30% 70% 53% 47% / 26% 46% 54% 74%;
@@ -45,6 +47,7 @@ section.hero h1.title {
   line-height: 3.3rem;
   margin: 24px 0;
   color: var(--title);
+  min-height: 132px;
 }
 
 section.hero p.sub-title {
@@ -53,6 +56,21 @@ section.hero p.sub-title {
   margin-bottom: 32px;
   color: var(--subtitle);
 }
+
+@keyframes type {
+  0% {
+    width: 0;
+  }
+
+  50% {
+    width: 100%;
+  }
+
+  100% {
+    width: 0;
+  }
+}
+
 
 section.hero .all-icons {
   font-size: 1.3rem;

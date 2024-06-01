@@ -143,7 +143,7 @@ Scroll To Up Button
 ===================
 */
 .scroll-to-up {
-  background-color: rgba(25, 118, 210, 0.85);
+  background-color: var(--secondary);
   width: 2.6rem;
   height: 2.6rem;
   border-radius: 50%;
@@ -151,21 +151,18 @@ Scroll To Up Button
   bottom: 2rem;
   right: 3%;
   text-align: center;
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   color: var(--title);
   font-size: 1.25rem;
+  transition: 0.3s;
 }
 
 .scroll-to-up:hover {
-  background-color: rgb(25, 118, 210);
-}
-
-.light .scroll-to-up {
-  background-color: rgba(244, 165, 96, 0.85);
+  background-color: rgba(25, 118, 210, 0.85);
 }
 
 .light .scroll-to-up:hover {
-  background-color: rgb(244, 165, 96);
+  background-color: rgba(244, 165, 96, 0.85);
 }
 
 /*

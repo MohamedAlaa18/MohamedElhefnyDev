@@ -1,11 +1,46 @@
 import './hero.css'
 import Lottie, { LottieRefCurrentProps } from 'lottie-react';
 import devAnimation from '../../animation/dev.json'
-import { useRef } from 'react';
-import { motion } from "framer-motion"
-// import devAnimation2 from '../../../public/CV.pdf'
+import { useEffect, useRef, useState } from 'react';
+import { motion, AnimatePresence } from "framer-motion"
+
 function Hero() {
   const lottieRef = useRef<LottieRefCurrentProps>(null);
+  const [text, setText] = useState('');
+  const sentences = ["Full Stack Developer (React.js | Angular | .Net Core)"];
+  const [sentenceIndex, setSentenceIndex] = useState(0);
+  const [letterIndex, setLetterIndex] = useState(0);
+  const [showCursor, setShowCursor] = useState(true);
+  const [isTypingComplete, setIsTypingComplete] = useState(false);
+
+  useEffect(() => {
+    const typingInterval = setInterval(() => {
+      if (letterIndex < sentences[sentenceIndex].length) {
+        setText((prevText) => prevText + sentences[sentenceIndex][letterIndex]);
+        setLetterIndex((prevLetterIndex) => prevLetterIndex + 1);
+      } else if (sentenceIndex < sentences.length - 1) {
+        setTimeout(() => {
+          setSentenceIndex((prevSentenceIndex) => prevSentenceIndex + 1);
+          setLetterIndex(0);
+          setIsTypingComplete(false);
+        }, 150);
+      } else {
+        setIsTypingComplete(true);
+        clearInterval(typingInterval);
+      }
+    }, 150);
+
+    return () => clearInterval(typingInterval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [letterIndex, sentenceIndex]);
+
+  useEffect(() => {
+    const cursorInterval = setInterval(() => {
+      setShowCursor((prevShowCursor) => !prevShowCursor);
+    }, 500);
+
+    return () => clearInterval(cursorInterval);
+  }, []);
 
   return (
     <section className='hero flex'>
@@ -19,15 +54,28 @@ function Hero() {
           <div className='icon-verified'></div>
         </div>
         <motion.h1
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 2 }}
-          className='title'>
-          Full Stack Developer (React.js | Angular | .Net Core)
+          initial={{ opacity: 0 }} animate={{ opacity: 1 }} className='title'>
+          {isTypingComplete ? sentences.join(" ") : text}
+          <AnimatePresence>
+            {showCursor && !isTypingComplete && (
+              <motion.span
+                initial={{ opacity: 1 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                |
+              </motion.span>
+            )}
+          </AnimatePresence>
         </motion.h1>
-        <p className='sub-title'>
-          Hello, I'm Mohamed Alaa, a skilled Full Stack Developer proficient in a wide range of technologies including JavaScript, Typescript, React.js, Redux, Next.js, Angular, MVC, SQL Server, .Net, C#, Node.js, AWS, CSS3, Sass, Tailwind, Bootstrap, Material UI, Angular Material, Chakra UI, and HTML5. With one year of experience as a JavaScript Developer
-        </p>
+        <motion.p
+          initial={{ opacity: 0, }}
+          animate={{ opacity: 1, }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="sub-title">
+          "Hello, I'm Mohamed Alaa, a skilled Full Stack Developer proficient in a wide range of technologies including JavaScript, Typescript, React.js, Redux, Next.js, Angular, MVC, SQL Server, .Net, C#, Node.js, AWS, CSS3, Sass, Tailwind, Bootstrap, Material UI, Angular Material, Chakra UI, and HTML5. With one year of experience as a JavaScript Developer.",
+        </motion.p>
         <div className='all-icons flex'>
           <a href='mailto: mohamed.alaa.elhefny@gmail.com' target="_blank" className="icon icon-envelope"></a>
           <a href='#' className="icon icon-stack-overflow"></a>
@@ -35,7 +83,7 @@ function Hero() {
           <a href='https://www.linkedin.com/in/mohamed-alaa-elhefny' target="_blank" className="icon icon-linkedin"></a>
         </div>
         <a href="https://mohamed-alaa-dev.vercel.app/Mohamed Alaa El-hefny.pdf" className="download-cv flex" download="Mohamed Alaa El-hefny.pdf">
-          Download CV <div className="icon-file_download"></div>
+          Download CV&nbsp;<div className="icon-file_download" />
         </a>
       </div>
       <div className='right-section animation'>
@@ -44,12 +92,9 @@ function Hero() {
           onLoadedImages={() => {
             lottieRef.current?.setSpeed(0.5)
           }} />
-        {/* <div className="shape-container">
-          <div className="shape"></div>
-        </div> */}
       </div>
     </section>
   )
 }
 
-export default Hero
+export default Hero;
