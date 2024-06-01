@@ -36,7 +36,7 @@ section.hero .avatar {
   border: 2px solid rgba(244, 165, 96, 0.449);
   border-radius: 30% 70% 53% 47% / 26% 46% 54% 74%;
   box-shadow: 0 -0.5rem 1rem rgba(244, 165, 96, 0.449) inset, 0 -1rem 1rem rgba(244, 165, 96, 0.449) inset, 0 -0.5rem 1.5rem rgba(244, 165, 96, 0.449) inset;
-  filter: drop-shadow(0 0 1rem rgba(244, 165, 96, 0.449)) drop-shadow(0 1.5rem 1rem rgba(244, 165, 96, 0.449));
+  filter: drop-shadow(0 0 1rem rgba(244, 165, 96, 0.449)) drop-shadow(0 1rem 1rem rgba(244, 165, 96, 0.449));
   animation: anim 10s infinite;
 }
 
@@ -105,7 +105,7 @@ section.hero .animation {
 
 /*
 =================================
-4-Responsive Design (media query)
+3-Responsive Design (media query)
 =================================
 */
 @media (max-width: 1250px) {
@@ -114,9 +114,11 @@ section.hero .animation {
   }
 }
 
-
-
-
+/*
+=================================
+4-Animation (keyframes query)
+=================================
+*/
 @keyframes anim {
 
   0%,

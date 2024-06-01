@@ -6,11 +6,13 @@ interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   children: ReactNode;
+  // eslint-disable-next-line no-unused-vars
   setLoading: (loading: boolean) => void;
   onNext?: () => void;
   onPrev?: () => void;
   totalImages?: number;
   currentImageIndex?: number;
+  // eslint-disable-next-line no-unused-vars
   setCurrentImageIndex?: (index: number) => void;
 }
 
@@ -58,11 +60,11 @@ const Modal: React.FC<ModalProps> = ({
   const handleTouchEnd = () => {
     if (touchStartX && touchEndX) {
       const difference = touchStartX - touchEndX;
-      if (Math.abs(difference) > 50) { // Adjust sensitivity as needed
+      if (Math.abs(difference) > 50) {
         if (difference > 0 && onNext) {
-          onNext(); // Move to next image
+          onNext();
         } else if (onPrev) {
-          onPrev(); // Move to previous image
+          onPrev();
         }
       }
     }

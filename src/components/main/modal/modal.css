@@ -46,7 +46,8 @@
 .modal-next {
     position: absolute;
     font-size: 1.25rem;
-    top: calc(50% - 19.6px);
+    top: 50%;
+    transform: translateY(-50%);
     opacity: 0.75;
     transition: 0.3s;
     background: rgba(93, 188, 252, 0.8);
@@ -74,21 +75,13 @@
     left: -1.05%;
 }
 
-/* .modal-next svg {
-    rotate: 90deg;
-}
-
-.modal-prev svg {
-    rotate: 270deg;
-} */
-
 .pagination {
     position: absolute;
     bottom: 5%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    column-gap: 0.25rem;
+    column-gap: calc(0.15vw + 0.1rem);
     padding-inline: 1%;
     width: 100%;
 }
@@ -103,6 +96,7 @@
     justify-content: center;
     align-items: center;
     z-index: 2;
+    font-size: calc(0.86vw + 0.14rem);
 }
 
 .icon-circle:hover {
@@ -200,7 +194,13 @@
     }
 }
 
-@media (max-width: 1080px) {
+/* @media (max-width: 1080px) {} */
+
+
+@media (max-width: 600px) {
+
+    .modal-prev,
+    .modal-next,
     .pagination {
         display: none;
     }

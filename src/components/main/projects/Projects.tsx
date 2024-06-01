@@ -4,6 +4,7 @@ import { myProjects, ProjectType } from './myProjects';
 import { AnimatePresence, motion } from "framer-motion";
 import Modal from '../modal/Modal';
 import { ringEffect, smoothScaleAnimation } from '../framer-animation';
+import Dropdown from '../dropdown/Dropdown';
 
 type DescriptionPosition = 'right' | 'left' | 'bottom';
 
@@ -152,28 +153,12 @@ function Projects() {
   return (
     <section id='projects' className='flex' ref={containerRef}>
       <div className='flex left-section '>
-        <div className="dropdown" ref={dropdownRef}>
-          <button className="drop-btn" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-            <span>{isFeaturedFilter ? 'Featured' : 'Standard'}</span> &nbsp; <div className='icon-select-arrows' />
-          </button>
-          <AnimatePresence>
-            {isDropdownOpen && (
-              <motion.div
-                className='dropdown-content-container'
-                initial={{ scale: 0, height: 0 }}
-                animate={{ scale: 1, height: 'auto' }}
-                exit={{ scale: 0, height: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <div className="dropdown-content">
-                  <button className={isFeaturedFilter ? 'active' : ''} onClick={() => { setIsFeaturedFilter(true); setIsDropdownOpen(false); handleClick(active); handleClick('All'); setHoveredIndex(-1); }}>Featured</button>
-                  {/* <div className='btn-divider' /> */}
-                  <button className={isFeaturedFilter ? '' : 'active'} onClick={() => { setIsFeaturedFilter(false); setIsDropdownOpen(false); handleClick(active); handleClick('All'); setHoveredIndex(-1); }}>Standard</button>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+        <Dropdown
+          isFeaturedFilter={isFeaturedFilter}
+          setIsFeaturedFilter={setIsFeaturedFilter}
+          handleClick={handleClick}
+          active={active}
+          setHoveredIndex={setHoveredIndex} />
 
         <div className='flex category-buttons'>
           <button className={active === 'All' && !isDropdownOpen ? 'active' : ''} onClick={() => handleClick('All')}>All Projects</button>
