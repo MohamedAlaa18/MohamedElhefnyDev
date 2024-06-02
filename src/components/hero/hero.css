@@ -4,6 +4,8 @@ table of contents
 =================
 1-Left-section
 2-Right-section ==> Animation
+3-Responsive Design
+4-Animation
 */
 section.hero {
   margin-top: 3rem;
@@ -17,9 +19,17 @@ section.hero {
 section.hero .parent-avatar.flex {
   align-items: end;
   min-height: 100px;
-  /* position: fixed;
-  top: 2%;
-  left: 1.5%; */
+}
+
+section.hero .avatar {
+  width: 100px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid rgba(233, 46, 139, 0.4);
+  filter: drop-shadow(0 0 1rem rgba(233, 46, 139, 0.3)) drop-shadow(0 1rem 1rem rgba(244, 165, 96, 0.3));
+  box-shadow: 1rem 1rem 2rem rgba(244, 165, 96, 0.5) inset, -1rem -1rem 2rem rgba(233, 46, 139, 0.5) inset;
+  /* animation: anim 10s infinite; */
 }
 
 section.hero .left-section {
@@ -30,16 +40,6 @@ section.hero .icon-verified {
   color: var(--blue);
   margin-bottom: 0.3rem;
   margin-left: -0.3rem;
-}
-
-section.hero .avatar {
-  width: 100px;
-  border-radius: 50%;
-  border: 2px solid rgba(244, 165, 96, 0.449);
-  border-radius: 30% 70% 53% 47% / 26% 46% 54% 74%;
-  box-shadow: 0 -0.5rem 1rem rgba(244, 165, 96, 0.449) inset, 0 -1rem 1rem rgba(244, 165, 96, 0.449) inset, 0 -0.5rem 1.5rem rgba(244, 165, 96, 0.449) inset;
-  filter: drop-shadow(0 0 1rem rgba(244, 165, 96, 0.449)) drop-shadow(0 1rem 1rem rgba(244, 165, 96, 0.449));
-  animation: anim 10s infinite;
 }
 
 section.hero h1.title {
@@ -55,21 +55,6 @@ section.hero p.sub-title {
   margin-bottom: 32px;
   color: var(--subtitle);
 }
-
-@keyframes type {
-  0% {
-    width: 0;
-  }
-
-  50% {
-    width: 100%;
-  }
-
-  100% {
-    width: 0;
-  }
-}
-
 
 section.hero .all-icons {
   font-size: 1.3rem;
@@ -102,13 +87,9 @@ section.hero a.download-cv:hover {
 }
 
 section.hero a.download-cv .icon-file_download {
-  /* color: var(--blue); */
   color: var(--subtitle);
 }
 
-/* .light section.hero a.download-cv .icon-file_download {
-  color: var(--orange);
-} */
 /*
 =============================
 2-Right-section ==> Animation
@@ -140,21 +121,22 @@ section.hero .animation {
 
   0%,
   100% {
-    border-radius: 30% 70% 70% 30% / 30% 52% 48% 70%;
-    box-shadow: 0 -0.5rem 1rem rgba(244, 165, 96, 0.449) inset, 0 -1rem 1rem rgba(244, 165, 96, 0.449) inset, 0 -0.5rem 1.5rem rgba(244, 165, 96, 0.449) inset;
+    border-radius: 40% 60% 60% 40% / 40% 52% 48% 60%;
+    box-shadow: -1rem -1rem 2rem rgba(244, 165, 96, 0.5) inset, 1rem 1rem 2rem rgba(233, 46, 139, 0.5) inset;
   }
 
   25% {
-    border-radius: 50% 50% 20% 80% / 25% 80% 20% 75%;
+    border-radius: 45% 45% 30% 70% / 30% 70% 30% 45%;
+    box-shadow: 1rem 1rem 2rem rgba(244, 165, 96, 0.5) inset, -1rem -1rem 2rem rgba(233, 46, 139, 0.5) inset;
   }
 
   50% {
-    border-radius: 100%;
-    box-shadow: 0 1rem 2rem rgba(244, 165, 96, 0.449) inset, 0 0.5rem 1rem rgba(244, 165, 96, 0.449) inset, 0 1rem 1rem rgba(244, 165, 96, 0.449) inset, 0 1.5rem 2rem rgba(244, 165, 96, 0.449) inset;
+    border-radius: 50%;
+    box-shadow: 1rem 1rem 2rem rgba(244, 165, 96, 0.5) inset, -1rem -1rem 2rem rgba(233, 46, 139, 0.5) inset;
   }
 
   75% {
-    border-radius: 50% 50% 53% 47% / 26% 22% 78% 74%;
-    box-shadow: 0.25rem 0.25rem 1rem rgba(244, 165, 96, 0.449) inset, 0.5rem -0.25rem 0.5rem rgba(244, 165, 96, 0.449) inset, -0.25rem -0.25rem 2rem rgba(244, 165, 96, 0.449) inset;
+    border-radius: 45% 45% 53% 47% / 26% 22% 78% 74%;
+    box-shadow: 1rem 1rem 2rem rgba(244, 165, 96, 0.5) inset, -1rem -1rem 2rem rgba(233, 46, 139, 0.5) inset;
   }
 }

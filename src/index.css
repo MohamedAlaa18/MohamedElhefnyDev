@@ -34,11 +34,6 @@ html {
   --image-hover: rgba(63, 63, 70, 0.2);
 
   --container-padding: 4.8rem;
-
-  --dark-box-shadow: rgba(93, 188, 252, 0.4) 0px 0px 0px 3px;
-  --dark-hover-box-shadow: rgba(93, 188, 252, 0.6) 0px 0px 0px 3px;
-  --light-box-shadow: rgba(244, 165, 96, 0.2) 0px 0px 0px 3px;
-  --light-hover-box-shadow: rgba(244, 165, 96, 0.4) 0px 0px 0px 3px;
 }
 
 .light {
