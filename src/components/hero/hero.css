@@ -47,7 +47,6 @@ section.hero h1.title {
   line-height: 3.3rem;
   margin: 24px 0;
   color: var(--title);
-  min-height: 132px;
 }
 
 section.hero p.sub-title {

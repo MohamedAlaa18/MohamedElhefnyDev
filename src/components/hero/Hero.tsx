@@ -1,13 +1,13 @@
 import './hero.css'
 import Lottie, { LottieRefCurrentProps } from 'lottie-react';
-import devAnimation from '../../animation/dev.json'
+import devAnimation from '../../animation/programer.json'
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from "framer-motion"
 
 function Hero() {
   const lottieRef = useRef<LottieRefCurrentProps>(null);
   const [text, setText] = useState('');
-  const sentences = ["Full Stack Developer (React.js | Angular | .Net Core)"];
+  const sentences = ["Full Stack Developer"];
   const [sentenceIndex, setSentenceIndex] = useState(0);
   const [letterIndex, setLetterIndex] = useState(0);
   const [showCursor, setShowCursor] = useState(true);

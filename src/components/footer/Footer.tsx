@@ -14,7 +14,7 @@ const Footer = () => {
         <li><a href="#main" onClick={() => handleViewChange('certificates')}>Certificates</a></li>
         <li><a href="#contact-us">Contact us</a></li>
       </ul>
-      <p>© 2024 Mohamed Alaa. All rights reserved. </p>
+      <p>&copy;{new Date().getFullYear()} Mohamed Alaa. <span>All rights reserved.</span> </p>
     </footer>
   )
 }

@@ -16,14 +16,11 @@
 .dropdown:checked+label,
 .dropdown:not(:checked)+label {
     position: relative;
-    line-height: 2;
     height: 50px;
     transition: all 200ms linear;
     border-radius: 4px;
     width: 11rem;
     letter-spacing: 1px;
-    display: -webkit-inline-flex;
-    display: -ms-inline-flexbox;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -63,13 +60,11 @@
 }
 
 .dropdown:not(:checked)+label .icon-select-arrows {
-    margin-left: 10px;
     transition: transform 200ms linear;
 }
 
 .dropdown:checked+label .icon-select-arrows {
     transform: rotate(180deg);
-    margin-left: 10px;
     transition: transform 200ms linear;
 }
 
