@@ -3,10 +3,13 @@ import { motion } from 'framer-motion'; // Import motion from framer-motion
 import './dropdown.css';
 
 type DropdownProps = {
-    isFeaturedFilter: boolean;
-    setIsFeaturedFilter: (isFeatured: boolean) => void;
-    handleClick: (category: string) => void;
     active: string;
+    isFeaturedFilter: boolean;
+    // eslint-disable-next-line no-unused-vars
+    setIsFeaturedFilter: (isFeatured: boolean) => void;
+    // eslint-disable-next-line no-unused-vars
+    handleClick: (category: string) => void;
+    // eslint-disable-next-line no-unused-vars
     setHoveredIndex: (index: number) => void;
 };
 

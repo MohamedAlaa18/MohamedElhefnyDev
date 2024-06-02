@@ -36,6 +36,7 @@ function Projects() {
     }
 
     setProjectsFiltered(filteredProjects);
+    setHoveredIndex(-1);
   };
 
   const handleMouseEnter = (event: ReactMouseEvent<HTMLDivElement>) => {
