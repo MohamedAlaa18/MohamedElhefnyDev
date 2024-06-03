@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './sidebar.css';
-import { useView } from '../viewContext/useView';
+import { useView } from '../../context/useView';
 
 
 const Sidebar = () => {

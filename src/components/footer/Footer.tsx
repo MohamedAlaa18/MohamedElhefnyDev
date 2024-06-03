@@ -1,4 +1,4 @@
-import { useView } from '../viewContext/useView';
+import { useView } from '../../context/useView';
 import './footer.css'
 
 

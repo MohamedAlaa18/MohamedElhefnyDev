@@ -1,11 +1,16 @@
 import { ValidationError, useForm } from '@formspree/react';
-import './contact.css'
+import './contact.css';
 import Lottie from 'lottie-react';
-import doneAnimation from '../../animation/done.json'
-import contactAnimation from '../../animation/contact.json'
+import doneAnimation from '../../animation/done.json';
+import contactAnimationDark from '../../animation/contact_dark.json';
+import contactAnimationLight from '../../animation/contact_light_2.json';
+import { useTheme } from '../../context/ThemeContext';
+import LazyLoad from 'react-lazyload';
 
 function Contact() {
   const [state, handleSubmit] = useForm("xoqgdvqy");
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
 
   return (
     <section className='contact-us'>
@@ -13,7 +18,7 @@ function Contact() {
         <span className='icon-envelope'></span>
         Contact us
       </h1>
-      <p className='sub-title'>Contact us for more information and get notified when i publish something new.</p>
+      <p className='sub-title'>Contact us for more information and get notified when I publish something new.</p>
 
       <div className="flex">
         <form onSubmit={handleSubmit}>
@@ -41,17 +46,22 @@ function Contact() {
             {state.submitting ? "Submitting ..." : "Submit"}
           </button>
           {state.succeeded &&
-            <p className='massage-sent flex'>
+            <p className='message-sent flex'>
               <Lottie loop={false} animationData={doneAnimation} style={{ height: 37 }} />
-              Your massage has been sent successfully
+              Your message has been sent successfully
             </p>}
         </form>
         <div className="animation">
-        <Lottie animationData={contactAnimation} style={{ height: 355}} />
+          <LazyLoad height={355} offset={100}>
+            <Lottie
+              // animationData={isDark ? contactAnimationDark : contactAnimationLight}
+              animationData={contactAnimationDark}
+              style={{ height: 355 }} />
+          </LazyLoad>
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default Contact
+export default Contact;

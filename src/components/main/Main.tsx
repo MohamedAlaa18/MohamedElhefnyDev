@@ -1,7 +1,7 @@
 import Certificates from './certificates/Certificates';
 import Projects from './projects/Projects';
 import './main.css'
-import { useView } from '../viewContext/useView';
+import { useView } from '../../context/useView';
 
 function Main() {
 

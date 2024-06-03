@@ -1,17 +1,20 @@
-import './hero.css'
-import Lottie, { LottieRefCurrentProps } from 'lottie-react';
-import devAnimation from '../../animation/programer.json'
-import { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence } from "framer-motion"
+import './hero.css';
+import Lottie from 'lottie-react';
+import devAnimationDark from '../../animation/yoga_man_dark.json';
+import devAnimationLight from '../../animation/yoga_man_light.json';
+import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from '../../context/ThemeContext';
 
-function Hero() {
-  const lottieRef = useRef<LottieRefCurrentProps>(null);
-  const [text, setText] = useState('');
+const Hero: React.FC = () => {
+  const [text, setText] = useState<string>('');
   const sentences = ["Full Stack Developer"];
-  const [sentenceIndex, setSentenceIndex] = useState(0);
-  const [letterIndex, setLetterIndex] = useState(0);
-  const [showCursor, setShowCursor] = useState(true);
-  const [isTypingComplete, setIsTypingComplete] = useState(false);
+  const [sentenceIndex, setSentenceIndex] = useState<number>(0);
+  const [letterIndex, setLetterIndex] = useState<number>(0);
+  const [showCursor, setShowCursor] = useState<boolean>(true);
+  const [isTypingComplete, setIsTypingComplete] = useState<boolean>(false);
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
 
   useEffect(() => {
     const typingInterval = setInterval(() => {
@@ -70,8 +73,8 @@ function Hero() {
           </AnimatePresence>
         </motion.h1>
         <motion.p
-          initial={{ opacity: 0, }}
-          animate={{ opacity: 1, }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
           className="sub-title">
           Hello, I'm Mohamed Alaa, a skilled Full Stack Developer proficient in a wide range of technologies including JavaScript, Typescript, React.js, Redux, Next.js, Angular, MVC, SQL Server, .Net, C#, Node.js, AWS, CSS3, Sass, Tailwind, Bootstrap, Material UI, Angular Material, Chakra UI, and HTML5, with more than year of experience as a JavaScript Developer. I bring a solid foundation in web development and a proven track record of delivering high-quality solutions.
@@ -87,14 +90,10 @@ function Hero() {
         </a>
       </div>
       <div className='right-section animation'>
-        <Lottie animationData={devAnimation}
-          lottieRef={lottieRef}
-          onLoadedImages={() => {
-            lottieRef.current?.setSpeed(0.5)
-          }} />
+        <Lottie animationData={isDark ? devAnimationDark : devAnimationLight} />
       </div>
     </section>
-  )
+  );
 }
 
 export default Hero;

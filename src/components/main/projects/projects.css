@@ -236,7 +236,8 @@ section#projects div.right-section {
   cursor: context-menu;
 }
 
-.card .icon-airplay:disabled:hover {
+.card .icon-airplay:disabled:hover,
+.light .card .icon-airplay:disabled:hover {
   color: var(--subtitle);
 }
 
