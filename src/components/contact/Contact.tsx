@@ -2,15 +2,34 @@ import { ValidationError, useForm } from '@formspree/react';
 import './contact.css';
 import Lottie from 'lottie-react';
 import doneAnimation from '../../animation/done.json';
-import contactAnimationDark from '../../animation/contact_dark.json';
-import contactAnimationLight from '../../animation/contact_light_2.json';
 import { useTheme } from '../../context/ThemeContext';
-import LazyLoad from 'react-lazyload';
+import { useEffect, useState } from 'react';
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type AnimationData = any;
 
 function Contact() {
   const [state, handleSubmit] = useForm("xoqgdvqy");
   const { theme } = useTheme();
   const isDark = theme === "dark";
+
+  // Preload animations
+  const [preloaded, setPreloaded] = useState<{ dark: AnimationData | null; light: AnimationData | null }>({
+    dark: null,
+    light: null,
+  });
+
+  useEffect(() => {
+    const preloadAnimations = async () => {
+      const darkAnimation = await import('../../animation/contact_dark.json');
+      const lightAnimation = await import('../../animation/contact_light_2.json');
+      setPreloaded({ dark: darkAnimation.default, light: lightAnimation.default });
+    };
+    preloadAnimations();
+  }, []);
+
+  // Determine the current animation based on the theme
+  const currentAnimation = isDark ? preloaded.dark : preloaded.light;
 
   return (
     <section className='contact-us'>
@@ -52,12 +71,12 @@ function Contact() {
             </p>}
         </form>
         <div className="animation">
-          <LazyLoad height={355} offset={100}>
+          {currentAnimation && (
             <Lottie
-              // animationData={isDark ? contactAnimationDark : contactAnimationLight}
-              animationData={contactAnimationDark}
-              style={{ height: 355 }} />
-          </LazyLoad>
+              animationData={currentAnimation}
+              style={{ height: 355 }}
+            />
+          )}
         </div>
       </div>
     </section>

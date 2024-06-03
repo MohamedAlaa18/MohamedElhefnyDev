@@ -32,8 +32,12 @@
     text-align: center;
     color: var(--title);
     text-decoration: none;
-    margin: 3rem 0;
+    margin-top: 3rem;
     position: relative;
+}
+
+.sidebar-circle:first-of-type {
+    margin-top: 0;
 }
 
 .sidebar-circle.active {

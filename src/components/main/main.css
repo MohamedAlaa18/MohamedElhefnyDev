@@ -10,7 +10,7 @@ main.flex {
   gap: 3rem;
 }
 
-section.flex {
+main section.flex {
   gap: 2.64rem;
   align-items: start;
   width: 100%;
@@ -177,7 +177,7 @@ main div.flex .toggle-input:checked~.text-certificates {
 =================================
 */
 @media (max-width: 600px) {
-  section.flex {
+  main section.flex {
     flex-direction: column;
     gap: 2.64rem;
     align-items: center;

@@ -6,6 +6,13 @@ import { useView } from '../../context/useView';
 const Sidebar = () => {
     const { view } = useView();
     const [activeSection, setActiveSection] = useState<string>('');
+    const [scrollVisible, setScrollVisible] = useState(false)
+    useEffect(() => {
+        window.addEventListener("scroll", () => {
+            window.scrollY > 300 ? setScrollVisible(true) : setScrollVisible(false);
+        })
+    }, [])
+
 
     const sections = [
         { id: 'about', icon: 'icon-home' },
@@ -67,7 +74,7 @@ const Sidebar = () => {
     }, []);
 
     return (
-        <div className="sidebar">
+        <div className={`sidebar  ${scrollVisible && 'line'}`}>
             <div className='circles-container'>
                 {sections.map(({ id, icon }) => (
                     <a key={id} href={`#${id}`} className={`sidebar-circle ${activeSection === id ? 'active' : ''}`}>

@@ -32,9 +32,9 @@ section.hero .avatar {
   /* animation: anim 10s infinite; */
 }
 
-section.hero .left-section {
+/* section.hero .left-section {
   flex-grow: 1;
-}
+} */
 
 section.hero .icon-verified {
   color: var(--blue);
@@ -98,7 +98,7 @@ section.hero a.download-cv .icon-file_download {
 section.hero .animation {
   min-width: 27vw;
   width: 100%;
-  translate: 100px 55px;
+  translate: 75px 25px;
 }
 
 /*

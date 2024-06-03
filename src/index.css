@@ -150,6 +150,7 @@ Scroll To Up Button
   color: var(--title);
   font-size: 1.25rem;
   transition: 0.3s;
+  z-index: 1;
 }
 
 .scroll-to-up:hover {
