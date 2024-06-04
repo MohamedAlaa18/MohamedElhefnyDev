@@ -73,10 +73,7 @@ function Contact() {
         </form>
         <div className="animation">
           {currentAnimation && (
-            <Lottie
-              animationData={currentAnimation}
-              style={{ height: 355 }}
-            />
+            <Lottie animationData={currentAnimation} style={{ height: 355 }} />
           )}
         </div>
       </div>
