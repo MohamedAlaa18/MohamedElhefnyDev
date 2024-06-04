@@ -50,26 +50,22 @@ const Hero: React.FC = () => {
 
     // Function to check d attribute and apply the display-block class
     const checkPathAttribute = () => {
-      const svgs = document.querySelectorAll('svg'); // Select all SVG elements
+      const svgs = document.querySelectorAll('svg'); 
 
       svgs.forEach(svg => {
-        const paths = svg.querySelectorAll('path'); // Select all paths within the SVG
+        const paths = svg.querySelectorAll('path'); 
 
         paths.forEach(path => {
           const dAttribute = path.getAttribute('d');
 
-          if (dAttribute === targetPath) { // Check if the d attribute matches
+          if (dAttribute === targetPath) { 
             svg.classList.add('display-block');
           }
         });
       });
     };
 
-    // Call the function initially
     checkPathAttribute();
-
-    // Optionally, re-check on window resize or other events if needed
-    window.addEventListener('resize', checkPathAttribute);
   });
 
 
