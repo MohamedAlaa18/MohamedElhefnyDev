@@ -45,6 +45,34 @@ const Hero: React.FC = () => {
     return () => clearInterval(cursorInterval);
   }, []);
 
+  document.addEventListener("DOMContentLoaded", () => {
+    const targetPath = "M 351.343 0 C 351.343 0 351.343 0 351.343 0 C 351.343 39.7368 319.08 72 279.343 72 C 279.343 72 -279.343 72 -279.343 72 C -319.08 72 -351.343 39.7368 -351.343 0 C -351.343 0 -351.343 0 -351.343 0 C -351.343 -39.7368 -319.08 -72 -279.343 -72 C -279.343 -72 279.343 -72 279.343 -72 C 319.08 -72 351.343 -39.7368 351.343 0 Z";
+
+    // Function to check d attribute and apply the display-block class
+    const checkPathAttribute = () => {
+      const svgs = document.querySelectorAll('svg'); // Select all SVG elements
+
+      svgs.forEach(svg => {
+        const paths = svg.querySelectorAll('path'); // Select all paths within the SVG
+
+        paths.forEach(path => {
+          const dAttribute = path.getAttribute('d');
+
+          if (dAttribute === targetPath) { // Check if the d attribute matches
+            svg.classList.add('display-block');
+          }
+        });
+      });
+    };
+
+    // Call the function initially
+    checkPathAttribute();
+
+    // Optionally, re-check on window resize or other events if needed
+    window.addEventListener('resize', checkPathAttribute);
+  });
+
+
   return (
     <section className='hero flex'>
       <div className='left-section'>

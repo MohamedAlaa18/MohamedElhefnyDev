@@ -22,7 +22,7 @@ function Contact() {
   useEffect(() => {
     const preloadAnimations = async () => {
       const darkAnimation = await import('../../animation/contact_dark.json');
-      const lightAnimation = await import('../../animation/contact_light_2.json');
+      const lightAnimation = await import('../../animation/contact_light.json');
       setPreloaded({ dark: darkAnimation.default, light: lightAnimation.default });
     };
     preloadAnimations();
@@ -30,6 +30,7 @@ function Contact() {
 
   // Determine the current animation based on the theme
   const currentAnimation = isDark ? preloaded.dark : preloaded.light;
+
 
   return (
     <section className='contact-us'>

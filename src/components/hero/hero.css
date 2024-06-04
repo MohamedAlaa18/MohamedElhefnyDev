@@ -90,6 +90,9 @@ section.hero a.download-cv .icon-file_download {
   color: var(--subtitle);
 }
 
+.hidden {
+  display: none;
+}
 /*
 =============================
 2-Right-section ==> Animation
