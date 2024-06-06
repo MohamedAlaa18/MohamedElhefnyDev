@@ -6,21 +6,31 @@ interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   children: ReactNode;
-  // eslint-disable-next-line no-unused-vars
   setLoading: (loading: boolean) => void;
   onNext?: () => void;
   onPrev?: () => void;
   totalImages?: number;
   currentImageIndex?: number;
-  // eslint-disable-next-line no-unused-vars
   setCurrentImageIndex?: (index: number) => void;
   screenshots?: string[];
 }
 
-export default function Modal({ isOpen, onClose, children, onNext, onPrev, totalImages, currentImageIndex, setCurrentImageIndex, setLoading, screenshots = [] }: ModalProps) {
+export default function Modal({
+  isOpen,
+  onClose,
+  children,
+  onNext,
+  onPrev,
+  totalImages,
+  currentImageIndex,
+  setCurrentImageIndex,
+  setLoading,
+  screenshots = []
+}: ModalProps) {
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const [touchEndX, setTouchEndX] = useState<number | null>(null);
   const [previewImageIndex, setPreviewImageIndex] = useState<number | null>(null);
+  const [previewLoading, setPreviewLoading] = useState<boolean>(false);
   const [mouseX, setMouseX] = useState(0);
   const [mouseY, setMouseY] = useState(0);
   const modalContentRef = useRef<HTMLDivElement>(null);
@@ -46,10 +56,12 @@ export default function Modal({ isOpen, onClose, children, onNext, onPrev, total
 
   const handleCircleMouseEnter = (index: number) => {
     setPreviewImageIndex(index);
+    setPreviewLoading(true);
   };
 
   const handleCircleMouseLeave = () => {
     setPreviewImageIndex(null);
+    setPreviewLoading(false);
   };
 
   const handleTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
@@ -140,7 +152,8 @@ export default function Modal({ isOpen, onClose, children, onNext, onPrev, total
                     className={`icon-circle ${i === currentImageIndex ? 'active' : ''}`}
                     onClick={() => handleCircleClick(i)}
                     onMouseEnter={() => handleCircleMouseEnter(i)}
-                    onMouseLeave={handleCircleMouseLeave} />
+                    onMouseLeave={handleCircleMouseLeave}
+                  />
                 ))}
               </div>
             )}
@@ -149,14 +162,23 @@ export default function Modal({ isOpen, onClose, children, onNext, onPrev, total
                 className="preview-image"
                 style={{
                   left: `calc(${mouseX}%  + 200px)`,
-                  top: `calc(${mouseY}% + 60px)`,
+                  top: `calc(${mouseY}% + 65px)`,
                 }}
                 initial={{ opacity: 0, scale: 0.7 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0 }}
                 transition={{ duration: 0.2 }}
               >
-                <img src={screenshots[previewImageIndex]} alt={`Preview ${previewImageIndex + 1}`} />
+                {previewLoading && (
+                  <div className="blur-overlay">
+                    <div className="spinner"></div>
+                  </div>
+                )}
+                <img
+                  src={screenshots[previewImageIndex]}
+                  alt={`Preview ${previewImageIndex + 1}`}
+                  onLoad={() => setPreviewLoading(false)}
+                />
               </motion.div>
             )}
           </motion.div>

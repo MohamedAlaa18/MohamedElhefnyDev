@@ -16,6 +16,7 @@
     position: relative;
     max-width: 90%;
     max-height: 90%;
+    aspect-ratio: 16/9;
     display: flex;
     justify-content: center;
     align-content: center;
@@ -176,13 +177,14 @@
     z-index: 10;
     pointer-events: none;
     border-radius: 5px;
+    aspect-ratio: 16/9;
+    box-shadow: rgb(161, 161, 170) 0px 30px 30px -50px, rgb(64, 64, 71) 0px 30px 60px -30px;
+    border: 2px solid var(--border);
+    overflow: hidden;
 }
 
 .preview-image img {
     width: 100%;
-    border-radius: 5px;
-    box-shadow: rgb(161, 161, 170) 0px 30px 30px -50px, rgb(64, 64, 71) 0px 30px 60px -30px;
-    border: 2px solid var(--border);
 }
 
 @media (max-width: 600px) {
