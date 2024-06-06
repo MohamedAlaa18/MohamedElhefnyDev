@@ -34,6 +34,9 @@ html {
   --image-hover: rgba(63, 63, 70, 0.2);
 
   --container-padding: 4.8rem;
+
+
+  --over-lay: rgba(0, 0, 0, 0.5);
 }
 
 .light {
@@ -50,6 +53,8 @@ html {
   --icon-hover: #333;
 
   --image-hover: rgba(202, 202, 202, 0.3);
+
+  --over-lay: rgba(0, 0, 0, 0.7);
 }
 
 body {
@@ -159,6 +164,22 @@ Scroll To Up Button
 
 .light .scroll-to-up:hover {
   background-color: rgba(244, 165, 96, 0.85);
+}
+
+@keyframes animate {
+  0% {
+    background-position: 0
+  }
+
+  100% {
+    background-position: 200%
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  :root {
+    --m: 2rem;
+  }
 }
 
 /*

@@ -4,7 +4,7 @@ import { myCertificates } from './myCertificates'
 import { AnimatePresence, motion } from "framer-motion"
 import { smoothScaleAnimation } from '../framer-animation';
 
-const Certificates = () => {
+export default function Certificates() {
   const [active, setActive] = useState('all');
   const [certificatesFiltered, setCertificatesFiltered] = useState(myCertificates);
 
@@ -60,5 +60,3 @@ const Certificates = () => {
 
   )
 }
-
-export default Certificates

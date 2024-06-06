@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './modal.css';
 
@@ -14,21 +14,16 @@ interface ModalProps {
   currentImageIndex?: number;
   // eslint-disable-next-line no-unused-vars
   setCurrentImageIndex?: (index: number) => void;
+  screenshots?: string[];
 }
 
-const Modal: React.FC<ModalProps> = ({
-  isOpen,
-  onClose,
-  children,
-  onNext,
-  onPrev,
-  totalImages,
-  currentImageIndex,
-  setCurrentImageIndex,
-  setLoading,
-}) => {
+export default function Modal({ isOpen, onClose, children, onNext, onPrev, totalImages, currentImageIndex, setCurrentImageIndex, setLoading, screenshots = [] }: ModalProps) {
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const [touchEndX, setTouchEndX] = useState<number | null>(null);
+  const [previewImageIndex, setPreviewImageIndex] = useState<number | null>(null);
+  const [mouseX, setMouseX] = useState(0);
+  const [mouseY, setMouseY] = useState(0);
+  const modalContentRef = useRef<HTMLDivElement>(null);
 
   const handleOverlayClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target === event.currentTarget) {
@@ -47,6 +42,14 @@ const Modal: React.FC<ModalProps> = ({
       setCurrentImageIndex(index);
       setLoading(true);
     }
+  };
+
+  const handleCircleMouseEnter = (index: number) => {
+    setPreviewImageIndex(index);
+  };
+
+  const handleCircleMouseLeave = () => {
+    setPreviewImageIndex(null);
   };
 
   const handleTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
@@ -72,12 +75,30 @@ const Modal: React.FC<ModalProps> = ({
     setTouchEndX(null);
   };
 
+  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
+    const modalContent = modalContentRef.current;
+    if (modalContent) {
+      const contentWidth = modalContent.offsetWidth;
+      const contentHeight = modalContent.offsetHeight;
+
+      const x = (event.clientX / window.innerWidth) * 100;
+      const y = (event.clientY / window.innerHeight) * 100;
+
+      const leftPos = x - ((contentWidth / window.innerWidth) * 35);
+      const topPos = y - ((contentHeight / window.innerHeight) * 35);
+
+      setMouseX(leftPos);
+      setMouseY(topPos);
+    }
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div
           className="modal-overlay"
           onClick={handleOverlayClick}
+          onMouseMove={handleMouseMove}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
@@ -88,6 +109,7 @@ const Modal: React.FC<ModalProps> = ({
         >
           <motion.div
             className="modal-content"
+            ref={modalContentRef}
             initial={{ scale: 0.7 }}
             animate={{ scale: 1 }}
             exit={{ scale: 0.7 }}
@@ -117,15 +139,29 @@ const Modal: React.FC<ModalProps> = ({
                     key={i}
                     className={`icon-circle ${i === currentImageIndex ? 'active' : ''}`}
                     onClick={() => handleCircleClick(i)}
-                  ></div>
+                    onMouseEnter={() => handleCircleMouseEnter(i)}
+                    onMouseLeave={handleCircleMouseLeave} />
                 ))}
               </div>
+            )}
+            {previewImageIndex !== null && (
+              <motion.div
+                className="preview-image"
+                style={{
+                  left: `calc(${mouseX}%  + 200px)`,
+                  top: `calc(${mouseY}% + 60px)`,
+                }}
+                initial={{ opacity: 0, scale: 0.7 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <img src={screenshots[previewImageIndex]} alt={`Preview ${previewImageIndex + 1}`} />
+              </motion.div>
             )}
           </motion.div>
         </motion.div>
       )}
     </AnimatePresence>
   );
-};
-
-export default Modal;
+}

@@ -13,7 +13,7 @@ type DropdownProps = {
     setHoveredIndex: (index: number) => void;
 };
 
-const Dropdown = ({ isFeaturedFilter, setIsFeaturedFilter, handleClick, active, setHoveredIndex }: DropdownProps) => {
+export default function Dropdown({ isFeaturedFilter, setIsFeaturedFilter, handleClick, active, setHoveredIndex }: DropdownProps) {
     const [isDropdownChecked, setDropdownChecked] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -67,6 +67,4 @@ const Dropdown = ({ isFeaturedFilter, setIsFeaturedFilter, handleClick, active, 
             </motion.div>
         </div>
     );
-};
-
-export default Dropdown;
+}

@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type AnimationData = any;
 
-function Contact() {
+export default function Contact() {
   const [state, handleSubmit] = useForm("xoqgdvqy");
   const { theme } = useTheme();
   const isDark = theme === "dark";
@@ -80,5 +80,3 @@ function Contact() {
     </section>
   );
 }
-
-export default Contact;

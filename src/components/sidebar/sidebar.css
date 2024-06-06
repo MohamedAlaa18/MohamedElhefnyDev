@@ -19,6 +19,12 @@
     transform: translateX(-50%);
 }
 
+.circles-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
 .sidebar-circle {
     width: 40px;
     height: 40px;
@@ -32,7 +38,6 @@
     text-align: center;
     color: var(--title);
     text-decoration: none;
-    margin-top: 3rem;
     position: relative;
 }
 
@@ -41,7 +46,7 @@
 }
 
 .sidebar-circle.active {
-    background-color: rgba(25, 118, 210, 0.85);
+    background-color: rgb(24, 103, 182);
 }
 
 .sidebar-circle:hover:not(.active) {
@@ -49,7 +54,7 @@
 }
 
 .light .sidebar-circle.active {
-    background-color: rgba(244, 165, 96, 0.85);
+    background-color: rgb(245, 177, 119);
 }
 
 .light .sidebar-circle:hover:not(.active) {
@@ -57,8 +62,11 @@
 }
 
 @media (max-width: 600px) {
-    .sidebar-circle {
+    .sidebar {
         opacity: 0.6;
+    }
+
+    .sidebar-circle {
         width: 2.2rem;
         height: 2.2rem;
     }

@@ -3,7 +3,7 @@ import './header.css';
 import { useTheme } from '../../context/ThemeContext';
 import { useView } from '../../context/useView';
 
-const Header: React.FC = () => {
+export default function Header() {
     const [showModal, setShowModal] = useState<boolean>(false);
     const menuRef = useRef<HTMLUListElement>(null);
     const { theme, setTheme } = useTheme();
@@ -58,5 +58,3 @@ const Header: React.FC = () => {
         </header>
     );
 }
-
-export default Header;

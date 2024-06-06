@@ -2,7 +2,7 @@ import { useView } from '../../context/useView';
 import './footer.css'
 
 
-const Footer = () => {
+export default function Footer() {
 
   const { handleViewChange } = useView();
 
@@ -18,5 +18,3 @@ const Footer = () => {
     </footer>
   )
 }
-
-export default Footer

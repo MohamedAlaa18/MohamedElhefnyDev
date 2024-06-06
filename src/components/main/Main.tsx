@@ -4,7 +4,6 @@ import './main.css'
 import { useView } from '../../context/useView';
 
 function Main() {
-
   const { view, handleViewChange, toggleCheckBox } = useView();
 
   return (

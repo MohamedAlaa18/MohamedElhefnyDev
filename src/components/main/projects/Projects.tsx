@@ -192,18 +192,18 @@ function Projects() {
                 <div style={{ width: "266px" }} className='box'>
                   <h1 className='title'>{project.projectTitle}</h1>
                   <p className='sub-title'>{project.projectDescription}</p>
+
                   <div className="flex icons">
                     <div className='flex'>
-                      <a className="icon-link" target="_blank" href={project.demo} rel="noopener noreferrer"></a>
-                      <a className="icon-github" target="_blank" href={project.source} rel="noopener noreferrer"></a>
+                      <a className="icon-link" target="_blank" href={project.demo} rel="noopener noreferrer" />
+                      <a className="icon-github" target="_blank" href={project.source} rel="noopener noreferrer" />
                     </div>
+
                     <button
                       className='icon-airplay link flex'
                       rel="noopener"
                       onClick={() => handleVideoModalOpen(project.video!)}
-                      disabled={!project.video}
-                    ></button>
-
+                      disabled={!project.video} />
                   </div>
                 </div>
               </motion.article>
@@ -243,6 +243,7 @@ function Projects() {
           totalImages={screenshots.length}
           currentImageIndex={currentImageIndex}
           setCurrentImageIndex={setCurrentImageIndex}
+          screenshots={screenshots}
         >
           <div className={`${loading ? 'loading' : ''}`}>
             <img
