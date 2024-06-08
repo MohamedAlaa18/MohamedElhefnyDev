@@ -8,7 +8,7 @@ table of contents
 4-Animation
 */
 section.hero {
-  margin-top: 3rem;
+  padding-top: 3rem;
 }
 
 /*
@@ -65,33 +65,62 @@ section.hero .all-icons .icon:hover {
   color: var(--icon-hover);
 }
 
-section.hero a.download-cv {
-  background-color: rgb(36, 37, 46);
+section.hero a.download-cv,
+section.hero button.copy-email {
+  background-color: #24252e;
   border: 1px solid rgb(63, 63, 70);
-  padding: 0.75rem 1.25rem;
-  width: 7.7em;
+  padding: 0.75rem 0;
+  width: 9.44rem;
+  /* height: 50px; */
   font-size: 0.95rem;
   border-radius: 5px;
   transition: 0.3s;
-  margin-top: 32px;
   scale: 1;
-  gap: 0.3rem;
+  justify-content: center;
 }
 
-section.hero a.download-cv:hover {
+section.hero a.download-cv:hover,
+section.hero button.copy-email:hover {
   scale: 0.97;
 }
 
-section.hero a.download-cv .icon-file_download {
+section.hero a.download-cv .icon-file_download,
+section.hero button.copy-email .icon-copy {
   color: var(--blue);
 }
 
-.light section.hero a.download-cv .icon-file_download {
+.light section.hero a.download-cv .icon-file_download,
+.light section.hero button.copy-email .icon-copy {
   color: var(--orange);
 }
 
 .hidden {
   display: none;
+}
+
+.social-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+}
+
+/* .social-bottom {
+  gap: 12px;
+} */
+
+div.copy-email-container {
+  position: relative;
+}
+
+.copy-success-message {
+  position: absolute;
+  top: -32px;
+  left: 1.5rem;
+  color: green;
+  width: 100%;
+  white-space: nowrap;
+  width: fit-content;
 }
 
 /*

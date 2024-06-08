@@ -4,6 +4,7 @@ import Lottie from 'lottie-react';
 import doneAnimation from '../../animation/done.json';
 import { useTheme } from '../../context/ThemeContext';
 import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type AnimationData = any;
@@ -31,13 +32,15 @@ export default function Contact() {
   // Determine the current animation based on the theme
   const currentAnimation = isDark ? preloaded.dark : preloaded.light;
 
-
   return (
     <section className='contact-us'>
-      <h1 className='title'>
-        <span className='icon-envelope'></span>
-        Contact us
+      <h1 className='title flex'>
+        <div>
+          <i className='icon-envelope' />
+          Contact us
+        </div>
       </h1>
+
       <p className='sub-title'>Contact us for more information and get notified when I publish something new.</p>
 
       <div className="flex">
@@ -62,9 +65,22 @@ export default function Contact() {
             />
           </div>
 
-          <button className='submit' type="submit" disabled={state.submitting}>
-            {state.submitting ? "Submitting ..." : "Submit"}
-          </button>
+          <motion.button
+            className='submit flex'
+            type="submit"
+            disabled={state.submitting}
+            whileHover="hover"
+          >
+            <span>{state.submitting ? "Sending ..." : "Send"}</span>
+            &nbsp;
+            <motion.i
+              className='icon-send'
+              variants={{
+                hover: { scale: 1.1, rotate: 45 }
+              }}
+              transition={{ duration: 0.3 }}
+            />
+          </motion.button>
           {state.succeeded &&
             <p className='message-sent flex'>
               <Lottie loop={false} animationData={doneAnimation} style={{ height: 37 }} />

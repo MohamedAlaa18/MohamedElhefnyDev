@@ -1,10 +1,10 @@
 export const ringEffect = {
     hidden: {
-        scale: 0,
+        scale: 0.7,
         opacity: 0,
     },
     visible: {
-        scale: [0, 1.1, 1],
+        scale: [0.7, 1.15, 1],
         opacity: [0, 1, 1],
         transition: {
             duration: 0.5,

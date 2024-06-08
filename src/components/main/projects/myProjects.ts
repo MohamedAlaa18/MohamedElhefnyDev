@@ -151,19 +151,3 @@ export const myProjects = [
     isFeatured: false,
   }
 ];
-
-export interface ProjectType {
-  id: number;
-  imagPath: string;
-  projectTitle: string;
-  projectDescription: string;
-  category: string[];
-  demo: string;
-  source: string;
-  screenShots: {
-    path: string,
-    length: number
-  };
-  isFeatured: boolean;
-  video?: string;
-}

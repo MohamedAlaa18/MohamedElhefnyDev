@@ -7,12 +7,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from '../../context/ThemeContext';
 
 export default function Hero() {
-  const [text, setText] = useState<string>('');
+  const [text, setText] = useState('');
   const sentences = ["Full Stack Developer"];
-  const [sentenceIndex, setSentenceIndex] = useState<number>(0);
-  const [letterIndex, setLetterIndex] = useState<number>(0);
-  const [showCursor, setShowCursor] = useState<boolean>(true);
-  const [isTypingComplete, setIsTypingComplete] = useState<boolean>(false);
+  const [sentenceIndex, setSentenceIndex] = useState(0);
+  const [letterIndex, setLetterIndex] = useState(0);
+  const [showCursor, setShowCursor] = useState(true);
+  const [isTypingComplete, setIsTypingComplete] = useState(false);
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
@@ -68,6 +68,21 @@ export default function Hero() {
     checkPathAttribute();
   });
 
+  // const [copySuccess, setCopySuccess] = useState('');
+
+  // const handleCopyEmail = () => {
+  //   navigator.clipboard.writeText('mohamed.alaa.elhefny@gmail.com').then(() => {
+  //     setCopySuccess('Email copied!');
+  //     setTimeout(() => setCopySuccess(''), 2000);
+  //   }).catch(() => {
+  //     setCopySuccess('Failed to copy email');
+  //     setTimeout(() => setCopySuccess(''), 2000);
+  //   });
+  // };
+
+  const hoverVariants = {
+    // hover: { scale: 1.1, rotate: -45 }
+  };
 
   return (
     <div>
@@ -104,16 +119,50 @@ export default function Hero() {
             className="sub-title">
             Hello, I'm Mohamed Alaa, a skilled Full Stack Developer proficient in a wide range of technologies including JavaScript, Typescript, React.js, Redux, Next.js, Angular, MVC, SQL Server, .Net, C#, Node.js, AWS, CSS3, Sass, Tailwind, Bootstrap, Material UI, Angular Material, Chakra UI, and HTML5, with more than year of experience as a JavaScript Developer. I bring a solid foundation in web development and a proven track record of delivering high-quality solutions.
           </motion.p>
-          <div className='all-icons flex'>
-            <a href='mailto: mohamed.alaa.elhefny@gmail.com' target="_blank" className="icon icon-envelope"></a>
-            <a href='#' className="icon icon-stack-overflow"></a>
-            <a href='https://github.com/MohamedAlaa18' target="_blank" className="icon icon-github"></a>
-            <a href='https://www.linkedin.com/in/mohamed-alaa-elhefny' target="_blank" className="icon icon-linkedin"></a>
+
+          <div className='social-section'>
+            <div className='all-icons flex'>
+              <a href='mailto: mohamed.alaa.elhefny@gmail.com' target="_blank" className="icon icon-envelope" />
+              <a href='https://github.com/MohamedAlaa18' target="_blank" className="icon icon-github" />
+              <a href='https://wa.me/+201289643240' target="_blank" className="icon icon-whatsapp" />
+              <a href='https://www.linkedin.com/in/mohamed-alaa-elhefny' target="_blank" className="icon icon-linkedin" />
+            </div>
+
+            {/* <div className='flex social-bottom'> */}
+            <motion.a
+              href="https://mohamed-alaa-dev.vercel.app/Mohamed Alaa El-hefny.pdf"
+              className="download-cv flex"
+              download="Mohamed Alaa El-hefny.pdf"
+              whileHover="hover"
+            >
+              Download CV &nbsp;
+              <motion.i
+                className="icon-file_download"
+                variants={hoverVariants}
+                transition={{ duration: 0.3 }}
+              />
+            </motion.a>
+
+            {/* <div className="copy-email-container">
+                <motion.button
+                  onClick={handleCopyEmail}
+                  className="copy-email flex"
+                  whileHover="hover"
+                >
+                  Copy Email &nbsp;
+                  <motion.i
+                    className='icon-copy'
+                    variants={hoverVariants}
+                    transition={{ duration: 0.3 }}
+                  />
+                </motion.button>
+                {copySuccess && <span className="copy-success-message">{copySuccess}</span>}
+              </div> */}
+            {/* </div> */}
+
           </div>
-          <a href="https://mohamed-alaa-dev.vercel.app/Mohamed Alaa El-hefny.pdf" className="download-cv flex" download="Mohamed Alaa El-hefny.pdf">
-            Download CV&nbsp;<div className="icon-file_download" />
-          </a>
         </div>
+
         <div className='right-section animation'>
           <Lottie animationData={isDark ? devAnimationDark : devAnimationLight} />
         </div>

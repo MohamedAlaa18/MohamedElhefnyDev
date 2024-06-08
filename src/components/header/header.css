@@ -6,6 +6,7 @@ table of contents
 2-Buttons & icons
 3-Modal ==> pop up
 4-Responsive Design (media query)
+5-Animation (keyframes)
 */
 
 /*
@@ -76,40 +77,89 @@ header .mode {
   box-shadow: 1px 1px 40px rgba(35, 35, 36, 0.165);
 }
 
-header .icon-menu:hover,
-header .mode:hover {
-  color: var(--title);
-  transition: 0.2s;
+header .mode {
+  position: relative;
+  background-position: top left;
+  background-size: 100%;
+  transition: 0.3s;
+  border: 1px solid var(--border);
 }
 
-.light header .icon-menu:hover,
+header .mode:hover {
+  border: 1px solid var(--blue);
+}
+
 .light header .mode:hover {
   border: 1px solid var(--orange);
 }
 
-.dark header .icon-menu:hover,
-.dark header .mode:hover {
-  border: 1px solid var(--blue);
+header .mode:active {
+  transform: scale(0.97);
+  transition: 0.3s;
 }
 
-header .icon-sun {
+/* ring effect */
+header .ring::before {
+  position: absolute;
+  width: calc(100% + 5px);
+  height: calc(100% + 5px);
+  border: 1px solid var(--primary-color-light);
+  border-radius: 100%;
+  pointer-events: none;
+  content: "";
+  transition: 0.3s;
+}
+
+header .ring:hover::before {
+  border: 1px solid var(--secondary-color-light);
+  width: calc(100% + 10px);
+  height: calc(100% + 10px);
+}
+
+header .ring:active::before {
+  width: calc(100% + 5px);
+  height: calc(100% + 5px);
+}
+
+header .ring::after {
+  position: absolute;
+  width: calc(100% + 10px);
+  height: calc(100% + 10px);
+  border: 2px dashed var(--primary-color-lighter);
+  border-radius: 100%;
+  pointer-events: none;
+  animation: rotate 20s linear infinite;
+  content: "";
+  transition: 0.3s;
+}
+
+header .ring:hover::after {
+  border: 2px dashed var(--secondary-color-lighter);
+  width: calc(100% + 20px);
+  height: calc(100% + 20px);
+}
+
+header .ring:active::after {
+  width: calc(100% + 10px);
+  height: calc(100% + 10px);
+}
+
+header .mode .icon-sun {
+  color: var(--orange);
+  transition: 0.2s;
+}
+
+header .mode .icon-moon-o {
+  color: var(--blue);
+  transition: 0.2s;
+}
+
+header .ring:hover .icon-moon-o {
   color: var(--orange);
 }
 
-header .icon-moon-o {
+header .ring:hover .icon-sun {
   color: var(--blue);
-}
-
-header .icon-close {
-  font-size: 1.5rem;
-  color: var(--subtitle);
-  transition-duration: 0.3s;
-}
-
-header .icon-close:hover {
-  font-size: 1.7rem;
-  color: crimson;
-  transform: rotate(180deg);
 }
 
 /*
@@ -123,20 +173,6 @@ header .fixed {
   background-color: rgba(40, 40, 48, 0.91);
   backdrop-filter: blur(4px);
   z-index: 2;
-}
-
-@keyframes animation {
-  0% {
-    scale: 0;
-  }
-
-  60% {
-    scale: 1.2;
-  }
-
-  100% {
-    scale: 1;
-  }
 }
 
 header .fixed ul.modal {
@@ -169,7 +205,7 @@ header .fixed ul.modal li:last-child {
 
 header .fixed ul.modal li a {
   font-size: 1rem;
-  color: white;
+  color: var(--title);
   transition: 0.3s;
 }
 
@@ -179,6 +215,18 @@ header .fixed ul.modal li a:hover {
 
 .light header .fixed ul.modal li a:hover {
   color: var(--orange);
+}
+
+header .icon-close {
+  font-size: 1.5rem;
+  color: var(--subtitle);
+  transition-duration: 0.3s;
+}
+
+header .icon-close:hover {
+  font-size: 1.7rem;
+  color: crimson;
+  transform: rotate(180deg);
 }
 
 /*
@@ -194,4 +242,45 @@ header .fixed ul.modal li a:hover {
   header button.menu {
     display: block;
   }
+}
+
+/*
+=================================
+5-Animation (keyframes)
+=================================
+*/
+@keyframes animation {
+  0% {
+    scale: 0;
+  }
+
+  60% {
+    scale: 1.2;
+  }
+
+  100% {
+    scale: 1;
+  }
+}
+
+@keyframes rotate {
+  to {
+    transform: rotateZ(-360deg);
+  }
+}
+
+:root {
+  --primary-color-light: rgba(93, 188, 252, 0.75);
+  --primary-color-lighter: rgba(93, 188, 252, 0.5);
+
+  --secondary-color-light: rgba(244, 165, 96, 0.75);
+  --secondary-color-lighter: rgba(244, 165, 96, 0.5);
+}
+
+.light {
+  --primary-color-light: rgba(244, 165, 96, 0.75);
+  --primary-color-lighter: rgba(244, 165, 96, 0.5);
+
+  --secondary-color-light: rgba(93, 188, 252, 0.75);
+  --secondary-color-lighter: rgba(93, 188, 252, 0.5);
 }

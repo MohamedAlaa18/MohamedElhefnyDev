@@ -4,7 +4,7 @@ import { useTheme } from '../../context/ThemeContext';
 import { useView } from '../../context/useView';
 
 export default function Header() {
-    const [showModal, setShowModal] = useState<boolean>(false);
+    const [showModal, setShowModal] = useState(false);
     const menuRef = useRef<HTMLUListElement>(null);
     const { theme, setTheme } = useTheme();
     const { handleViewChange } = useView();
@@ -42,7 +42,7 @@ export default function Header() {
                 </ul>
             </nav>
             <button className='mode flex' onClick={handleClick}>
-                <span className={theme === 'dark' ? 'icon-moon-o' : 'icon-sun'}></span>
+                <i className={theme === 'dark' ? 'icon-moon-o' : 'icon-sun'} />
             </button>
             {showModal &&
                 <div className='fixed'>

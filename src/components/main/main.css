@@ -34,9 +34,10 @@ div.left-section,
   gap: 10px;
 }
 
-div.left-section button {
+main div.left-section button {
   background-color: rgba(36, 37, 46, 1);
   width: 11rem;
+  /* height: 50px; */
   padding: 0.75rem 0;
   text-align: center;
   font-size: 1.05rem;
@@ -46,16 +47,16 @@ div.left-section button {
   border: 1px solid var(--border);
 }
 
-div.left-section button:hover {
+main div.left-section button:hover {
   opacity: 1;
 }
 
-div.left-section button.active {
+main div.left-section button.active {
   opacity: 1;
   border: 1px solid var(--blue);
 }
 
-.light div.left-section button.active {
+.light main div.left-section button.active {
   border: 1px solid #000;
 }
 
@@ -108,7 +109,6 @@ main div.flex .text-certificates {
   color: #fff;
   position: absolute;
   transition: 0.4s;
-  display: flex;
   gap: 0.5rem;
 }
 
@@ -191,7 +191,7 @@ main div.flex .toggle-input:checked~.text-certificates {
     justify-content: center;
   }
 
-  div.left-section button {
+  main div.left-section button {
     width: 7rem;
     padding: 0.8rem 0;
     font-size: 0.9rem;

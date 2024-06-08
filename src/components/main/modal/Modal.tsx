@@ -1,17 +1,14 @@
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './modal.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../../../state/store';
+import { setCurrentImageIndex, setLoading } from '../../../state/projectsSlice';
 
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   children: ReactNode;
-  setLoading: (loading: boolean) => void;
-  onNext?: () => void;
-  onPrev?: () => void;
-  totalImages?: number;
-  currentImageIndex?: number;
-  setCurrentImageIndex?: (index: number) => void;
   screenshots?: string[];
 }
 
@@ -19,18 +16,15 @@ export default function Modal({
   isOpen,
   onClose,
   children,
-  onNext,
-  onPrev,
-  totalImages,
-  currentImageIndex,
-  setCurrentImageIndex,
-  setLoading,
   screenshots = []
 }: ModalProps) {
+  const state = useSelector((state: RootState) => state.projects);
+  const dispatch = useDispatch();
+
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const [touchEndX, setTouchEndX] = useState<number | null>(null);
   const [previewImageIndex, setPreviewImageIndex] = useState<number | null>(null);
-  const [previewLoading, setPreviewLoading] = useState<boolean>(false);
+  const [previewLoading, setPreviewLoading] = useState(false);
   const [mouseX, setMouseX] = useState(0);
   const [mouseY, setMouseY] = useState(0);
   const modalContentRef = useRef<HTMLDivElement>(null);
@@ -43,15 +37,13 @@ export default function Modal({
 
   useEffect(() => {
     if (isOpen) {
-      setLoading(true);
+      dispatch(setLoading(true));
     }
-  }, [isOpen, setLoading]);
+  }, [isOpen, dispatch]);
 
   const handleCircleClick = (index: number) => {
-    if (setCurrentImageIndex) {
-      setCurrentImageIndex(index);
-      setLoading(true);
-    }
+    dispatch(setCurrentImageIndex(index));
+    dispatch(setLoading(true));
   };
 
   const handleCircleMouseEnter = (index: number) => {
@@ -76,10 +68,12 @@ export default function Modal({
     if (touchStartX && touchEndX) {
       const difference = touchStartX - touchEndX;
       if (Math.abs(difference) > 50) {
-        if (difference > 0 && onNext) {
-          onNext();
-        } else if (onPrev) {
-          onPrev();
+        if (difference > 0 && state.currentImageIndex !== undefined) {
+          dispatch(setCurrentImageIndex((state.currentImageIndex + 1) % screenshots.length));
+          dispatch(setLoading(true));
+        } else if (state.currentImageIndex !== undefined) {
+          dispatch(setCurrentImageIndex((state.currentImageIndex - 1 + screenshots.length) % screenshots.length));
+          dispatch(setLoading(true));
         }
       }
     }
@@ -131,27 +125,30 @@ export default function Modal({
               <button className="modal-close" onClick={onClose}>
                 <div className="icon-close"></div>
               </button>
-              {onPrev && (
-                <button className="modal-prev" onClick={onPrev}>
-                  <div className='icon-arrow-back' />
-                </button>
+              {(state.currentImageIndex !== undefined && state.screenshots) && (
+                <>
+                  {state.currentImageIndex > 0 && (
+                    <button className="modal-prev" onClick={() => handleCircleClick(state.currentImageIndex - 1)}>
+                      <div className='icon-arrow-back' />
+                    </button>
+                  )}
+                  {state.currentImageIndex < screenshots.length - 1 && (
+                    <button className="modal-next" onClick={() => handleCircleClick(state.currentImageIndex + 1)}>
+                      <div className='icon-arrow-forward' />
+                    </button>
+                  )}
+                </>
               )}
-              {onNext && (
-                <button className="modal-next" onClick={onNext}>
-                  <div className='icon-arrow-forward' />
-                </button>
-              )}
-
               {children}
             </div>
-            {totalImages && currentImageIndex !== undefined && setCurrentImageIndex && (
+            {screenshots && (
               <div className="pagination">
-                {Array.from({ length: totalImages }, (_, i) => (
+                {screenshots.map((_, index) => (
                   <div
-                    key={i}
-                    className={`icon-circle ${i === currentImageIndex ? 'active' : ''}`}
-                    onClick={() => handleCircleClick(i)}
-                    onMouseEnter={() => handleCircleMouseEnter(i)}
+                    key={index}
+                    className={`icon-circle ${index === state.currentImageIndex ? 'active' : ''}`}
+                    onClick={() => handleCircleClick(index)}
+                    onMouseEnter={() => handleCircleMouseEnter(index)}
                     onMouseLeave={handleCircleMouseLeave}
                   />
                 ))}
@@ -171,7 +168,7 @@ export default function Modal({
               >
                 {previewLoading && (
                   <div className="blur-overlay">
-                    <div className="spinner"></div>
+                    <div className="spinner" />
                   </div>
                 )}
                 <img

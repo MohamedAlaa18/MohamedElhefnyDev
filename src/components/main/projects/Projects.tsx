@@ -1,33 +1,36 @@
-import { useState, useEffect, useRef, MouseEvent as ReactMouseEvent } from 'react';
+import { useEffect, useRef, MouseEvent as ReactMouseEvent } from 'react';
 import './projects.css';
-import { myProjects, ProjectType } from './myProjects';
 import { AnimatePresence, motion } from "framer-motion";
 import Modal from '../modal/Modal';
 import { ringEffect, smoothScaleAnimation } from '../framer-animation';
 import Dropdown from '../dropdown/Dropdown';
-
-type DescriptionPosition = 'right' | 'left' | 'bottom';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setActive,
+  setIsFeaturedFilter,
+  setProjectsFiltered,
+  setHoveredIndex,
+  setDescriptionPosition,
+  setCurrentImageIndex,
+  setIsModalOpen,
+  setScreenshots,
+  setLoading,
+  setIsDropdownOpen,
+  setVideoUrl
+} from '../../../state/projectsSlice';
+import { RootState } from '../../../state/store';
+import { myProjects } from './myProjects';
+import { Project } from '../../../types/types';
 
 function Projects() {
-  const [active, setActive] = useState<string>('All');
-  const [isFeaturedFilter, setIsFeaturedFilter] = useState<boolean>(true);
-  const [projectsFiltered, setProjectsFiltered] = useState<ProjectType[]>(myProjects);
-  const [, setShowDescription] = useState<boolean>(false);
-  const [hoveredIndex, setHoveredIndex] = useState<number>(-1);
-  const [descriptionPosition, setDescriptionPosition] = useState<DescriptionPosition>('right');
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [screenshots, setScreenshots] = useState<string[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
-  const [videoUrl, setVideoUrl] = useState('');
+  const dispatch = useDispatch();
+  const state = useSelector((state: RootState) => state.projects);
 
+  const containerRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const handleClick = (category: string) => {
-    setActive(category);
+    dispatch(setActive(category));
 
     let filteredProjects = myProjects;
 
@@ -35,67 +38,60 @@ function Projects() {
       filteredProjects = filteredProjects.filter((project) => project.category.includes(category));
     }
 
-    setProjectsFiltered(filteredProjects);
-    setHoveredIndex(-1);
+    dispatch(setProjectsFiltered(filteredProjects));
+    dispatch(setHoveredIndex(-1));
   };
 
-  const handleMouseEnter = (event: ReactMouseEvent<HTMLDivElement>) => {
+  const handleMouseEnter = (event: ReactMouseEvent<HTMLDivElement>, index: number) => {
     const target = event.currentTarget as HTMLElement;
     const rect = target.getBoundingClientRect();
     const viewportWidth = window.innerWidth;
 
     if (rect.right + 266 > viewportWidth) {
-      setDescriptionPosition('left');
+      dispatch(setDescriptionPosition('left'));
     } else {
-      setDescriptionPosition('right');
+      dispatch(setDescriptionPosition('right'));
     }
 
-    const cards = document.querySelectorAll('.card-container');
-    cards.forEach((otherCard) => {
-      if (otherCard !== target) {
-        otherCard.classList.add('motion-article-blur');
-      }
-    });
-
-    const filteredIndex = Array.from(containerRef.current!.children[1].children).indexOf(target);
-
-    setHoveredIndex(filteredIndex);
-    setShowDescription(true);
+    dispatch(setHoveredIndex(index));
   };
 
   const handleMouseLeave = () => {
-    const cards = document.querySelectorAll('.card-container');
-    cards.forEach((otherCard) => {
-      otherCard.classList.remove('motion-article-blur');
-    });
-    setHoveredIndex(-1);
-    setShowDescription(false);
+    dispatch(setHoveredIndex(-1));
   };
 
   const handleNext = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % screenshots.length);
-    setLoading(true);
+    dispatch(setCurrentImageIndex((state.currentImageIndex + 1) % state.screenshots.length));
+    dispatch(setLoading(true));
   };
 
   const handlePrev = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex - 1 + screenshots.length) % screenshots.length);
-    setLoading(true);
+    dispatch(setCurrentImageIndex((state.currentImageIndex - 1 + state.screenshots.length) % state.screenshots.length));
+    dispatch(setLoading(true));
   };
 
   const handleCloseModal = () => {
-    setIsModalOpen(false);
+    dispatch(setIsModalOpen(false));
+    dispatch(setScreenshots([]));
+    dispatch(setVideoUrl(''));
+  };
+
+  const handleImageClick = (project: Project) => {
+    const projectScreenshots = Array.from({ length: project.screenShots.length }, (_, i) => `${project.screenShots.path}/Screenshot (${i + 1}).png`);
+    dispatch(setScreenshots(projectScreenshots));
+    dispatch(setCurrentImageIndex(0));
+    dispatch(setLoading(true));
+    dispatch(setIsModalOpen(true));
+  };
+
+  const handleVideoModalOpen = (videoUrl: string) => {
+    dispatch(setIsModalOpen(true));
+    dispatch(setVideoUrl(videoUrl));
   };
 
   useEffect(() => {
-    const cards = document.querySelectorAll('.card-container');
-
-    cards.forEach((card) => {
-      card.addEventListener('mouseenter', (event) => handleMouseEnter(event as unknown as ReactMouseEvent<HTMLDivElement>));
-      card.addEventListener('mouseleave', handleMouseLeave);
-    });
-
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (isModalOpen) {
+      if (state.isModalOpen) {
         if (event.key === 'ArrowRight') {
           handleNext();
         } else if (event.key === 'ArrowLeft') {
@@ -109,19 +105,15 @@ function Projects() {
     window.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      cards.forEach((card) => {
-        card.removeEventListener('mouseenter', handleMouseEnter as unknown as EventListener);
-        card.removeEventListener('mouseleave', handleMouseLeave as EventListener);
-      });
       window.removeEventListener('keydown', handleKeyDown);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [projectsFiltered, isModalOpen]);
+  }, [state.isModalOpen]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsDropdownOpen(false);
+        dispatch(setIsDropdownOpen(false));
       }
     };
 
@@ -129,51 +121,33 @@ function Projects() {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dropdownRef]);
-
-
-  const handleImageClick = (project: ProjectType) => {
-    const projectScreenshots = Array.from({ length: project.screenShots['length'] }, (_, i) => `${project.screenShots['path']}/Screenshot (${i + 1}).png`);
-    setScreenshots(projectScreenshots);
-    setCurrentImageIndex(0);
-    setLoading(true);
-    setIsModalOpen(true);
-    project.video &&
-      setVideoUrl(project.video);
-  };
-
-  const handleVideoModalOpen = (videoUrl: string) => {
-    setIsVideoModalOpen(true);
-    setVideoUrl(videoUrl);
-  };
-
-  const handleVideoModalClose = () => {
-    setIsVideoModalOpen(false);
-  };
 
   return (
     <section id='projects' className='flex' ref={containerRef}>
-      <div className='flex left-section '>
+      <div className='flex left-section'>
         <Dropdown
-          isFeaturedFilter={isFeaturedFilter}
-          setIsFeaturedFilter={setIsFeaturedFilter}
+          isFeaturedFilter={state.isFeaturedFilter}
+          setIsFeaturedFilter={(filter) => dispatch(setIsFeaturedFilter(filter))}
           handleClick={handleClick}
-          active={active}
-          setHoveredIndex={setHoveredIndex} />
+          active={state.active}
+          setHoveredIndex={(index) => dispatch(setHoveredIndex(index))}
+        />
 
         <div className='flex category-buttons'>
-          <button className={active === 'All' && !isDropdownOpen ? 'active' : ''} onClick={() => handleClick('All')}>All Projects</button>
-          {[...new Set(myProjects.filter((project) => project.isFeatured === isFeaturedFilter).flatMap(project => project.category[0]))].map(category => (
-            <button key={category} className={active === category && !isDropdownOpen ? 'active' : ''} onClick={() => handleClick(category)}>{category}</button>
+          <button className={state.active === 'All' && !state.isDropdownOpen ? 'active' : ''} onClick={() => handleClick('All')}>All Projects</button>
+          {[...new Set(myProjects.filter((project) => project.isFeatured === state.isFeaturedFilter).flatMap(project => project.category[0]))].map(category => (
+            <button key={category} className={state.active === category && !state.isDropdownOpen ? 'active' : ''} onClick={() => handleClick(category)}>{category}</button>
           ))}
         </div>
       </div>
 
-      <div className='flex right-section'>
-        <AnimatePresence>
-          {projectsFiltered.filter((project) => project.isFeatured === isFeaturedFilter).map((project, index) => (
-            <div className='card-container' key={project.imagPath}
-              onMouseEnter={(event) => handleMouseEnter(event as unknown as ReactMouseEvent<HTMLDivElement>)}
+      <div className='projects right-section flex'>
+        <AnimatePresence initial={false}>
+          {state.projectsFiltered.filter((project) => project.isFeatured === state.isFeaturedFilter).map((project: Project, index: number) => (
+            <div key={project.projectTitle} className={`card-container ${state.hoveredIndex === index ? 'hovered' : ''}`}
+              onMouseEnter={(event) => handleMouseEnter(event as ReactMouseEvent<HTMLDivElement>, index)}
               onMouseLeave={handleMouseLeave}>
               <motion.article
                 layout
@@ -186,7 +160,7 @@ function Projects() {
                 <div className="image-container">
                   <img className="image" width={266} src={project.imagPath} alt={project.projectTitle} />
                   <div className="overlay" onClick={() => handleImageClick(project)}>
-                    <div className="icon-picture"></div>
+                    <i className="icon-picture" />
                   </div>
                 </div>
                 <div style={{ width: "266px" }} className='box'>
@@ -203,19 +177,20 @@ function Projects() {
                       className='icon-airplay link flex'
                       rel="noopener"
                       onClick={() => handleVideoModalOpen(project.video!)}
-                      disabled={!project.video} />
+                      disabled={!project.video}
+                    />
                   </div>
                 </div>
               </motion.article>
 
               <AnimatePresence>
-                {hoveredIndex === index && (
+                {state.hoveredIndex === index && (
                   <motion.div
                     layout
                     initial="hidden"
                     animate="visible"
                     variants={ringEffect}
-                    className={`card-description-container visible ${descriptionPosition === 'right' ? 'right' : 'left'}`}
+                    className={`card-description-container visible ${state.descriptionPosition === 'right' ? 'right' : 'left'}`}
                   >
                     <div className='card-description'>
                       <h1 className='title'>{project.projectTitle}</h1>
@@ -233,59 +208,41 @@ function Projects() {
         </AnimatePresence>
       </div>
 
-      {isModalOpen && (
+      {state.isModalOpen && (
         <Modal
-          isOpen={isModalOpen}
+          isOpen={state.isModalOpen}
           onClose={handleCloseModal}
-          setLoading={setLoading}
-          onNext={handleNext}
-          onPrev={handlePrev}
-          totalImages={screenshots.length}
-          currentImageIndex={currentImageIndex}
-          setCurrentImageIndex={setCurrentImageIndex}
-          screenshots={screenshots}
+          screenshots={state.screenshots}
         >
-          <div className={`${loading ? 'loading' : ''}`}>
-            <img
-              src={screenshots[currentImageIndex]}
-              alt={`Screenshot ${currentImageIndex + 1}`}
-              style={{ maxWidth: '100%', maxHeight: '100%' }}
-              loading='lazy'
-              onLoad={() => setLoading(false)}
-            />
-            {loading && (
+          <div className={`${state.loading ? 'loading' : ''}`}>
+            {state.videoUrl ? (
+              <iframe
+                src={state.videoUrl}
+                title="YouTube Video"
+                frameBorder="0"
+                className='video'
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                onLoad={() => dispatch(setLoading(false))}
+              />
+            ) : (
+              <img
+                src={state.screenshots[state.currentImageIndex]}
+                alt={`Screenshot ${state.currentImageIndex + 1}`}
+                style={{ maxWidth: '100%', maxHeight: '100%' }}
+                loading='lazy'
+                onLoad={() => dispatch(setLoading(false))}
+              />
+            )}
+            {state.loading && (
               <div className="blur-overlay">
-                <div className="spinner"></div>
+                <div className="spinner" />
               </div>
             )}
           </div>
         </Modal>
       )}
 
-      {isVideoModalOpen && (
-        <Modal
-          isOpen={isVideoModalOpen}
-          onClose={handleVideoModalClose}
-          setLoading={setLoading}>
-          <div className={`${loading ? 'loading' : ''}`}>
-            <iframe
-              src={videoUrl}
-              title="YouTube Video"
-              frameBorder="0"
-              className='video'
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              onLoad={() => setLoading(false)}
-            ></iframe>
-            {loading && (
-              <div className="blur-overlay">
-                <div className="spinner"></div>
-              </div>
-            )}
-          </div>
-
-        </Modal>
-      )}
     </section>
   );
 }

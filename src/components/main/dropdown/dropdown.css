@@ -16,10 +16,11 @@
 .dropdown:checked+label,
 .dropdown:not(:checked)+label {
     position: relative;
-    height: 50px;
     transition: all 200ms linear;
-    border-radius: 4px;
+    border-radius: 5px;
+    /* padding: 0.75rem 0; */
     width: 11rem;
+    height: 50px;
     letter-spacing: 1px;
     display: inline-flex;
     align-items: center;

@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?xgn6g6');
-  src:  url('fonts/icomoon.eot?xgn6g6#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?xgn6g6') format('truetype'),
-    url('fonts/icomoon.woff?xgn6g6') format('woff'),
-    url('fonts/icomoon.svg?xgn6g6#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?y9q451');
+  src:  url('fonts/icomoon.eot?y9q451#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?y9q451') format('truetype'),
+    url('fonts/icomoon.woff?y9q451') format('woff'),
+    url('fonts/icomoon.svg?y9q451#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -39,6 +39,9 @@
 }
 .icon-arrow-right:before {
   content: "\e901";
+}
+.icon-copy:before {
+  content: "\e910";
 }
 .icon-link:before {
   content: "\e902";
@@ -85,6 +88,15 @@
 .icon-moon-o:before {
   content: "\f186";
 }
+.icon-paper-plane:before {
+  content: "\f1d8";
+}
+.icon-send:before {
+  content: "\f1d8";
+}
+.icon-whatsapp:before {
+  content: "\f232";
+}
 .icon-picture:before {
   content: "\e908";
 }
@@ -96,19 +108,4 @@
 }
 .icon-linkedin:before {
   content: "\eac9";
-}
-.icon-angular:before {
-  content: "\e90c";
-  color: #dd0031;
-}
-.icon-javascript:before {
-  content: "\e90d";
-  color: #f7df1e;
-}
-.icon-next-dot-js:before {
-  content: "\e90e";
-}
-.icon-react:before {
-  content: "\e90f";
-  color: #61dafb;
 }

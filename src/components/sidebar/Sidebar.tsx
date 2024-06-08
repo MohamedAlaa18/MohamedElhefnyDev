@@ -5,7 +5,7 @@ import { useView } from '../../context/useView';
 
 export default function Sidebar() {
     const { view } = useView();
-    const [activeSection, setActiveSection] = useState<string>('');
+    const [activeSection, setActiveSection] = useState('about');
 
     const sections = [
         { id: 'about', icon: 'icon-home' },
@@ -50,7 +50,7 @@ export default function Sidebar() {
                     }
                 });
             },
-            { threshold: 0.5 }
+            { rootMargin: "0px 0px -250px 0px" }
         );
 
         const elements = sections
@@ -70,7 +70,7 @@ export default function Sidebar() {
             <div className='circles-container'>
                 {sections.map(({ id, icon }) => (
                     <a key={id} href={`#${id}`}>
-                        <button className={`${icon} sidebar-circle ${activeSection === id ? 'active' : ''}`} />
+                        <i className={`${icon} sidebar-circle ${activeSection === id ? 'active' : ''}`} />
                     </a>
                 ))}
             </div>

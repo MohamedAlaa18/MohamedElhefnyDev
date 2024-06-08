@@ -12,8 +12,8 @@ function Main() {
         <label className="toggle-container">
           <input ref={toggleCheckBox} type="checkbox" className="toggle-input" onChange={() => handleViewChange(view == 'projects' ? 'certificates' : 'projects')} />
           <span className="toggle-slider"></span>
-          <div className="text-projects"><span>Projects</span><span className="icon-code" />&nbsp;</div>
-          <div className="text-certificates"><span className="icon-atom" /><span>Certificates</span></div>
+          <div className="text-projects flex"><span>Projects</span><i className="icon-code" />&nbsp;</div>
+          <div className="text-certificates flex"><i className="icon-atom" /><span>Certificates</span></div>
         </label>
       </div>
 
