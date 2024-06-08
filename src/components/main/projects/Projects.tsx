@@ -82,6 +82,7 @@ export default function Projects() {
     dispatch(setIsModalOpen(false));
     dispatch(setScreenshots([]));
     dispatch(setVideoUrl(''));
+    dispatch(setCurrentImageIndex(0));
   };
 
   const handleImageClick = (project: Project) => {

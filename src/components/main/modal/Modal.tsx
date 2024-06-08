@@ -125,7 +125,7 @@ export default function Modal({
               <button className="modal-close" onClick={onClose}>
                 <div className="icon-close"></div>
               </button>
-              {(state.currentImageIndex !== undefined && state.screenshots) && (
+              {(state.currentImageIndex !== -1 && state.screenshots) && (
                 <>
                   {state.currentImageIndex > 0 && (
                     <button className="modal-prev" onClick={() => handleCircleClick(state.currentImageIndex - 1)}>
