@@ -23,8 +23,8 @@ function App() {
       <ViewProvider>
         <ThemeProvider>
           <div className='container'>
+            <div id='about' />
             <Header />
-            <div id='about'></div>
             <Hero />
             <div id='main' className='divider' />
             <Main />

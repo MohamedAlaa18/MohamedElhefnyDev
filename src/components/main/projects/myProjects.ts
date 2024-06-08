@@ -4,7 +4,7 @@ export const myProjects = [
     projectTitle: "EduNex 🎓",
     imagPath: "/screenshots/EduNex/Screenshot (1).png",
     projectDescription:
-      "An interactive learning platform developed with Angular and Angular Material. Seamlessly explore diverse courses, engage with interactive resources, and track your progress with real-time analytics. Angular ensures a smooth and responsive user interface, while Angular Material provides a visually appealing design for an optimal learning experience.",
+      "An interactive learning platform built with Angular, Angular Material, and Bootstrap. Seamlessly explore courses, engage with resources, and track progress with analytics. The platform includes an exam system for teachers to create, manage, and evaluate assessments, as well as course CRUD for managing offerings, materials, and content.",
     category: ["Angular", "angularMaterial", "jwt", "typeScript", ".net"],
     source: "https://github.com/MohamedAlaa18/EduNex",
     demo: "https://edu-nex-front.vercel.app/",
@@ -20,7 +20,7 @@ export const myProjects = [
     projectTitle: "Cobra Cover 🐍",
     imagPath: "/screenshots/Cobra Cover/Screenshot (1).png",
     projectDescription:
-      "Cobra Cover is an e-commerce platform built with Next.js and styled using Tailwind CSS, designed for customers to create personalized phone covers. Users can customize covers with pictures, colors, and materials, finishes, using Stripe as the payment gateway for secure and smooth transactions. and Admin can access the secret dashboard",
+      "Cobra Cover is an e-commerce platform built with Next.js and styled using Tailwind CSS, designed for customers to create personalized phone covers. Users can customize covers with pictures, colors, and materials, finishes, using Stripe as the payment gateway for secure and smooth transactions. and Admin can access the secret dashboard.",
     category: ["Next", "typeScript", "tailwind", "mui", "kinde", "prisma", "uploadthing", "stripe", "react.email"],
     source: "https://github.com/MohamedAlaa18/cobra-cover",
     demo: "https://cobracover.vercel.app/",
@@ -35,7 +35,7 @@ export const myProjects = [
     projectTitle: "Mercado 🛍️",
     imagPath: "/screenshots/Mercado/Screenshot (1).png",
     projectDescription:
-      "Mercado is an e-commerce app, meticulously crafted with Next.js and Material UI. Emphasizing user satisfaction ensures smooth navigation and an innovative cart system. Next.js drives efficiency, while Material UI provides aesthetic design elements. Prepare for a delightful and seamless shopping spree at Mercado!",
+      "Mercado is an e-commerce app, crafted with Next.js and Material UI. Emphasizing user satisfaction, the app features a comprehensive cart system that allows customers to select items in specific colors. The platform also provides localization support for 3 languages, ensuring a delightful and seamless shopping experience for users across different regions.",
     category: ["Next", "typeScript", "redux", "mui"],
     source: "https://github.com/MohamedAlaa18/Mercado",
     demo: "https://e-commece-web-app.vercel.app/",
@@ -47,25 +47,10 @@ export const myProjects = [
   },
   {
     id: 4,
-    projectTitle: "Little Lemon 🍋",
-    imagPath: "/screenshots/Little Lemon/Screenshot (1).png",
-    projectDescription:
-      "Little Lemon, a delightful restaurant site crafted with React, Redux, and Sass. Elevate your dining experience with smooth table bookings and seamless navigation. React powers our intuitive user interface, while Redux manages state effortlessly. Get ready for a zestful journey through flavors and convenience.",
-    category: ["React", "redux", "sass"],
-    source: "https://github.com/MohamedAlaa18/little-lemon",
-    demo: "https://mohamedalaa28.github.io/restaurant-web-app",
-    screenShots: {
-      path: "/screenshots/Little Lemon",
-      length: 8
-    },
-    isFeatured: true,
-  },
-  {
-    id: 5,
     projectTitle: "Vendo 💼",
     imagPath: "/screenshots/Vendo/Screenshot (1).png",
     projectDescription:
-      "Vendo is a dynamic Vendor Dashboard and user-friendly web application built using cutting-edge technologies such as React, and Tailwind CSS. This dashboard serves as a centralized hub for vendors, providing them with the tools and features needed to manage their products, orders, and overall e-commerce operations efficiently.",
+      "Vendo is a dynamic Vendor Dashboard and web application built using React and Tailwind CSS. This dashboard serves as a centralized hub for vendors, providing them with the tools and features needed to manage their products, orders, and overall e-commerce operations efficiently. adding, managing products, and viewing product reviews.",
     category: ["React", "tailwind"],
     source: "https://github.com/MohamedAlaa18/vendo",
     demo: "https://mohamedalaa28.github.io/vendor-dashboard/",
@@ -76,17 +61,32 @@ export const myProjects = [
     isFeatured: true,
   },
   {
-    id: 6,
+    id: 5,
     projectTitle: "Admin Dashboard 📈",
     imagPath: "/screenshots/Dashboard/Screenshot (1).png",
     projectDescription:
-      "Admin Dashboard is a comprehensive web application designed to provide administrators with intuitive tools and insights for managing and analyzing data efficiently. Built with modern technologies such as React.js, Next.js, and Material-UI, this dashboard offers a seamless user experience with features including dynamic data visualization.",
+      "Powered by Next.js and Material-UI, the Admin Dashboard is designed to provide administrators with tools and insights for managing and analyzing data efficiently. and visualize data through a suite of graphs, charts, and tables. Administrators can easily monitor event reminders, maintain notes, access comprehensive data on teams and contacts, and a sleek interface.",
     category: ["Next", "typeScript", "mui"],
     source: "https://github.com/MohamedAlaa18/admin-dashboard",
     demo: "https://admin-dashboard-omega-indol.vercel.app/",
     screenShots: {
       path: "/screenshots/Dashboard",
       length: 13
+    },
+    isFeatured: true,
+  },
+  {
+    id: 6,
+    projectTitle: "Little Lemon 🍋",
+    imagPath: "/screenshots/Little Lemon/Screenshot (1).png",
+    projectDescription:
+      "Little Lemon is crafted with React, Redux, and Sass, offering a wonderful-looking platform. The restaurant website elevates the dining experience with smooth table bookings, seamless navigation, and a visually appealing user interface. The booking page includes robust validation to ensure a seamless reservation process.",
+    category: ["React", "redux", "sass"],
+    source: "https://github.com/MohamedAlaa18/little-lemon",
+    demo: "https://mohamedalaa28.github.io/restaurant-web-app",
+    screenShots: {
+      path: "/screenshots/Little Lemon",
+      length: 8
     },
     isFeatured: true,
   },

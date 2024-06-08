@@ -1,4 +1,4 @@
-import { useEffect, useRef, MouseEvent as ReactMouseEvent } from 'react';
+import { useEffect, useRef, useState, MouseEvent as ReactMouseEvent } from 'react';
 import './projects.css';
 import { AnimatePresence, motion } from "framer-motion";
 import Modal from '../modal/Modal';
@@ -22,12 +22,20 @@ import { RootState } from '../../../state/store';
 import { myProjects } from './myProjects';
 import { Project } from '../../../types/types';
 
-function Projects() {
+export default function Projects() {
   const dispatch = useDispatch();
   const state = useSelector((state: RootState) => state.projects);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const cardDescriptionRef = useRef<HTMLDivElement>(null);
+  const [cardDescriptionHeight, setCardDescriptionHeight] = useState<number>(0);
+
+  useEffect(() => {
+    if (cardDescriptionRef.current) {
+      setCardDescriptionHeight(cardDescriptionRef.current.clientHeight);
+    }
+  }, [state.hoveredIndex]);
 
   const handleClick = (category: string) => {
     dispatch(setActive(category));
@@ -146,7 +154,7 @@ function Projects() {
       <div className='projects right-section flex'>
         <AnimatePresence initial={false}>
           {state.projectsFiltered.filter((project) => project.isFeatured === state.isFeaturedFilter).map((project: Project, index: number) => (
-            <div key={project.projectTitle} className={`card-container ${state.hoveredIndex === index ? 'hovered' : ''}`}
+            <div key={project.projectTitle} className={`card-container ${state.hoveredIndex === index ? 'hovered' : ''} ${state.hoveredIndex !== -1 && state.hoveredIndex !== index ? 'motion-article-blur' : ''}`}
               onMouseEnter={(event) => handleMouseEnter(event as ReactMouseEvent<HTMLDivElement>, index)}
               onMouseLeave={handleMouseLeave}>
               <motion.article
@@ -186,11 +194,13 @@ function Projects() {
               <AnimatePresence>
                 {state.hoveredIndex === index && (
                   <motion.div
+                    ref={cardDescriptionRef}
                     layout
                     initial="hidden"
                     animate="visible"
                     variants={ringEffect}
                     className={`card-description-container visible ${state.descriptionPosition === 'right' ? 'right' : 'left'}`}
+                    style={{ top: `calc(50% - ${cardDescriptionHeight / 2}px)` }}
                   >
                     <div className='card-description'>
                       <h1 className='title'>{project.projectTitle}</h1>
@@ -242,9 +252,6 @@ function Projects() {
           </div>
         </Modal>
       )}
-
     </section>
   );
 }
-
-export default Projects;

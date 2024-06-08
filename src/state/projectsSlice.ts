@@ -14,7 +14,7 @@ const initialState: ProjectsState = {
     screenshots: [],
     loading: true,
     isDropdownOpen: false,
-    videoUrl: ''
+    videoUrl: '',
 };
 
 const projectsSlice = createSlice({

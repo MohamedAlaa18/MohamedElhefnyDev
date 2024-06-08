@@ -18,12 +18,12 @@ section#projects div.right-section {
 }
 
 .card-description-container.right {
-  top: 29px;
+  transform: translateY(50%);
   right: calc(-100% - 9px);
 }
 
 .card-description-container.left {
-  top: 29px;
+  transform: translateY(50%);
   left: calc(-100% - 9px);
 }
 

@@ -1,7 +1,7 @@
 import './hero.css';
 import Lottie from 'lottie-react';
-import devAnimationDark from '../../animation/yoga_man_dark.json';
-import devAnimationLight from '../../animation/yoga_man_light.json';
+import devAnimationDark from '../../../public/animation/yoga_man_dark.json';
+import devAnimationLight from '../../../public/animation/yoga_man_light.json';
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from '../../context/ThemeContext';

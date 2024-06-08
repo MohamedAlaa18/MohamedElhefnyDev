@@ -1,7 +1,7 @@
 import { ValidationError, useForm } from '@formspree/react';
 import './contact.css';
 import Lottie from 'lottie-react';
-import doneAnimation from '../../animation/done.json';
+import doneAnimation from '../../../public/animation/done.json';
 import { useTheme } from '../../context/ThemeContext';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
@@ -22,8 +22,8 @@ export default function Contact() {
 
   useEffect(() => {
     const preloadAnimations = async () => {
-      const darkAnimation = await import('../../animation/contact_dark.json');
-      const lightAnimation = await import('../../animation/contact_light.json');
+      const darkAnimation = await import('../../../public/animation/contact_dark.json');
+      const lightAnimation = await import('../../../public/animation/contact_light.json');
       setPreloaded({ dark: darkAnimation.default, light: lightAnimation.default });
     };
     preloadAnimations();
