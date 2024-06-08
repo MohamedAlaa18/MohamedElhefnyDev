@@ -16,23 +16,23 @@ export const ringEffect = {
 
 export const smoothScaleAnimation = {
     hidden: {
-        scale: 0,
+        transform: 'scale(0.75)',
         opacity: 0,
     },
     visible: {
-        scale: 1,
+        transform: 'scale(1)',
         opacity: 1,
         transition: {
             duration: 0.5,
-            ease: "linear",
+            ease: [0.25, 0.1, 0.25, 1],
         },
     },
     exit: {
-        scale: 0,
+        transform: 'scale(0)',
         opacity: 0,
         transition: {
             duration: 0.5,
-            ease: "linear",
+            ease: [0.25, 0.1, 0.25, 1],
         },
     },
 };

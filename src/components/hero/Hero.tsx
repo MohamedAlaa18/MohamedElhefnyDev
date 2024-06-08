@@ -26,12 +26,12 @@ export default function Hero() {
           setSentenceIndex((prevSentenceIndex) => prevSentenceIndex + 1);
           setLetterIndex(0);
           setIsTypingComplete(false);
-        }, 150);
+        }, 200);
       } else {
         setIsTypingComplete(true);
         clearInterval(typingInterval);
       }
-    }, 150);
+    }, 200);
 
     return () => clearInterval(typingInterval);
     // eslint-disable-next-line react-hooks/exhaustive-deps

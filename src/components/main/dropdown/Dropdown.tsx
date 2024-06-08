@@ -1,29 +1,25 @@
 import { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion'; // Import motion from framer-motion
+import { motion } from 'framer-motion';
 import './dropdown.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../../state/store';
+import { setHoveredIndex, setIsFeaturedFilter } from '../../../state/projectsSlice';
 
-type DropdownProps = {
-    active: string;
-    isFeaturedFilter: boolean;
-    // eslint-disable-next-line no-unused-vars
-    setIsFeaturedFilter: (isFeatured: boolean) => void;
-    // eslint-disable-next-line no-unused-vars
-    handleClick: (category: string) => void;
-    // eslint-disable-next-line no-unused-vars
-    setHoveredIndex: (index: number) => void;
-};
+// eslint-disable-next-line no-unused-vars
+export default function Dropdown({ handleClick }: { handleClick: (category: string) => void }) {
+    const dispatch = useDispatch();
+    const state = useSelector((state: RootState) => state.projects);
 
-export default function Dropdown({ isFeaturedFilter, setIsFeaturedFilter, handleClick, active, setHoveredIndex }: DropdownProps) {
     const [isDropdownChecked, setDropdownChecked] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
 
     const handleOptionClick = (isFeatured: boolean, event: React.MouseEvent<HTMLAnchorElement>) => {
-        event.preventDefault(); // Prevent default anchor behavior
-        setIsFeaturedFilter(isFeatured);
+        event.preventDefault();
+        dispatch(setIsFeaturedFilter(isFeatured));
         setDropdownChecked(false);
-        handleClick(active);
+        handleClick(state.active);
         handleClick('All');
-        setHoveredIndex(-1);
+        dispatch(setHoveredIndex(-1));
     };
 
     const handleClickOutside = (event: MouseEvent) => {
@@ -50,7 +46,7 @@ export default function Dropdown({ isFeaturedFilter, setIsFeaturedFilter, handle
                 onChange={() => setDropdownChecked(!isDropdownChecked)}
             />
             <label className="for-dropdown" htmlFor="dropdown">
-                {isFeaturedFilter ? 'Featured' : 'Standard'} &nbsp; <div className='icon-select-arrows' />
+                {state.isFeaturedFilter ? 'Featured' : 'Standard'} &nbsp; <div className='icon-select-arrows' />
             </label>
             <motion.div
                 className="section-dropdown"
@@ -58,10 +54,10 @@ export default function Dropdown({ isFeaturedFilter, setIsFeaturedFilter, handle
                 animate={{ opacity: isDropdownChecked ? 1 : 0, y: isDropdownChecked ? 0 : -20 }}
                 transition={{ duration: 0.2 }}
             >
-                <a href="#" onClick={(e) => handleOptionClick(true, e)} className={isFeaturedFilter ? 'active' : ''}>
+                <a href="#" onClick={(e) => handleOptionClick(true, e)} className={state.isFeaturedFilter ? 'active' : ''}>
                     Featured
                 </a>
-                <a href="#" onClick={(e) => handleOptionClick(false, e)} className={isFeaturedFilter ? '' : 'active'}>
+                <a href="#" onClick={(e) => handleOptionClick(false, e)} className={state.isFeaturedFilter ? '' : 'active'}>
                     Standard
                 </a>
             </motion.div>

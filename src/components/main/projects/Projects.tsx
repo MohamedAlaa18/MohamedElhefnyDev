@@ -1,13 +1,14 @@
-import { useEffect, useRef, useState, MouseEvent as ReactMouseEvent } from 'react';
+import { useEffect, useRef, useState, MouseEvent as ReactMouseEvent, useLayoutEffect, useCallback } from 'react';
 import './projects.css';
 import { AnimatePresence, motion } from "framer-motion";
-import Modal from '../modal/Modal';
 import { ringEffect, smoothScaleAnimation } from '../framer-animation';
-import Dropdown from '../dropdown/Dropdown';
+
 import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../../state/store';
+import { myProjects } from './myProjects';
+import { Project } from '../../../types/types';
 import {
   setActive,
-  setIsFeaturedFilter,
   setProjectsFiltered,
   setHoveredIndex,
   setDescriptionPosition,
@@ -18,9 +19,8 @@ import {
   setIsDropdownOpen,
   setVideoUrl
 } from '../../../state/projectsSlice';
-import { RootState } from '../../../state/store';
-import { myProjects } from './myProjects';
-import { Project } from '../../../types/types';
+import Dropdown from '../dropdown/Dropdown';
+import Modal from '../modal/Modal';
 
 export default function Projects() {
   const dispatch = useDispatch();
@@ -31,7 +31,7 @@ export default function Projects() {
   const cardDescriptionRef = useRef<HTMLDivElement>(null);
   const [cardDescriptionHeight, setCardDescriptionHeight] = useState<number>(0);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (cardDescriptionRef.current) {
       setCardDescriptionHeight(cardDescriptionRef.current.clientHeight);
     }
@@ -50,7 +50,7 @@ export default function Projects() {
     dispatch(setHoveredIndex(-1));
   };
 
-  const handleMouseEnter = (event: ReactMouseEvent<HTMLDivElement>, index: number) => {
+  const handleMouseEnter = useCallback((event: ReactMouseEvent<HTMLDivElement>, index: number) => {
     const target = event.currentTarget as HTMLElement;
     const rect = target.getBoundingClientRect();
     const viewportWidth = window.innerWidth;
@@ -62,27 +62,11 @@ export default function Projects() {
     }
 
     dispatch(setHoveredIndex(index));
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleMouseLeave = () => {
     dispatch(setHoveredIndex(-1));
-  };
-
-  const handleNext = () => {
-    dispatch(setCurrentImageIndex((state.currentImageIndex + 1) % state.screenshots.length));
-    dispatch(setLoading(true));
-  };
-
-  const handlePrev = () => {
-    dispatch(setCurrentImageIndex((state.currentImageIndex - 1 + state.screenshots.length) % state.screenshots.length));
-    dispatch(setLoading(true));
-  };
-
-  const handleCloseModal = () => {
-    dispatch(setIsModalOpen(false));
-    dispatch(setScreenshots([]));
-    dispatch(setVideoUrl(''));
-    dispatch(setCurrentImageIndex(0));
   };
 
   const handleImageClick = (project: Project) => {
@@ -97,27 +81,6 @@ export default function Projects() {
     dispatch(setIsModalOpen(true));
     dispatch(setVideoUrl(videoUrl));
   };
-
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (state.isModalOpen) {
-        if (event.key === 'ArrowRight') {
-          handleNext();
-        } else if (event.key === 'ArrowLeft') {
-          handlePrev();
-        } else if (event.key === 'Escape') {
-          handleCloseModal();
-        }
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.isModalOpen]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -137,11 +100,7 @@ export default function Projects() {
     <section id='projects' className='flex' ref={containerRef}>
       <div className='flex left-section'>
         <Dropdown
-          isFeaturedFilter={state.isFeaturedFilter}
-          setIsFeaturedFilter={(filter) => dispatch(setIsFeaturedFilter(filter))}
           handleClick={handleClick}
-          active={state.active}
-          setHoveredIndex={(index) => dispatch(setHoveredIndex(index))}
         />
 
         <div className='flex category-buttons'>
@@ -220,11 +179,7 @@ export default function Projects() {
       </div>
 
       {state.isModalOpen && (
-        <Modal
-          isOpen={state.isModalOpen}
-          onClose={handleCloseModal}
-          screenshots={state.screenshots}
-        >
+        <Modal>
           <div className={`${state.loading ? 'loading' : ''}`}>
             {state.videoUrl ? (
               <iframe

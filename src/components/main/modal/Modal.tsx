@@ -3,21 +3,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 import './modal.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../../state/store';
-import { setCurrentImageIndex, setLoading } from '../../../state/projectsSlice';
+import {
+  setCurrentImageIndex,
+  setIsModalOpen,
+  setScreenshots,
+  setLoading,
+  setVideoUrl
+} from '../../../state/projectsSlice';
+import { useDebouncedCallback } from 'use-debounce';
 
-interface ModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  children: ReactNode;
-  screenshots?: string[];
-}
-
-export default function Modal({
-  isOpen,
-  onClose,
-  children,
-  screenshots = []
-}: ModalProps) {
+export default function Modal({ children }: { children: ReactNode }) {
   const state = useSelector((state: RootState) => state.projects);
   const dispatch = useDispatch();
 
@@ -31,15 +26,15 @@ export default function Modal({
 
   const handleOverlayClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target === event.currentTarget) {
-      onClose();
+      handleCloseModal();
     }
   };
 
   useEffect(() => {
-    if (isOpen) {
+    if (state.isModalOpen) {
       dispatch(setLoading(true));
     }
-  }, [isOpen, dispatch]);
+  }, [state.isModalOpen, dispatch]);
 
   const handleCircleClick = (index: number) => {
     dispatch(setCurrentImageIndex(index));
@@ -69,10 +64,10 @@ export default function Modal({
       const difference = touchStartX - touchEndX;
       if (Math.abs(difference) > 50) {
         if (difference > 0 && state.currentImageIndex !== undefined) {
-          dispatch(setCurrentImageIndex((state.currentImageIndex + 1) % screenshots.length));
+          dispatch(setCurrentImageIndex((state.currentImageIndex + 1) % state.screenshots.length));
           dispatch(setLoading(true));
         } else if (state.currentImageIndex !== undefined) {
-          dispatch(setCurrentImageIndex((state.currentImageIndex - 1 + screenshots.length) % screenshots.length));
+          dispatch(setCurrentImageIndex((state.currentImageIndex - 1 + state.screenshots.length) % state.screenshots.length));
           dispatch(setLoading(true));
         }
       }
@@ -81,7 +76,7 @@ export default function Modal({
     setTouchEndX(null);
   };
 
-  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = useDebouncedCallback((event: React.MouseEvent<HTMLDivElement>) => {
     const modalContent = modalContentRef.current;
     if (modalContent) {
       const contentWidth = modalContent.offsetWidth;
@@ -96,11 +91,49 @@ export default function Modal({
       setMouseX(leftPos);
       setMouseY(topPos);
     }
+  }, 100);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (state.isModalOpen) {
+        if (event.key === 'ArrowRight') {
+          handleNext();
+        } else if (event.key === 'ArrowLeft') {
+          handlePrev();
+        } else if (event.key === 'Escape') {
+          handleCloseModal();
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.isModalOpen]);
+
+  const handleCloseModal = () => {
+    dispatch(setIsModalOpen(false));
+    dispatch(setScreenshots([]));
+    dispatch(setVideoUrl(''));
+    dispatch(setCurrentImageIndex(0));
+  };
+
+  const handleNext = () => {
+    dispatch(setCurrentImageIndex((state.currentImageIndex + 1) % state.screenshots.length));
+    dispatch(setLoading(true));
+  };
+
+  const handlePrev = () => {
+    dispatch(setCurrentImageIndex((state.currentImageIndex - 1 + state.screenshots.length) % state.screenshots.length));
+    dispatch(setLoading(true));
   };
 
   return (
     <AnimatePresence>
-      {isOpen && (
+      {state.isModalOpen && (
         <motion.div
           className="modal-overlay"
           onClick={handleOverlayClick}
@@ -122,28 +155,26 @@ export default function Modal({
             transition={{ duration: 0.3 }}
           >
             <div className="image-wrapper">
-              <button className="modal-close" onClick={onClose}>
+              <button aria-label="Close modal" className="modal-close" onClick={handleCloseModal}>
                 <div className="icon-close"></div>
               </button>
-              {(state.currentImageIndex !== -1 && state.screenshots) && (
-                <>
-                  {state.currentImageIndex > 0 && (
-                    <button className="modal-prev" onClick={() => handleCircleClick(state.currentImageIndex - 1)}>
-                      <div className='icon-arrow-back' />
-                    </button>
-                  )}
-                  {state.currentImageIndex < screenshots.length - 1 && (
-                    <button className="modal-next" onClick={() => handleCircleClick(state.currentImageIndex + 1)}>
-                      <div className='icon-arrow-forward' />
-                    </button>
-                  )}
-                </>
+
+              {state.currentImageIndex > 0 && (
+                <button className="modal-prev" onClick={() => handleCircleClick(state.currentImageIndex - 1)}>
+                  <div className='icon-arrow-back' />
+                </button>
               )}
+              {state.currentImageIndex < state.screenshots.length - 1 && (
+                <button className="modal-next" onClick={() => handleCircleClick(state.currentImageIndex + 1)}>
+                  <div className='icon-arrow-forward' />
+                </button>
+              )}
+
               {children}
             </div>
-            {screenshots && (
+            {state.screenshots && (
               <div className="pagination">
-                {screenshots.map((_, index) => (
+                {state.screenshots.map((_, index) => (
                   <div
                     key={index}
                     className={`icon-circle ${index === state.currentImageIndex ? 'active' : ''}`}
@@ -172,7 +203,7 @@ export default function Modal({
                   </div>
                 )}
                 <img
-                  src={screenshots[previewImageIndex]}
+                  src={state.screenshots[previewImageIndex]}
                   alt={`Preview ${previewImageIndex + 1}`}
                   onLoad={() => setPreviewLoading(false)}
                 />
