@@ -96,9 +96,9 @@ export default function Modal({ children }: { children: ReactNode }) {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (state.isModalOpen) {
-        if (event.key === 'ArrowRight') {
+        if (event.key === 'ArrowRight' && state.screenshots.length > 1) {
           handleNext();
-        } else if (event.key === 'ArrowLeft') {
+        } else if (event.key === 'ArrowLeft' && state.screenshots.length > 1) {
           handlePrev();
         } else if (event.key === 'Escape') {
           handleCloseModal();
@@ -172,19 +172,19 @@ export default function Modal({ children }: { children: ReactNode }) {
 
               {children}
             </div>
-            {state.screenshots && (
-              <div className="pagination">
-                {state.screenshots.map((_, index) => (
-                  <div
-                    key={index}
-                    className={`icon-circle ${index === state.currentImageIndex ? 'active' : ''}`}
-                    onClick={() => handleCircleClick(index)}
-                    onMouseEnter={() => handleCircleMouseEnter(index)}
-                    onMouseLeave={handleCircleMouseLeave}
-                  />
-                ))}
-              </div>
-            )}
+
+            <div className="pagination">
+              {state.screenshots.map((_, index) => (
+                <div
+                  key={index}
+                  className={`icon-circle ${index === state.currentImageIndex ? 'active' : ''}`}
+                  onClick={() => handleCircleClick(index)}
+                  onMouseEnter={() => handleCircleMouseEnter(index)}
+                  onMouseLeave={handleCircleMouseLeave}
+                />
+              ))}
+            </div>
+
             {previewImageIndex !== null && (
               <motion.div
                 className="preview-image"

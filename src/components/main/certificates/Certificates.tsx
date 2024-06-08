@@ -37,7 +37,7 @@ export default function Certificates() {
                   key={certificate.myCertificateTitle}
                   className='flex certificate'>
 
-                  <div className='image-parent flex'>
+                  <div className='image-parent skeleton flex'>
                     <img src={certificate.imagPath} alt="facebook_logo" />
                   </div>
 

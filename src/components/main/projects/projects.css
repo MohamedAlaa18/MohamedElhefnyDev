@@ -11,6 +11,11 @@ section#projects div.right-section {
   position: relative;
 }
 
+/* .card-container:hover .card,
+.card-container:hover .card-description-container {
+  rotate: 1deg;
+} */
+
 .card-description-container {
   position: absolute;
   z-index: 2;
@@ -125,6 +130,7 @@ section#projects div.right-section {
   border: 1px solid var(--border);
   border-radius: 5px;
   transition: 0.3s;
+  /* border-bottom: 2px solid var(--blue); */
 }
 
 .card img {
@@ -134,6 +140,8 @@ section#projects div.right-section {
 
 .image-container {
   position: relative;
+  width: 266px;
+  height: 149px;
 }
 
 .icon-picture {

@@ -117,7 +117,7 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.5 }}
             className="sub-title">
-            Hello, I'm Mohamed Alaa, a skilled Full Stack Developer proficient in a wide range of technologies including JavaScript, Typescript, React.js, Redux, Next.js, Angular, MVC, SQL Server, .Net, C#, Node.js, AWS, CSS3, Sass, Tailwind, Bootstrap, Material UI, Angular Material, Chakra UI, and HTML5, with more than year of experience as a JavaScript Developer. I bring a solid foundation in web development and a proven track record of delivering high-quality solutions.
+            Hello, I am Mohamed Alaa, a proficient Full Stack Developer with over a year of experience specializing in JavaScript development. I am skilled in JavaScript, TypeScript, React.js, Redux, Next.js, Angular, Node.js, and .NET, among other technologies. With a strong foundation in web development, I have a proven track record of delivering high-quality solutions using frameworks and tools like SQL Server, AWS, CSS3, Sass, Tailwind, Bootstrap, Material UI, Angular Material, Chakra UI, and HTML5.
           </motion.p>
 
           <div className='social-section'>

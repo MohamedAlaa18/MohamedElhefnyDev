@@ -2,7 +2,6 @@ import { useEffect, useRef, useState, MouseEvent as ReactMouseEvent, useLayoutEf
 import './projects.css';
 import { AnimatePresence, motion } from "framer-motion";
 import { ringEffect, smoothScaleAnimation } from '../framer-animation';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../state/store';
 import { myProjects } from './myProjects';
@@ -99,9 +98,7 @@ export default function Projects() {
   return (
     <section id='projects' className='flex' ref={containerRef}>
       <div className='flex left-section'>
-        <Dropdown
-          handleClick={handleClick}
-        />
+        <Dropdown handleClick={handleClick} />
 
         <div className='flex category-buttons'>
           <button className={state.active === 'All' && !state.isDropdownOpen ? 'active' : ''} onClick={() => handleClick('All')}>All Projects</button>
@@ -125,8 +122,8 @@ export default function Projects() {
                 variants={smoothScaleAnimation}
                 className='card'
               >
-                <div className="image-container">
-                  <img className="image" width={266} src={project.imagPath} alt={project.projectTitle} />
+                <div className="image-container skeleton">
+                  <img className="image" width={266} src={project.imagPath} alt={project.projectTitle} loading='lazy' />
                   <div className="overlay" onClick={() => handleImageClick(project)}>
                     <i className="icon-picture" />
                   </div>
