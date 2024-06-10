@@ -1,6 +1,6 @@
 export const myTechnologies = [
-    { label: "Next.js", svg: "/skills/nextJs.svg", description: "A React framework for production.", genre: "Frontend" },
-    { label: "React.js", svg: "/skills/reactJs.svg", description: "A JavaScript library for building user interfaces.", genre: "Frontend" },
+    { label: "Next.js", svg: "/skills/nextjs.svg", description: "A React framework for production.", genre: "Frontend" },
+    { label: "React.js", svg: "/skills/reactjs.svg", description: "A JavaScript library for building user interfaces.", genre: "Frontend" },
     { label: "Angular", svg: "/skills/angular.svg", description: "A platform for building mobile and desktop web applications.", genre: "Frontend" },
     { label: "Redux", svg: "/skills/redux.svg", description: "A Predictable State Container for JS Apps.", genre: "Frontend" },
     { label: "JavaScript", svg: "/skills/js.svg", description: "A high-level, just-in-time compiled, object-oriented programming language.", genre: "Frontend" },
@@ -11,7 +11,7 @@ export const myTechnologies = [
     { label: "CSS", svg: "/skills/css.svg", description: "A style sheet language used for describing the presentation of a document written in a markup language.", genre: "Frontend" },
     { label: "Sass", svg: "/skills/sass.svg", description: "A preprocessor scripting language that is interpreted or compiled into CSS.", genre: "Frontend" },
     { label: "Tailwind", svg: "/skills/tailwind.svg", description: "A utility-first CSS framework for rapid UI development.", genre: "Frontend" },
-    { label: "Material UI", svg: "/skills/materialUi.svg", description: "A popular React UI framework.", genre: "Frontend" },
+    { label: "Material UI", svg: "/skills/materialui.svg", description: "A popular React UI framework.", genre: "Frontend" },
     { label: "Bootstrap", svg: "/skills/bootstrap.svg", description: "The most popular HTML, CSS, and JS library in the world.", genre: "Frontend" },
     // { label: "Aws", svg: "/skills/aws.svg", description: "Amazon Web Services offers reliable, scalable, and inexpensive cloud computing services.", genre: "Cloud" },
     { label: "VS Code", svg: "/skills/vscode.svg", description: "A source-code editor made by Microsoft for Windows, Linux, and macOS.", genre: "Tools" },
