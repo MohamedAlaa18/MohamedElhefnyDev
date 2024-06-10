@@ -27,7 +27,6 @@ export default function Certificates() {
           {
             certificatesFiltered.map((certificate) => (
               <a href={certificate.url} key={certificate.myCertificateTitle} target="_blank">
-
                 <motion.article
                   layout
                   initial="hidden"
@@ -41,7 +40,7 @@ export default function Certificates() {
                     <img src={certificate.imagPath} alt="facebook_logo" />
                   </div>
 
-                  <div style={{ width: "266px" }} >
+                  <div style={{ width: "399px" }} >
                     <h1>{certificate.myCertificateTitle}</h1>
                     <div className='name flex'>
                       <p>{certificate.company}</p>

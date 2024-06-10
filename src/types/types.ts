@@ -26,3 +26,29 @@ export interface ProjectsState {
     isDropdownOpen: boolean;
     videoUrl: string;
 }
+
+export interface Technology {
+    label: string;
+    svg: string;
+    description: string;
+    genre: string;
+}
+
+
+export interface labels {
+    left: {
+        title: string;
+        value: string;
+        icon: string;
+    };
+    center: {
+        title: string;
+        value: string;
+        icon: string;
+    };
+    right: {
+        title: string;
+        value: string;
+        icon: string;
+    }
+}

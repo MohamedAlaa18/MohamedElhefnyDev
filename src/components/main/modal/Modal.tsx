@@ -23,6 +23,11 @@ export default function Modal({ children }: { children: ReactNode }) {
   const [mouseX, setMouseX] = useState(0);
   const [mouseY, setMouseY] = useState(0);
   const modalContentRef = useRef<HTMLDivElement>(null);
+  const currentImageIndexRef = useRef<number>(state.currentImageIndex);
+
+  useEffect(() => {
+    currentImageIndexRef.current = state.currentImageIndex;
+  }, [state.currentImageIndex]);
 
   const handleOverlayClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target === event.currentTarget) {
@@ -112,7 +117,7 @@ export default function Modal({ children }: { children: ReactNode }) {
       window.removeEventListener('keydown', handleKeyDown);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.isModalOpen]);
+  }, []);
 
   const handleCloseModal = () => {
     dispatch(setIsModalOpen(false));
@@ -122,12 +127,16 @@ export default function Modal({ children }: { children: ReactNode }) {
   };
 
   const handleNext = () => {
-    dispatch(setCurrentImageIndex((state.currentImageIndex + 1) % state.screenshots.length));
+    const newIndex = (currentImageIndexRef.current + 1) % state.screenshots.length;
+    currentImageIndexRef.current = newIndex;
+    dispatch(setCurrentImageIndex(newIndex));
     dispatch(setLoading(true));
   };
 
   const handlePrev = () => {
-    dispatch(setCurrentImageIndex((state.currentImageIndex - 1 + state.screenshots.length) % state.screenshots.length));
+    const newIndex = (currentImageIndexRef.current - 1 + state.screenshots.length) % state.screenshots.length;
+    currentImageIndexRef.current = newIndex;
+    dispatch(setCurrentImageIndex(newIndex));
     dispatch(setLoading(true));
   };
 

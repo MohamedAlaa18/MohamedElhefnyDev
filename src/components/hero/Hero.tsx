@@ -80,10 +80,6 @@ export default function Hero() {
   //   });
   // };
 
-  const hoverVariants = {
-    // hover: { scale: 1.1, rotate: -45 }
-  };
-
   return (
     <div>
       <section className='hero flex'>
@@ -136,11 +132,7 @@ export default function Hero() {
               whileHover="hover"
             >
               Download CV &nbsp;
-              <motion.i
-                className="icon-file_download"
-                variants={hoverVariants}
-                transition={{ duration: 0.3 }}
-              />
+              <i className="icon-file_download" />
             </motion.a>
 
             {/* <div className="copy-email-container">

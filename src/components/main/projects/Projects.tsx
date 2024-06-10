@@ -109,9 +109,11 @@ export default function Projects() {
       </div>
 
       <div className='projects right-section flex'>
-        <AnimatePresence initial={false}>
+        <AnimatePresence>
           {state.projectsFiltered.filter((project) => project.isFeatured === state.isFeaturedFilter).map((project: Project, index: number) => (
-            <div key={project.projectTitle} className={`card-container ${state.hoveredIndex === index ? 'hovered' : ''} ${state.hoveredIndex !== -1 && state.hoveredIndex !== index ? 'motion-article-blur' : ''}`}
+            <div
+              key={project.projectTitle}
+              className={`card-container ${state.hoveredIndex === index ? 'hovered' : ''} ${state.hoveredIndex !== -1 && state.hoveredIndex !== index ? 'motion-article-blur' : ''}`}
               onMouseEnter={(event) => handleMouseEnter(event as ReactMouseEvent<HTMLDivElement>, index)}
               onMouseLeave={handleMouseLeave}>
               <motion.article
@@ -148,28 +150,37 @@ export default function Projects() {
                 </div>
               </motion.article>
 
-              <AnimatePresence>
-                {state.hoveredIndex === index && (
-                  <motion.div
-                    ref={cardDescriptionRef}
-                    layout
-                    initial="hidden"
-                    animate="visible"
-                    variants={ringEffect}
-                    className={`card-description-container visible ${state.descriptionPosition === 'right' ? 'right' : 'left'}`}
-                    style={{ top: `calc(50% - ${cardDescriptionHeight / 2}px)` }}
-                  >
-                    <div className='card-description'>
-                      <h1 className='title'>{project.projectTitle}</h1>
-                      <div className="book-mark">
-                        <div id="triangle-topleft"></div>
-                        <div id="triangle-topright"></div>
-                      </div>
-                      <p className='sub-title'>{project.projectDescription}</p>
+              {/* {state.hoveredIndex === index && (
+                <motion.div
+                  className={`marker`}
+                  variants={markerVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="hidden"
+                  transition={{ duration: 0.3 }}
+                />
+              )} */}
+
+              {state.hoveredIndex === index && (
+                <motion.div
+                  ref={cardDescriptionRef}
+                  layout
+                  initial="hidden"
+                  animate="visible"
+                  variants={ringEffect}
+                  className={`card-description-container visible ${state.descriptionPosition === 'right' ? 'right' : 'left'}`}
+                  style={{ top: `calc(50% - ${cardDescriptionHeight / 2}px)` }}
+                >
+                  <div className='card-description'>
+                    <h1 className='title'>{project.projectTitle}</h1>
+                    <div className="book-mark">
+                      <div className="triangle-topleft"></div>
+                      <div className="triangle-topright"></div>
                     </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                    <p className='sub-title'>{project.projectDescription}</p>
+                  </div>
+                </motion.div>
+              )}
             </div>
           ))}
         </AnimatePresence>

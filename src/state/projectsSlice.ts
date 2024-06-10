@@ -38,6 +38,7 @@ const projectsSlice = createSlice({
         },
         setCurrentImageIndex(state, action: PayloadAction<number>) {
             state.currentImageIndex = action.payload;
+            console.log(state.currentImageIndex)
         },
         setIsModalOpen(state, action: PayloadAction<boolean>) {
             state.isModalOpen = action.payload;

@@ -1,5 +1,5 @@
 section#certificates div.right-section {
-  row-gap: 16px;
+  gap: 1rem;
 }
 
 /*
@@ -7,58 +7,48 @@ section#certificates div.right-section {
 1-Right-section ==> certificates
 ================================
 */
-div.right-section article.certificate {
-  gap: 0.45rem;
+section#certificates div.right-section a:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px var(--rise-shadow);
   transition: 0.3s;
-  padding: 4px;
-  border: 1px solid rgba(93, 188, 252, 0.3);
+}
+
+section#certificates div.right-section article.certificate {
+  transition: 0.3s;
+  padding: 0.5rem;
+  border: 1px solid var(--border);
   border-radius: 5px;
   cursor: pointer;
-  transition: 0.5s;
-  max-width: 300px;
+  max-width: 333px;
   align-items: center;
+  gap: 0.45rem;
 }
 
-div.right-section article.certificate:hover {
-  scale: 1.01;
-  rotate: 0.5deg;
-  border: 1px solid var(--blue);
-}
-
-.light div.right-section article.certificate {
-  border: 1px solid rgba(244, 165, 96, 0.3);
-}
-
-.light div.right-section article.certificate:hover {
-  border: 1px solid var(--orange);
-}
-
-.light div.right-section article.certificate:hover {
-  background-color: rgb(246, 246, 246);
-}
-
-div.right-section .certificate .image-parent {
+section#certificates div.right-section .certificate .image-parent {
   gap: 1rem;
   border: 1px solid var(--border);
   border-radius: 50%;
   min-height: 44px;
   min-width: 44px;
   overflow: hidden;
-  /* box-shadow: 2px 2px 40px rgba(203, 200, 200, 0.586) inset; */
   border-radius: 50%;
 }
 
-div.right-section .certificate img {
+section#certificates div.right-section .certificate img {
   max-height: 44px;
   max-width: 44px;
 }
 
-div.right-section .certificate h1 {
+section#certificates div.right-section .certificate h1 {
   color: var(--title);
   font-size: 1rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
 }
 
-div.right-section .certificate .name {
+section#certificates div.right-section .certificate .name {
   color: var(--subtitle);
   font-size: 0.8rem;
   justify-content: space-between;

@@ -1,10 +1,3 @@
-/*
-=================
-table of contents
-=================
-1-Left-section ==> Buttons
-2-Responsive Design (media query)
- */
 main.flex {
   flex-direction: column;
   gap: 3rem;
@@ -23,11 +16,6 @@ div.right-section {
   column-gap: 16px;
 }
 
-/*
-==========================
-1-left-section ==> Buttons
-==========================
-*/
 div.left-section,
 .category-buttons {
   flex-direction: column;
@@ -37,7 +25,6 @@ div.left-section,
 main div.left-section button {
   background-color: rgba(36, 37, 46, 1);
   width: 11rem;
-  /* height: 50px; */
   padding: 0.75rem 0;
   text-align: center;
   font-size: 1.05rem;
@@ -45,6 +32,7 @@ main div.left-section button {
   border-radius: 5px;
   transition: 0.3s;
   border: 1px solid var(--border);
+  text-transform: capitalize;
 }
 
 main div.left-section button:hover {
@@ -60,122 +48,6 @@ main div.left-section button.active {
   border: 1px solid #000;
 }
 
-/*
-===============
-2-switch button
-===============
-*/
-main div.flex .toggle-input {
-  display: none;
-}
-
-main div.flex .toggle-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  width: 300px;
-  height: 50px;
-  background: var(--primary);
-  border-radius: 5px;
-  cursor: pointer;
-  box-shadow: 1px 1px 40px #2323242a inset;
-  scale: 1;
-  transition: 0.3s;
-}
-
-main div.flex .toggle-container:hover {
-  scale: 0.97;
-}
-
-main div.flex .toggle-input:checked+.toggle-slider {
-  transform: translateX(-150px);
-}
-
-main div.flex .toggle-slider {
-  position: absolute;
-  width: 150px;
-  height: 50px;
-  right: 0;
-  border-radius: 5px;
-  background-color: rgb(36, 37, 46);
-  border: 1px solid rgb(63, 63, 70);
-  transition: 0.4s;
-}
-
-main div.flex .text-projects,
-main div.flex .text-certificates {
-  font-size: 1rem;
-  color: #fff;
-  position: absolute;
-  transition: 0.4s;
-  gap: 0.5rem;
-}
-
-main div.flex .text-projects {
-  right: 20px;
-  opacity: 1;
-}
-
-main div.flex .text-certificates {
-  left: 20px;
-  opacity: 0.5;
-}
-
-.light main div.flex .toggle-input~.text-certificates,
-.light main div.flex .toggle-input:checked~.text-projects {
-  color: #000;
-}
-
-.light main div.flex .toggle-input:checked~.text-certificates,
-.light main div.flex .toggle-input~.text-projects {
-  color: #fff;
-}
-
-main div.flex .toggle-input:checked~.text-projects {
-  opacity: 0.5;
-}
-
-main div.flex .toggle-input:checked~.text-certificates {
-  opacity: 1;
-}
-
-.icon-code,
-.icon-atom {
-  transition: color 0.4s;
-}
-
-/* Default state */
-.toggle-input:not(:checked)~.text-projects .icon-code {
-  color: var(--blue);
-}
-
-.light .toggle-input:not(:checked)~.text-projects .icon-code {
-  color: var(--orange);
-}
-
-.toggle-input:not(:checked)~.text-certificates .icon-atom {
-  color: var(--title);
-}
-
-/* Checked state */
-.toggle-input:checked~.text-projects .icon-code {
-  color: var(--title);
-}
-
-.toggle-input:checked~.text-certificates .icon-atom {
-  color: var(--blue);
-}
-
-.light .toggle-input:checked~.text-certificates .icon-atom {
-  color: var(--orange);
-}
-
-/*
-=================================
-2-Responsive Design (media query)
-=================================
-*/
 @media (max-width: 600px) {
   main section.flex {
     flex-direction: column;

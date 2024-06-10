@@ -37,12 +37,6 @@
     scale: 0.97;
 }
 
-/* .light .dropdown:checked+label:hover,
-.light .dropdown:not(:checked)+label:hover {
-    box-shadow: 0 2em 2em -1.25em var(--orange);
-    transform: translateY(-0.15em);
-} */
-
 .dropdown:checked+label:before,
 .dropdown:not(:checked)+label:before {
     position: fixed;

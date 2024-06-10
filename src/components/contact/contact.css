@@ -34,6 +34,7 @@ section.contact-us .sub-title {
 2-Left-section ==> Mail
 =======================
 */
+
 section.contact-us form div:nth-of-type(2) {
   margin-top: 24px;
 }
@@ -154,7 +155,7 @@ section.contact-us .massage-sent {
   }
 
   section.contact-us .submit {
-    width: 30%;
+    /* width: 30%; */
     align-self: center;
   }
 }

@@ -26,7 +26,7 @@ export default function Header() {
 
     const handleCloseMenu = (view: string) => {
         setShowModal(false);
-        if (view === 'projects' || view === 'certificates') handleViewChange(view);
+        if (view === 'projects' || view === 'certificates' || view === 'technologies') handleViewChange(view);
     };
 
     return (
@@ -36,21 +36,25 @@ export default function Header() {
             <nav>
                 <ul className='flex'>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#main" onClick={() => handleViewChange('projects')}>Projects</a></li>
                     <li><a href="#main" onClick={() => handleViewChange('certificates')}>Certificates</a></li>
+                    <li><a href="#main" onClick={() => handleViewChange('projects')}>Projects</a></li>
+                    <li><a href="#main" onClick={() => handleViewChange('technologies')}>Technologies</a></li>
                     <li><a href="#contact-us">Contact us</a></li>
                 </ul>
             </nav>
+
             <button className='mode flex' onClick={handleClick}>
                 <i className={theme === 'dark' ? 'icon-moon-o' : 'icon-sun'} />
             </button>
+
             {showModal &&
                 <div className='fixed'>
                     <ul className='modal' ref={menuRef}>
                         <li><button className='icon-close' onClick={() => setShowModal(false)} /></li>
                         <li><a href="#about" onClick={() => handleCloseMenu('about')}>About</a></li>
-                        <li><a href="#main" onClick={() => handleCloseMenu('projects')}>Projects</a></li>
                         <li><a href="#main" onClick={() => handleCloseMenu('certificates')}>Certificates</a></li>
+                        <li><a href="#main" onClick={() => handleCloseMenu('projects')}>Projects</a></li>
+                        <li><a href="#main" onClick={() => handleCloseMenu('technologies')}>Technologies</a></li>
                         <li><a href="#contact-us" onClick={() => handleCloseMenu('contact-us')}>Contact us</a></li>
                     </ul>
                 </div>

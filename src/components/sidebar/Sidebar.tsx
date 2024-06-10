@@ -9,7 +9,7 @@ export default function Sidebar() {
 
     const sections = [
         { id: 'about', icon: 'icon-home' },
-        { id: 'main', icon: view === 'projects' ? 'icon-code' : 'icon-atom' },
+        { id: 'main', icon: view === 'projects' ? 'icon-code' : view === 'certificates' ? 'icon-atom' : 'icon-gear' },
         { id: 'contact-us', icon: 'icon-envelope' },
     ];
 

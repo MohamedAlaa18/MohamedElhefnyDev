@@ -35,10 +35,8 @@ export default function Contact() {
   return (
     <section className='contact-us'>
       <h1 className='title flex'>
-        <div>
-          <i className='icon-envelope' />
-          Contact us
-        </div>
+        <i className='icon-envelope' />
+        Contact us
       </h1>
 
       <p className='sub-title'>Contact us for more information and get notified when I publish something new.</p>

@@ -1,25 +1,40 @@
 import Certificates from './certificates/Certificates';
 import Projects from './projects/Projects';
-import './main.css'
+import Technologies from '../technologies/Technologies';
+import './main.css';
 import { useView } from '../../context/useView';
+import TripleToggleSwitch from './TripleToggleSwitch/TripleToggleSwitch';
 
 function Main() {
-  const { view, handleViewChange, toggleCheckBox } = useView();
+  const { view } = useView();
+
+  const labels = {
+    right: {
+      title: "Technologies",
+      value: "technologies",
+      icon: "icon-gear",
+    },
+    center: {
+      title: "Projects",
+      value: "projects",
+      icon: "icon-code",
+    },
+    left: {
+      title: "Certificates",
+      value: "certificates",
+      icon: "icon-atom",
+    },
+  };
 
   return (
     <main className="flex">
-      <div className="flex toggle-container-header">
-        <label className="toggle-container">
-          <input ref={toggleCheckBox} type="checkbox" className="toggle-input" onChange={() => handleViewChange(view == 'projects' ? 'certificates' : 'projects')} />
-          <span className="toggle-slider"></span>
-          <div className="text-projects flex"><span>Projects</span><i className="icon-code" />&nbsp;</div>
-          <div className="text-certificates flex"><i className="icon-atom" /><span>Certificates</span></div>
-        </label>
-      </div>
+      <TripleToggleSwitch labels={labels} />
 
-      {view === 'projects' ? <Projects /> : <Certificates />}
-    </main >
-  )
+      {view === 'projects' && <Projects />}
+      {view === 'certificates' && <Certificates />}
+      {view === 'technologies' && <Technologies />}
+    </main>
+  );
 }
 
-export default Main
+export default Main;
