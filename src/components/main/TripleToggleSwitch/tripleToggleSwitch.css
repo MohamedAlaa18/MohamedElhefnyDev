@@ -30,6 +30,11 @@ input[type="radio"] {
 label {
     color: var(--subtitle);
     cursor: pointer;
+    transition: 0.3s;
+}
+
+label:hover {
+    color: var(--title);
 }
 
 .black-font {
@@ -56,9 +61,9 @@ label {
     transform: scale(clamp(0.6, (100vw / 600px), 1));
 }
 
-.main-container:hover {
+/* .main-container:hover {
     transform: scale(0.97);
-}
+} */
 
 .switch {
     height: var(--switch-height);
@@ -202,4 +207,5 @@ label {
 #center:checked+label,
 #right:checked+label {
     background-color: transparent;
+    cursor: context-menu;
 }
