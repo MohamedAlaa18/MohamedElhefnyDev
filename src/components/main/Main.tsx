@@ -1,9 +1,9 @@
 import Certificates from './certificates/Certificates';
 import Projects from './projects/Projects';
-import Technologies from '../technologies/Technologies';
 import './main.css';
 import { useView } from '../../context/useView';
 import TripleToggleSwitch from './TripleToggleSwitch/TripleToggleSwitch';
+import Technologies from '../technologies/Technologies';
 
 function Main() {
   const { view } = useView();

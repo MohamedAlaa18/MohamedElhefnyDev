@@ -1,8 +1,8 @@
 import './technologies.css';
 import { myTechnologies } from './myTechnologies';
-import { Technology } from '../../types/types';
 import { useState } from 'react';
 import { motion } from "framer-motion";
+import { Technology } from '../../types/types';
 import { smoothScaleAnimation } from '../main/framer-animation';
 
 export default function Technologies() {

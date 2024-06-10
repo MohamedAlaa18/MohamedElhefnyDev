@@ -14,7 +14,6 @@ section#certificates div.right-section a:hover {
 }
 
 section#certificates div.right-section article.certificate {
-  transition: 0.3s;
   padding: 0.5rem;
   border: 1px solid var(--border);
   border-radius: 5px;

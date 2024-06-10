@@ -29,10 +29,13 @@ section#technologies .technology-card article {
     gap: 0.5rem;
 }
 
+section#technologies .technology-card {
+    transition: 0.3s;
+}
+
 section#technologies .technology-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 10px 20px var(--rise-shadow);
-    transition: 0.3s;
 }
 
 /* section#technologies .technology-card article.selected {

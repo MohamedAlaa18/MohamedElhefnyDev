@@ -1,3 +1,28 @@
+:root {
+    --container-width: 30rem;
+    --switch-width: 10rem;
+    --switch-height: 50px;
+    --animation-duration: 0.5s;
+}
+
+@media (max-width: 600px) {
+    :root {
+        --container-width: 21rem;
+        --switch-width: 7rem;
+    }
+
+    label {
+        font-size: 0.9rem;
+        gap: 0.25rem;
+    }
+}
+
+@media (min-width: 600px) {
+    label {
+        gap: 0.5rem;
+    }
+}
+
 input[type="radio"] {
     display: none;
 }
@@ -5,7 +30,6 @@ input[type="radio"] {
 label {
     color: var(--subtitle);
     cursor: pointer;
-    gap: 0.5rem;
 }
 
 .black-font {
@@ -23,8 +47,8 @@ label {
 .main-container {
     display: inline-block;
     vertical-align: middle;
-    width: 450px;
-    height: 50px;
+    width: var(--container-width);
+    height: var(--switch-height);
     border-radius: 5px;
     background: var(--primary);
     position: relative;
@@ -37,20 +61,19 @@ label {
 }
 
 .switch {
-    height: 50px;
-    width: 150px;
+    height: var(--switch-height);
+    width: var(--switch-width);
     background-color: rgb(36, 37, 46);
     border: 1px solid rgb(63, 63, 70);
     border-radius: 5px;
     position: absolute;
-    transition: transform 0.5s ease;
+    transition: transform var(--animation-duration) ease;
     left: 0;
-    /* Default position */
 }
 
 /* Left to Center */
 .switch.left-to-center {
-    animation: leftToCenter 0.5s forwards;
+    animation: leftToCenter var(--animation-duration) forwards;
 }
 
 @keyframes leftToCenter {
@@ -59,13 +82,13 @@ label {
     }
 
     to {
-        transform: translateX(150px);
+        transform: translateX(var(--switch-width));
     }
 }
 
 /* Left to Right */
 .switch.left-to-right {
-    animation: leftToRight 0.5s forwards;
+    animation: leftToRight var(--animation-duration) forwards;
 }
 
 @keyframes leftToRight {
@@ -74,18 +97,18 @@ label {
     }
 
     to {
-        transform: translateX(300px);
+        transform: translateX(calc(var(--switch-width) * 2));
     }
 }
 
 /* Center to Left */
 .switch.center-to-left {
-    animation: centerToLeft 0.5s forwards;
+    animation: centerToLeft var(--animation-duration) forwards;
 }
 
 @keyframes centerToLeft {
     from {
-        transform: translateX(150px);
+        transform: translateX(var(--switch-width));
     }
 
     to {
@@ -95,27 +118,27 @@ label {
 
 /* Center to Right */
 .switch.center-to-right {
-    animation: centerToRight 0.5s forwards;
+    animation: centerToRight var(--animation-duration) forwards;
 }
 
 @keyframes centerToRight {
     from {
-        transform: translateX(150px);
+        transform: translateX(var(--switch-width));
     }
 
     to {
-        transform: translateX(300px);
+        transform: translateX(calc(var(--switch-width) * 2));
     }
 }
 
 /* Right to Left */
 .switch.right-to-left {
-    animation: rightToLeft 0.5s forwards;
+    animation: rightToLeft var(--animation-duration) forwards;
 }
 
 @keyframes rightToLeft {
     from {
-        transform: translateX(300px);
+        transform: translateX(calc(var(--switch-width) * 2));
     }
 
     to {
@@ -125,16 +148,16 @@ label {
 
 /* Right to Center */
 .switch.right-to-center {
-    animation: rightToCenter 0.5s forwards;
+    animation: rightToCenter var(--animation-duration) forwards;
 }
 
 @keyframes rightToCenter {
     from {
-        transform: translateX(300px);
+        transform: translateX(calc(var(--switch-width) * 2));
     }
 
     to {
-        transform: translateX(150px);
+        transform: translateX(var(--switch-width));
     }
 }
 
@@ -144,11 +167,11 @@ label {
 }
 
 .switch.center-position {
-    transform: translateX(150px);
+    transform: translateX(var(--switch-width));
 }
 
 .switch.right-position {
-    transform: translateX(300px);
+    transform: translateX(calc(var(--switch-width) * 2));
 }
 
 .left-label,
@@ -157,8 +180,8 @@ label {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 50px;
-    width: 150px;
+    height: var(--switch-height);
+    width: var(--switch-width);
     position: absolute;
     border-radius: 5px;
 }
@@ -168,27 +191,15 @@ label {
 }
 
 .center-label {
-    left: 150px;
+    left: var(--switch-width);
 }
 
 .right-label {
-    left: 300px;
+    left: calc(var(--switch-width) * 2);
 }
 
 #left:checked+label,
 #center:checked+label,
 #right:checked+label {
     background-color: transparent;
-}
-
-@media (max-width: 600px) {
-    .main-container {
-        scale: 0.9;
-    }
-}
-
-@media (max-width: 440px) {
-    .main-container {
-        scale: 0.8;
-    }
 }
