@@ -271,14 +271,14 @@ section#projects div.right-section {
   margin-left: 10px;
 }
 
-.marker {
+/* .marker {
   position: absolute;
   bottom: -1px;
   left: 4%;
   width: 92%;
   border-bottom: 1px solid var(--blue);
   border-radius: 1px;
-}
+} */
 
 /* .card-container:hover .card::after {
   content: "";
@@ -293,14 +293,14 @@ section#projects div.right-section {
   pointer-events: none;
 } */
 
-.light .marker {
+/* .light .marker {
   border: 1px solid var(--orange);
 }
 
 .light .marker::after {
   background-color: rgba(244, 165, 96, 0.1);
   filter: drop-shadow(0 5px 25px rgba(244, 165, 96, 0.4)) blur(30px);
-}
+} */
 
 .not-found-dark,
 .light .not-found-light {

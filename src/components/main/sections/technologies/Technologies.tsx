@@ -1,13 +1,12 @@
 import './technologies.css';
 import { myTechnologies } from './myTechnologies';
 import { useState } from 'react';
-import { motion } from "framer-motion";
-import { Technology } from '../../types/types';
-import { smoothScaleAnimation } from '../main/framer-animation';
+import { AnimatePresence, motion } from "framer-motion";
+import { smoothScaleAnimation } from '../../framer-animation';
 
 export default function Technologies() {
     const [active, setActive] = useState('all');
-    const [technologiesFiltered, setTechnologiesFiltered] = useState<Technology[]>(myTechnologies);
+    const [technologiesFiltered, setTechnologiesFiltered] = useState(myTechnologies);
 
     const handleClick = (genre: string) => {
         setActive(genre);
@@ -28,21 +27,25 @@ export default function Technologies() {
             </div>
 
             <div className="right-section flex">
-                {technologiesFiltered.map((technology) => (
-                    <div className='technology-card'>
-                        <motion.article
-                            layout
-                            initial="hidden"
-                            animate="visible"
-                            exit="exit"
-                            variants={smoothScaleAnimation}
-                            key={technology.label}
-                        >
-                            <img src={technology.svg} alt={technology.label} className="technology-icon" />
-                            <span className="technology-label">{technology.label}</span>
-                        </motion.article>
-                    </div>
-                ))}
+                <AnimatePresence>
+                    {technologiesFiltered.map((technology,index) => (
+                        <div className='technology-card' key={index}>
+                            <motion.article
+                                layout
+                                initial="hidden"
+                                animate="visible"
+                                exit="exit"
+                                variants={smoothScaleAnimation}>
+
+                                <div className="card-top">
+                                    <img src={technology.svg} alt={technology.label} className="technology-icon card-img" />
+                                </div>
+
+                                <h1 className="card-bottom">{technology.label}</h1>
+                            </motion.article>
+                        </div>
+                    ))}
+                </AnimatePresence>
             </div>
         </section>
     );

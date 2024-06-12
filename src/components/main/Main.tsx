@@ -1,12 +1,14 @@
-import Certificates from './certificates/Certificates';
-import Projects from './projects/Projects';
-import './main.css';
+import Projects from './sections/projects/Projects';
+import Certificates from './sections/certificates/Certificates';
+import Technologies from './sections/technologies/Technologies';
+import TripleToggleSwitch from './components/tripleToggleSwitch/TripleToggleSwitch';
 import { useView } from '../../context/useView';
-import TripleToggleSwitch from './TripleToggleSwitch/TripleToggleSwitch';
-import Technologies from '../technologies/Technologies';
+import './main.css'
+import { useState } from 'react';
 
-function Main() {
-  const { view } = useView();
+export default function Main() {
+  const { view, handleViewChange } = useView();
+  const [oldView, setOldView] = useState(view);
 
   const labels = {
     right: {
@@ -26,15 +28,27 @@ function Main() {
     },
   };
 
+  const toggleView = () => {
+    if (view !== 'technologies') {
+      setOldView(view);
+      handleViewChange('technologies');
+    } else {
+      handleViewChange(oldView);
+    }
+  }
+
   return (
     <main className="flex">
+      {
+        (view === 'projects' || view === 'technologies') &&
+        <button className={`technologies-toggle flex ${view === 'technologies' && 'active'}`} onClick={() => toggleView()}>
+          <i className={`${view === 'projects' ? 'icon-gear' : 'icon-code'}`} />
+        </button>
+      }
+
       <TripleToggleSwitch labels={labels} />
 
-      {view === 'projects' && <Projects />}
-      {view === 'certificates' && <Certificates />}
-      {view === 'technologies' && <Technologies />}
+      {view === 'projects' ? <Projects /> : view === 'certificates' ? <Certificates /> : <Technologies />}
     </main>
   );
 }
-
-export default Main;

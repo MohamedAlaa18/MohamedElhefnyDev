@@ -1,12 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Project, ProjectsState } from '../types/types';
-import { myProjects } from '../components/main/projects/myProjects';
+import { ProjectsState } from '../types/types';
 
 
 const initialState: ProjectsState = {
     active: 'All',
     isFeaturedFilter: true,
-    projectsFiltered: myProjects,
     hoveredIndex: -1,
     descriptionPosition: 'right',
     currentImageIndex: 0,
@@ -26,9 +24,6 @@ const projectsSlice = createSlice({
         },
         setIsFeaturedFilter(state, action: PayloadAction<boolean>) {
             state.isFeaturedFilter = action.payload;
-        },
-        setProjectsFiltered(state, action: PayloadAction<Project[]>) {
-            state.projectsFiltered = action.payload;
         },
         setHoveredIndex(state, action: PayloadAction<number>) {
             state.hoveredIndex = action.payload;
@@ -61,7 +56,6 @@ const projectsSlice = createSlice({
 export const {
     setActive,
     setIsFeaturedFilter,
-    setProjectsFiltered,
     setHoveredIndex,
     setDescriptionPosition,
     setCurrentImageIndex,

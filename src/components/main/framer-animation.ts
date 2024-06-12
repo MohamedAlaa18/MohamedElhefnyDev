@@ -30,7 +30,7 @@ export const ringEffect = {
         scale: [0, 1.1, 1],
         opacity: [0, 1, 1],
         transition: {
-            delay: 0.1,
+            delay: 0,
             duration: 0.6,
             ease: 'easeInOut',
             times: [0, 0.6, 1],

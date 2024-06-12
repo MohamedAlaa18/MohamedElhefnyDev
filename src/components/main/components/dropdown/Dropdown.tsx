@@ -2,8 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import './dropdown.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../../state/store';
-import { setHoveredIndex, setIsFeaturedFilter } from '../../../state/projectsSlice';
+import { RootState } from '../../../../state/store';
+import { setHoveredIndex, setIsFeaturedFilter } from '../../../../state/projectsSlice';
 
 // eslint-disable-next-line no-unused-vars
 export default function Dropdown({ handleClick }: { handleClick: (category: string) => void }) {

@@ -16,7 +16,6 @@ export interface Project {
 export interface ProjectsState {
     active: string;
     isFeaturedFilter: boolean;
-    projectsFiltered: Project[];
     hoveredIndex: number;
     descriptionPosition: 'right' | 'left' | 'bottom';
     currentImageIndex: number;

@@ -81,61 +81,60 @@ export default function Hero() {
   // };
 
   return (
-    <div>
-      <section className='hero flex'>
-        <div className='left-section'>
-          <div className='parent-avatar flex'>
-            <motion.img
-              initial={{ transform: "scale(0)" }}
-              animate={{ transform: "scale(1)" }}
-              transition={{ damping: 5, duration: 2, type: "spring", stiffness: 100 }}
-              src="./profile-pic.png" className='avatar' alt="" />
-            <div className='icon-verified'></div>
+    <section className='hero flex'>
+      <div className='left-section'>
+        <div className='parent-avatar flex'>
+          <motion.img
+            initial={{ transform: "scale(0)" }}
+            animate={{ transform: "scale(1)" }}
+            transition={{ damping: 5, duration: 2, type: "spring", stiffness: 100 }}
+            src="./profile-pic.png" className='avatar' alt="" />
+          <div className='icon-verified'></div>
+        </div>
+        <motion.h1
+          initial={{ opacity: 0 }} animate={{ opacity: 1 }} className='title'>
+          {isTypingComplete ? sentences.join(" ") : text}
+          <AnimatePresence>
+            {showCursor && !isTypingComplete && (
+              <motion.span
+                initial={{ opacity: 1 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                |
+              </motion.span>
+            )}
+          </AnimatePresence>
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="sub-title">
+          Hello, I am Mohamed Alaa, a proficient Full Stack Developer with over a year of experience specializing in JavaScript development. I am skilled in JavaScript, TypeScript, React.js, Redux, Next.js, Angular, Node.js, and .NET, among other technologies. With a strong foundation in web development, I have a proven track record of delivering high-quality solutions using frameworks and tools like SQL Server, AWS, CSS3, Sass, Tailwind, Bootstrap, Material UI, Angular Material, Chakra UI, and HTML5.
+        </motion.p>
+
+        <div className='social-section'>
+          <div className='all-icons flex'>
+            <a href='mailto: mohamed.alaa.elhefny@gmail.com' target="_blank" className="icon icon-envelope" />
+            <a href='https://github.com/MohamedAlaa18' target="_blank" className="icon icon-github" />
+            <a href='https://wa.me/+201289643240' target="_blank" className="icon icon-whatsapp" />
+            <a href='https://www.linkedin.com/in/mohamed-alaa-elhefny' target="_blank" className="icon icon-linkedin" />
           </div>
-          <motion.h1
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} className='title'>
-            {isTypingComplete ? sentences.join(" ") : text}
-            <AnimatePresence>
-              {showCursor && !isTypingComplete && (
-                <motion.span
-                  initial={{ opacity: 1 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  |
-                </motion.span>
-              )}
-            </AnimatePresence>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="sub-title">
-            Hello, I am Mohamed Alaa, a proficient Full Stack Developer with over a year of experience specializing in JavaScript development. I am skilled in JavaScript, TypeScript, React.js, Redux, Next.js, Angular, Node.js, and .NET, among other technologies. With a strong foundation in web development, I have a proven track record of delivering high-quality solutions using frameworks and tools like SQL Server, AWS, CSS3, Sass, Tailwind, Bootstrap, Material UI, Angular Material, Chakra UI, and HTML5.
-          </motion.p>
 
-          <div className='social-section'>
-            <div className='all-icons flex'>
-              <a href='mailto: mohamed.alaa.elhefny@gmail.com' target="_blank" className="icon icon-envelope" />
-              <a href='https://github.com/MohamedAlaa18' target="_blank" className="icon icon-github" />
-              <a href='https://wa.me/+201289643240' target="_blank" className="icon icon-whatsapp" />
-              <a href='https://www.linkedin.com/in/mohamed-alaa-elhefny' target="_blank" className="icon icon-linkedin" />
-            </div>
+          {/* <div className='flex social-bottom'> */}
+          <motion.a
+            href="https://mohamed-alaa-dev.vercel.app/Mohamed Alaa El-hefny.pdf"
+            className="download-cv flex"
+            download="Mohamed Alaa El-hefny.pdf"
+            whileHover="hover"
+          >
+            Download CV &nbsp;
+            <i className="icon-file_download" />
+          </motion.a>
 
-            {/* <div className='flex social-bottom'> */}
-            <motion.a
-              href="https://mohamed-alaa-dev.vercel.app/Mohamed Alaa El-hefny.pdf"
-              className="download-cv flex"
-              download="Mohamed Alaa El-hefny.pdf"
-              whileHover="hover"
-            >
-              Download CV &nbsp;
-              <i className="icon-file_download" />
-            </motion.a>
-
-            {/* <div className="copy-email-container">
+          {/* <div className="copy-email-container">
                 <motion.button
                   onClick={handleCopyEmail}
                   className="copy-email flex"
@@ -150,15 +149,14 @@ export default function Hero() {
                 </motion.button>
                 {copySuccess && <span className="copy-success-message">{copySuccess}</span>}
               </div> */}
-            {/* </div> */}
+          {/* </div> */}
 
-          </div>
         </div>
+      </div>
 
-        <div className='right-section animation'>
-          <Lottie animationData={isDark ? devAnimationDark : devAnimationLight} />
-        </div>
-      </section>
-    </div>
+      <div className='right-section animation'>
+        <Lottie animationData={isDark ? devAnimationDark : devAnimationLight} style={{ height: 455 }} />
+      </div>
+    </section>
   );
 }

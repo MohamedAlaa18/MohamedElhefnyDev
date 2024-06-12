@@ -26,7 +26,7 @@ function App() {
   return (
     <Suspense fallback={<Loading />}>
       <CustomProvider>
-        <div className='container'>
+        <div className='container relative'>
           <div id='about' />
           <Header />
           <Hero />

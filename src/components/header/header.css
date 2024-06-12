@@ -98,52 +98,6 @@ header .mode:active {
   transition: 0.3s;
 }
 
-/* ring effect */
-header .ring::before {
-  position: absolute;
-  width: calc(100% + 5px);
-  height: calc(100% + 5px);
-  border: 1px solid var(--primary-color-light);
-  border-radius: 100%;
-  pointer-events: none;
-  content: "";
-  transition: 0.3s;
-}
-
-header .ring:hover::before {
-  border: 1px solid var(--secondary-color-light);
-  width: calc(100% + 10px);
-  height: calc(100% + 10px);
-}
-
-header .ring:active::before {
-  width: calc(100% + 5px);
-  height: calc(100% + 5px);
-}
-
-header .ring::after {
-  position: absolute;
-  width: calc(100% + 10px);
-  height: calc(100% + 10px);
-  border: 2px dashed var(--primary-color-lighter);
-  border-radius: 100%;
-  pointer-events: none;
-  animation: rotate 20s linear infinite;
-  content: "";
-  transition: 0.3s;
-}
-
-header .ring:hover::after {
-  border: 2px dashed var(--secondary-color-lighter);
-  width: calc(100% + 20px);
-  height: calc(100% + 20px);
-}
-
-header .ring:active::after {
-  width: calc(100% + 10px);
-  height: calc(100% + 10px);
-}
-
 header .mode .icon-sun {
   color: var(--orange);
   transition: 0.2s;
@@ -267,20 +221,4 @@ header .icon-close:hover {
   to {
     transform: rotateZ(-360deg);
   }
-}
-
-:root {
-  --primary-color-light: rgba(93, 188, 252, 0.75);
-  --primary-color-lighter: rgba(93, 188, 252, 0.5);
-
-  --secondary-color-light: rgba(244, 165, 96, 0.75);
-  --secondary-color-lighter: rgba(244, 165, 96, 0.5);
-}
-
-.light {
-  --primary-color-light: rgba(244, 165, 96, 0.75);
-  --primary-color-lighter: rgba(244, 165, 96, 0.5);
-
-  --secondary-color-light: rgba(93, 188, 252, 0.75);
-  --secondary-color-lighter: rgba(93, 188, 252, 0.5);
 }

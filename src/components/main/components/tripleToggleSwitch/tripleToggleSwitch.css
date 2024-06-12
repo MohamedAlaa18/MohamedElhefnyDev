@@ -1,25 +1,21 @@
 :root {
-    --container-width: 30rem;
-    --switch-width: 10rem;
+    /* --container-width: 30rem; */
+    --container-width: 22rem;
+    --switch-width: 11rem;
     --switch-height: 50px;
     --animation-duration: 0.5s;
 }
 
 @media (max-width: 600px) {
     :root {
-        --container-width: 21rem;
-        --switch-width: 7rem;
+        /* --container-width: 21rem; */
+        --container-width: 15.4rem;
+        --switch-width: 7.7rem;
     }
 
     label {
         font-size: 0.9rem;
         gap: 0.25rem;
-    }
-}
-
-@media (min-width: 600px) {
-    label {
-        gap: 0.5rem;
     }
 }
 
@@ -34,18 +30,25 @@ label {
 }
 
 label:hover {
-    color: var(--title);
-}
-
-.black-font {
-    color: white;
-}
-
-.black-font i {
     color: var(--blue);
 }
 
-.light .black-font i {
+.light label:hover {
+    color: var(--orange);
+}
+
+.white-font,
+.white-font:hover,
+.light .white-font,
+.light .white-font:hover {
+    color: white;
+}
+
+.white-font i {
+    color: var(--blue);
+}
+
+.light .white-font i {
     color: var(--orange);
 }
 
@@ -60,10 +63,6 @@ label:hover {
     transition: 0.5s ease;
     transform: scale(clamp(0.6, (100vw / 600px), 1));
 }
-
-/* .main-container:hover {
-    transform: scale(0.97);
-} */
 
 .switch {
     height: var(--switch-height);
@@ -208,4 +207,10 @@ label:hover {
 #right:checked+label {
     background-color: transparent;
     cursor: context-menu;
+}
+
+@media (min-width: 600px) {
+    label {
+        gap: 0.5rem;
+    }
 }

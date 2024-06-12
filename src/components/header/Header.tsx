@@ -9,24 +9,38 @@ export default function Header() {
     const { theme, setTheme } = useTheme();
     const { handleViewChange } = useView();
 
-    const handleClick = () => {
+    const handleThemeToggle = () => {
         setTheme(theme === "dark" ? "light" : "dark");
     };
 
     useEffect(() => {
-        const handler = (e: MouseEvent) => {
+        const handleClickOutside = (e: MouseEvent) => {
             if (!menuRef.current?.contains(e.target as Node)) {
                 setShowModal(false);
             }
         };
 
-        document.addEventListener('mousedown', handler);
-        return () => document.removeEventListener('mousedown', handler);
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
-    const handleCloseMenu = (view: string) => {
+    const handleScrollToSection = (event: React.MouseEvent<HTMLAnchorElement>, view: string) => {
+        event.preventDefault();
+        const targetId = event.currentTarget.getAttribute('href');
+        if (targetId) {
+            const target = document.querySelector(targetId);
+            if (target) {
+                window.scrollTo({
+                    top: target.getBoundingClientRect().top + window.scrollY,
+                    behavior: 'smooth',
+                });
+
+                setTimeout(() => {
+                    handleViewChange(view);
+                }, 400);
+            }
+        }
         setShowModal(false);
-        if (view === 'projects' || view === 'certificates' || view === 'technologies') handleViewChange(view);
     };
 
     return (
@@ -36,14 +50,14 @@ export default function Header() {
             <nav>
                 <ul className='flex'>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#main" onClick={() => handleViewChange('certificates')}>Certificates</a></li>
-                    <li><a href="#main" onClick={() => handleViewChange('projects')}>Projects</a></li>
-                    <li><a href="#main" onClick={() => handleViewChange('technologies')}>Technologies</a></li>
+                    <li><a href="#main" onClick={(e) => handleScrollToSection(e, 'certificates')}>Certificates</a></li>
+                    <li><a href="#main" onClick={(e) => handleScrollToSection(e, 'projects')}>Projects</a></li>
+                    {/* <li><a href="#main" onClick={(e) => handleScrollToSection(e, 'technologies')}>Technologies</a></li> */}
                     <li><a href="#contact-us">Contact us</a></li>
                 </ul>
             </nav>
 
-            <button className='mode flex' onClick={handleClick}>
+            <button className='mode flex' onClick={handleThemeToggle}>
                 <i className={theme === 'dark' ? 'icon-moon-o' : 'icon-sun'} />
             </button>
 
@@ -51,11 +65,11 @@ export default function Header() {
                 <div className='fixed'>
                     <ul className='modal' ref={menuRef}>
                         <li><button className='icon-close' onClick={() => setShowModal(false)} /></li>
-                        <li><a href="#about" onClick={() => handleCloseMenu('about')}>About</a></li>
-                        <li><a href="#main" onClick={() => handleCloseMenu('certificates')}>Certificates</a></li>
-                        <li><a href="#main" onClick={() => handleCloseMenu('projects')}>Projects</a></li>
-                        <li><a href="#main" onClick={() => handleCloseMenu('technologies')}>Technologies</a></li>
-                        <li><a href="#contact-us" onClick={() => handleCloseMenu('contact-us')}>Contact us</a></li>
+                        <li><a href="#about" onClick={() => setShowModal(false)}>About</a></li>
+                        <li><a href="#main" onClick={(e) => handleScrollToSection(e, 'certificates')}>Certificates</a></li>
+                        <li><a href="#main" onClick={(e) => handleScrollToSection(e, 'projects')}>Projects</a></li>
+                        {/* <li><a href="#main" onClick={(e) => handleScrollToSection(e, 'technologies')}>Technologies</a></li> */}
+                        <li><a href="#contact-us" onClick={() => setShowModal(false)}>Contact us</a></li>
                     </ul>
                 </div>
             }

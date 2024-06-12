@@ -3,7 +3,7 @@ main.flex {
   gap: 3rem;
 }
 
-main section.flex {
+main.flex section.flex {
   gap: 2.64rem;
   align-items: start;
   width: 100%;
@@ -13,7 +13,7 @@ div.right-section {
   flex-grow: 1;
   justify-content: center;
   flex-wrap: wrap;
-  column-gap: 16px;
+  gap: 1rem;
 }
 
 div.left-section,
@@ -22,7 +22,7 @@ div.left-section,
   gap: 10px;
 }
 
-main div.left-section button {
+main.flex div.left-section button {
   background-color: rgba(36, 37, 46, 1);
   width: 11rem;
   padding: 0.75rem 0;
@@ -35,21 +35,49 @@ main div.left-section button {
   text-transform: capitalize;
 }
 
-main div.left-section button:hover {
+main.flex div.left-section button:hover {
   opacity: 1;
 }
 
-main div.left-section button.active {
+main.flex div.left-section button.active {
   opacity: 1;
   border: 1px solid var(--blue);
 }
 
-.light main div.left-section button.active {
+.light main.flex div.left-section button.active {
   border: 1px solid #000;
 }
 
+main.flex .technologies-toggle {
+  position: absolute;
+  justify-content: center;
+  background-color: rgb(36, 37, 46);
+  border: 1px solid rgb(63, 63, 70);
+  right: 0;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-right: none;
+  margin-top: 0.25rem;
+  transition: 0.3s;
+  color: var(--blue);
+  padding: 0.75rem 0;
+}
+
+.light main.flex .technologies-toggle {
+  color: var(--orange);
+}
+
+main.flex .technologies-toggle:hover {
+  border-color: rgba(93, 188, 252, 0.5);
+  scale: 0.97;
+}
+
+.light main.flex .technologies-toggle:hover {
+  border-color: var(--border);
+}
+
 @media (max-width: 600px) {
-  main section.flex {
+  main.flex section.flex {
     flex-direction: column;
     gap: 2.64rem;
     align-items: center;
@@ -63,9 +91,20 @@ main div.left-section button.active {
     justify-content: center;
   }
 
-  main div.left-section button {
+  main.flex div.left-section button {
     width: 7rem;
     padding: 0.8rem 0;
     font-size: 0.9rem;
+  }
+
+  main.flex .technologies-toggle {
+    width: 2.2rem;
+
+  }
+}
+
+@media (min-width: 600px) {
+  main.flex .technologies-toggle {
+    width: 50px;
   }
 }
