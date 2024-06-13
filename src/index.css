@@ -33,11 +33,11 @@ html {
   --icon-hover: #d4d4d8;
   --image-hover: rgba(63, 63, 70, 0.2);
 
-  --container-padding: 4.8rem;
-
   --over-lay: rgba(0, 0, 0, 0.5);
 
   --rise-shadow: rgba(255, 255, 255, 0.025);
+
+  --container-padding: 4.8rem;
 }
 
 .light {
@@ -52,7 +52,6 @@ html {
   --blue: rgb(0, 149, 246);
 
   --icon-hover: #333;
-
   --image-hover: rgba(202, 202, 202, 0.3);
 
   --over-lay: rgba(0, 0, 0, 0.7);

@@ -1,5 +1,4 @@
 :root {
-    /* --container-width: 30rem; */
     --container-width: 22rem;
     --switch-width: 11rem;
     --switch-height: 50px;
@@ -8,7 +7,6 @@
 
 @media (max-width: 600px) {
     :root {
-        /* --container-width: 21rem; */
         --container-width: 15.4rem;
         --switch-width: 7.7rem;
     }
@@ -29,13 +27,19 @@ label {
     transition: 0.3s;
 }
 
-label:hover {
-    color: var(--blue);
+label i {
+    transition: 0.3s;
 }
 
-.light label:hover {
-    color: var(--orange);
+label:not(.white-font):hover i {
+    color: rgba(93, 188, 252, 0.5);
+
 }
+
+.light label:not(.white-font):hover i {
+    color: rgba(244, 165, 96, 0.8);
+}
+
 
 .white-font,
 .white-font:hover,

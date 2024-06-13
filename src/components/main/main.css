@@ -57,14 +57,10 @@ main.flex .technologies-toggle {
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   border-right: none;
-  margin-top: 0.25rem;
+  margin-top: 6.2rem;
   transition: 0.3s;
-  color: var(--blue);
+  color: white;
   padding: 0.75rem 0;
-}
-
-.light main.flex .technologies-toggle {
-  color: var(--orange);
 }
 
 main.flex .technologies-toggle:hover {
