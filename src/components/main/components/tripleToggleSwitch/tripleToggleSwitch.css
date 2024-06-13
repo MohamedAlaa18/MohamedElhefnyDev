@@ -66,6 +66,7 @@ label:not(.white-font):hover i {
     position: relative;
     transition: 0.5s ease;
     transform: scale(clamp(0.6, (100vw / 600px), 1));
+    z-index: 1;
 }
 
 .switch {
