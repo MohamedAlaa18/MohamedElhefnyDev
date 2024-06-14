@@ -1,6 +1,5 @@
-import { useView } from '../../context/useView';
 import './footer.css'
-
+import { useView } from '../../context/useView';
 
 export default function Footer() {
   const { handleViewChange } = useView();

@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState, MouseEvent as ReactMouseEvent, useLayoutEffect, useCallback } from 'react';
 import './projects.css';
+import { useEffect, useRef, useState, MouseEvent as ReactMouseEvent, useLayoutEffect, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { AnimatePresence, motion } from "framer-motion";
 import { ringEffect, smoothScaleAnimation } from '../../framer-animation';
-import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../../state/store';
 import { myProjects as initialProjects, myProjects } from './myProjects';
 import { Project } from '../../../../types/types';

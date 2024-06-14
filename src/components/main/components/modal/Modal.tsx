@@ -1,7 +1,8 @@
-import React, { ReactNode, useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import './modal.css';
+import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useDebouncedCallback } from 'use-debounce';
+import { motion, AnimatePresence } from 'framer-motion';
 import { RootState } from '../../../../state/store';
 import {
   setCurrentImageIndex,
@@ -10,7 +11,6 @@ import {
   setLoading,
   setVideoUrl
 } from '../../../../state/projectsSlice';
-import { useDebouncedCallback } from 'use-debounce';
 
 export default function Modal({ children }: { children: ReactNode }) {
   const state = useSelector((state: RootState) => state.projects);

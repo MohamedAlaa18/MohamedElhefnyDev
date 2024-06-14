@@ -23,8 +23,8 @@ section#projects div.right-section {
 }
 
 .motion-article-blur {
-  filter: blur(5px);
-  opacity: 0.75;
+  /* filter: blur(5px); */
+  opacity: 0.25;
   transition: 0.3s ease-in-out;
   z-index: 0;
 }

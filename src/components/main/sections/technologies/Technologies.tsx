@@ -1,6 +1,6 @@
 import './technologies.css';
-import { myTechnologies } from './myTechnologies';
 import { useState } from 'react';
+import { myTechnologies } from './myTechnologies';
 import { AnimatePresence, motion } from "framer-motion";
 import { smoothScaleAnimation } from '../../framer-animation';
 

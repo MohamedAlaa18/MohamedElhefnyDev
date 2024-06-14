@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import './certificates.css'
+import { useState } from 'react';
 import { myCertificates } from './myCertificates'
 import { AnimatePresence, motion } from "framer-motion"
 import { smoothScaleAnimation } from '../../framer-animation';

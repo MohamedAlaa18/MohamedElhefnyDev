@@ -1,12 +1,12 @@
+import './main.css';
+import { useState } from 'react';
+import { useView } from '../../context/useView';
 import Projects from './sections/projects/Projects';
 import Certificates from './sections/certificates/Certificates';
 import Technologies from './sections/technologies/Technologies';
 import TripleToggleSwitch from './components/tripleToggleSwitch/TripleToggleSwitch';
-import { useView } from '../../context/useView';
-import './main.css';
-import { useState } from 'react';
 
-export default function Main() {
+export default function Main({ mainInView }: { mainInView: boolean }) {
   const { view, handleViewChange } = useView();
   const [oldView, setOldView] = useState(view);
 
@@ -37,18 +37,19 @@ export default function Main() {
     }
   };
 
-  // Define paths for arrow animation based on view
   const animationPaths = {
-    projects: "#Path-1", // Adjust these paths based on your actual SVG path
+    projects: "#Path-1",
     certificates: "#Path-1",
     technologies: "#Path-1",
   };
 
   return (
     <main className="flex">
-      <TripleToggleSwitch labels={labels} />
+      <div>
+        <TripleToggleSwitch labels={labels} />
+      </div>
 
-      {(view === 'projects' || view === 'technologies') && (
+      {(view === 'projects' || view === 'technologies') && mainInView && (
         <>
           <button
             className={`technologies-toggle flex ${view === 'technologies' && 'active'}`}
@@ -75,7 +76,9 @@ export default function Main() {
         </>
       )}
 
-      {view === 'projects' ? <Projects /> : view === 'certificates' ? <Certificates /> : <Technologies />}
+      <div>
+        {view === 'projects' ? <Projects /> : view === 'certificates' ? <Certificates /> : <Technologies />}
+      </div>
     </main>
   );
 }

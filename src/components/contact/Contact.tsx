@@ -1,9 +1,9 @@
-import { ValidationError, useForm } from '@formspree/react';
 import './contact.css';
+import { useEffect, useState } from 'react';
+import { useTheme } from '../../context/ThemeContext';
+import { ValidationError, useForm } from '@formspree/react';
 import Lottie from 'lottie-react';
 import doneAnimation from '../../../public/animation/done.json';
-import { useTheme } from '../../context/ThemeContext';
-import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

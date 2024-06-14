@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
 import './tripleToggleSwitch.css';
-import { labels } from '../../../../types/types';
+import { useState, useEffect } from 'react';
 import { useView } from '../../../../context/useView';
+import { labels } from '../../../../types/types';
 
 const ANIMATION_DURATION = 0.5;
 

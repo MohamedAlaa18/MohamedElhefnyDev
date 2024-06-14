@@ -1,10 +1,10 @@
 import './hero.css';
+import { useEffect, useState } from 'react';
+import { useTheme } from '../../context/ThemeContext';
 import Lottie from 'lottie-react';
 import devAnimationDark from '../../../public/animation/yoga_man_dark.json';
 import devAnimationLight from '../../../public/animation/yoga_man_light.json';
-import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
-import { useTheme } from '../../context/ThemeContext';
 
 export default function Hero() {
   const [text, setText] = useState('');

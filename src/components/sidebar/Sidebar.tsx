@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
 import './sidebar.css';
+import { useEffect, useState } from 'react';
 import { useView } from '../../context/useView';
 
 
