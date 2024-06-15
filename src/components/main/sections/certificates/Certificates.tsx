@@ -18,7 +18,7 @@ export default function Certificates() {
 
   return (
     <section id='certificates' className='flex'>
-      <div className='flex left-section'>
+      <div className='left-section flex'>
         <button className={active == 'all' ? 'active' : ''} onClick={() => { handelClick('all') }}>All Certificates</button>
         <button className={active == 'Course' ? 'active' : ''} onClick={() => { handelClick('Course') }}>Courses</button>
         <button className={active == 'Internship' ? 'active' : ''} onClick={() => { handelClick('Internship') }}>Internships</button>

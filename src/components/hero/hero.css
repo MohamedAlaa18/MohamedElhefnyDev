@@ -9,6 +9,7 @@ table of contents
 */
 section.hero {
   padding-top: 3rem;
+  min-height: 86.5dvh;
 }
 
 /*
@@ -101,24 +102,6 @@ section.hero button.copy-email .icon-copy {
   flex-direction: column;
   justify-content: center;
   gap: 32px;
-}
-
-/* .social-bottom {
-  gap: 12px;
-} */
-
-div.copy-email-container {
-  position: relative;
-}
-
-.copy-success-message {
-  position: absolute;
-  top: -32px;
-  left: 1.5rem;
-  color: green;
-  width: 100%;
-  white-space: nowrap;
-  width: fit-content;
 }
 
 /*

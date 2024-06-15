@@ -68,18 +68,6 @@ export default function Hero() {
     checkPathAttribute();
   });
 
-  // const [copySuccess, setCopySuccess] = useState('');
-
-  // const handleCopyEmail = () => {
-  //   navigator.clipboard.writeText('mohamed.alaa.elhefny@gmail.com').then(() => {
-  //     setCopySuccess('Email copied!');
-  //     setTimeout(() => setCopySuccess(''), 2000);
-  //   }).catch(() => {
-  //     setCopySuccess('Failed to copy email');
-  //     setTimeout(() => setCopySuccess(''), 2000);
-  //   });
-  // };
-
   return (
     <section className='hero flex'>
       <div className='left-section'>
@@ -123,7 +111,6 @@ export default function Hero() {
             <a href='https://www.linkedin.com/in/mohamed-alaa-elhefny' target="_blank" className="icon icon-linkedin" />
           </div>
 
-          {/* <div className='flex social-bottom'> */}
           <motion.a
             href="https://mohamed-alaa-dev.vercel.app/Mohamed Alaa El-hefny.pdf"
             className="download-cv flex"
@@ -133,24 +120,6 @@ export default function Hero() {
             Download CV &nbsp;
             <i className="icon-file_download" />
           </motion.a>
-
-          {/* <div className="copy-email-container">
-                <motion.button
-                  onClick={handleCopyEmail}
-                  className="copy-email flex"
-                  whileHover="hover"
-                >
-                  Copy Email &nbsp;
-                  <motion.i
-                    className='icon-copy'
-                    variants={hoverVariants}
-                    transition={{ duration: 0.3 }}
-                  />
-                </motion.button>
-                {copySuccess && <span className="copy-success-message">{copySuccess}</span>}
-              </div> */}
-          {/* </div> */}
-
         </div>
       </div>
 

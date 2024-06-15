@@ -1,12 +1,14 @@
 main.flex {
   flex-direction: column;
   gap: 3rem;
+  min-height: 86.5dvh;
 }
 
 main.flex section.flex {
   gap: 2.64rem;
   align-items: start;
   width: 100%;
+  flex-grow: 1;
 }
 
 div.right-section {
@@ -110,6 +112,7 @@ main.flex .technologies-toggle:hover {
   position: absolute;
   z-index: 0;
   right: 17%;
+  opacity: 0.35;
 }
 
 .graph_wrapper svg {

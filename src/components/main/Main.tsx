@@ -45,9 +45,7 @@ export default function Main({ mainInView }: { mainInView: boolean }) {
 
   return (
     <main className="flex">
-      <div>
-        <TripleToggleSwitch labels={labels} />
-      </div>
+      <TripleToggleSwitch labels={labels} />
 
       {(view === 'projects' || view === 'technologies') && mainInView && (
         <>
@@ -61,11 +59,11 @@ export default function Main({ mainInView }: { mainInView: boolean }) {
           <div className="graph_wrapper">
             <svg viewBox="0 0 315 107" version="1.1" style={{ overflow: "visible" }}>
               <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                <path id="Path-1" className="path" fill="none" stroke="var(--border)" strokeWidth="4" strokeLinejoin="round" strokeMiterlimit="10" d="M1.4,2.1c0,0,86,57,211.5,41.5s172.5-24.5,289,81" />
+                <path id="Path-1" className="path" fill="none" stroke="var(--subtitle)" strokeWidth="4" strokeLinejoin="round" strokeMiterlimit="10" d="M1.4,2.1c0,0,86,57,211.5,41.5s172.5-24.5,289,81" />
 
                 <path className="dashed" fill="none" stroke="var(--secondary)" strokeWidth="8" strokeLinejoin="round" strokeMiterlimit="10" d="M1.4,2.1c0,0,86,57,211.5,41.5s172.5-24.5,289,81" />
 
-                <polyline id="arrow" points="0,-9 18,0 0,9 5,0" fill="var(--border)">
+                <polyline id="arrow" points="0,-9 18,0 0,9 5,0" fill="var(--subtitle)">
                   <animateMotion rotate="auto" begin="1s" dur="1.6s" repeatCount="1" fill="freeze">
                     <mpath xlinkHref={animationPaths[view]} />
                   </animateMotion>
@@ -76,9 +74,7 @@ export default function Main({ mainInView }: { mainInView: boolean }) {
         </>
       )}
 
-      <div>
-        {view === 'projects' ? <Projects /> : view === 'certificates' ? <Certificates /> : <Technologies />}
-      </div>
+      {view === 'projects' ? <Projects /> : view === 'certificates' ? <Certificates /> : <Technologies />}
     </main>
   );
 }

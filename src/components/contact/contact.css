@@ -6,6 +6,12 @@ table of contents
 2-Left-section ==> Mail
 3-Responsive Design (media query)
 */
+section.contact-us {
+  min-height: 86dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 /*
 ================
 1-Header-section
@@ -159,3 +165,34 @@ section.contact-us .massage-sent {
     align-self: center;
   }
 }
+
+
+
+
+/* div.copy-email-container {
+  position: relative;
+  margin-top: 3rem;
+  color: var(--subtitle);
+  width: fit-content;
+}
+
+div.copy-email-container .icon-copy {
+  color: var(--blue);
+  transition: 0.3s;
+  scale: 1.2;
+}
+
+div.copy-email-container .icon-copy:hover {
+  rotate: 1deg;
+  scale: 1.1;
+}
+
+.copy-success-message {
+  position: absolute;
+  bottom: -32px;
+  right: calc(50% - 80px);
+  color: green;
+  width: 100%;
+  white-space: nowrap;
+  width: fit-content;
+} */
