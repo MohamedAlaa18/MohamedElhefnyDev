@@ -21,9 +21,14 @@ function App() {
   const [mainRef, mainInView] = useInView({ threshold: 0.2, rootMargin: '-50px' });
   const [heroRef, heroInView] = useInView({ threshold: 0.2, rootMargin: '-50px' });
   const [contactRef, contactInView] = useInView({ threshold: 0.2, rootMargin: '-50px' });
+
   const mainControl = useAnimation();
   const heroControl = useAnimation();
   const contactControl = useAnimation();
+
+  const [mainAnimated, setMainAnimated] = useState(false);
+  const [heroAnimated, setHeroAnimated] = useState(false);
+  const [contactAnimated, setContactAnimated] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,28 +42,25 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (mainInView) {
+    if (mainInView && !mainAnimated) {
       mainControl.start("visible");
-    } else {
-      mainControl.start("hidden");
+      setMainAnimated(true);
     }
-  }, [mainControl, mainInView]);
+  }, [mainControl, mainInView, mainAnimated]);
 
   useEffect(() => {
-    if (heroInView) {
+    if (heroInView && !heroAnimated) {
       heroControl.start("visible");
-    } else {
-      heroControl.start("hidden");
+      setHeroAnimated(true);
     }
-  }, [heroControl, heroInView]);
+  }, [heroControl, heroInView, heroAnimated]);
 
   useEffect(() => {
-    if (contactInView) {
+    if (contactInView && !contactAnimated) {
       contactControl.start("visible");
-    } else {
-      contactControl.start("hidden");
+      setContactAnimated(true);
     }
-  }, [contactControl, contactInView]);
+  }, [contactControl, contactInView, contactAnimated]);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -89,7 +91,7 @@ function App() {
             variants={appearingAnimation}
             initial="hidden"
             animate={mainControl}>
-            <Main mainInView={mainInView} />
+            <Main mainAnimated={mainAnimated} />
           </motion.div>
 
           <div id='contact-us' className='divider' />

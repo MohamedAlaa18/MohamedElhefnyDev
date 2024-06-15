@@ -6,7 +6,7 @@ import Certificates from './sections/certificates/Certificates';
 import Technologies from './sections/technologies/Technologies';
 import TripleToggleSwitch from './components/tripleToggleSwitch/TripleToggleSwitch';
 
-export default function Main({ mainInView }: { mainInView: boolean }) {
+export default function Main({ mainAnimated }: { mainAnimated: boolean }) {
   const { view, handleViewChange } = useView();
   const [oldView, setOldView] = useState(view);
 
@@ -47,7 +47,7 @@ export default function Main({ mainInView }: { mainInView: boolean }) {
     <main className="flex">
       <TripleToggleSwitch labels={labels} />
 
-      {(view === 'projects' || view === 'technologies') && mainInView && (
+      {(view === 'projects' || view === 'technologies') && (mainAnimated) && (
         <>
           <button
             className={`technologies-toggle flex ${view === 'technologies' && 'active'}`}

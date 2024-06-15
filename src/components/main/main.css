@@ -111,66 +111,78 @@ main.flex .technologies-toggle:hover {
 .graph_wrapper {
   position: absolute;
   z-index: 0;
-  right: 17%;
+  right: 16.75%;
   opacity: 0.35;
 }
 
 .graph_wrapper svg {
   margin-top: 5.25%;
-  width: calc(9vw + 100px);
+  width: calc(12vw + 50px);
   rotate: -3.75deg;
 }
 
 @media (max-width: 1300px) {
   .graph_wrapper {
-    right: 18.5%;
+    right: 17.75%;
   }
 
   .graph_wrapper svg {
     margin-top: 3%;
-    rotate: -0.25deg;
+    rotate: 1deg;
   }
 }
 
 @media (max-width: 1200px) {
   .graph_wrapper {
-    right: 19.5%;
+    right: 18.75%;
   }
 
   .graph_wrapper svg {
-    rotate: 0deg;
+    rotate: 4deg;
   }
 }
 
 @media (max-width: 1000px) {
   .graph_wrapper {
-    right: 20.5%;
+    right: 18%;
   }
 
   .graph_wrapper svg {
-    rotate: 3.25deg;
+    rotate: 6.25deg;
+    margin-top: 5.25%;
   }
 }
 
 @media (max-width: 800px) {
   .graph_wrapper {
-    right: 22.5%;
+    right: 19.25%;
   }
 
   .graph_wrapper svg {
-    margin-top: 3%;
-    rotate: 6.25deg;
+    margin-top: 6.25%;
+    rotate: 9.25deg;
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .graph_wrapper {
-    right: 26.5%;
+    right: 18.5%;
   }
 
   .graph_wrapper svg {
-    margin-top: 3%;
+    margin-top: 17.25%;
     rotate: 11.25deg;
+  }
+}
+
+@media (max-width: 450px) {
+  .graph_wrapper {
+    right: 20.5%;
+  }
+
+  .graph_wrapper svg {
+    margin-top: 21%;
+    rotate: 15.25deg;
   }
 }
 
