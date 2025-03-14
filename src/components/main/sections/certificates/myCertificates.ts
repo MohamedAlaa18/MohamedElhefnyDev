@@ -5,7 +5,7 @@ export const myCertificates = [
     genre: "Scholarship",
     data: "May 2024",
     imagPath: "/logos/iti_logo.jpeg",
-    url: "https://raw.githubusercontent.com/MohamedAlaa18/MohamedAlaaDev/refs/heads/main/public/images/ITI_Certificate.png",
+    url: "https://drive.google.com/file/d/18cGlqRKPn-SbFno3Y8VBAUYs5yFMI86P/view?usp=sharing",
   },
   {
     myCertificateTitle: "Learn React 18",
