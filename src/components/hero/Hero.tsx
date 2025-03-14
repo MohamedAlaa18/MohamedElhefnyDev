@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function Hero() {
   const [text, setText] = useState('');
-  const sentences = ["Full Stack Developer"];
+  const sentences = ["Front End Developer"];
   const [sentenceIndex, setSentenceIndex] = useState(0);
   const [letterIndex, setLetterIndex] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
@@ -77,7 +77,7 @@ export default function Hero() {
             animate={{ transform: "scale(1)" }}
             transition={{ damping: 5, duration: 2, type: "spring", stiffness: 100 }}
             src="./profile-pic.png" className='avatar' alt="" />
-          <div className='icon-verified'></div>
+          <div className='icon-verified'><div></div></div>
         </div>
         <motion.h1
           initial={{ opacity: 0 }} animate={{ opacity: 1 }} className='title'>
@@ -100,7 +100,11 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
           className="sub-title">
-          Hello, I am Mohamed Alaa, a proficient Full Stack Developer with over a year of experience specializing in JavaScript development. I am skilled in JavaScript, TypeScript, React.js, Redux, Next.js, Angular, Node.js, and .NET, among other technologies. With a strong foundation in web development, I have a proven track record of delivering high-quality solutions using frameworks and tools like SQL Server, AWS, CSS3, Sass, Tailwind, Bootstrap, Material UI, Angular Material, Chakra UI, and HTML5.
+          I am Mohamed El Hefny, a front-end developer who loves building dynamic, high-performance web applications.
+          I excel at Angular, React, and Next.js for creating seamless and interactive user experiences.
+          I have done a great job in creating scalable solutions to meet business and user requirements.
+          My skills cover modern front-end technologies that make the applications efficient and engaging
+          I seek to build effective and beneficial solutions with a lot of efficiency.
         </motion.p>
 
         <div className='social-section'>

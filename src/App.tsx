@@ -108,7 +108,7 @@ function App() {
           <Footer />
 
           <button
-            style={{ opacity: scrollVisible ? 1 : 0, transition: "opacity 0.5s, transform 0.3s" }}
+            style={{ opacity: scrollVisible ? 1 : 0 }}
             onClick={scrollToTop}
             className='scroll-to-up'
           >

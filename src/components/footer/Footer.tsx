@@ -31,7 +31,7 @@ export default function Footer() {
         {/* <li><a href="#main" onClick={() => handleViewChange('technologies')}>Technologies</a></li> */}
         <li><a href="#contact-us">Contact us</a></li>
       </ul>
-      <p>&copy;{new Date().getFullYear()} Mohamed Alaa. <span>All rights reserved.</span> </p>
+      <p>&copy;{new Date().getFullYear()} Mohamed El Hefny. <span>All rights reserved.</span> </p>
     </footer>
   )
 }

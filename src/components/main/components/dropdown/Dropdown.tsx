@@ -46,7 +46,7 @@ export default function Dropdown({ handleClick }: { handleClick: (category: stri
                 onChange={() => setDropdownChecked(!isDropdownChecked)}
             />
             <label className="for-dropdown flex" htmlFor="dropdown">
-                {state.isFeaturedFilter ? 'Featured' : 'Standard'}<div className='icon-select-arrows' />
+                {state.isFeaturedFilter ? 'Featured' : 'Non-Featured'}<div className='icon-select-arrows' />
             </label>
             <motion.div
                 className="section-dropdown"
@@ -58,7 +58,7 @@ export default function Dropdown({ handleClick }: { handleClick: (category: stri
                     Featured
                 </a>
                 <a href="#" onClick={(e) => handleOptionClick(false, e)} className={state.isFeaturedFilter ? '' : 'active'}>
-                    Standard
+                    Non-Featured
                 </a>
             </motion.div>
         </div>

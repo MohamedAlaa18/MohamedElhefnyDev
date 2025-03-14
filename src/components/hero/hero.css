@@ -17,6 +17,10 @@ section.hero {
 1-Left-section
 =============
 */
+section.hero .left-section {
+  min-width: 50%;
+}
+
 section.hero .parent-avatar.flex {
   align-items: end;
   min-height: 100px;
@@ -37,7 +41,22 @@ section.hero .icon-verified {
   color: var(--blue);
   margin-bottom: 0.3rem;
   margin-left: -0.3rem;
+  position: relative;
+  /* Ensure child div positions relative to this */
+  z-index: 1;
+  /* Keep it above its surroundings */
 }
+
+/* The inner div (background effect) */
+/* section.hero .icon-verified div {
+  position: absolute;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: white;
+  top: 0.3rem;
+  left: 0.25rem;
+  z-index: -1;
+} */
 
 section.hero h1.title {
   font-size: 2.85rem;
