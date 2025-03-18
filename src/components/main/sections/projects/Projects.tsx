@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AnimatePresence, motion } from "framer-motion";
 import { ringEffect, smoothScaleAnimation } from '../../framer-animation';
 import { RootState } from '../../../../state/store';
-import { myProjects as initialProjects, myProjects } from './myProjects';
+import projectsData from '../../../../../public/data/myProjects.json';
 import { Project } from '../../../../types/types';
 import {
   setActive,
@@ -18,7 +18,7 @@ import {
   setVideoUrl
 } from '../../../../state/projectsSlice';
 import Dropdown from '../../components/dropdown/Dropdown';
-import Modal from '../../components/modal/Modal';
+import Modal from '../../components/modal/Modal'
 
 export default function Projects() {
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ export default function Projects() {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const cardDescriptionRef = useRef<HTMLDivElement>(null);
   const [cardDescriptionHeight, setCardDescriptionHeight] = useState<number>(0);
-  const [projectsFiltered, setProjectsFiltered] = useState(myProjects);
+  const [projectsFiltered, setProjectsFiltered] = useState<Project[]>(projectsData);
 
   useLayoutEffect(() => {
     if (cardDescriptionRef.current) {
@@ -35,24 +35,9 @@ export default function Projects() {
     }
   }, [state.hoveredIndex]);
 
-  useEffect(() => {
-    const cachedProjects = localStorage.getItem('projects');
-    if (cachedProjects) {
-      setProjectsFiltered(JSON.parse(cachedProjects));
-    } else {
-      setProjectsFiltered(initialProjects);
-    }
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (projectsFiltered.length > 0) {
-      localStorage.setItem('projects', JSON.stringify(projectsFiltered));
-    }
-  }, [projectsFiltered]);
-
   const handleClick = useCallback((category: string) => {
     dispatch(setActive(category));
-    let filteredProjects = initialProjects;
+    let filteredProjects = projectsData; // Use JSON data as source
 
     if (category !== 'All') {
       filteredProjects = filteredProjects.filter((project) => project.category.includes(category));
@@ -60,8 +45,7 @@ export default function Projects() {
 
     setProjectsFiltered(filteredProjects);
     dispatch(setHoveredIndex(-1));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, initialProjects]);
+  }, [dispatch]);
 
   const handleMouseEnter = useCallback((event: ReactMouseEvent<HTMLDivElement>, index: number) => {
     const target = event.currentTarget as HTMLElement;
@@ -114,7 +98,7 @@ export default function Projects() {
 
         <div className='flex category-buttons'>
           <button className={state.active === 'All' && !state.isDropdownOpen ? 'active' : ''} onClick={() => handleClick('All')}>All Projects</button>
-          {[...new Set(initialProjects.filter((project) => project.isFeatured === state.isFeaturedFilter).flatMap(project => project.category[0]))].map(category => (
+          {[...new Set(projectsData.filter((project) => project.isFeatured === state.isFeaturedFilter).flatMap(project => project.category[0]))].map(category => (
             <button key={category} className={state.active === category && !state.isDropdownOpen ? 'active' : ''} onClick={() => handleClick(category)}>{category}</button>
           ))}
         </div>
@@ -137,7 +121,7 @@ export default function Projects() {
                 className='card'
               >
                 <div className="image-container skeleton">
-                  <img className="image" width={266} src={project.imagPath} alt={project.projectTitle} loading='lazy' decoding="async"/>
+                  <img className="image" width={266} src={project.imagPath} alt={project.projectTitle} loading='lazy' decoding="async" />
                   <div className="overlay" onClick={() => handleImageClick(project)}>
                     <i className="icon-picture" />
                   </div>

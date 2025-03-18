@@ -2,8 +2,8 @@ import './hero.css';
 import { useEffect, useState } from 'react';
 import { useTheme } from '../../context/ThemeContext';
 import Lottie from 'lottie-react';
-import devAnimationDark from '../../../public/animation/yoga_man_dark.json';
-import devAnimationLight from '../../../public/animation/yoga_man_light.json';
+import devAnimationDark from '../../../public/animation/laptop_2_blue_1.json';
+import devAnimationLight from '../../../public/animation/laptop_2_orange.json';
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Hero() {

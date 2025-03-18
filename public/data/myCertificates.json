@@ -1,0 +1,82 @@
+[
+  {
+    "myCertificateTitle": "Full stack Web Development Using .Net",
+    "company": "ITI",
+    "genre": "Scholarship",
+    "data": "May 2024",
+    "imagPath": "/logos/iti_logo.jpeg",
+    "url": "https://drive.google.com/file/d/18cGlqRKPn-SbFno3Y8VBAUYs5yFMI86P/view?usp=sharing"
+  },
+  {
+    "myCertificateTitle": "Learn React 18",
+    "company": "udemy",
+    "genre": "Course",
+    "data": "March 2024",
+    "imagPath": "/logos/udemy_logo.png",
+    "url": "https://www.udemy.com/certificate/UC-7825d9b2-1877-4552-95c0-b6f296226ef5/"
+  },
+  {
+    "myCertificateTitle": "Front-End Developer Capstone",
+    "company": "Meta",
+    "genre": "Course",
+    "data": "July 2023",
+    "imagPath": "/logos/facebook_logo.jpeg",
+    "url": "https://www.coursera.org/account/accomplishments/verify/9GPY4EZSE8P3"
+  },
+  {
+    "myCertificateTitle": "Advanced React",
+    "company": "Meta",
+    "genre": "Course",
+    "data": "December 2022",
+    "imagPath": "/logos/facebook_logo.jpeg",
+    "url": "https://www.coursera.org/account/accomplishments/verify/9BHPTRLT4MVW"
+  },
+  {
+    "myCertificateTitle": "Version Control",
+    "company": "Meta",
+    "genre": "Course",
+    "data": "August 2023",
+    "imagPath": "/logos/facebook_logo.jpeg",
+    "url": "https://www.coursera.org/account/accomplishments/verify/WVPV49XNSMY4"
+  },
+  {
+    "myCertificateTitle": "HTML and CSS in depth",
+    "company": "Meta",
+    "genre": "Course",
+    "data": "August 2023",
+    "imagPath": "/logos/facebook_logo.jpeg",
+    "url": "https://www.coursera.org/account/accomplishments/verify/3KLMRG6M7QKZ"
+  },
+  {
+    "myCertificateTitle": "React Cross-Skilling",
+    "company": "Udacity",
+    "genre": "Scholarship",
+    "data": "March 2022",
+    "imagPath": "/logos/udacity_logo.png",
+    "url": "https://www.udacity.com/certificate/e/54ff35c8-9a34-11ec-95ef-8b6693326d5b"
+  },
+  {
+    "myCertificateTitle": "Advanced Full-Stack  Development",
+    "company": "Udacity",
+    "genre": "Scholarship",
+    "data": "February 2022",
+    "imagPath": "/logos/udacity_logo.png",
+    "url": "https://www.udacity.com/certificate/e/2ec15292-5411-11ec-9544-8b97be7e5e60"
+  },
+  {
+    "myCertificateTitle": "Front-End Web Development Professional",
+    "company": "Udacity",
+    "genre": "Scholarship",
+    "data": "September 2021",
+    "imagPath": "/logos/udacity_logo.png",
+    "url": "https://www.udacity.com/certificate/e/839ff016-f5d9-11eb-bbec-eb00bb15e1e0"
+  },
+  {
+    "myCertificateTitle": "Web Development Challenger Track",
+    "company": "Udacity",
+    "genre": "Course",
+    "data": "April 2022",
+    "imagPath": "/logos/udacity_logo.png",
+    "url": "https://s3-us-west-2.amazonaws.com/udacity-printer/production/certificates/c65283d8-8f0b-4441-a798-d960cf76418f.pdf"
+  }
+]

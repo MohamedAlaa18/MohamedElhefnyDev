@@ -1,4 +1,7 @@
+import { Key } from "react";
+
 export interface Project {
+    id: Key | null | undefined;
     imagPath: string;
     projectTitle: string;
     projectDescription: string;

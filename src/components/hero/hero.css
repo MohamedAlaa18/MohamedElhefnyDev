@@ -132,6 +132,8 @@ section.hero .animation {
   min-width: 27vw;
   width: 100%;
   translate: 75px 25px;
+  /* rotate: 180deg; */
+  /* transform: scaleX(-1); */
 }
 
 /*

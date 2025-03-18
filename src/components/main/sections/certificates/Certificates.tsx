@@ -1,19 +1,19 @@
 import './certificates.css'
 import { useState } from 'react';
-import { myCertificates } from './myCertificates'
+import certificatesData from '../../../../../public/data/myCertificates.json';
 import { AnimatePresence, motion } from "framer-motion"
 import { smoothScaleAnimation } from '../../framer-animation';
 
 export default function Certificates() {
   const [active, setActive] = useState('all');
-  const [certificatesFiltered, setCertificatesFiltered] = useState(myCertificates);
+  const [certificatesFiltered, setCertificatesFiltered] = useState(certificatesData);
 
   const handelClick = (genre: string) => {
     setActive(genre);
     genre == 'all' ?
-      setCertificatesFiltered(myCertificates)
+      setCertificatesFiltered(certificatesData)
       :
-      setCertificatesFiltered(myCertificates.filter((certificate) => certificate.genre == genre));
+      setCertificatesFiltered(certificatesData.filter((certificate) => certificate.genre == genre));
   };
 
   return (
