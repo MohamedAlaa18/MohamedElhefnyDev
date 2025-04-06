@@ -76,7 +76,7 @@ export default function Hero() {
             initial={{ transform: "scale(0)" }}
             animate={{ transform: "scale(1)" }}
             transition={{ damping: 5, duration: 2, type: "spring", stiffness: 100 }}
-            src="./profile-pic.png" className='avatar' alt="" />
+            src="./profile-pic-new.png" className='avatar' alt="" />
           <div className='icon-verified'><div></div></div>
         </div>
         <motion.h1
