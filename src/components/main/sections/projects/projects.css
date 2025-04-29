@@ -145,7 +145,8 @@ section#projects div.right-section {
 }
 
 .card img {
-  border-radius: 5px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
   height: auto;
 }
 
@@ -323,4 +324,11 @@ section#projects div.right-section {
   .card-description {
     display: none;
   }
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+  /* optional for safety */
 }

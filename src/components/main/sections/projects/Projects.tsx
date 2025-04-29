@@ -131,9 +131,18 @@ export default function Projects() {
                   <p className='sub-title'>{project.projectDescription}</p>
 
                   <div className="flex icons">
-                    <div className='flex'>
-                      <a className="icon-link" target="_blank" href={project.demo} rel="noopener noreferrer" />
-                      <a className="icon-github" target="_blank" href={project.source} rel="noopener noreferrer" />
+                    <div className="flex">
+                      <button
+                        type="button"
+                        className="icon-link"
+                        onClick={() => window.open(project.demo, '_blank')}
+                        disabled={!project.demo}
+                      />
+                      <button
+                        className="icon-github"
+                        onClick={() => window.open(project.source, '_blank')}
+                        disabled={!project.source}
+                      />
                     </div>
 
                     <button
