@@ -1,5 +1,33 @@
 [
   {
+    "id": 3,
+    "projectTitle": "Wajba Landing Page 🍽️",
+    "imagPath": "/screenshots/Wajba/Landing Page/Screenshot (1).png",
+    "projectDescription": "The Wajba landing page helps you promote your Wajba platform. It allows you to introduce your Dashboard and website. You can show the significant features available on the platform. Furthermore, you can check out the packages and price comparison of restaurant solutions. It’ll help the businesses choose the best plan for them.",
+    "category": ["angular", "tailwind"],
+    "source": "https://github.com/MohamedAlaa18/Wajba_LandingPage",
+    "demo": "https://wajba-landing-page.vercel.app/",
+    "screenShots": {
+      "path": "/screenshots/Wajba/Landing Page",
+      "length": 22
+    },
+    "isFeatured": true
+  },
+  {
+    "id": 3,
+    "projectTitle": "Wajba Dashboard 🍽️",
+    "imagPath": "/screenshots/Wajba/Dashboard/Screenshot (1).png",
+    "projectDescription": "A comprehensive food ordering and management portal was built using Angular and Bootstrap. It allows users to browse food items, place orders, and manage their carts. Admins can manage menu items, featured meals, popular items, and offers using dynamic CRUD interfaces. The platform also supports user roles like admin, deliver bay, employee, and customer, each with dedicated dashboards and controls.",
+    "category": ["angular", "bootstrap", "apb"],
+    "source": "https://github.com/MohamedAlaa18/Wajba_LandingPage",
+    "demo": "https://wajba-landing-page.vercel.app/",
+    "screenShots": {
+      "path": "/screenshots/Wajba/Dashboard",
+      "length": 73
+    },
+    "isFeatured": true
+  },
+  {
     "id": 1,
     "projectTitle": "EduNex 🎓",
     "imagPath": "/screenshots/EduNex/Website/Screenshot (1).png",
@@ -39,34 +67,6 @@
     "isFeatured": true
   },
   {
-    "id": 3,
-    "projectTitle": "Wajba Landing Page 🍽️",
-    "imagPath": "/screenshots/Wajba/Landing Page/Screenshot (1).png",
-    "projectDescription": "The Wajba landing page helps you promote your Wajba platform. It allows you to introduce your Dashboard and website. You can show the significant features available on the platform. Furthermore, you can check out the packages and price comparison of restaurant solutions. It’ll help the businesses choose the best plan for them.",
-    "category": ["angular", "tailwind"],
-    "source": "https://github.com/MohamedAlaa18/Wajba_LandingPage",
-    "demo": "https://wajba-landing-page.vercel.app/",
-    "screenShots": {
-      "path": "/screenshots/Wajba/Landing Page",
-      "length": 22
-    },
-    "isFeatured": true
-  },
-  {
-    "id": 4,
-    "projectTitle": "Ryyan Media 🎥",
-    "imagPath": "/screenshots/Ryyan Media/Screenshot (1).png",
-    "projectDescription": "Ryyan Media provides digital marketing and content creation solutions with guaranteed results.  Their website built using angular and the styling with Tailwind CSS has their portfolio and bolgs. Users can check out some services offered, see the past project, and reach out if they wanna collab or ask anything.",
-    "category": ["angular", "tailwind", "threeJs"],
-    "source": "https://github.com/MohamedAlaa18/RyyanMedia",
-    "demo": "https://ryyan-media.vercel.app/",
-    "screenShots": {
-      "path": "/screenshots/Ryyan Media",
-      "length": 7
-    },
-    "isFeatured": true
-  },
-  {
     "id": 5,
     "projectTitle": "Mercado 🛍️",
     "imagPath": "/screenshots/Mercado/Screenshot (1).png",
@@ -91,6 +91,20 @@
     "screenShots": {
       "path": "/screenshots/Vendo",
       "length": 8
+    },
+    "isFeatured": true
+  },
+  {
+    "id": 4,
+    "projectTitle": "Ryyan Media 🎥",
+    "imagPath": "/screenshots/Ryyan Media/Screenshot (1).png",
+    "projectDescription": "Ryyan Media provides digital marketing and content creation solutions with guaranteed results.  Their website built using angular and the styling with Tailwind CSS has their portfolio and bolgs. Users can check out some services offered, see the past project, and reach out if they wanna collab or ask anything.",
+    "category": ["angular", "tailwind", "threeJs"],
+    "source": "https://github.com/MohamedAlaa18/RyyanMedia",
+    "demo": "https://ryyan-media.vercel.app/",
+    "screenShots": {
+      "path": "/screenshots/Ryyan Media",
+      "length": 7
     },
     "isFeatured": true
   },

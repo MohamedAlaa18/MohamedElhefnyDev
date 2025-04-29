@@ -6,6 +6,6 @@
     "resolveJsonModule": true,
     "lib": ["ES6", "DOM", "ES2017"]
   },
-  "include": ["src"],
+  "include": ["src", "public/data/myTechnologies.ts"],
   "exclude": ["node_modules", "build"]
 }

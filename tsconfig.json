@@ -20,6 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "src/components/.tsx", "public/data/myCertificates.ts"],
+  "include": ["src", "src/components/.tsx", "public/data/myCertificates.ts", "public/data/myTechnologies.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

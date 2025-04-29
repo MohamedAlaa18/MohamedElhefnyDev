@@ -37,6 +37,9 @@ section#technologies .technology-card .card-top {
 section#technologies .technology-card .technology-icon {
     width: 60px;
     height: 60px;
+    box-shadow: rgba(63, 63, 70, 0.1) 0px 2px 4px 0px, rgba(63, 63, 70, 0.1) 0px 2px 4px 0px;
+    background-color: var(--secondary);
+    border-radius: 50%;
 }
 
 section#technologies .technology-card .card-bottom {
