@@ -220,21 +220,18 @@ section#projects div.right-section {
 }
 
 .card .icon-link,
-.card .icon-github {
+.card .icon-github,
+.card .icon-airplay,
+.card .icon-photo {
   color: var(--subtitle);
   font-size: 1.2rem;
-}
-
-.card .icon-image,
-.card .icon-airplay {
-  color: var(--subtitle);
-  font-size: 1.25rem;
+  transition: 0.3s;
 }
 
 .card .icon-link:hover,
 .card .icon-github:hover,
 .card .icon-airplay:hover,
-.card .icon-image:hover {
+.card .icon-photo:hover {
   color: var(--icon-hover);
   cursor: pointer;
 }

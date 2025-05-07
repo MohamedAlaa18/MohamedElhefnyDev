@@ -15,7 +15,7 @@ import {
   setScreenshots,
   setLoading,
   setIsDropdownOpen,
-  setVideoUrl
+  // setVideoUrl
 } from '../../../../state/projectsSlice';
 // import Dropdown from '../../components/dropdown/Dropdown';
 import Modal from '../../components/modal/Modal'
@@ -47,6 +47,11 @@ export default function Projects() {
     dispatch(setHoveredIndex(-1));
   }, [dispatch]);
 
+  const preloadImage = (src: string) => {
+    const img = new Image();
+    img.src = src;
+  };
+
   const handleMouseEnter = useCallback((event: ReactMouseEvent<HTMLDivElement>, index: number) => {
     const target = event.currentTarget as HTMLElement;
     const rect = target.getBoundingClientRect();
@@ -59,7 +64,16 @@ export default function Projects() {
     }
 
     dispatch(setHoveredIndex(index));
-  }, [dispatch]);
+
+    // Preload screenshots for the hovered project
+    const project = projectsFiltered[index];
+    if (project?.screenShots?.length > 0) {
+      const screenshots = Array.from({ length: project.screenShots.length }, (_, i) =>
+        `${project.screenShots.path}/Screenshot (${i + 1}).png`
+      );
+      screenshots.forEach(preloadImage);
+    }
+  }, [dispatch, projectsFiltered]);
 
   const handleMouseLeave = useCallback(() => {
     dispatch(setHoveredIndex(-1));
@@ -73,10 +87,10 @@ export default function Projects() {
     dispatch(setIsModalOpen(true));
   }, [dispatch]);
 
-  const handleVideoModalOpen = useCallback((videoUrl: string) => {
-    dispatch(setIsModalOpen(true));
-    dispatch(setVideoUrl(videoUrl));
-  }, [dispatch]);
+  // const handleVideoModalOpen = useCallback((videoUrl: string) => {
+  //   dispatch(setIsModalOpen(true));
+  //   dispatch(setVideoUrl(videoUrl));
+  // }, [dispatch]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -90,6 +104,7 @@ export default function Projects() {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [dispatch]);
+
 
   return (
     <section id='projects' className='flex' ref={containerRef}>
@@ -148,26 +163,27 @@ export default function Projects() {
                         disabled={!project.source}
                       />
                       <button
-                        className='icon-image'
-                        rel="noopener"
-                        onClick={() => handleImageClick(project)}
-                        disabled={!project.imagPath}
+                        type="button"
+                        className="icon-link"
+                        onClick={() => window.open(project.demo, '_blank')}
+                        disabled={!project.demo}
                       />
-                      <button
+                      {/* <button
                         className='icon-airplay'
                         rel="noopener"
                         onClick={() => handleVideoModalOpen(project.video!)}
                         disabled={!project.video}
-                      />
+                      /> */}
                     </div>
 
                     <div className='flex'>
                       <button
-                        type="button"
-                        className="icon-link link flex"
-                        onClick={() => window.open(project.demo, '_blank')}
-                        disabled={!project.demo}
+                        className='icon-photo link flex'
+                        rel="noopener"
+                        onClick={() => handleImageClick(project)}
+                        disabled={!project.imagPath}
                       />
+
                     </div>
                   </div>
                 </div>
