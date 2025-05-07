@@ -1,0 +1,62 @@
+.toggle {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    width: 22rem;
+    height: 50px;
+    border-radius: 100px;
+    background-color: var(--primary);
+    transition: background-color 750ms;
+    overflow: hidden;
+}
+
+.toggle__option {
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 750ms;
+    font-weight: 500;
+}
+
+.toggle:after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    left: 2px;
+    width: calc(50% - 4px);
+    background-color: rgb(36, 37, 46);
+    border: 2px solid var(--blue-border);
+    transition: all 750ms;
+    z-index: 1;
+}
+
+.light .toggle:after {
+    border-color: rgb(63, 63, 70);
+}
+
+.toggle--projects:after {
+    transform: translateX(0);
+    border-radius: 50px 0 0 50px;
+}
+
+.toggle--certificates:after {
+    transform: translateX(calc(100% - 2px));
+    border-radius: 0 50px 50px 0;
+}
+
+.toggle--projects .toggle__option--projects,
+.toggle--certificates .toggle__option--certificates {
+    color: var(--subtitle);
+}
+
+.toggle--moving:after {
+    transition: all 750ms, border-color 0s;
+}
+
+.toggle--moving {
+    pointer-events: none;
+}
