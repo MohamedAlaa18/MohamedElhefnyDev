@@ -21,11 +21,18 @@ header.flex {
 }
 
 header.flex nav {
+  /* position: fixed;
+  left: 50%;
+  top: 2.4rem;
+  transform: translate(-50%, 0%); */
+
   background-color: var(--bgHeader);
   padding: 0.77rem 1.6rem;
   border-radius: 55px;
-  box-shadow: 1px 1px 40px #2323242a;
-  border: 1px solid var(--border);
+  box-shadow: 1px 1px 10px #2323242a;
+  border: 2px solid var(--border);
+  z-index: 1;
+
 }
 
 header ul.flex {
@@ -66,35 +73,38 @@ header button.menu {
 header .icon-menu,
 header .mode {
   background-color: var(--bgHeader);
+  z-index: 1;
   height: 2.4rem;
   width: 2.4rem;
   border-radius: 50%;
   justify-content: center;
   text-align: center;
   color: var(--subtitle);
-  border: 1px solid var(--border);
+  /* border: 2px solid var(--blue); */
   transition: 0.2s;
-  box-shadow: 1px 1px 40px rgba(35, 35, 36, 0.165);
+  box-shadow: 1px 1px 10px #2323242a;
+}
+
+header .icon-menu {
+  border: 2px solid var(--border);
 }
 
 header .mode {
-  position: relative;
-  background-position: top left;
+  /* position: fixed;
+  transform: translate(-50%, 0%);
+  right: 15%;
+  top: 2.4rem; */
   background-size: 100%;
   transition: 0.3s;
-  border: 1px solid var(--border);
+  border: 2px solid var(--blue-border);
 }
 
-header .mode:hover {
-  border: 1px solid var(--blue);
-}
-
-.light header .mode:hover {
-  border: 1px solid var(--orange);
+.light header .mode {
+  border-color: var(--orange);
 }
 
 header .mode:active {
-  transform: scale(0.97);
+  /* transform: scale(0.97); */
   transition: 0.3s;
 }
 
@@ -103,12 +113,12 @@ header .mode .icon-sun {
   transition: 0.2s;
 }
 
-header .mode .icon-moon-o {
-  color: var(--blue);
+header .mode .icon-moon {
+  color: rgb(93, 188, 252);
   transition: 0.2s;
 }
 
-header .ring:hover .icon-moon-o {
+header .ring:hover .icon-moon {
   color: var(--orange);
 }
 
@@ -121,31 +131,37 @@ header .ring:hover .icon-sun {
 3-Modal ==> pop up
 ==================
 */
-header .fixed {
+.backdrop {
   position: fixed;
   inset: 0;
   background-color: rgba(40, 40, 48, 0.91);
   backdrop-filter: blur(4px);
-  z-index: 2;
+  z-index: 3;
 }
 
-header .fixed ul.modal {
+.fixed.backdrop ul.modal {
   animation: animation 0.7s 1;
   width: 75%;
+  height: fit-content;
+  max-height: 90%;
   margin-inline: auto;
   margin-top: 2rem;
-  border-radius: 1rem;
+  border-radius: 12px;
   padding: 1rem 2rem;
   background: var(--secondary);
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  /*InternetExplorer10+*/scrollbar-width: none;
+  -webkit-animation: animation 0.7s 1;
 }
 
-header .fixed ul.modal li {
+header .fixed.backdrop ul.modal li {
   border-bottom: 1px solid var(--border);
   padding-bottom: 0.77rem;
   padding-top: 0.5rem;
 }
 
-header .fixed ul.modal li:first-child {
+header .fixed.backdrop ul.modal li.close-li {
   text-align: right;
   border: none;
   padding-bottom: 0;
@@ -153,21 +169,21 @@ header .fixed ul.modal li:first-child {
   margin-bottom: -1rem;
 }
 
-header .fixed ul.modal li:last-child {
+header .fixed.backdrop ul.modal li:last-child {
   border: none;
 }
 
-header .fixed ul.modal li a {
+header .fixed.backdrop ul.modal li a {
   font-size: 1rem;
   color: var(--title);
   transition: 0.3s;
 }
 
-header .fixed ul.modal li a:hover {
+header .fixed.backdrop ul.modal li a:hover {
   color: var(--blue);
 }
 
-.light header .fixed ul.modal li a:hover {
+.light header .fixed.backdrop ul.modal li a:hover {
   color: var(--orange);
 }
 
@@ -178,7 +194,7 @@ header .icon-close {
 }
 
 header .icon-close:hover {
-  font-size: 1.7rem;
+  /* font-size: 1.7rem; */
   color: crimson;
   transform: rotate(180deg);
 }

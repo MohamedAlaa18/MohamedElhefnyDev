@@ -14,14 +14,13 @@ export default function Header() {
     };
 
     useEffect(() => {
-        const handleClickOutside = (e: MouseEvent) => {
-            if (!menuRef.current?.contains(e.target as Node)) {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') {
                 setShowModal(false);
             }
         };
-
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => document.removeEventListener('mousedown', handleClickOutside);
+        document.addEventListener('keydown', handleKeyDown);
+        return () => document.removeEventListener('keydown', handleKeyDown);
     }, []);
 
     const handleScrollToSection = (event: React.MouseEvent<HTMLAnchorElement>, view: string) => {
@@ -58,13 +57,15 @@ export default function Header() {
             </nav>
 
             <button className='mode flex' onClick={handleThemeToggle}>
-                <i className={theme === 'dark' ? 'icon-moon-o' : 'icon-sun'} />
+                <i className={theme === 'dark' ? 'icon-moon' : 'icon-sun'} />
             </button>
 
-            {showModal &&
-                <div className='fixed'>
-                    <ul className='modal' ref={menuRef}>
-                        <li><button className='icon-close' onClick={() => setShowModal(false)} /></li>
+            {showModal && (
+                <div className='fixed backdrop' onClick={(e) => {
+                    if (e.target === e.currentTarget) setShowModal(false);
+                }}>
+                    <ul className='modal mobile-modal' ref={menuRef}>
+                        <li className='close-li'><button className='icon-close' onClick={() => setShowModal(false)} /></li>
                         <li><a href="#about" onClick={() => setShowModal(false)}>About</a></li>
                         <li><a href="#main" onClick={(e) => handleScrollToSection(e, 'certificates')}>Certificates</a></li>
                         <li><a href="#main" onClick={(e) => handleScrollToSection(e, 'projects')}>Projects</a></li>
@@ -72,7 +73,7 @@ export default function Header() {
                         <li><a href="#contact-us" onClick={() => setShowModal(false)}>Contact us</a></li>
                     </ul>
                 </div>
-            }
+            )}
         </header>
     );
 }
