@@ -2,7 +2,7 @@
     --container-width: 22rem;
     --switch-width: 11rem;
     --switch-height: 50px;
-    --animation-duration: 0.5s;
+    --animation-duration: 0.4s;
 }
 
 @media (max-width: 600px) {
@@ -24,7 +24,7 @@ input[type="radio"] {
 label {
     color: var(--subtitle);
     cursor: pointer;
-    transition: 0.3s;
+    /* transition: 0.3s; */
 }
 
 label i {
@@ -61,10 +61,10 @@ label:not(.white-font):hover i {
     vertical-align: middle;
     width: var(--container-width);
     height: var(--switch-height);
-    border-radius: 5px;
+    border-radius: 8px;
     background: var(--primary);
     position: relative;
-    transition: 0.5s ease;
+    /* transition: 0.5s ease; */
     transform: scale(clamp(0.6, (100vw / 600px), 1));
     z-index: 1;
 }
@@ -73,11 +73,19 @@ label:not(.white-font):hover i {
     height: var(--switch-height);
     width: var(--switch-width);
     background-color: rgb(36, 37, 46);
-    border: 1px solid rgb(63, 63, 70);
-    border-radius: 5px;
+    border: 2px solid var(--blue);
     position: absolute;
-    transition: transform var(--animation-duration) ease;
     left: 0;
+    border-radius: 8px;
+    transition:
+        transform var(--animation-duration) cubic-bezier(0.4, 0, 0.2, 1),
+        border-radius var(--animation-duration) ease;
+    will-change: transform;
+    /* Optimize for smooth transitions */
+}
+
+.light .switch {
+    border-color: rgb(63, 63, 70);
 }
 
 /* Left to Center */
@@ -173,6 +181,10 @@ label:not(.white-font):hover i {
 /* Left, Center, Right positions */
 .switch.left-position {
     transform: translateX(0);
+    /* border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px; */
 }
 
 .switch.center-position {
@@ -192,7 +204,7 @@ label:not(.white-font):hover i {
     height: var(--switch-height);
     width: var(--switch-width);
     position: absolute;
-    border-radius: 5px;
+    border-radius: 8px;
 }
 
 .left-label {
