@@ -22,29 +22,31 @@ section.hero .left-section {
 }
 
 section.hero .parent-avatar.flex {
+  position: relative;
+  z-index: 1;
   align-items: end;
-  min-height: 100px;
+  min-height: 150px;
 }
 
 section.hero .avatar {
-  width: 100px;
+  width: 150px;
   border-radius: 50%;
   position: relative;
   overflow: hidden;
-  border: 2px solid rgba(233, 46, 139, 0.4);
+  background-color: var(--primary);
+  /* border: 2px solid rgba(233, 46, 139, 0.4);
   filter: drop-shadow(0 0 1rem rgba(233, 46, 139, 0.3)) drop-shadow(0 1rem 1rem rgba(244, 165, 96, 0.3));
   box-shadow: 1rem 1rem 2rem rgba(244, 165, 96, 0.5) inset, -1rem -1rem 2rem rgba(233, 46, 139, 0.5) inset;
-  /* animation: anim 10s infinite; */
+  animation: anim 10s infinite; */
 }
 
 section.hero .icon-verified {
   color: var(--blue);
   margin-bottom: 0.3rem;
-  margin-left: -0.3rem;
+  margin-left: -1rem;
   position: relative;
-  /* Ensure child div positions relative to this */
+  font-size: 1.1rem;
   z-index: 1;
-  /* Keep it above its surroundings */
 }
 
 /* The inner div (background effect) */
@@ -57,6 +59,11 @@ section.hero .icon-verified {
   left: 0.25rem;
   z-index: -1;
 } */
+
+.header-section.flex {
+  align-items: baseline;
+  gap: 1.5rem;
+}
 
 section.hero h1.title {
   font-size: 2.85rem;
@@ -85,29 +92,37 @@ section.hero .all-icons .icon:hover {
   color: var(--icon-hover);
 }
 
-section.hero a.download-cv,
+section.hero .cv-section {
+  gap: 1rem;
+}
+
+section.hero .cv-section a.download-cv,
+section.hero .cv-section button.view-cv,
 section.hero button.copy-email {
   background-color: #24252e;
   border: 1px solid rgb(63, 63, 70);
   padding: 0.75rem 0;
   width: 9.44rem;
   font-size: 0.95rem;
-  border-radius: 5px;
+  border-radius: 2.5px;
   transition: 0.3s;
   justify-content: center;
 }
 
-section.hero a.download-cv:hover,
+section.hero .cv-section a.download-cv:hover,
+section.hero .cv-section button.view-cv:hover,
 section.hero button.copy-email:hover {
   scale: 0.97;
 }
 
-section.hero a.download-cv .icon-file_download,
+section.hero .cv-section a.download-cv .icon-download,
+section.hero .cv-section button.view-cv .icon-eye,
 section.hero button.copy-email .icon-copy {
   color: var(--blue);
 }
 
-.light section.hero a.download-cv .icon-file_download,
+.light section.hero .cv-section a.download-cv .icon-download,
+.light section.hero .cv-section button.view-cv .icon-eye,
 .light section.hero button.copy-email .icon-copy {
   color: var(--orange);
 }
@@ -131,7 +146,7 @@ section.hero button.copy-email .icon-copy {
 section.hero .animation {
   min-width: 27vw;
   width: 100%;
-  translate: 75px 25px;
+  translate: 75px 75px;
   /* rotate: 180deg; */
   /* transform: scaleX(-1); */
 }
