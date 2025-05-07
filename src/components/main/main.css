@@ -31,10 +31,14 @@ main.flex div.left-section button {
   text-align: center;
   font-size: 1.05rem;
   opacity: 0.5;
-  border-radius: 5px;
   transition: 0.3s;
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   text-transform: capitalize;
+  border-radius: 8px;
+}
+
+.light main.flex div.left-section button {
+  border-color: rgb(63, 63, 70);
 }
 
 main.flex div.left-section button:hover {
@@ -43,35 +47,44 @@ main.flex div.left-section button:hover {
 
 main.flex div.left-section button.active {
   opacity: 1;
-  border: 1px solid var(--blue);
+  border: 2px solid var(--blue-border);
 }
 
 .light main.flex div.left-section button.active {
-  border: 1px solid #000;
+  border: 2px solid #000;
 }
 
 main.flex .technologies-toggle {
   position: absolute;
+  z-index: 1;
   justify-content: center;
   background-color: rgb(36, 37, 46);
-  border: 1px solid rgb(63, 63, 70);
+  border: 2px solid var(--blue-border);
   right: 0;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
   border-right: none;
   margin-top: 6.2rem;
-  transition: 0.3s;
+  transition: 0.5s;
+  transition: border-color 1s ease;
   color: white;
   padding: 0.75rem 0;
 }
 
-main.flex .technologies-toggle:hover {
-  border-color: rgba(93, 188, 252, 0.5);
-  scale: 0.97;
+.light main.flex .technologies-toggle {
+  border-color: rgb(63, 63, 70);
+}
+
+main.flex .technologies-toggle i {
+  transition: 0.5s;
+}
+
+main.flex .technologies-toggle:hover i {
+  transform: rotate(180deg);
 }
 
 .light main.flex .technologies-toggle:hover {
-  border-color: var(--border);
+  color: var(--orange);
 }
 
 @media (max-width: 600px) {
@@ -107,7 +120,6 @@ main.flex .technologies-toggle:hover {
   }
 }
 
-
 .graph_wrapper {
   position: absolute;
   z-index: 0;
@@ -116,7 +128,7 @@ main.flex .technologies-toggle:hover {
 }
 
 .graph_wrapper svg {
-  margin-top: 5.25%;
+  margin-top: 8.25%;
   width: calc(12vw + 50px);
   rotate: -3.75deg;
 }
@@ -166,6 +178,12 @@ main.flex .technologies-toggle:hover {
 
 @media (max-width: 600px) {
   .graph_wrapper {
+    display: none;
+  }
+}
+
+/* @media (max-width: 600px) {
+  .graph_wrapper {
     right: 18.5%;
   }
 
@@ -184,14 +202,14 @@ main.flex .technologies-toggle:hover {
     margin-top: 21%;
     rotate: 15.25deg;
   }
-}
+} */
 
 .path {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
   animation: dash 3s linear forwards;
   animation-iteration-count: 1;
-  animation-delay: 1s;
+  animation-delay: 0;
 }
 
 @keyframes dash {
@@ -202,15 +220,4 @@ main.flex .technologies-toggle:hover {
 
 .dashed {
   stroke-dasharray: 5, 12;
-}
-
-#arrow {
-  animation: arrow 2s linear forwards;
-  opacity: 0;
-}
-
-@keyframes arrow {
-  to {
-    opacity: 1;
-  }
 }
