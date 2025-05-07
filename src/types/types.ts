@@ -1,7 +1,8 @@
 export interface Project {
     imagPath: string;
     projectTitle: string;
-    projectDescription: string;
+    longDescription: string;
+    shortDescription: string;
     demo?: string;
     source?: string;
     video?: string;
