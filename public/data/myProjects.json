@@ -2,7 +2,8 @@
   {
     "projectTitle": "Wajba Landing Page 🍽️",
     "imagPath": "/screenshots/Wajba/Landing Page/Screenshot (1).png",
-    "projectDescription": "The Wajba landing page helps you promote your Wajba platform. It allows you to introduce your Dashboard and website. You can show the significant features available on the platform. Furthermore, you can check out the packages and price comparison of restaurant solutions. It’ll help the businesses choose the best plan for them.",
+    "longDescription": "The Wajba landing page helps you promote your Wajba platform. It allows you to introduce your Dashboard and website. You can show the significant features available on the platform. Furthermore, you can check out the packages and price comparison of restaurant solutions. It’ll help the businesses choose the best plan for them.",
+    "shortDescription": "Landing page showcasing Wajba’s features, pricing plans, and dashboard highlights for restaurants and businesses.",
     "category": ["angular", "tailwind"],
     "source": "https://github.com/MohamedAlaa18/Wajba_LandingPage",
     "demo": "https://wajba-landing-page.vercel.app/",
@@ -13,9 +14,10 @@
     "isFeatured": true
   },
   {
-    "projectTitle": "Wajba Dashboard 🍽️",
+    "projectTitle": "Wajba Dashboard ⚙️",
     "imagPath": "/screenshots/Wajba/Dashboard/Screenshot (1).png",
-    "projectDescription": "A comprehensive food ordering and management portal was built using Angular and Bootstrap. It allows users to browse food items, place orders, and manage their carts. Admins can manage menu items, featured meals, popular items, and offers using dynamic CRUD interfaces. The platform also supports user roles like admin, deliver bay, employee, and customer, each with dedicated dashboards and controls.",
+    "longDescription": "A comprehensive food ordering and management portal was built using Angular and Bootstrap. It allows users to browse food items, place orders, and manage their carts. Admins can manage menu items, featured meals, popular items, and offers using dynamic CRUD interfaces. The platform also supports user roles like admin, deliver bay, employee, and customer, each with dedicated dashboards and controls.",
+    "shortDescription": "Admin panel to manage food items, orders, user roles, and promotions using Angular-based dashboards and tools.",
     "category": ["angular", "bootstrap", "apb"],
     "source": "https://github.com/MohamedAlaa18/WajbaABPDashbaord",
     "screenShots": {
@@ -25,9 +27,24 @@
     "isFeatured": true
   },
   {
+    "projectTitle": "Wajba Website 🍔",
+    "imagPath": "/screenshots/Wajba/Website/Screenshot (7).png",
+    "longDescription": "Wajba is a full-featured online food ordering platform built with Angular and Tailwind. Users can seamlessly browse the menu, place orders for delivery or pickup, and manage their carts in real time. The responsive design and intuitive navigation ensure a great experience across devices.",
+    "shortDescription": "Responsive food ordering site for browsing meals, placing orders, and tracking delivery or pickup seamlessly.",
+    "category": ["angular", "tailwind"],
+    "source": "https://github.com/MohamedAlaa18/Wajba_WebPage",
+    "demo": "https://wajba-web-page.vercel.app/",
+    "screenShots": {
+      "path": "/screenshots/Wajba/Website",
+      "length": 16
+    },
+    "isFeatured": true
+  },
+  {
     "projectTitle": "EduNex 🎓",
     "imagPath": "/screenshots/EduNex/Website/Screenshot (1).png",
-    "projectDescription": "interactive and online course and learning portal made using Angular, Angular Material and bootstrap. Lets users explore courses, learn resources, track progress with analytics. It also has exam system where teachers can create their own exam, manage it and evaluate it. Course CRUD is another one which means you can manage courses resource and content in the site.",
+    "longDescription": "interactive and online course and learning portal made using Angular, Angular Material and bootstrap. Lets users explore courses, learn resources, track progress with analytics. It also has exam system where teachers can create their own exam, manage it and evaluate it. Course CRUD is another one which means you can manage courses resource and content in the site.",
+    "shortDescription": "Online learning platform with courses, exams, analytics, and management tools for teachers and students.",
     "category": ["angular", "angularMaterial", "jwt", "typeScript", ".net"],
     "source": "https://github.com/MohamedAlaa18/EduNex",
     "demo": "https://edu-nex-front.vercel.app/",
@@ -36,12 +53,13 @@
       "length": 58
     },
     "isFeatured": true,
-    "video": "https://www.youtube.com/embed/A7sPKUL7dGE?autoplay=1&mute=1"
+    "video": "/Videos/EduNex/Website/video_1.mp4"
   },
   {
     "projectTitle": "Cobra Cover 🐍",
     "imagPath": "/screenshots/Cobra Cover/Screenshot (1).png",
-    "projectDescription": "Cobra Cover is a Next.js e-commerce solution, styled with Tailwind CSS, to allow customers to design their phone covers. Customers can customize their cover using pictures, colour, material, finishes,…. Users can make payment through Stripe integration. Also admin can enter secret dashboard.",
+    "longDescription": "Cobra Cover is a Next.js e-commerce solution, styled with Tailwind CSS, to allow customers to design their phone covers. Customers can customize their cover using pictures, colour, material, finishes,…. Users can make payment through Stripe integration. Also admin can enter secret dashboard.",
+    "shortDescription": "E-commerce site for customizing phone covers with colors, finishes, and Stripe-powered checkout integration.",
     "category": [
       "next",
       "typeScript",
@@ -64,7 +82,8 @@
   {
     "projectTitle": "Mercado 🛍️",
     "imagPath": "/screenshots/Mercado/Screenshot (1).png",
-    "projectDescription": "Mercado is an e-commerce application which has been developed with Next.js and Material UI. The app has a complete cart system to maximize user satisfaction. Customers can select the item in the colour of their choice. Apart from that, the platform also has localization support for 3 languages thereby ensuring a delightful shopping experience for users.",
+    "longDescription": "Mercado is an e-commerce application which has been developed with Next.js and Material UI. The app has a complete cart system to maximize user satisfaction. Customers can select the item in the colour of their choice. Apart from that, the platform also has localization support for 3 languages thereby ensuring a delightful shopping experience for users.",
+    "shortDescription": "Next.js shopping site with product filters, multi-language support, cart system, and dynamic product options.",
     "category": ["next", "typeScript", "redux", "mui"],
     "source": "https://github.com/MohamedAlaa18/Mercado",
     "demo": "https://e-commece-web-app.vercel.app/",
@@ -75,22 +94,10 @@
     "isFeatured": true
   },
   {
-    "projectTitle": "Vendo 💼",
-    "imagPath": "/screenshots/Vendo/Screenshot (1).png",
-    "projectDescription": "Vendo is a dynamic vendor dashboard and web application designed in React and Tailwind CSS. This dashboard provides vendors with the ability to manage their products and orders in one easy location.  Adding and managing products, viewing product reviews.",
-    "category": ["react", "tailwind"],
-    "source": "https://github.com/MohamedAlaa18/vendo",
-    "demo": "https://mohamedalaa28.github.io/vendor-dashboard/",
-    "screenShots": {
-      "path": "/screenshots/Vendo",
-      "length": 8
-    },
-    "isFeatured": true
-  },
-  {
     "projectTitle": "Ryyan Media 🎥",
     "imagPath": "/screenshots/Ryyan Media/Screenshot (1).png",
-    "projectDescription": "Ryyan Media provides digital marketing and content creation solutions with guaranteed results.  Their website built using angular and the styling with Tailwind CSS has their portfolio and bolgs. Users can check out some services offered, see the past project, and reach out if they wanna collab or ask anything.",
+    "longDescription": "Ryyan Media provides digital marketing and content creation solutions with guaranteed results.  Their website built using angular and the styling with Tailwind CSS has their portfolio and bolgs. Users can check out some services offered, see the past project, and reach out if they wanna collab or ask anything.",
+    "shortDescription": "Media agency site showcasing services, 3D visuals, past projects, and a contact form for collaborations.",
     "category": ["angular", "tailwind", "threeJs"],
     "source": "https://github.com/MohamedAlaa18/RyyanMedia",
     "demo": "https://ryyan-media.vercel.app/",
@@ -101,9 +108,24 @@
     "isFeatured": true
   },
   {
+    "projectTitle": "Vendo 💼",
+    "imagPath": "/screenshots/Vendo/Screenshot (1).png",
+    "longDescription": "Vendo is a dynamic vendor dashboard and web application designed in React and Tailwind CSS. This dashboard provides vendors with the ability to manage their products and orders in one easy location.  Adding and managing products, viewing product reviews.",
+    "shortDescription": "Vendor dashboard where sellers can add products, manage reviews, track orders, and view performance data.",
+    "category": ["react", "tailwind"],
+    "source": "https://github.com/MohamedAlaa18/vendo",
+    "demo": "https://mohamedalaa28.github.io/vendor-dashboard/",
+    "screenShots": {
+      "path": "/screenshots/Vendo",
+      "length": 8
+    },
+    "isFeatured": true
+  },
+  {
     "projectTitle": "Admin Dashboard 📈",
     "imagPath": "/screenshots/Admin Dashboard/Screenshot (1).png",
-    "projectDescription": "Admin Dashboard provides a UI to Admins powered by Next.js and Material-UI.  and see the data through a bunch of graphs, charts and tables. The dashboard allows the admin to view event reminders, make notes, view complete data of teams and contacts, etc.",
+    "longDescription": "Admin Dashboard provides a UI to Admins powered by Next.js and Material-UI.  and see the data through a bunch of graphs, charts and tables. The dashboard allows the admin to view event reminders, make notes, view complete data of teams and contacts, etc.",
+    "shortDescription": "Feature-rich admin dashboard with graphs, tables, notes, and team data using Material UI components.",
     "category": ["next", "typeScript", "mui"],
     "source": "https://github.com/MohamedAlaa18/admin-dashboard",
     "demo": "https://admin-dashboard-omega-indol.vercel.app/",
@@ -116,7 +138,8 @@
   {
     "projectTitle": "Little Lemon 🍋",
     "imagPath": "/screenshots/Little Lemon/Screenshot (1).png",
-    "projectDescription": "Little Lemon is crafted with React, Redux, and Sass, offering a wonderful-looking platform. The restaurant website elevates the dining experience with smooth table bookings, seamless navigation, and a visually appealing user interface. The booking page includes robust validation to ensure a seamless reservation process.",
+    "longDescription": "Little Lemon is crafted with React, Redux, and Sass, offering a wonderful-looking platform. The restaurant website elevates the dining experience with smooth table bookings, seamless navigation, and a visually appealing user interface. The booking page includes robust validation to ensure a seamless reservation process.",
+    "shortDescription": "Restaurant website with table booking, food showcase, smooth navigation, and validation-enabled reservations.",
     "category": ["react", "redux", "sass"],
     "source": "https://github.com/MohamedAlaa18/little-lemon",
     "demo": "https://mohamedalaa28.github.io/restaurant-web-app",
@@ -129,7 +152,8 @@
   {
     "projectTitle": "EduNex Dashboard 🖥️",
     "imagPath": "/screenshots/EduNex/Dashboard/Screenshot (1).png",
-    "projectDescription": "A robust dashboard built with Angular and Angular Material for managing teachers, students, and transactions. It offers a seamless, intuitive user experience with real-time data management and comprehensive administrative controls, ensuring efficient oversight, enhanced functionality, and smooth operation for educational administrators.",
+    "longDescription": "A robust dashboard built with Angular and Angular Material for managing teachers, students, and transactions. It offers a seamless, intuitive user experience with real-time data management and comprehensive administrative controls, ensuring efficient oversight, enhanced functionality, and smooth operation for educational administrators.",
+    "shortDescription": "Admin interface for educational systems to manage teachers, students, transactions, and real-time analytics.",
     "category": ["angular", "angularMaterial", "jwt", "typeScript", ".net"],
     "source": "https://github.com/MohamedAlaa18/EduNexDashboard",
     "demo": "https://edu-nex-dashboard.vercel.app/",
@@ -142,7 +166,8 @@
   {
     "projectTitle": "Echo House 🏫",
     "imagPath": "/screenshots/Echo House/Screenshot (1).png",
-    "projectDescription": "An e-commerce platform for courses, built using Next.js and Tailwind CSS. It includes a products section where users can browse available courses, a detailed product page for each course, and a shopping cart functionality for managing course purchases seamlessly, efficiently, and with ease, security, and convenience.",
+    "longDescription": "An e-commerce platform for courses, built using Next.js and Tailwind CSS. It includes a products section where users can browse available courses, a detailed product page for each course, and a shopping cart functionality for managing course purchases seamlessly, efficiently, and with ease, security, and convenience.",
+    "shortDescription": "E-learning commerce platform with cart, product pages, and seamless course purchasing via modern UI.",
     "category": ["next", "typeScript", "context", "tailwind"],
     "source": "https://github.com/MohamedAlaa18/echo-house",
     "demo": "https://ecommerce-courses-liart.vercel.app/",
@@ -155,7 +180,8 @@
   {
     "projectTitle": "MyReads 📖",
     "imagPath": "/screenshots/MyReads/Screenshot (1).png",
-    "projectDescription": "MyReads is a book-tracking app developed with React.js that lets you effortlessly organize your reading list. Easily categorize books you've read, are currently reading, or plan to read in the future. With intuitive features and a clean interface, managing your reading habits has never been easier. Dive into the world of books with MyReads!",
+    "longDescription": "MyReads is a book-tracking app developed with React.js that lets you effortlessly organize your reading list. Easily categorize books you've read, are currently reading, or plan to read in the future. With intuitive features and a clean interface, managing your reading habits has never been easier. Dive into the world of books with MyReads!",
+    "shortDescription": "Book tracking app to organize reading lists, categorize books, and manage reading goals easily.",
     "category": ["react", "css"],
     "source": "https://github.com/MohamedAlaa18/my-reads",
     "demo": "https://mohamedalaa28.github.io/book-tracking-app/",
@@ -168,7 +194,8 @@
   {
     "projectTitle": "BookStacker 📚",
     "imagPath": "/screenshots/BookStacker/Screenshot (1).png",
-    "projectDescription": "BookStacker is your library system for managing your personal library collections. This web-based application offers an intuitive interface equipped with tools for organizing, searching, editing, and deleting book entries effortlessly. Streamline your book management experience with BookStacker and keep your library in perfect order.",
+    "longDescription": "BookStacker is your library system for managing your personal library collections. This web-based application offers an intuitive interface equipped with tools for organizing, searching, editing, and deleting book entries effortlessly. Streamline your book management experience with BookStacker and keep your library in perfect order.",
+    "shortDescription": "Library system to search, edit, organize, and delete books with an intuitive Bootstrap-based interface.",
     "category": ["javaScript", "html", "css", "bootstrap"],
     "source": "https://github.com/MohamedAlaa18/book-stacker",
     "demo": "https://mohamedalaa28.github.io/simple-library-system/",
@@ -176,6 +203,6 @@
       "path": "/screenshots/BookStacker",
       "length": 11
     },
-    "isFeatured": false
+    "isFeatured": true
   }
 ]

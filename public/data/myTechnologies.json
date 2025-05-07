@@ -18,7 +18,6 @@
     "svg": "/skills/javascript.svg",
     "genre": "Frontend"
   },
-  { "label": "API", "svg": "/skills/api-dark.svg", "genre": "Tools" },
   { "label": "Pug.js", "svg": "/skills/pug-dark.svg", "genre": "Frontend" },
   { "label": "Gulp.js", "svg": "/skills/gulp.svg", "genre": "Frontend" },
   { "label": "HTML5", "svg": "/skills/html.svg", "genre": "Frontend" },
@@ -35,16 +34,18 @@
     "genre": "Frontend"
   },
   { "label": "Bootstrap", "svg": "/skills/bootstrap.svg", "genre": "Frontend" },
-  { "label": "NPM", "svg": "/skills/npm-dark.svg", "genre": "Tools" },
-  { "label": "JWT", "svg": "/skills/jwt-dark.svg", "genre": "Tools" },
+  { "label": "Jquery", "svg": "/skills/jquery.svg", "genre": "Frontend" },
   { "label": ".NET CORE", "svg": "/skills/dotnet.svg", "genre": "Backend" },
   { "label": "C#", "svg": "/skills/cs.svg", "genre": "Backend" },
   { "label": "MySQL", "svg": "/skills/mysql-dark.svg", "genre": "Database" },
+  { "label": "NPM", "svg": "/skills/npm-dark.svg", "genre": "Tools" },
+  { "label": "JWT", "svg": "/skills/jwt-dark.svg", "genre": "Tools" },
   { "label": "Git", "svg": "/skills/git-dark.svg", "genre": "Tools" },
+  { "label": "API", "svg": "/skills/api-dark.svg", "genre": "Tools" },
   { "label": "Github", "svg": "/skills/github-dark.svg", "genre": "Tools" },
-  { "label": "postman", "svg": "/skills/postman.svg", "genre": "Tools" },
+  { "label": "Postman", "svg": "/skills/postman.svg", "genre": "Tools" },
   { "label": "VS Code", "svg": "/skills/vscode-dark.svg", "genre": "Tools" },
   { "label": "Eclipse", "svg": "/skills/eclipse-dark.svg", "genre": "Tools" },
-  { "label": "chart.js", "svg": "/skills/chartjs-dark.svg", "genre": "Tools" },
+  { "label": "Chart.js", "svg": "/skills/chartjs-dark.svg", "genre": "Tools" },
   { "label": "Circleci", "svg": "/skills/circleci-light.svg", "genre": "Tools" }
 ]
