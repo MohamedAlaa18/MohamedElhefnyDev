@@ -7,11 +7,12 @@ table of contents
 3-Responsive Design (media query)
 */
 section.contact-us {
-  min-height: 86dvh;
+  min-height: 86.5dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+
 /*
 ================
 1-Header-section
@@ -57,11 +58,11 @@ section.contact-us #email,
 section.contact-us #message {
   all: unset;
   background-color: rgba(63, 63, 70, 0.15);
-  border: 1px solid rgb(63, 63, 70);
+  border: 2px solid var(--border);
   width: 16rem;
   padding: 0.5rem 0.1rem;
   margin-left: 1rem;
-  border-radius: 5px;
+  border-radius: 8px;
   transition: 0.3s;
   font-size: 1.1rem;
 }
@@ -69,8 +70,8 @@ section.contact-us #message {
 .light section.contact-us #email,
 .light section.contact-us #message {
   background-color: rgba(255, 255, 255, 0.162);
-  border: 1px solid rgba(128, 128, 128, 0.45);
-  box-shadow: 1px 1px 1px rgba(73, 73, 75, 0.105);
+  border: 2px solid var(--border);
+  /* box-shadow: 1px 1px 1px rgba(73, 73, 75, 0.105); */
   color: #232324;
 }
 
@@ -78,14 +79,14 @@ section.contact-us #email:focus,
 section.contact-us #message:focus,
 section.contact-us #email:hover,
 section.contact-us #message:hover {
-  border: 1px solid var(--blue);
+  border: 2px solid var(--blue-border);
 }
 
 .light section.contact-us #email:focus,
 .light section.contact-us #message:focus,
 .light section.contact-us #email:hover,
 .light section.contact-us #message:hover {
-  border: 1px solid var(--orange);
+  border: 2px solid var(--orange);
 }
 
 section.contact-us #message {
@@ -99,12 +100,16 @@ section.contact-us .submit {
   width: 7.35rem;
   text-align: center;
   font-size: 1.05rem;
-  border-radius: 5px;
+  border-radius: 25px;
   transition: 0.3s;
   margin-top: 1.8rem;
-  border: 1px solid rgb(63, 63, 70);
+  border: 2px solid var(--blue-border);
   justify-content: center;
   gap: 0.2rem;
+}
+
+.light section.contact-us .submit {
+  border: 2px solid rgb(63, 63, 70);
 }
 
 section.contact-us .submit:hover {
