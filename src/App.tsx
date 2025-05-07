@@ -1,4 +1,4 @@
-import { useEffect, useState, lazy, Suspense } from 'react';
+import { useEffect, useState, lazy, Suspense, FC } from 'react';
 import Header from './components/header/Header';
 import Hero from './components/hero/Hero';
 import Contact from './components/contact/Contact';
@@ -8,8 +8,21 @@ import Loading from './components/loading/Loading';
 import CustomProvider from './components/CustomProvider';
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import ParticlesBackground from './components/particlesBackground/ParticlesBackground';
 
-const Main = lazy(() => import('./components/main/Main'));
+export interface MainProps {
+  mainAnimated: boolean;
+}
+
+const Main = lazy(() =>
+  new Promise<{ default: FC<MainProps> }>((resolve) => {
+    setTimeout(() => {
+      import('./components/main/Main').then((module) => {
+        resolve({ default: module.default });
+      });
+    }, 2666);
+  })
+);
 
 const appearingAnimation = {
   visible: { opacity: 1, scale: 1, transition: { duration: 0.6 } },
@@ -89,8 +102,9 @@ function App() {
           <motion.div
             ref={mainRef}
             variants={appearingAnimation}
-            initial="hidden"
-            animate={mainControl}>
+            // initial="hidden"
+            animate={mainControl}
+          >
             <Main mainAnimated={mainAnimated} />
           </motion.div>
 
@@ -98,7 +112,7 @@ function App() {
           <motion.div
             ref={contactRef}
             variants={appearingAnimation}
-            initial="hidden"
+            // initial="hidden"
             animate={contactControl}
           >
             <Contact />
@@ -106,17 +120,16 @@ function App() {
 
           <div className='divider' />
           <Footer />
-
-          <button
-            style={{ opacity: scrollVisible ? 1 : 0 }}
-            onClick={scrollToTop}
-            className='scroll-to-up'
-          >
-            <i className='icon-keyboard_arrow_up' />
-          </button>
-
-          <Sidebar />
+          <ParticlesBackground />
         </div>
+        <button
+          style={{ opacity: scrollVisible ? 1 : 0 }}
+          onClick={scrollToTop}
+          className='scroll-to-up'
+        >
+          <i className='icon-keyboard_arrow_up' />
+        </button>
+        <Sidebar />
       </CustomProvider>
     </Suspense>
   );
