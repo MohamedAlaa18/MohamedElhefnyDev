@@ -1,0 +1,27 @@
+div.particlesContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+}
+
+div.particlesBackground {
+    position: relative;
+}
+
+div.particlesBackground,
+#particlePlane {
+
+    width: 100%;
+    height: 100%;
+}
+
+#particlePlane canvas {
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+    mix-blend-mode: screen;
+}
