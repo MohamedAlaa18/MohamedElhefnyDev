@@ -41,6 +41,39 @@ export default function Modal({ children }: { children: ReactNode }) {
     }
   }, [state.isModalOpen, dispatch]);
 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (state.isModalOpen) {
+        if (event.key === 'ArrowRight' && state.screenshots.length > 1) {
+          handleNext();
+        } else if (event.key === 'ArrowLeft' && state.screenshots.length > 1) {
+          handlePrev();
+        } else if (event.key === 'Escape') {
+          handleCloseModal();
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (state.isModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [state.isModalOpen]);
+
   const handleCircleClick = (index: number) => {
     dispatch(setCurrentImageIndex(index));
     dispatch(setLoading(true));
@@ -98,27 +131,6 @@ export default function Modal({ children }: { children: ReactNode }) {
     }
   }, 100);
 
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (state.isModalOpen) {
-        if (event.key === 'ArrowRight' && state.screenshots.length > 1) {
-          handleNext();
-        } else if (event.key === 'ArrowLeft' && state.screenshots.length > 1) {
-          handlePrev();
-        } else if (event.key === 'Escape') {
-          handleCloseModal();
-        }
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   const handleCloseModal = () => {
     dispatch(setIsModalOpen(false));
     dispatch(setScreenshots([]));
@@ -164,18 +176,20 @@ export default function Modal({ children }: { children: ReactNode }) {
             transition={{ duration: 0.3 }}
           >
             <div className="image-wrapper">
-              <button aria-label="Close modal" className="modal-close" onClick={handleCloseModal}>
-                <div className="icon-close"></div>
-              </button>
+              <div className="close-wrapper">
+                <button aria-label="Close modal" className="modal-close" onClick={handleCloseModal}>
+                  <i className="icon-close" />
+                </button>
+              </div>
 
               {state.currentImageIndex > 0 && (
                 <button className="modal-prev" onClick={() => handleCircleClick(state.currentImageIndex - 1)}>
-                  <div className='icon-arrow-back' />
+                  <i className='icon-reply' />
                 </button>
               )}
               {state.currentImageIndex < state.screenshots.length - 1 && (
                 <button className="modal-next" onClick={() => handleCircleClick(state.currentImageIndex + 1)}>
-                  <div className='icon-arrow-forward' />
+                  <i className='icon-forward' />
                 </button>
               )}
 
