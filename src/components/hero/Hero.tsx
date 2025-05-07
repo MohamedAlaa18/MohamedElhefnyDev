@@ -98,7 +98,7 @@ export default function Hero() {
             initial={{ transform: "scale(0)" }}
             animate={{ transform: "scale(1)" }}
             transition={{ damping: 5, duration: 2, type: "spring", stiffness: 100 }}
-            src="./images/me_carton"
+            src="./images/me_carton.png"
             className='avatar'
             alt=""
           />
