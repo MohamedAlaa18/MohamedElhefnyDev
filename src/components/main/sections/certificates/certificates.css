@@ -11,8 +11,8 @@ section#certificates div.right-section a:hover {
 
 section#certificates div.right-section article.certificate {
   padding: 0.5rem;
-  border: 1px solid var(--border);
-  border-radius: 5px;
+  border: 2px solid var(--border);
+  border-radius: 8px;
   cursor: pointer;
   max-width: 333px;
   align-items: center;

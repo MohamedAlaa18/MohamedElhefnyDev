@@ -10,7 +10,7 @@ section#projects div.right-section {
 .card-container {
   position: relative;
   transition: 0.3s;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 
 .card-container:hover {
@@ -18,13 +18,17 @@ section#projects div.right-section {
   transform: translateY(-10px);
 }
 
+/* .card-container .card {
+  box-shadow: var(--shadow1);
+} */
+
 .card-container:hover .card {
   box-shadow: 0 10px 20px var(--rise-shadow);
 }
 
 .motion-article-blur {
   /* filter: blur(5px); */
-  opacity: 0.25;
+  /* opacity: 0.1; */
   transition: 0.3s ease-in-out;
   z-index: 0;
 }
@@ -51,7 +55,7 @@ section#projects div.right-section {
   background: var(--secondary);
   color: var(--subtitle);
   position: relative;
-  border-radius: 5px;
+  border-radius: 8px;
   padding: 10px;
   margin-left: 10px;
   transition: 0.3s;
@@ -99,13 +103,13 @@ section#projects div.right-section {
   border-left: 10px solid var(--orange);
 }
 
-.book-mark {
+.card-description .book-mark {
   position: absolute;
   top: 1.1rem;
   left: 0.5rem;
 }
 
-.triangle-topleft {
+.card-description .triangle-topleft {
   width: 0;
   height: 0;
   border-top: 17.5px solid var(--blue);
@@ -115,7 +119,7 @@ section#projects div.right-section {
   margin-left: -0.3rem;
 }
 
-.triangle-topright {
+.card-description .triangle-topright {
   width: 0;
   height: 0;
   border-top: 17.5px solid var(--blue);
@@ -125,28 +129,29 @@ section#projects div.right-section {
   margin-left: -0.3rem;
 }
 
-.light .triangle-topright,
-.light .triangle-topleft {
+.light .card-description .triangle-topright,
+.light .card-description .triangle-topleft {
   border-top: 17.5px solid var(--orange);
 }
 
-.card:hover+.card-description-container {
+/* .card:hover+.card-description-container {
   display: block;
-}
+} */
 
-.card-description-container.visible {
+/* .card-description-container.visible {
   display: block;
-}
+} */
 
-.card {
-  border: 1px solid var(--border);
-  border-radius: 5px;
+.projects.right-section .card {
+  border: 2px solid var(--border);
+  border-radius: 8px;
   transition: 0.3s;
+  /* background-color: var(--secondary); */
 }
 
-.card img {
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
+.projects.right-section .card img {
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
   height: auto;
 }
 
@@ -154,12 +159,13 @@ section#projects div.right-section {
   position: relative;
   width: 266px;
   height: 149px;
+  /* height: 177.33px; */
 }
 
-.icon-picture {
+/* .icon-picture {
   font-size: 2rem;
   transition: 0.3s;
-}
+} */
 
 .overlay {
   position: absolute;
@@ -167,7 +173,9 @@ section#projects div.right-section {
   left: 0;
   width: 100%;
   height: 149px;
-  border-radius: 5px;
+  /* height: 177.33px; */
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
   background-color: var(--image-hover);
   opacity: 0;
   transition: 0.3s;
@@ -177,12 +185,14 @@ section#projects div.right-section {
   cursor: pointer;
 }
 
-.overlay:hover {
+/* .overlay:hover {
   opacity: 1;
-}
+} */
 
 .card .box {
   padding: 1rem 0.4rem;
+  /* background: linear-gradient(to right bottom, var(--border) 5%, var(--secondary) 50%); */
+  /* border-radius: 0 0 8px 8px; */
 }
 
 .card .box .title {
@@ -210,15 +220,21 @@ section#projects div.right-section {
 }
 
 .card .icon-link,
-.card .icon-github,
-.card .icon-airplay {
+.card .icon-github {
   color: var(--subtitle);
   font-size: 1.2rem;
 }
 
+.card .icon-image,
+.card .icon-airplay {
+  color: var(--subtitle);
+  font-size: 1.25rem;
+}
+
 .card .icon-link:hover,
 .card .icon-github:hover,
-.card .icon-airplay:hover {
+.card .icon-airplay:hover,
+.card .icon-image:hover {
   color: var(--icon-hover);
   cursor: pointer;
 }
@@ -245,7 +261,7 @@ section#projects div.right-section {
   transition: 0.3s;
 }
 
-.card button.link:hover,
+/* .card button.link:hover,
 .icon-picture {
   color: var(--blue);
 }
@@ -253,7 +269,7 @@ section#projects div.right-section {
 .light .card button.link:hover,
 .light .icon-picture {
   color: var(--orange);
-}
+} */
 
 .flex.right-section {
   display: flex;
@@ -331,4 +347,10 @@ button:disabled {
   cursor: not-allowed;
   pointer-events: none;
   /* optional for safety */
+}
+
+
+.loading .blur-overlay {
+  height: calc(100%-45px);
+  top: 45px;
 }

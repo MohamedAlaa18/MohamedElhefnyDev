@@ -17,7 +17,7 @@ import {
   setIsDropdownOpen,
   setVideoUrl
 } from '../../../../state/projectsSlice';
-import Dropdown from '../../components/dropdown/Dropdown';
+// import Dropdown from '../../components/dropdown/Dropdown';
 import Modal from '../../components/modal/Modal'
 
 export default function Projects() {
@@ -94,7 +94,7 @@ export default function Projects() {
   return (
     <section id='projects' className='flex' ref={containerRef}>
       <div className='flex left-section'>
-        <Dropdown handleClick={handleClick} />
+        {/* <Dropdown handleClick={handleClick} /> */}
 
         <div className='flex category-buttons'>
           <button className={state.active === 'All' && !state.isDropdownOpen ? 'active' : ''} onClick={() => handleClick('All')}>All Projects</button>
@@ -121,36 +121,54 @@ export default function Projects() {
                 className='card'
               >
                 <div className="image-container skeleton">
-                  <img className="image" width={266} src={project.imagPath} alt={project.projectTitle} loading='lazy' decoding="async" />
-                  <div className="overlay" onClick={() => handleImageClick(project)}>
+                  <img
+                    className="image"
+                    width={266}
+                    height={149}
+                    src={project.imagPath}
+                    srcSet={`${project.imagPath}?w=266 266w, ${project.imagPath}?w=532 532w`}
+                    sizes="(max-width: 768px) 100vw, 266px"
+                    alt={project.projectTitle}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  {/* <div className="overlay" onClick={() => handleImageClick(project)}>
                     <i className="icon-picture" />
-                  </div>
+                  </div> */}
                 </div>
                 <div style={{ width: "266px" }} className='box'>
                   <h1 className='title'>{project.projectTitle}</h1>
-                  <p className='sub-title'>{project.projectDescription}</p>
+                  <p className='sub-title'>{project.shortDescription}</p>
 
                   <div className="flex icons">
                     <div className="flex">
-                      <button
-                        type="button"
-                        className="icon-link"
-                        onClick={() => window.open(project.demo, '_blank')}
-                        disabled={!project.demo}
-                      />
                       <button
                         className="icon-github"
                         onClick={() => window.open(project.source, '_blank')}
                         disabled={!project.source}
                       />
+                      <button
+                        className='icon-image'
+                        rel="noopener"
+                        onClick={() => handleImageClick(project)}
+                        disabled={!project.imagPath}
+                      />
+                      <button
+                        className='icon-airplay'
+                        rel="noopener"
+                        onClick={() => handleVideoModalOpen(project.video!)}
+                        disabled={!project.video}
+                      />
                     </div>
 
-                    <button
-                      className='icon-airplay link flex'
-                      rel="noopener"
-                      onClick={() => handleVideoModalOpen(project.video!)}
-                      disabled={!project.video}
-                    />
+                    <div className='flex'>
+                      <button
+                        type="button"
+                        className="icon-link link flex"
+                        onClick={() => window.open(project.demo, '_blank')}
+                        disabled={!project.demo}
+                      />
+                    </div>
                   </div>
                 </div>
               </motion.article>
@@ -171,7 +189,7 @@ export default function Projects() {
                       <div className="triangle-topleft"></div>
                       <div className="triangle-topright"></div>
                     </div>
-                    <p className='sub-title'>{project.projectDescription}</p>
+                    <p className='sub-title'>{project.shortDescription}</p>
                   </div>
                 </motion.div>
               )}
@@ -184,14 +202,10 @@ export default function Projects() {
         <Modal>
           <div className={`${state.loading ? 'loading' : ''}`}>
             {state.videoUrl ? (
-              <iframe
+              <video
+                controls
                 src={state.videoUrl}
-                title="YouTube Video"
-                frameBorder="0"
-                className='video'
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                onLoad={() => dispatch(setLoading(false))}
+                onLoadedData={() => dispatch(setLoading(false))}
               />
             ) : (
               <img
