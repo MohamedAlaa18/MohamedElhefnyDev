@@ -98,16 +98,17 @@ export default function Modal({ children }: { children: ReactNode }) {
   };
 
   const handleTouchEnd = () => {
-    if (touchStartX && touchEndX) {
+    if (touchStartX !== null && touchEndX !== null) {
       const difference = touchStartX - touchEndX;
-      if (Math.abs(difference) > 50) {
+      if (Math.abs(difference) > 20) {
         if (difference > 0 && state.currentImageIndex !== undefined) {
+          // Swipe left (next)
           dispatch(setCurrentImageIndex((state.currentImageIndex + 1) % state.screenshots.length));
-          dispatch(setLoading(true));
         } else if (state.currentImageIndex !== undefined) {
+          // Swipe right (previous)
           dispatch(setCurrentImageIndex((state.currentImageIndex - 1 + state.screenshots.length) % state.screenshots.length));
-          dispatch(setLoading(true));
         }
+        dispatch(setLoading(true));
       }
     }
     setTouchStartX(null);

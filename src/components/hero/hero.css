@@ -34,6 +34,7 @@ section.hero .avatar {
   position: relative;
   overflow: hidden;
   background-color: var(--primary);
+  /* border: 3px solid var(--primary); */
   /* border: 2px solid rgba(233, 46, 139, 0.4);
   filter: drop-shadow(0 0 1rem rgba(233, 46, 139, 0.3)) drop-shadow(0 1rem 1rem rgba(244, 165, 96, 0.3));
   box-shadow: 1rem 1rem 2rem rgba(244, 165, 96, 0.5) inset, -1rem -1rem 2rem rgba(233, 46, 139, 0.5) inset;
@@ -165,6 +166,12 @@ section.hero .animation {
 @media (max-width: 500px) {
   section.hero h1.title {
     font-size: 2.25rem;
+  }
+}
+
+@media (max-width: 400px) {
+  section.hero h1.title {
+    font-size: 2rem;
   }
 }
 
