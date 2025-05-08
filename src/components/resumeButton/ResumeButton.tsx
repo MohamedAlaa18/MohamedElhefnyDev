@@ -71,7 +71,7 @@ function ResumeButton() {
                     </button>
 
                     <div className="sub-buttons">
-                        <a href="./public/Mohamed Alaa El-hefny.pdf"
+                        <a href="/Mohamed Alaa El-hefny.pdf"
                             download
                             className="sub-button" style={getButtonStyle(1)}>
                             <i className="icon-download" />
@@ -100,7 +100,7 @@ function ResumeButton() {
                         </div>
                         {/* <Resume /> */}
                         <iframe
-                            src="/public/Mohamed Alaa El-hefny.pdf"
+                            src="/Mohamed Alaa El-hefny.pdf"
                             width="100%"
                             height="100%"
                             title="CV"

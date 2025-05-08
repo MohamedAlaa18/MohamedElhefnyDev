@@ -6,7 +6,7 @@
     height: 50px;
     border-radius: 100px;
     background-color: var(--primary);
-    transition: background-color 750ms;
+    transition: background-color 500ms;
     overflow: hidden;
 }
 
@@ -17,7 +17,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: color 750ms;
+    transition: color 500ms;
     font-weight: 500;
 }
 
@@ -30,7 +30,7 @@
     width: calc(50% - 4px);
     background-color: rgb(36, 37, 46);
     border: 2px solid var(--blue-border);
-    transition: all 750ms;
+    transition: all 500ms;
     z-index: 1;
 }
 
@@ -51,10 +51,11 @@
 .toggle--projects .toggle__option--projects,
 .toggle--certificates .toggle__option--certificates {
     color: var(--subtitle);
+    opacity: 0.5;
 }
 
 .toggle--moving:after {
-    transition: all 750ms, border-color 0s;
+    transition: all 500ms, border-color 0s;
 }
 
 .toggle--moving {

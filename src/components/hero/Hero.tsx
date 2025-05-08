@@ -15,7 +15,7 @@ export default function Hero() {
   const [letterIndex, setLetterIndex] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
   const [isTypingComplete, setIsTypingComplete] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
+  // const [scrollY, setScrollY] = useState(0);
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
@@ -71,14 +71,14 @@ export default function Hero() {
     checkPathAttribute();
   });
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     setScrollY(window.scrollY);
+  //   };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => window.removeEventListener('scroll', handleScroll);
+  // }, []);
 
   return (
     <section className='hero flex'>
@@ -86,13 +86,13 @@ export default function Hero() {
         <motion.div
           className='parent-avatar flex'
           initial={{ scale: 1, x: 0 }}
-          animate={{
-            scale: scrollY < 200 ? 1 - scrollY / 800 : 0.75,
-            x: scrollY < 200 ? -scrollY / 10 : -20,
-            y: scrollY < 200 ? scrollY / 10 : 20,
-            width: "150px",
-            zIndex: 1,
-          }}
+        // animate={{
+        //   scale: scrollY < 200 ? 1 - scrollY / 800 : 0.75,
+        //   x: scrollY < 200 ? -scrollY / 10 : -20,
+        //   y: scrollY < 200 ? scrollY / 10 : 20,
+        //   width: "150px",
+        //   zIndex: 1,
+        // }}
         >
           <motion.img
             initial={{ transform: "scale(0)" }}
