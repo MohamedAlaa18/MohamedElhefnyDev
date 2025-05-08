@@ -1,16 +1,12 @@
 import './projects.css';
-import {
-  useEffect, useRef, useState, useLayoutEffect, useCallback
-} from 'react';
+import { useRef, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ringEffect, smoothScaleAnimation } from '../../framer-animation';
+import { smoothScaleAnimation } from '../../framer-animation';
 import { RootState } from '../../../../state/store';
 import projectsData from '../../../../../public/data/myProjects.json';
 import { Project } from '../../../../types/types';
-import {
-  setScreenshots, setLoading, setIsModalOpen
-} from '../../../../state/projectsSlice';
+import { setScreenshots, setLoading, setIsModalOpen } from '../../../../state/projectsSlice';
 import Modal from '../../components/modal/Modal';
 
 export default function Projects() {
@@ -19,50 +15,14 @@ export default function Projects() {
     isModalOpen, videoUrl, screenshots, loading, isDropdownOpen, currentImageIndex
   } = useSelector((state: RootState) => state.projects);
 
-  const [cardDescriptionHeight, setCardDescriptionHeight] = useState(0);
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const [hoveredIndex, setHoveredIndex] = useState<number>(-1);
-  const [descriptionPosition, setDescriptionPosition] = useState<'left' | 'right'>('right');
   const containerRef = useRef<HTMLDivElement>(null);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const cardDescriptionRef = useRef<HTMLDivElement>(null);
-
-  useLayoutEffect(() => {
-    if (cardDescriptionRef.current) {
-      setCardDescriptionHeight(cardDescriptionRef.current.clientHeight);
-    }
-  }, [hoveredIndex]);
-
-  const handleClickOutside = (e: MouseEvent) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-      setHoveredIndex(-1); // Close dropdown or similar UI element
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  const preloadImages = (path: string, length: number) => {
-    Array.from({ length }, (_, i) => new Image().src = `${path}/Screenshot (${i + 1}).png`);
-  };
 
   const handleCategoryClick = (category: string) => {
     setActiveCategory(category);
     setHoveredIndex(-1);
   };
-
-  const handleMouseEnter = useCallback((e: React.MouseEvent<HTMLDivElement>, index: number) => {
-    const { right } = e.currentTarget.getBoundingClientRect();
-    setDescriptionPosition(right + 266 > window.innerWidth ? 'left' : 'right');
-    setHoveredIndex(index);
-
-    const project = projectsData[index];
-    if (project?.screenShots?.length > 0) {
-      preloadImages(project.screenShots.path, project.screenShots.length);
-    }
-  }, []);
 
   const handleImageClick = useCallback((project: Project) => {
     const images = Array.from(
@@ -85,6 +45,44 @@ export default function Projects() {
   const filteredProjects = activeCategory === 'All'
     ? projectsData.filter(p => p.isFeatured === true) // Assuming you want to filter featured projects
     : projectsData.filter(p => p.isFeatured === true && p.category.includes(activeCategory));
+
+  // const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // const [cardDescriptionHeight, setCardDescriptionHeight] = useState(0);
+  // const [descriptionPosition, setDescriptionPosition] = useState<'left' | 'right'>('right');
+  // const cardDescriptionRef = useRef<HTMLDivElement>(null);
+
+  // useLayoutEffect(() => {
+  //   if (cardDescriptionRef.current) {
+  //     setCardDescriptionHeight(cardDescriptionRef.current.clientHeight);
+  //   }
+  // }, [hoveredIndex]);
+
+  // const handleClickOutside = (e: MouseEvent) => {
+  //   if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+  //     setHoveredIndex(-1); // Close dropdown or similar UI element
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   document.addEventListener('mousedown', handleClickOutside);
+  //   return () => document.removeEventListener('mousedown', handleClickOutside);
+  // }, []);
+
+  // const preloadImages = (path: string, length: number) => {
+  //   Array.from({ length }, (_, i) => new Image().src = `${path}/Screenshot (${i + 1}).png`);
+  // };
+
+  // const handleMouseEnter = useCallback((e: React.MouseEvent<HTMLDivElement>, index: number) => {
+  //   const { right } = e.currentTarget.getBoundingClientRect();
+  //   setDescriptionPosition(right + 266 > window.innerWidth ? 'left' : 'right');
+  //   setHoveredIndex(index);
+
+  //   const project = projectsData[index];
+  //   if (project?.screenShots?.length > 0) {
+  //     preloadImages(project.screenShots.path, project.screenShots.length);
+  //   }
+  // }, []);
 
   return (
     <section id='projects' className='flex' ref={containerRef}>
@@ -118,8 +116,8 @@ export default function Projects() {
               <div
                 key={project.projectTitle}
                 className={`card-container ${isHovered ? 'hovered' : ''} ${isBlurred ? 'motion-article-blur' : ''}`}
-                onMouseEnter={(e) => handleMouseEnter(e, index)}
-                onMouseLeave={() => setHoveredIndex(-1)}
+              // onMouseEnter={(e) => handleMouseEnter(e, index)}
+              // onMouseLeave={() => setHoveredIndex(-1)}
               >
                 <motion.article
                   layout
@@ -161,7 +159,7 @@ export default function Projects() {
                   </div>
                 </motion.article>
 
-                {isHovered && (
+                {/* {isHovered && (
                   <motion.div
                     ref={cardDescriptionRef}
                     layout
@@ -180,7 +178,7 @@ export default function Projects() {
                       <p className='sub-title'>{project.shortDescription}</p>
                     </div>
                   </motion.div>
-                )}
+                )} */}
               </div>
             );
           })}

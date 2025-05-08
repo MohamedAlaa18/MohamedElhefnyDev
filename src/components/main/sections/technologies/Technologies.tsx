@@ -41,16 +41,18 @@ export default function Technologies() {
                                 exit="exit"
                                 variants={smoothScaleAnimation}>
 
-                                <div className="card-top">
-                                    <img
-                                        src={
-                                            !isDark && technology.svg.includes('-dark')
-                                                ? technology.svg.replace('-dark', '-light')
-                                                : technology.svg
-                                        }
-                                        alt={technology.label}
-                                        className="technology-icon card-img"
-                                    />
+                                <div className="card-top flex">
+                                    <div className="image-parent skeleton flex">
+                                        <img
+                                            src={
+                                                !isDark && technology.svg.includes('-dark')
+                                                    ? technology.svg.replace('-dark', '-light')
+                                                    : technology.svg
+                                            }
+                                            alt={technology.label}
+                                            className="technology-icon card-img skeleton"
+                                        />
+                                    </div>
                                 </div>
 
                                 <h1 className="card-bottom">{technology.label}</h1>

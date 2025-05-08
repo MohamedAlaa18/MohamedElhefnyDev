@@ -28,11 +28,21 @@ section#technologies .technology-card .card-top {
     padding: 1rem;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
+    justify-content: center;
 }
 
 /* .light section#technologies .technology-card .card-top {
     background-image: linear-gradient(var(--secondary), rgba(244, 165, 96, 0.3), rgba(244, 165, 96, 0.1));
 } */
+
+section#technologies .technology-card .image-parent {
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    height: fit-content;
+    width: fit-content;
+    overflow: hidden;
+    border-radius: 50%;
+}
 
 section#technologies .technology-card .technology-icon {
     width: 60px;
