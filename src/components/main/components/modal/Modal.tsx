@@ -22,6 +22,8 @@ export default function Modal({ children }: { children: ReactNode }) {
   const [previewLoading, setPreviewLoading] = useState(false);
   const [mouseX, setMouseX] = useState(0);
   const [mouseY, setMouseY] = useState(0);
+  const [showHintArrows, setShowHintArrows] = useState(false); // 🆕
+
   const modalContentRef = useRef<HTMLDivElement>(null);
   const currentImageIndexRef = useRef<number>(state.currentImageIndex);
 
@@ -38,6 +40,9 @@ export default function Modal({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (state.isModalOpen) {
       dispatch(setLoading(true));
+      setShowHintArrows(true); // 🆕 show arrows on open
+      const timeout = setTimeout(() => setShowHintArrows(false), 3000); // 🆕 auto-hide
+      return () => clearTimeout(timeout);
     }
   }, [state.isModalOpen, dispatch]);
 
@@ -53,14 +58,9 @@ export default function Modal({ children }: { children: ReactNode }) {
         }
       }
     };
-
     window.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [state]);
 
   useEffect(() => {
     if (state.isModalOpen) {
@@ -68,7 +68,6 @@ export default function Modal({ children }: { children: ReactNode }) {
     } else {
       document.body.style.overflow = '';
     }
-
     return () => {
       document.body.style.overflow = '';
     };
@@ -101,12 +100,10 @@ export default function Modal({ children }: { children: ReactNode }) {
     if (touchStartX !== null && touchEndX !== null) {
       const difference = touchStartX - touchEndX;
       if (Math.abs(difference) > 20) {
-        if (difference > 0 && state.currentImageIndex !== undefined) {
-          // Swipe left (next)
-          dispatch(setCurrentImageIndex((state.currentImageIndex + 1) % state.screenshots.length));
-        } else if (state.currentImageIndex !== undefined) {
-          // Swipe right (previous)
-          dispatch(setCurrentImageIndex((state.currentImageIndex - 1 + state.screenshots.length) % state.screenshots.length));
+        if (difference > 0) {
+          handleNext();
+        } else {
+          handlePrev();
         }
         dispatch(setLoading(true));
       }
@@ -160,9 +157,6 @@ export default function Modal({ children }: { children: ReactNode }) {
           className="modal-overlay"
           onClick={handleOverlayClick}
           onMouseMove={handleMouseMove}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -175,7 +169,34 @@ export default function Modal({ children }: { children: ReactNode }) {
             animate={{ scale: 1 }}
             exit={{ scale: 0.7 }}
             transition={{ duration: 0.3 }}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
           >
+            {/* 🆕 Swipe Hint Arrows */}
+            {showHintArrows && (
+              <div className="swipe-hint">
+                <motion.div
+                  className="swipe-arrow left"
+                  initial={{ x: -20, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ repeat: 2, repeatType: 'mirror', duration: 1 }}
+                >
+                  <i className="icon-arrow-left" />
+                </motion.div>
+                <motion.div
+                  className="swipe-arrow right"
+                  initial={{ x: 20, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ repeat: 2, repeatType: 'mirror', duration: 1 }}
+                >
+                  <i className="icon-arrow-right" />
+                </motion.div>
+              </div>
+            )}
+
             <div className="image-wrapper">
               <div className="close-wrapper">
                 <button aria-label="Close modal" className="modal-close" onClick={handleCloseModal}>
