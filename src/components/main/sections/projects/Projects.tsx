@@ -1,238 +1,204 @@
 import './projects.css';
-import { useEffect, useRef, useState, MouseEvent as ReactMouseEvent, useLayoutEffect, useCallback } from 'react';
+import {
+  useEffect, useRef, useState, useLayoutEffect, useCallback
+} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from 'framer-motion';
 import { ringEffect, smoothScaleAnimation } from '../../framer-animation';
 import { RootState } from '../../../../state/store';
 import projectsData from '../../../../../public/data/myProjects.json';
 import { Project } from '../../../../types/types';
 import {
-  setActive,
-  setHoveredIndex,
-  setDescriptionPosition,
-  setCurrentImageIndex,
-  setIsModalOpen,
-  setScreenshots,
-  setLoading,
-  setIsDropdownOpen,
-  // setVideoUrl
+  setScreenshots, setLoading, setIsModalOpen
 } from '../../../../state/projectsSlice';
-// import Dropdown from '../../components/dropdown/Dropdown';
-import Modal from '../../components/modal/Modal'
+import Modal from '../../components/modal/Modal';
 
 export default function Projects() {
   const dispatch = useDispatch();
-  const state = useSelector((state: RootState) => state.projects);
+  const {
+    isModalOpen, isFeaturedFilter, videoUrl, screenshots, loading, isDropdownOpen, currentImageIndex
+  } = useSelector((state: RootState) => state.projects);
+
+  const [cardDescriptionHeight, setCardDescriptionHeight] = useState(0);
+  const [activeCategory, setActiveCategory] = useState<string>('All');
+  const [hoveredIndex, setHoveredIndex] = useState<number>(-1);
+  const [descriptionPosition, setDescriptionPosition] = useState<'left' | 'right'>('right');
   const containerRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const cardDescriptionRef = useRef<HTMLDivElement>(null);
-  const [cardDescriptionHeight, setCardDescriptionHeight] = useState<number>(0);
-  const [projectsFiltered, setProjectsFiltered] = useState<Project[]>(projectsData);
 
   useLayoutEffect(() => {
     if (cardDescriptionRef.current) {
       setCardDescriptionHeight(cardDescriptionRef.current.clientHeight);
     }
-  }, [state.hoveredIndex]);
+  }, [hoveredIndex]);
 
-  const handleClick = useCallback((category: string) => {
-    dispatch(setActive(category));
-    let filteredProjects = projectsData; // Use JSON data as source
-
-    if (category !== 'All') {
-      filteredProjects = filteredProjects.filter((project) => project.category.includes(category));
+  const handleClickOutside = (e: MouseEvent) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+      setHoveredIndex(-1); // Close dropdown or similar UI element
     }
-
-    setProjectsFiltered(filteredProjects);
-    dispatch(setHoveredIndex(-1));
-  }, [dispatch]);
-
-  const preloadImage = (src: string) => {
-    const img = new Image();
-    img.src = src;
   };
 
-  const handleMouseEnter = useCallback((event: ReactMouseEvent<HTMLDivElement>, index: number) => {
-    const target = event.currentTarget as HTMLElement;
-    const rect = target.getBoundingClientRect();
-    const viewportWidth = window.innerWidth;
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
-    if (rect.right + 266 > viewportWidth) {
-      dispatch(setDescriptionPosition('left'));
-    } else {
-      dispatch(setDescriptionPosition('right'));
-    }
+  const preloadImages = (path: string, length: number) => {
+    Array.from({ length }, (_, i) => new Image().src = `${path}/Screenshot (${i + 1}).png`);
+  };
 
-    dispatch(setHoveredIndex(index));
+  const handleCategoryClick = (category: string) => {
+    setActiveCategory(category);
+    setHoveredIndex(-1);
+  };
 
-    // Preload screenshots for the hovered project
-    const project = projectsFiltered[index];
+  const handleMouseEnter = useCallback((e: React.MouseEvent<HTMLDivElement>, index: number) => {
+    const { right } = e.currentTarget.getBoundingClientRect();
+    setDescriptionPosition(right + 266 > window.innerWidth ? 'left' : 'right');
+    setHoveredIndex(index);
+
+    const project = projectsData[index];
     if (project?.screenShots?.length > 0) {
-      const screenshots = Array.from({ length: project.screenShots.length }, (_, i) =>
-        `${project.screenShots.path}/Screenshot (${i + 1}).png`
-      );
-      screenshots.forEach(preloadImage);
+      preloadImages(project.screenShots.path, project.screenShots.length);
     }
-  }, [dispatch, projectsFiltered]);
-
-  const handleMouseLeave = useCallback(() => {
-    dispatch(setHoveredIndex(-1));
-  }, [dispatch]);
+  }, []);
 
   const handleImageClick = useCallback((project: Project) => {
-    const projectScreenshots = Array.from({ length: project.screenShots.length }, (_, i) => `${project.screenShots.path}/Screenshot (${i + 1}).png`);
-    dispatch(setScreenshots(projectScreenshots));
-    dispatch(setCurrentImageIndex(0));
+    const images = Array.from(
+      { length: project.screenShots.length },
+      (_, i) => `${project.screenShots.path}/Screenshot (${i + 1}).png`
+    );
+    dispatch(setScreenshots(images));
     dispatch(setLoading(true));
     dispatch(setIsModalOpen(true));
   }, [dispatch]);
 
-  // const handleVideoModalOpen = useCallback((videoUrl: string) => {
-  //   dispatch(setIsModalOpen(true));
-  //   dispatch(setVideoUrl(videoUrl));
-  // }, [dispatch]);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        dispatch(setIsDropdownOpen(false));
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [dispatch]);
-
+  const categories = [
+    ...new Set(
+      projectsData
+        .filter(p => p.isFeatured === isFeaturedFilter)
+        .flatMap(p => p.category[0])
+    )
+  ];
 
   return (
     <section id='projects' className='flex' ref={containerRef}>
       <div className='flex left-section'>
-        {/* <Dropdown handleClick={handleClick} /> */}
-
         <div className='flex category-buttons'>
-          <button className={state.active === 'All' && !state.isDropdownOpen ? 'active' : ''} onClick={() => handleClick('All')}>All Projects</button>
-          {[...new Set(projectsData.filter((project) => project.isFeatured === state.isFeaturedFilter).flatMap(project => project.category[0]))].map(category => (
-            <button key={category} className={state.active === category && !state.isDropdownOpen ? 'active' : ''} onClick={() => handleClick(category)}>{category}</button>
+          <button
+            className={activeCategory === 'All' && !isDropdownOpen ? 'active' : ''}
+            onClick={() => handleCategoryClick('All')}
+          >
+            All Projects
+          </button>
+          {categories.map(category => (
+            <button
+              key={category}
+              className={activeCategory === category && !isDropdownOpen ? 'active' : ''}
+              onClick={() => handleCategoryClick(category)}
+            >
+              {category}
+            </button>
           ))}
         </div>
       </div>
 
       <div className='projects right-section flex'>
         <AnimatePresence>
-          {projectsFiltered.filter((project) => project.isFeatured === state.isFeaturedFilter).map((project: Project, index: number) => (
-            <div
-              key={project.projectTitle}
-              className={`card-container ${state.hoveredIndex === index ? 'hovered' : ''} ${state.hoveredIndex !== -1 && state.hoveredIndex !== index ? 'motion-article-blur' : ''}`}
-              onMouseEnter={(event) => handleMouseEnter(event as ReactMouseEvent<HTMLDivElement>, index)}
-              onMouseLeave={handleMouseLeave}>
-              <motion.article
-                layout
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                variants={smoothScaleAnimation}
-                className='card'
-              >
-                <div className="image-container skeleton">
-                  <img
-                    className="image"
-                    width={266}
-                    height={149}
-                    src={project.imagPath}
-                    srcSet={`${project.imagPath}?w=266 266w, ${project.imagPath}?w=532 532w`}
-                    sizes="(max-width: 768px) 100vw, 266px"
-                    alt={project.projectTitle}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div className="overlay" onClick={() => handleImageClick(project)}>
-                    <i className="icon-picture" />
-                  </div>
-                </div>
-                <div style={{ width: "266px" }} className='box'>
-                  <h1 className='title'>{project.projectTitle}</h1>
-                  <p className='sub-title'>{project.shortDescription}</p>
+          {projectsData
+            .filter(p => p.isFeatured === isFeaturedFilter)
+            .map((project, index) => {
+              const isHovered = hoveredIndex === index;
+              const isBlurred = hoveredIndex !== -1 && hoveredIndex !== index;
 
-                  <div className="flex icons">
-                    <div className="flex">
-                      <button
-                        className="icon-github"
-                        onClick={() => window.open(project.source, '_blank')}
-                        disabled={!project.source}
-                      />
-                      <button
-                        type="button"
-                        className="icon-link"
-                        onClick={() => window.open(project.demo, '_blank')}
-                        disabled={!project.demo}
-                      />
-                      {/* <button
-                        className='icon-airplay'
-                        rel="noopener"
-                        onClick={() => handleVideoModalOpen(project.video!)}
-                        disabled={!project.video}
-                      /> */}
-                    </div>
-
-                    <div className='flex'>
-                      <button
-                        className='icon-photo link flex'
-                        rel="noopener"
-                        onClick={() => handleImageClick(project)}
-                        disabled={!project.imagPath}
-                      />
-
-                    </div>
-                  </div>
-                </div>
-              </motion.article>
-
-              {state.hoveredIndex === index && (
-                <motion.div
-                  ref={cardDescriptionRef}
-                  layout
-                  initial="hidden"
-                  animate="visible"
-                  variants={ringEffect}
-                  className={`card-description-container visible ${state.descriptionPosition === 'right' ? 'right' : 'left'}`}
-                  style={{ top: `calc(50% - ${cardDescriptionHeight / 2}px)` }}
+              return (
+                <div
+                  key={project.projectTitle}
+                  className={`card-container ${isHovered ? 'hovered' : ''} ${isBlurred ? 'motion-article-blur' : ''}`}
+                  onMouseEnter={(e) => handleMouseEnter(e, index)}
+                  onMouseLeave={() => setHoveredIndex(-1)}
                 >
-                  <div className='card-description'>
-                    <h1 className='title'>{project.projectTitle}</h1>
-                    <div className="book-mark">
-                      <div className="triangle-topleft"></div>
-                      <div className="triangle-topright"></div>
+                  <motion.article
+                    layout
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    variants={smoothScaleAnimation}
+                    className='card'
+                  >
+                    <div className="image-container skeleton">
+                      <img
+                        className="image"
+                        width={266}
+                        height={149}
+                        src={project.imagPath}
+                        srcSet={`${project.imagPath}?w=266 266w, ${project.imagPath}?w=532 532w`}
+                        sizes="(max-width: 768px) 100vw, 266px"
+                        alt={project.projectTitle}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <div className="overlay" onClick={() => handleImageClick(project)}>
+                        <i className="icon-picture" />
+                      </div>
                     </div>
-                    <p className='sub-title'>{project.shortDescription}</p>
-                  </div>
-                </motion.div>
-              )}
-            </div>
-          ))}
+
+                    <div style={{ width: '266px' }} className='box'>
+                      <h1 className='title'>{project.projectTitle}</h1>
+                      <p className='sub-title'>{project.shortDescription}</p>
+                      <div className="flex icons">
+                        <div className="flex">
+                          <button className="icon-github" onClick={() => window.open(project.source, '_blank')} />
+                          <button className="icon-link" onClick={() => window.open(project.demo, '_blank')} />
+                        </div>
+                        <div className='flex'>
+                          <button className='icon-photo link flex' onClick={() => handleImageClick(project)} />
+                        </div>
+                      </div>
+                    </div>
+                  </motion.article>
+
+                  {isHovered && (
+                    <motion.div
+                      ref={cardDescriptionRef}
+                      layout
+                      initial="hidden"
+                      animate="visible"
+                      variants={ringEffect}
+                      className={`card-description-container visible ${descriptionPosition}`}
+                      style={{ top: `calc(50% - ${cardDescriptionHeight / 2}px)` }}
+                    >
+                      <div className='card-description'>
+                        <h1 className='title'>{project.projectTitle}</h1>
+                        <div className="book-mark">
+                          <div className="triangle-topleft" />
+                          <div className="triangle-topright" />
+                        </div>
+                        <p className='sub-title'>{project.shortDescription}</p>
+                      </div>
+                    </motion.div>
+                  )}
+                </div>
+              );
+            })}
         </AnimatePresence>
       </div>
 
-      {state.isModalOpen && (
+      {isModalOpen && (
         <Modal>
-          <div className={`${state.loading ? 'loading' : ''}`}>
-            {state.videoUrl ? (
-              <video
-                controls
-                src={state.videoUrl}
-                onLoadedData={() => dispatch(setLoading(false))}
-              />
+          <div className={loading ? 'loading' : ''}>
+            {videoUrl ? (
+              <video controls src={videoUrl} onLoadedData={() => dispatch(setLoading(false))} />
             ) : (
               <img
-                src={state.screenshots[state.currentImageIndex]}
-                alt={`Screenshot ${state.currentImageIndex + 1}`}
+                src={screenshots[currentImageIndex]}
+                alt={`Screenshot ${currentImageIndex + 1}`}
                 style={{ maxWidth: '100%', maxHeight: '100%' }}
-                loading='lazy'
                 onLoad={() => dispatch(setLoading(false))}
               />
             )}
-            {state.loading && (
+            {loading && (
               <div className="blur-overlay">
                 <div className="spinner" />
               </div>

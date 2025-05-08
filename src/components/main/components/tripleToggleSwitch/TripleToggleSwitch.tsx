@@ -5,7 +5,24 @@ import { labels } from '../../../../types/types';
 
 const ANIMATION_DURATION = 400;
 
-export default function TripleToggleSwitch({ labels }: { labels: labels }) {
+const Labels: labels = {
+    right: {
+        title: "Technologies",
+        value: "technologies",
+        icon: "icon-gear",
+    },
+    center: {
+        title: "Projects",
+        value: "projects",
+        icon: "icon-code",
+    },
+    left: {
+        title: "Certificates",
+        value: "certificates",
+        icon: "icon-graduation-cap",
+    },
+};
+export default function TripleToggleSwitch() {
     const { view, handleViewChange } = useView();
     const [switchPosition, setSwitchPosition] = useState('right');
     const [animation, setAnimation] = useState<string | null>(null);
@@ -52,20 +69,20 @@ export default function TripleToggleSwitch({ labels }: { labels: labels }) {
             <div className={`switch ${animation} ${switchPosition}-position`} />
             <input type="radio" id="left" name="map-switch" value="left" checked={switchPosition === 'left'} onChange={() => handleSwitchChange('left')} />
             <label htmlFor="left" className={`left-label flex ${switchPosition === 'left' && 'white-font'}`}>
-                <span>{labels.left.title}</span>
-                <i className={`${labels.left.icon}`} />
+                <span>{Labels.left.title}</span>
+                <i className={`${Labels.left.icon}`} />
             </label>
 
             <input type="radio" id="center" name="map-switch" value="center" checked={switchPosition === 'center'} onChange={() => handleSwitchChange('center')} />
             <label htmlFor="center" className={`center-label flex ${switchPosition === 'center' && 'white-font'}`} >
-                <span>{labels.center.title}</span>
-                <i className={`${labels.center.icon}`} />
+                <span>{Labels.center.title}</span>
+                <i className={`${Labels.center.icon}`} />
             </label>
 
             {/* <input type="radio" id="right" name="map-switch" value="right" checked={switchPosition === 'right'} onChange={() => handleSwitchChange('right')} />
             <label htmlFor="right" className={`right-label flex ${switchPosition === 'right' && 'white-font'}`}  >
-                <span>{labels.right.title}</span>
-                <i className={`${labels.right.icon}`} />
+                <span>{Labels.right.title}</span>
+                <i className={`${Labels.right.icon}`} />
             </label> */}
         </div>
     );

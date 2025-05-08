@@ -12,24 +12,6 @@ export default function Main(
   const { view, handleViewChange } = useView();
   const [oldView, setOldView] = useState(view);
 
-  // const labels = {
-  //   right: {
-  //     title: "Technologies",
-  //     value: "technologies",
-  //     icon: "icon-gear",
-  //   },
-  //   center: {
-  //     title: "Projects",
-  //     value: "projects",
-  //     icon: "icon-code",
-  //   },
-  //   left: {
-  //     title: "Certificates",
-  //     value: "certificates",
-  //     icon: "icon-graduation-cap",
-  //   },
-  // };
-
   const toggleView = () => {
     if (view !== 'technologies') {
       setOldView(view);
@@ -84,6 +66,16 @@ export default function Main(
           </div>
         </>
       )}
+
+      {/* <div style={{ display: view === 'projects' ? '' : 'none' }}>
+        <Projects />
+      </div>
+      <div style={{ display: view === 'certificates' ? '' : 'none' }}>
+        <Certificates />
+      </div>
+      <div style={{ display: view === 'technologies' ? '' : 'none' }}>
+        <Technologies />
+      </div> */}
 
       {view === 'projects' ? <Projects /> : view === 'certificates' ? <Certificates /> : <Technologies />}
     </main>
