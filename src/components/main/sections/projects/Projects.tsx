@@ -16,7 +16,7 @@ import Modal from '../../components/modal/Modal';
 export default function Projects() {
   const dispatch = useDispatch();
   const {
-    isModalOpen, isFeaturedFilter, videoUrl, screenshots, loading, isDropdownOpen, currentImageIndex
+    isModalOpen, videoUrl, screenshots, loading, isDropdownOpen, currentImageIndex
   } = useSelector((state: RootState) => state.projects);
 
   const [cardDescriptionHeight, setCardDescriptionHeight] = useState(0);
@@ -77,10 +77,14 @@ export default function Projects() {
   const categories = [
     ...new Set(
       projectsData
-        .filter(p => p.isFeatured === isFeaturedFilter)
+        .filter(p => p.isFeatured === true) // Filter featured projects if needed
         .flatMap(p => p.category[0])
     )
   ];
+
+  const filteredProjects = activeCategory === 'All'
+    ? projectsData.filter(p => p.isFeatured === true) // Assuming you want to filter featured projects
+    : projectsData.filter(p => p.isFeatured === true && p.category.includes(activeCategory));
 
   return (
     <section id='projects' className='flex' ref={containerRef}>
@@ -106,82 +110,80 @@ export default function Projects() {
 
       <div className='projects right-section flex'>
         <AnimatePresence>
-          {projectsData
-            .filter(p => p.isFeatured === isFeaturedFilter)
-            .map((project, index) => {
-              const isHovered = hoveredIndex === index;
-              const isBlurred = hoveredIndex !== -1 && hoveredIndex !== index;
+          {filteredProjects.map((project, index) => {
+            const isHovered = hoveredIndex === index;
+            const isBlurred = hoveredIndex !== -1 && hoveredIndex !== index;
 
-              return (
-                <div
-                  key={project.projectTitle}
-                  className={`card-container ${isHovered ? 'hovered' : ''} ${isBlurred ? 'motion-article-blur' : ''}`}
-                  onMouseEnter={(e) => handleMouseEnter(e, index)}
-                  onMouseLeave={() => setHoveredIndex(-1)}
+            return (
+              <div
+                key={project.projectTitle}
+                className={`card-container ${isHovered ? 'hovered' : ''} ${isBlurred ? 'motion-article-blur' : ''}`}
+                onMouseEnter={(e) => handleMouseEnter(e, index)}
+                onMouseLeave={() => setHoveredIndex(-1)}
+              >
+                <motion.article
+                  layout
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  variants={smoothScaleAnimation}
+                  className='card'
                 >
-                  <motion.article
+                  <div className="image-container skeleton">
+                    <img
+                      className="image"
+                      width={266}
+                      height={149}
+                      src={project.imagPath}
+                      srcSet={`${project.imagPath}?w=266 266w, ${project.imagPath}?w=532 532w`}
+                      sizes="(max-width: 768px) 100vw, 266px"
+                      alt={project.projectTitle}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <div className="overlay" onClick={() => handleImageClick(project)}>
+                      <i className="icon-picture" />
+                    </div>
+                  </div>
+
+                  <div style={{ width: '266px' }} className='box'>
+                    <h1 className='title'>{project.projectTitle}</h1>
+                    <p className='sub-title'>{project.shortDescription}</p>
+                    <div className="flex icons">
+                      <div className="flex">
+                        <button className="icon-github" onClick={() => window.open(project.source, '_blank')} />
+                        <button className="icon-link" onClick={() => window.open(project.demo, '_blank')} />
+                      </div>
+                      <div className='flex'>
+                        <button className='icon-photo link flex' onClick={() => handleImageClick(project)} />
+                      </div>
+                    </div>
+                  </div>
+                </motion.article>
+
+                {isHovered && (
+                  <motion.div
+                    ref={cardDescriptionRef}
                     layout
                     initial="hidden"
                     animate="visible"
-                    exit="exit"
-                    variants={smoothScaleAnimation}
-                    className='card'
+                    variants={ringEffect}
+                    className={`card-description-container visible ${descriptionPosition}`}
+                    style={{ top: `calc(50% - ${cardDescriptionHeight / 2}px)` }}
                   >
-                    <div className="image-container skeleton">
-                      <img
-                        className="image"
-                        width={266}
-                        height={149}
-                        src={project.imagPath}
-                        srcSet={`${project.imagPath}?w=266 266w, ${project.imagPath}?w=532 532w`}
-                        sizes="(max-width: 768px) 100vw, 266px"
-                        alt={project.projectTitle}
-                        loading="lazy"
-                        decoding="async"
-                      />
-                      <div className="overlay" onClick={() => handleImageClick(project)}>
-                        <i className="icon-picture" />
-                      </div>
-                    </div>
-
-                    <div style={{ width: '266px' }} className='box'>
+                    <div className='card-description'>
                       <h1 className='title'>{project.projectTitle}</h1>
+                      <div className="book-mark">
+                        <div className="triangle-topleft" />
+                        <div className="triangle-topright" />
+                      </div>
                       <p className='sub-title'>{project.shortDescription}</p>
-                      <div className="flex icons">
-                        <div className="flex">
-                          <button className="icon-github" onClick={() => window.open(project.source, '_blank')} />
-                          <button className="icon-link" onClick={() => window.open(project.demo, '_blank')} />
-                        </div>
-                        <div className='flex'>
-                          <button className='icon-photo link flex' onClick={() => handleImageClick(project)} />
-                        </div>
-                      </div>
                     </div>
-                  </motion.article>
-
-                  {isHovered && (
-                    <motion.div
-                      ref={cardDescriptionRef}
-                      layout
-                      initial="hidden"
-                      animate="visible"
-                      variants={ringEffect}
-                      className={`card-description-container visible ${descriptionPosition}`}
-                      style={{ top: `calc(50% - ${cardDescriptionHeight / 2}px)` }}
-                    >
-                      <div className='card-description'>
-                        <h1 className='title'>{project.projectTitle}</h1>
-                        <div className="book-mark">
-                          <div className="triangle-topleft" />
-                          <div className="triangle-topright" />
-                        </div>
-                        <p className='sub-title'>{project.shortDescription}</p>
-                      </div>
-                    </motion.div>
-                  )}
-                </div>
-              );
-            })}
+                  </motion.div>
+                )}
+              </div>
+            );
+          })}
         </AnimatePresence>
       </div>
 
