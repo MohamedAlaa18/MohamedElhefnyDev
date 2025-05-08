@@ -60,6 +60,7 @@ export default function Modal({ children }: { children: ReactNode }) {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state]);
 
   useEffect(() => {
@@ -98,9 +99,10 @@ export default function Modal({ children }: { children: ReactNode }) {
 
   const handleTouchEnd = () => {
     if (touchStartX !== null && touchEndX !== null) {
-      const difference = touchStartX - touchEndX;
-      if (Math.abs(difference) > 20) {
-        if (difference > 0) {
+      const diff = touchStartX - touchEndX;
+
+      if (Math.abs(diff) > 15) {
+        if (diff > 0) {
           handleNext();
         } else {
           handlePrev();
@@ -162,6 +164,30 @@ export default function Modal({ children }: { children: ReactNode }) {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
         >
+          {/* Show Swipe Arrows */}
+          {showHintArrows && (
+            <div className="swipe-hint">
+              <motion.div
+                className="swipe-arrow left"
+                initial={{ x: -20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ repeat: 2, repeatType: 'mirror', duration: 1 }}
+              >
+                <i className="icon-reply" />
+              </motion.div>
+              <motion.div
+                className="swipe-arrow right"
+                initial={{ x: 20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ repeat: 2, repeatType: 'mirror', duration: 1 }}
+              >
+                <i className="icon-forward" />
+              </motion.div>
+            </div>
+          )}
+
           <motion.div
             className="modal-content"
             ref={modalContentRef}
@@ -169,35 +195,13 @@ export default function Modal({ children }: { children: ReactNode }) {
             animate={{ scale: 1 }}
             exit={{ scale: 0.7 }}
             transition={{ duration: 0.3 }}
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
           >
-            {/* 🆕 Swipe Hint Arrows */}
-            {showHintArrows && (
-              <div className="swipe-hint">
-                <motion.div
-                  className="swipe-arrow left"
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ repeat: 2, repeatType: 'mirror', duration: 1 }}
-                >
-                  <i className="icon-arrow-left" />
-                </motion.div>
-                <motion.div
-                  className="swipe-arrow right"
-                  initial={{ x: 20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ repeat: 2, repeatType: 'mirror', duration: 1 }}
-                >
-                  <i className="icon-arrow-right" />
-                </motion.div>
-              </div>
-            )}
-
-            <div className="image-wrapper">
+            <div
+              className="image-wrapper"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
               <div className="close-wrapper">
                 <button aria-label="Close modal" className="modal-close" onClick={handleCloseModal}>
                   <i className="icon-close" />

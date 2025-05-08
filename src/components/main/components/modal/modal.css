@@ -192,11 +192,39 @@
     border-radius: 12px;
 }
 
+.swipe-hint {
+    pointer-events: none;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    right: 0;
+    z-index: 1002;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px;
+    transform: translateY(-50%);
+}
+
+.swipe-arrow {
+    font-size: 2rem;
+    color: var(--blue);
+}
+
+.light .swipe-arrow {
+    color: var(--orange);
+}
+
 @media (max-width: 600px) {
 
     .modal-prev,
     .modal-next,
     .pagination {
+        display: none;
+    }
+}
+
+@media (min-width: 600px) {
+    .swipe-arrow {
         display: none;
     }
 }

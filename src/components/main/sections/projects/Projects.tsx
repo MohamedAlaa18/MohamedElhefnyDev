@@ -147,9 +147,9 @@ export default function Projects() {
                     loading="lazy"
                     decoding="async"
                   />
-                  {/* <div className="overlay" onClick={() => handleImageClick(project)}>
+                  <div className="overlay" onClick={() => handleImageClick(project)}>
                     <i className="icon-picture" />
-                  </div> */}
+                  </div>
                 </div>
                 <div style={{ width: "266px" }} className='box'>
                   <h1 className='title'>{project.projectTitle}</h1>

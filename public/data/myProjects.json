@@ -178,7 +178,7 @@
     "isFeatured": false
   },
   {
-    "projectTitle": "MyReads 📖",
+    "projectTitle": "MyReads 📘",
     "imagPath": "/screenshots/MyReads/Screenshot (1).png",
     "longDescription": "MyReads is a book-tracking app developed with React.js that lets you effortlessly organize your reading list. Easily categorize books you've read, are currently reading, or plan to read in the future. With intuitive features and a clean interface, managing your reading habits has never been easier. Dive into the world of books with MyReads!",
     "shortDescription": "Book tracking app to organize reading lists, categorize books, and manage reading goals easily.",
@@ -192,7 +192,7 @@
     "isFeatured": false
   },
   {
-    "projectTitle": "BookStacker 📚",
+    "projectTitle": "BookStacker 📖",
     "imagPath": "/screenshots/BookStacker/Screenshot (1).png",
     "longDescription": "BookStacker is your library system for managing your personal library collections. This web-based application offers an intuitive interface equipped with tools for organizing, searching, editing, and deleting book entries effortlessly. Streamline your book management experience with BookStacker and keep your library in perfect order.",
     "shortDescription": "Library system to search, edit, organize, and delete books with an intuitive Bootstrap-based interface.",
