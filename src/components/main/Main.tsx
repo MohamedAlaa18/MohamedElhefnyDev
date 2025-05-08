@@ -47,10 +47,10 @@ export default function Main({ mainAnimated }: { mainAnimated: boolean }) {
     <main className="flex">
       <DoubleToggleSwitch />
 
-      {(view === 'projects' || view === 'technologies') && (mainAnimated) && (
+      {(view === 'projects' || view === 'technologies') && (
         <>
           <button
-            className={`technologies-toggle flex ${view === 'technologies' && 'active'}`}
+            className={`technologies-toggle flex ${(view === 'technologies') && 'active'}`}
             onClick={() => toggleView()}
           >
             <i className={`${view === 'projects' ? 'icon-gear' : 'icon-code'}`} />
