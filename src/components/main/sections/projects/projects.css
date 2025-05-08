@@ -134,38 +134,25 @@ section#projects div.right-section {
   border-top: 17.5px solid var(--orange);
 }
 
-/* .card:hover+.card-description-container {
-  display: block;
-} */
-
-/* .card-description-container.visible {
-  display: block;
-} */
-
 .projects.right-section .card {
   border: 2px solid var(--border);
   border-radius: 8px;
   transition: 0.3s;
-  /* background-color: var(--secondary); */
 }
 
-.projects.right-section .card img {
-  border-top-right-radius: 8px;
-  border-top-left-radius: 8px;
-  height: auto;
+.projects.right-section .card .image-parent {
+  gap: 1rem;
+  border-bottom: 1px solid var(--border);
+  min-height: 149px;
+  min-width: 266px;
+  overflow: hidden;
+  border-radius: 8px;
 }
 
-.image-container {
-  position: relative;
-  width: 266px;
-  height: 149px;
-  /* height: 177.33px; */
+.projects.right-section .card .image {
+  min-height: 149px;
+  min-width: 266px;
 }
-
-/* .icon-picture {
-  font-size: 2rem;
-  transition: 0.3s;
-} */
 
 .overlay {
   position: absolute;

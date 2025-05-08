@@ -127,7 +127,7 @@ export default function Projects() {
                   variants={smoothScaleAnimation}
                   className='card'
                 >
-                  <div className="image-container skeleton">
+                  <div className="image-parent skeleton flex">
                     <img
                       className="image"
                       width={266}
@@ -149,11 +149,11 @@ export default function Projects() {
                     <p className='sub-title'>{project.shortDescription}</p>
                     <div className="flex icons">
                       <div className="flex">
-                        <button className="icon-github" onClick={() => window.open(project.source, '_blank')} />
-                        <button className="icon-link" onClick={() => window.open(project.demo, '_blank')} />
+                        <button className="icon-github" onClick={() => window.open(project.source, '_blank')} disabled={!project.source} />
+                        <button className="icon-link" onClick={() => window.open(project.demo, '_blank')} disabled={!project.demo} />
                       </div>
                       <div className='flex'>
-                        <button className='icon-photo link flex' onClick={() => handleImageClick(project)} />
+                        <button className='icon-photo link flex' onClick={() => handleImageClick(project)} disabled={!project.screenShots || project.screenShots.length === 0} />
                       </div>
                     </div>
                   </div>

@@ -5,15 +5,12 @@ import { useView } from '../../../../context/useView';
 function DoubleToggleSwitch() {
     const { view, handleViewChange } = useView();
     const [isOn, setIsOn] = useState(view === 'certificates');
-    const [isMoving, setIsMoving] = useState(false);
 
     const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
         e.preventDefault();
         const newState = !isOn;
         setIsOn(newState);
-        setIsMoving(true);
         handleViewChange(newState ? 'certificates' : 'projects');
-        setTimeout(() => setIsMoving(false), 500);
     };
 
     useEffect(() => {
@@ -22,14 +19,24 @@ function DoubleToggleSwitch() {
 
     const toggleClasses = [
         'toggle',
-        isOn ? 'toggle--projects' : 'toggle--certificates',
-        isMoving ? 'toggle--moving' : '',
+        !isOn ? 'toggle--certificates' : 'toggle--projects',
     ].join(' ');
 
     return (
         <a href="#" className={toggleClasses} onClick={handleClick}>
-            <span className="toggle__option toggle__option--certificates">Certificates</span>
-            <span className="toggle__option toggle__option--projects">Projects</span>
+            {/* Slider with icon */}
+            <div className="toggle__slider">
+                {/* {isOn ? <i className="icon-code" /> : <i className="icon-graduation-cap" />} */}
+                {isOn ? <span>Certificates</span> : <span>Projects</span>}
+            </div>
+
+            {/* Options */}
+            <span className="toggle__option toggle__option--certificates">
+                <p className="text-wrapper">Certificates</p>
+            </span>
+            <span className="toggle__option toggle__option--projects">
+                <p className="text-wrapper">Projects</p>
+            </span>
         </a>
     );
 }

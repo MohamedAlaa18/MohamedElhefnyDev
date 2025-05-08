@@ -36,20 +36,17 @@ section#technologies .technology-card .card-top {
 } */
 
 section#technologies .technology-card .image-parent {
+    gap: 1rem;
     border: 1px solid var(--border);
     border-radius: 50%;
-    height: fit-content;
-    width: fit-content;
+    min-height: 60px;
+    min-width: 60px;
     overflow: hidden;
-    border-radius: 50%;
 }
 
 section#technologies .technology-card .technology-icon {
-    width: 60px;
-    height: 60px;
-    box-shadow: rgba(63, 63, 70, 0.1) 0px 2px 4px 0px, rgba(63, 63, 70, 0.1) 0px 2px 4px 0px;
-    background-color: var(--secondary);
-    border-radius: 50%;
+    max-height: 60px;
+    max-width: 60px;
 }
 
 section#technologies .technology-card .card-bottom {

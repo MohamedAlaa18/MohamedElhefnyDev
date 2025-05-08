@@ -1,3 +1,4 @@
+/* === Base Toggle Container === */
 .toggle {
     position: relative;
     z-index: 1;
@@ -8,8 +9,10 @@
     background-color: var(--primary);
     transition: background-color 500ms;
     overflow: hidden;
+    cursor: pointer;
 }
 
+/* === Inner Options (certificates / projects) === */
 .toggle__option {
     position: relative;
     z-index: 2;
@@ -17,12 +20,37 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: color 500ms;
+    transition: color 500ms, transform 500ms ease;
     font-weight: 500;
+    transform: translateX(0);
+    overflow: hidden;
 }
 
-.toggle:after {
-    content: '';
+/* === Text + Icon wrapper === */
+.text-wrapper {
+    transition: transform 500ms ease, opacity 500ms ease;
+}
+
+/* === Swipe Out States === */
+.toggle--certificates .toggle__option--projects .text-wrapper {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.toggle--projects .toggle__option--certificates .text-wrapper {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+/* === Active (Swiped In) === */
+.toggle--certificates .toggle__option--certificates .text-wrapper,
+.toggle--projects .toggle__option--projects .text-wrapper {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* === Toggle Slider (background element) === */
+.toggle__slider {
     position: absolute;
     top: 2px;
     bottom: 2px;
@@ -32,32 +60,52 @@
     border: 2px solid var(--blue-border);
     transition: all 500ms;
     z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
 }
 
+.light .toggle__slider {
+    border-color: rgb(63, 63, 70);
+}
+
+.toggle--certificates .toggle__slider {
+    transform: translateX(calc(100% - 2px));
+    border-radius: 0 50px 50px 0;
+}
+
+.toggle--projects .toggle__slider {
+    transform: translateX(0);
+    border-radius: 50px 0 0 50px;
+}
+
+/* === Light Theme Override === */
 .light .toggle:after {
     border-color: rgb(63, 63, 70);
 }
 
+/* === Position the slider for each state === */
 .toggle--projects:after {
     transform: translateX(0);
     border-radius: 50px 0 0 50px;
+    /* content: "Projects"; */
 }
 
 .toggle--certificates:after {
     transform: translateX(calc(100% - 2px));
     border-radius: 0 50px 50px 0;
+    /* content: "Certificates"; */
 }
 
+/* === Dim inactive option's color === */
 .toggle--projects .toggle__option--projects,
 .toggle--certificates .toggle__option--certificates {
     color: var(--subtitle);
     opacity: 0.5;
 }
 
+/* === Extra toggle animation class if needed === */
 .toggle--moving:after {
     transition: all 500ms, border-color 0s;
-}
-
-.toggle--moving {
-    pointer-events: none;
 }
