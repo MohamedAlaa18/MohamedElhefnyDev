@@ -6,6 +6,7 @@ import Certificates from './sections/certificates/Certificates';
 import Technologies from './sections/technologies/Technologies';
 import DoubleToggleSwitch from './components/doubleToggleSwitch/DoubleToggleSwitch';
 
+// eslint-disable-next-line
 export default function Main({ mainAnimated }: { mainAnimated: boolean }) {
   const { view, handleViewChange } = useView();
   const [oldView, setOldView] = useState(view);

@@ -162,6 +162,12 @@ section.hero .animation {
   }
 }
 
+@media (max-width: 500px) {
+  section.hero h1.title {
+    font-size: 2.25rem;
+  }
+}
+
 /*
 =================================
 4-Animation (keyframes query)
