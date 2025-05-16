@@ -100,7 +100,7 @@ header .mode {
 }
 
 .light header .mode {
-  border-color: var(--orange);
+  border-color: var(--orange-border);
 }
 
 header .mode:active {

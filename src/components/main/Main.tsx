@@ -67,16 +67,6 @@ export default function Main(
         </>
       )}
 
-      {/* <div style={{ display: view === 'projects' ? '' : 'none' }}>
-        <Projects />
-      </div>
-      <div style={{ display: view === 'certificates' ? '' : 'none' }}>
-        <Certificates />
-      </div>
-      <div style={{ display: view === 'technologies' ? '' : 'none' }}>
-        <Technologies />
-      </div> */}
-
       {view === 'projects' ? <Projects /> : view === 'certificates' ? <Certificates /> : <Technologies />}
     </main>
   );

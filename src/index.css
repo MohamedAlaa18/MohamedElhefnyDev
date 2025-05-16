@@ -30,6 +30,7 @@ html {
   --blue: rgb(93, 188, 252);
   --blue-border: rgb(93, 188, 252, 0.6);
   --orange: rgb(244, 165, 96);
+  --orange-border: rgb(244, 165, 96, 0.6);
 
   --icon-hover: #d4d4d8;
   --image-hover: rgba(63, 63, 70, 0.2);
@@ -142,6 +143,12 @@ button:disabled {
   cursor: not-allowed;
 }
 
+/*
+===================
+Scrollbar
+===================
+*/
+
 /* Scrollbar Width */
 ::-webkit-scrollbar {
   width: 0.6rem;
@@ -212,6 +219,11 @@ Scroll To Up Button
   }
 }
 
+/*
+===================
+Skeleton Effect
+===================
+*/
 .skeleton {
   background-color: var(--border);
   background-image: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--image-hover), rgba(255, 255, 255, 0));

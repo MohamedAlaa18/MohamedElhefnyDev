@@ -20,7 +20,7 @@ const Main = lazy(() =>
       import('./components/main/Main').then((module) => {
         resolve({ default: module.default });
       });
-    }, 2666);
+    }, 1333);
   })
 );
 

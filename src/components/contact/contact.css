@@ -86,7 +86,7 @@ section.contact-us #message:hover {
 .light section.contact-us #message:focus,
 .light section.contact-us #email:hover,
 .light section.contact-us #message:hover {
-  border: 2px solid var(--orange);
+  border: 2px solid var(--orange-border);
 }
 
 section.contact-us #message {

@@ -138,7 +138,7 @@ export default function Hero() {
         <div className='social-section'>
           <div className='all-icons flex'>
             <a href='mailto: mohamed.alaa.elhefny@gmail.com' target="_blank" className="icon"><i className="icon-envelope" /></a>
-            <a href='https://github.com/MohamedAlaa18' target="_blank" className="icon" ><i className="icon-github" /></a>
+            <a href='https://github.com/MohamedEl-Hefny' target="_blank" className="icon" ><i className="icon-github" /></a>
             <a href='https://wa.me/+201289643240' target="_blank" className="icon" ><i className="icon-whatsapp" /></a>
             <a href='https://www.linkedin.com/in/mohamed-alaa-elhefny' target="_blank" className="icon" ><i className="icon-linkedin" /></a>
             <ResumeButton />

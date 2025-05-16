@@ -131,9 +131,8 @@ export default function Projects() {
                     <img
                       className="image"
                       width={266}
-                      height={149}
+                      height={177.33}
                       src={project.imagPath}
-                      srcSet={`${project.imagPath}?w=266 266w, ${project.imagPath}?w=532 532w`}
                       sizes="(max-width: 768px) 100vw, 266px"
                       alt={project.projectTitle}
                       loading="lazy"
@@ -209,3 +208,5 @@ export default function Projects() {
     </section>
   );
 }
+
+
