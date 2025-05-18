@@ -2,9 +2,8 @@ import { createContext, useState, useRef, ReactNode } from 'react';
 
 export interface ViewContextType {
   view: string;
-  // eslint-disable-next-line no-unused-vars
   handleViewChange: (viewChanged: string) => void;
-  toggleCheckBox: React.RefObject<HTMLInputElement>;
+  toggleCheckBox: React.RefObject<HTMLInputElement | null>;
 }
 
 export const ViewContext = createContext<ViewContextType | undefined>(undefined);
