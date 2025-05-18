@@ -10,7 +10,6 @@ import {
   setLoading,
   setVideoUrl
 } from '../../../state/projectsSlice';
-import Image from 'next/image';
 
 export default function Modal({ children }: { children: ReactNode }) {
   const state = useSelector((state: RootState) => state.projects);
@@ -264,7 +263,7 @@ export default function Modal({ children }: { children: ReactNode }) {
                   // fill
                   // style={{ objectFit: 'contain', borderRadius: '8px' }}
                   onLoad={() => setPreviewLoading(false)}
-                  // sizes="(max-width: 768px) 100vw, 200px"
+                // sizes="(max-width: 768px) 100vw, 200px"
                 />
               </motion.div>
             )}
