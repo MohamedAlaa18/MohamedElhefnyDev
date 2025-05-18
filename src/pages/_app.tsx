@@ -8,15 +8,15 @@ import "@/components/projects/projects.css";
 import "@/components/technologies/technologies.css";
 import "@/components/loading/loading.css";
 import "@/components/shared-components/doubleToggleSwitch/doubleToggleSwitch.css";
+import "@/components/shared-components/tripleToggleSwitch/tripleToggleSwitch.css";
 import "@/components/shared-components/modal/modal.css";
 import "@/components/shared-components/particlesBackground/particlesBackground.css";
+import "@/components/shared-components/dropdown/dropdown.css";
 import "@/components/contact/contact.css";
 import "@/components/footer/footer.css";
 import "@/components/sidebar/sidebar.css";
 import "@/components/resumeButton/resumeButton.css";
 import "@/components/resume/resume.css";
-import "@/components/dropdown/dropdown.css";
-import "@/components/dropdown/dropdown.css";
 
 import type { AppProps } from "next/app";
 

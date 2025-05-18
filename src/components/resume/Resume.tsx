@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { useEffect } from 'react';
 
 const Resume = () => {
@@ -56,7 +57,7 @@ const Resume = () => {
             <div className="base">
                 <div className="profile">
                     <div className="photo">
-                        <img src="Mohamed El Hefny.png" alt="Profile" />
+                        <Image height={100} width={100} src="Mohamed El Hefny.png" alt="Profile" />
                     </div>
                     <div className="info">
                         <h4 className="name">Mohamed El Hefny</h4>

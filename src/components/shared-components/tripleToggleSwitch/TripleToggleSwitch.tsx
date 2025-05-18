@@ -1,4 +1,3 @@
-import './tripleToggleSwitch.css';
 import { useState, useEffect } from 'react';
 import { useView } from '../../../context/useView';
 import { labels } from '../../../types/types';
