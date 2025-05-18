@@ -13,6 +13,11 @@ import "@/components/shared-components/particlesBackground/particlesBackground.c
 import "@/components/contact/contact.css";
 import "@/components/footer/footer.css";
 import "@/components/sidebar/sidebar.css";
+import "@/components/resumeButton/resumeButton.css";
+import "@/components/resume/resume.css";
+import "@/components/dropdown/dropdown.css";
+import "@/components/dropdown/dropdown.css";
+
 import type { AppProps } from "next/app";
 
 export default function App({ Component, pageProps }: AppProps) {

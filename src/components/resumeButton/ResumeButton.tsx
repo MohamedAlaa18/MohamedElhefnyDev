@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from 'react';
-import './resumeButton.css';
 // import { useTheme } from '../../context/ThemeContext';
 
 function ResumeButton() {
