@@ -258,16 +258,14 @@ export default function Modal({ children }: { children: ReactNode }) {
                     <div className="spinner" />
                   </div>
                 )}
-                <div style={{ position: 'relative', width: '200px', height: '120px' }}>
-                  <Image
-                    src={state.screenshots[previewImageIndex]}
-                    alt={`Preview ${previewImageIndex + 1}`}
-                    fill
-                    style={{ objectFit: 'contain', borderRadius: '8px' }}
-                    onLoad={() => setPreviewLoading(false)}
-                    sizes="(max-width: 768px) 100vw, 200px"
-                  />
-                </div>
+                <img
+                  src={state.screenshots[previewImageIndex]}
+                  alt={`Preview ${previewImageIndex + 1}`}
+                  // fill
+                  // style={{ objectFit: 'contain', borderRadius: '8px' }}
+                  onLoad={() => setPreviewLoading(false)}
+                  // sizes="(max-width: 768px) 100vw, 200px"
+                />
               </motion.div>
             )}
           </motion.div>
