@@ -9,7 +9,7 @@ import Footer from "@/components/footer/Footer";
 import Sidebar from "@/components/sidebar/Sidebar";
 import Loading from "@/components/loading/Loading";
 import CustomProvider from "@/components/CustomProvider";
-import ParticlesBackground from "@/components/particlesBackground/ParticlesBackground";
+import ParticlesBackground from "@/components/shared-components/particlesBackground/ParticlesBackground";
 
 export interface MainProps {
   mainAnimated: boolean;

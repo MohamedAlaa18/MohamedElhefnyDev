@@ -1,13 +1,12 @@
-import './projects.css';
 import { useRef, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AnimatePresence, motion } from 'framer-motion';
-import { smoothScaleAnimation } from '../../framer-animation';
-import { RootState } from '../../../../state/store';
-import projectsData from '../../../../../public/data/myProjects.json';
-import { Project } from '../../../../types/types';
-import { setScreenshots, setLoading, setIsModalOpen } from '../../../../state/projectsSlice';
-import Modal from '../../components/modal/Modal';
+import { smoothScaleAnimation } from '../main/framer-animation';
+import { RootState } from '../../state/store';
+import projectsData from '../../../public/data/myProjects.json';
+import { Project } from '../../types/types';
+import { setScreenshots, setLoading, setIsModalOpen } from '../../state/projectsSlice';
+import Modal from '../shared-components/modal/Modal';
 import Image from 'next/image';
 
 export default function Projects() {

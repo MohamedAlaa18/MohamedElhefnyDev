@@ -1,8 +1,7 @@
 import Particles from 'react-tsparticles';
 import { Engine } from 'tsparticles-engine';
 import { loadSlim } from 'tsparticles-slim';
-import './particlesBackground.css';
-import { useTheme } from '../../context/ThemeContext';
+import { useTheme } from '../../../context/ThemeContext';
 import { useCallback } from 'react';
 
 function ParticlesBackground() {

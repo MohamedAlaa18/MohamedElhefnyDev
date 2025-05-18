@@ -1,4 +1,3 @@
-import './hero.css';
 import { useEffect, useState } from 'react';
 import { useTheme } from '../../context/ThemeContext';
 import devAnimationDark from '../../../public/animation/laptop_2_blue_1.json';

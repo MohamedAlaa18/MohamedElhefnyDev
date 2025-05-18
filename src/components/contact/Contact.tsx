@@ -1,4 +1,3 @@
-// import './contact.css';
 import { useEffect, useState } from 'react';
 import { useTheme } from '../../context/ThemeContext';
 import { ValidationError, useForm } from '@formspree/react';

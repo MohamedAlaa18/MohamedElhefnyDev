@@ -1,16 +1,15 @@
-import './modal.css';
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 // import { useDebouncedCallback } from 'use-debounce';
 import { motion, AnimatePresence } from 'framer-motion';
-import { RootState } from '../../../../state/store';
+import { RootState } from '../../../state/store';
 import {
   setCurrentImageIndex,
   setIsModalOpen,
   setScreenshots,
   setLoading,
   setVideoUrl
-} from '../../../../state/projectsSlice';
+} from '../../../state/projectsSlice';
 import Image from 'next/image';
 
 export default function Modal({ children }: { children: ReactNode }) {

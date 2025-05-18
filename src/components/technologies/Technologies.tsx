@@ -1,9 +1,8 @@
-import './technologies.css';
 import { useState } from 'react';
-import technologiesData from '../../../../../public/data/myTechnologies.json';
+import technologiesData from '../../../public/data/myTechnologies.json';
 import { AnimatePresence, motion } from "framer-motion";
-import { smoothScaleAnimation } from '../../framer-animation';
-import { useTheme } from '../../../../context/ThemeContext';
+import { smoothScaleAnimation } from '../main/framer-animation';
+import { useTheme } from '../../context/ThemeContext';
 import Image from 'next/image';
 
 export default function Technologies() {

@@ -1,10 +1,9 @@
-import './main.css';
 import { useState } from 'react';
 import { useView } from '../../context/useView';
-import Projects from './sections/projects/Projects';
-import Certificates from './sections/certificates/Certificates';
-import Technologies from './sections/technologies/Technologies';
-import DoubleToggleSwitch from './components/doubleToggleSwitch/DoubleToggleSwitch';
+import Projects from '../projects/Projects';
+import Certificates from '../certificates/Certificates';
+import Technologies from '../technologies/Technologies';
+import DoubleToggleSwitch from '../shared-components/doubleToggleSwitch/DoubleToggleSwitch';
 
 export default function Main(
   // { mainAnimated }: { mainAnimated: boolean }

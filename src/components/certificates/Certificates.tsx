@@ -1,8 +1,7 @@
-import './certificates.css'
 import { useState } from 'react';
-import certificatesData from '../../../../../public/data/myCertificates.json';
+import certificatesData from '../../../public/data/myCertificates.json';
 import { AnimatePresence, motion } from "framer-motion"
-import { smoothScaleAnimation } from '../../framer-animation';
+import { smoothScaleAnimation } from '../main/framer-animation';
 import Image from 'next/image';
 
 export default function Certificates() {

@@ -1,6 +1,5 @@
 import { useEffect, useState, MouseEvent } from 'react';
-import './doubleToggleSwitch.css';
-import { useView } from '../../../../context/useView';
+import { useView } from '../../../context/useView';
 
 function DoubleToggleSwitch() {
     const { view, handleViewChange } = useView();
