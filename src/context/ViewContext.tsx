@@ -1,16 +1,19 @@
-import { createContext, useState, useRef, ReactNode } from 'react';
+import { createContext, useState, useRef, ReactNode, RefObject } from 'react';
 
 export interface ViewContextType {
   view: string;
   handleViewChange: (viewChanged: string) => void;
-  toggleCheckBox: React.RefObject<HTMLInputElement | null>;
+  toggleCheckBox: RefObject<HTMLInputElement>; // strict, without `null`
 }
 
 export const ViewContext = createContext<ViewContextType | undefined>(undefined);
 
 export const ViewProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  // use dummy input to satisfy strict typing
+  const dummyInput = typeof document !== 'undefined' ? document.createElement('input') : null;
+  const toggleCheckBox = useRef<HTMLInputElement>(dummyInput!); // non-null assertion
+
   const [view, setView] = useState('projects');
-  const toggleCheckBox = useRef<HTMLInputElement>(null);
 
   const handleViewChange = (viewChanged: string): void => {
     setView(viewChanged);
