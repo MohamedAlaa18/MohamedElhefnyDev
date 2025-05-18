@@ -8,6 +8,7 @@ import projectsData from '../../../../../public/data/myProjects.json';
 import { Project } from '../../../../types/types';
 import { setScreenshots, setLoading, setIsModalOpen } from '../../../../state/projectsSlice';
 import Modal from '../../components/modal/Modal';
+import Image from 'next/image';
 
 export default function Projects() {
   const dispatch = useDispatch();
@@ -128,10 +129,10 @@ export default function Projects() {
                   className='card'
                 >
                   <div className="image-parent skeleton flex">
-                    <img
+                    <Image
                       className="image"
                       width={266}
-                      height={177.33}
+                      height={149}
                       src={project.imagPath}
                       sizes="(max-width: 768px) 100vw, 266px"
                       alt={project.projectTitle}

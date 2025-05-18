@@ -1,12 +1,17 @@
+// 'use client';
+
 import './hero.css';
 import { useEffect, useState } from 'react';
 import { useTheme } from '../../context/ThemeContext';
-import Lottie from 'lottie-react';
 import devAnimationDark from '../../../public/animation/laptop_2_blue_1.json';
 import devAnimationLight from '../../../public/animation/laptop_2_orange.json';
 import { motion, AnimatePresence } from "framer-motion";
 import ResumeButton from '../resumeButton/ResumeButton';
+import dynamic from 'next/dynamic';
 
+const Lottie = dynamic(() => import('lottie-react'), {
+  ssr: false,
+});
 
 export default function Hero() {
   const [text, setText] = useState('');
@@ -48,10 +53,9 @@ export default function Hero() {
     return () => clearInterval(cursorInterval);
   }, []);
 
-  document.addEventListener("DOMContentLoaded", () => {
+  useEffect(() => {
     const targetPath = "M 351.343 0 C 351.343 0 351.343 0 351.343 0 C 351.343 39.7368 319.08 72 279.343 72 C 279.343 72 -279.343 72 -279.343 72 C -319.08 72 -351.343 39.7368 -351.343 0 C -351.343 0 -351.343 0 -351.343 0 C -351.343 -39.7368 -319.08 -72 -279.343 -72 C -279.343 -72 279.343 -72 279.343 -72 C 319.08 -72 351.343 -39.7368 351.343 0 Z";
 
-    // Function to check d attribute and apply the display-block class
     const checkPathAttribute = () => {
       const svgs = document.querySelectorAll('svg');
 
@@ -68,8 +72,9 @@ export default function Hero() {
       });
     };
 
+    // Run after mount
     checkPathAttribute();
-  });
+  }, []);
 
   // useEffect(() => {
   //   const handleScroll = () => {

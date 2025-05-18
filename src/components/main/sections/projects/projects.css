@@ -143,14 +143,14 @@ section#projects div.right-section {
 .projects.right-section .card .image-parent {
   gap: 1rem;
   border-bottom: 1px solid var(--border);
-  min-height: 177.33px;
+  min-height: 149px;
   min-width: 266px;
   overflow: hidden;
   border-radius: 8px;
 }
 
 .projects.right-section .card .image {
-  min-height: 177.33px;
+  min-height: 149px;
   min-width: 266px;
 }
 

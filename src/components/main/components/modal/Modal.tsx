@@ -1,7 +1,7 @@
 import './modal.css';
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useDebouncedCallback } from 'use-debounce';
+// import { useDebouncedCallback } from 'use-debounce';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RootState } from '../../../../state/store';
 import {
@@ -11,6 +11,7 @@ import {
   setLoading,
   setVideoUrl
 } from '../../../../state/projectsSlice';
+import Image from 'next/image';
 
 export default function Modal({ children }: { children: ReactNode }) {
   const state = useSelector((state: RootState) => state.projects);
@@ -114,22 +115,29 @@ export default function Modal({ children }: { children: ReactNode }) {
     setTouchEndX(null);
   };
 
-  const handleMouseMove = useDebouncedCallback((event: React.MouseEvent<HTMLDivElement>) => {
-    const modalContent = modalContentRef.current;
-    if (modalContent) {
-      const contentWidth = modalContent.offsetWidth;
-      const contentHeight = modalContent.offsetHeight;
-
-      const x = (event.clientX / window.innerWidth) * 100;
-      const y = (event.clientY / window.innerHeight) * 100;
-
-      const leftPos = x - ((contentWidth / window.innerWidth) * 35);
-      const topPos = y - ((contentHeight / window.innerHeight) * 35);
-
-      setMouseX(leftPos);
-      setMouseY(topPos);
+  const debounceRef = useRef<NodeJS.Timeout | null>(null);
+  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (debounceRef.current) {
+      clearTimeout(debounceRef.current);
     }
-  }, 100);
+
+    debounceRef.current = setTimeout(() => {
+      const modalContent = modalContentRef.current;
+      if (modalContent) {
+        const contentWidth = modalContent.offsetWidth;
+        const contentHeight = modalContent.offsetHeight;
+
+        const x = (event.clientX / window.innerWidth) * 100;
+        const y = (event.clientY / window.innerHeight) * 100;
+
+        const leftPos = x - ((contentWidth / window.innerWidth) * 35);
+        const topPos = y - ((contentHeight / window.innerHeight) * 35);
+
+        setMouseX(leftPos);
+        setMouseY(topPos);
+      }
+    }, 100);
+  };
 
   const handleCloseModal = () => {
     dispatch(setIsModalOpen(false));
@@ -223,7 +231,7 @@ export default function Modal({ children }: { children: ReactNode }) {
             </div>
 
             <div className="pagination">
-              {state.screenshots.map((_, index) => (
+              {state.screenshots.map((_: string, index: number) => (
                 <div
                   key={index}
                   className={`icon-circle ${index === state.currentImageIndex ? 'active' : ''}`}
@@ -251,11 +259,16 @@ export default function Modal({ children }: { children: ReactNode }) {
                     <div className="spinner" />
                   </div>
                 )}
-                <img
-                  src={state.screenshots[previewImageIndex]}
-                  alt={`Preview ${previewImageIndex + 1}`}
-                  onLoad={() => setPreviewLoading(false)}
-                />
+                <div style={{ position: 'relative', width: '200px', height: '120px' }}>
+                  <Image
+                    src={state.screenshots[previewImageIndex]}
+                    alt={`Preview ${previewImageIndex + 1}`}
+                    fill
+                    style={{ objectFit: 'contain', borderRadius: '8px' }}
+                    onLoad={() => setPreviewLoading(false)}
+                    sizes="(max-width: 768px) 100vw, 200px"
+                  />
+                </div>
               </motion.div>
             )}
           </motion.div>

@@ -4,6 +4,7 @@ import technologiesData from '../../../../../public/data/myTechnologies.json';
 import { AnimatePresence, motion } from "framer-motion";
 import { smoothScaleAnimation } from '../../framer-animation';
 import { useTheme } from '../../../../context/ThemeContext';
+import Image from 'next/image';
 
 export default function Technologies() {
     const [active, setActive] = useState('all');
@@ -11,9 +12,14 @@ export default function Technologies() {
 
     const handleClick = (genre: string) => {
         setActive(genre);
-        genre === 'all'
-            ? setTechnologiesFiltered(technologiesData)
-            : setTechnologiesFiltered(technologiesData.filter((technology) => technology.genre === genre));
+
+        if (genre === 'all') {
+            setTechnologiesFiltered(technologiesData);
+        } else {
+            setTechnologiesFiltered(
+                technologiesData.filter((technology) => technology.genre === genre)
+            );
+        }
     };
 
     const { theme } = useTheme();
@@ -43,7 +49,9 @@ export default function Technologies() {
 
                                 <div className="card-top flex">
                                     <div className="image-parent skeleton flex">
-                                        <img
+                                        <Image
+                                            height={60}
+                                            width={60}
                                             src={
                                                 !isDark && technology.svg.includes('-dark')
                                                     ? technology.svg.replace('-dark', '-light')
