@@ -1,5 +1,5 @@
+// import './header.css';
 import { useEffect, useRef, useState } from 'react';
-import './header.css';
 import { useTheme } from '../../context/ThemeContext';
 import { useView } from '../../context/useView';
 

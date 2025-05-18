@@ -1,4 +1,4 @@
-import './footer.css'
+// import './footer.css'
 import { useView } from '../../context/useView';
 
 export default function Footer() {
