@@ -12,7 +12,7 @@ import "@/components/shared-components/modal/modal.css";
 import "@/components/shared-components/particlesBackground/particlesBackground.css";
 import "@/components/contact/contact.css";
 import "@/components/footer/footer.css";
-
+import "@/components/sidebar/sidebar.css";
 import type { AppProps } from "next/app";
 
 export default function App({ Component, pageProps }: AppProps) {
